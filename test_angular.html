@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Example - example-example7-production</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        (function (angular) {
+            'use strict';
+            angular.module('stencilApp', []);
+
+            angular.module('stencilApp').controller('stencilController', ['$scope', function ($scope) {
+                $scope.qty = 5;
+                $scope.cost = 4;
+            }]);
+        })(window.angular);
+    </script>
+</head>
+
+<body>
+
+    <div ng-app="stencilApp" ng-controller="stencilController">
+        <div>
+            Quantity:
+            <input type="number" min="0" ng-model="qty">
+        </div>
+        <div>
+            Costs:
+            <input type="number" min="0" ng-model="cost">
+        </div>
+        <div>
+            <b>Total:</b> {{qty * cost | currency}}
+        </div>
+
+    </div>
+</body>
+
+</html>

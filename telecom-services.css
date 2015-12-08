@@ -1,0 +1,93 @@
+@import "general.css";
+@import "property-icons.css";
+body {
+    margin: 0;
+    font-family: "Segoe UI";
+}
+
+
+.lol {
+    color:coral;
+}
+
+
+/* Properties panel */
+
+.panel {
+    padding: 0.5em;
+    border: 2px solid rgba(90, 100, 150, 0.5);
+    border-radius: 5px;
+    float: left;
+    box-sizing: content-box;
+}
+
+.panel p:first-child {
+    font-size: 0.8em;
+    font-style: italic;
+    color: rgba(100, 100, 100, 1.0);
+}
+
+#masters-panel {
+    width: 25em;
+}
+
+.component {
+    background-color: beige;
+    list-style-type: none;
+    padding: 0;
+    float: left;
+}
+
+.property {
+    width: 48%;
+    height: 4em;
+    background-color: cornsilk;
+    background-position: left top;
+    background-size: auto 60%;
+    background-repeat: no-repeat;
+    border-color: deepskyblue;
+    border-width: 0px;
+    margin: 0.2em;
+    padding: 0.5em 0.5em 0.5em 2.5em;
+    float: left;
+    box-sizing: border-box;
+}
+
+
+/* Canvas */
+
+.canvas {
+    border: 2px solid rgba(150, 150, 150, 0.5);
+    border-radius: 5px;
+    color: darkseagreen;
+    box-sizing: border-box;
+}
+
+#main-canvas {
+    min-height: 100em;
+}
+
+.master-icon {
+    width: 3em;
+    height: 3em;
+    vertical-align: text-top;
+}
+
+.ui-selecting {
+    background: #FECA40;
+}
+
+.ui-selected {
+    background: #F39814;
+    border-color: aqua;
+    color: white;
+}
+
+footer {
+    width: 100%;
+    /* center horizontally */
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+}
