@@ -5,6 +5,9 @@
     'use strict';
 
     // initialize 'stencilApp' module
-    angular.module('stencilApp', []);
-    
+    angular.module('stencilApp', ['dndLists']);
+
+    // initialize 'canvasApp' module
+    angular.module('canvasApp', ['dndLists']);
+
 }());

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Drag &amp; Drop Lists for angular.js</title>
+    <style>
+        .simpleDemo ul[dnd-list],
+        .simpleDemo ul[dnd-list] > li {
+            /* For the correct positioning of the placeholder element, the dnd-list and it's children must have position: relative */
+            position: relative;
+        }
+
+        .simpleDemo ul[dnd-list] {
+            /* The dnd-list should always have a min-height, otherwise you can't drop to it once it's empty */
+            min-height: 42px;
+            padding-left: 0px;
+        }
+
+        .simpleDemo ul[dnd-list] .dndDraggingSource {
+            /* The dndDraggingSource class will be applied to the source element of a drag operation. It makes sense to hide it to give the user the feeling that he's actually moving it. */
+            display: none;
+        }
+
+        .simpleDemo ul[dnd-list] .dndPlaceholder {
+            /* An element with .dndPlaceholder class will be added to the dnd-list while the user is dragging over it. */
+            display: block;
+            background-color:darkseagreen;
+            min-height: 12px;
+        }
+
+        .simpleDemo ul[dnd-list] li {
+            /* The dnd-lists's child elements currently MUST have position: relative. Otherwise we can not determine whether the mouse pointer is in the upper or lower half of the element we are dragging over. */
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            display: block;
+            padding: 10px 15px;
+            margin-bottom: -1px;
+        }
+
+        .simpleDemo ul[dnd-list] li.selected {
+            /* Show selected elements in green */
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        pre {
+            font-size: xx-small;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/1.3.0/angular-drag-and-drop-lists.min.js"></script>
+    <script>
+        angular.module('demo', ['dndLists']);
+        angular.module('demo').controller("SimpleDemoController", function ($scope) {
+            $scope.models = {
+                selected: null,
+                lists: {
+                    "A": [],
+                    "B": []
+                }
+            };
+            // Generate initial model
+            for (var i = 1; i <= 3; ++i) {
+                $scope.models.lists.A.push({
+                    label: "Item A" + i
+                });
+                $scope.models.lists.B.push({
+                    label: "Item B" + i
+                });
+            }
+            // Model to JSON for demo purpose
+            $scope.$watch('models', function (model) {
+                $scope.modelAsJson = angular.toJson(model, true);
+            }, true);
+        });
+    </script>
+
+</head>
+
+<body ng-app="demo" ng-controller="SimpleDemoController">
+
+    <div class="simpleDemo" ng-repeat="(listName, list) in models.lists">
+        <h3>List {{listName}}</h3>
+        <ul dnd-list="list">
+            <li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                {{item.label}}
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Generated Model</h3>
+        <pre>{{modelAsJson}}</pre>
+    </div>
+
+</body>

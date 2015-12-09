@@ -5,22 +5,18 @@
     <meta charset="UTF-8">
     <title>Example - example-example7-production</title>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
-    <script src="app-module.js"></script>
-    <script src="stencil-controller.js"></script>
-<!--
+    <script src="app.js"></script>
     <script>
         (function (angular) {
             'use strict';
             angular.module('stencilApp', []);
 
-            angular.module('stencilApp').controller('stencilController', function ($scope) {
+            angular.module('stencilApp').controller('stencilController', ['$scope', function ($scope) {
                 $scope.qty = 5;
                 $scope.cost = 4;
-
-            });
+            }]);
         })(window.angular);
     </script>
--->
 </head>
 
 <body>
