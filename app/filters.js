@@ -6,7 +6,7 @@
     'use strict';
 
     //
-    angular.module('stencilApp').filter('icon_file', function () {
+    angular.module('etsFilters', []).filter('icon_file', function () {
         return function (input, uppercase) {
 
             // ensure the input is a valid string

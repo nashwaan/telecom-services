@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Product Designer</title>
+
+    <link href="telecom-services.css" media="screen" rel="stylesheet" type="text/css"></link>
+    <!--
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+    -->
+    <script src="script/jquery.js"></script>
+    <script src="script/angular.js"></script>
+    <script src="script/angular-drag-and-drop-lists.js"></script>
+
+    <script src="draggable-directive.js"></script>
+    <script src="app.js"></script>
+    <script src="filters.js"></script>
+    <script src="stencil-part/stencil-controller.js"></script>
+    <script src="canvas-part/canvas-controller.js"></script>
+    
+</head>
+
+<body>
+
+    <aside ng-app="servicesDesignerApp" ng-controller="stencilController" id="masters-panel" class="panel">
+        <!--ets-draggable>-->
+
+        <p>Drag an item and drop it onto the canvas:</p>
+
+        <ul id="masters" class="component" dnd-list="stencil.masters">
+
+            <li ng-repeat="master in stencil.masters" dnd-draggable="master" dnd-selected="stencil.selectedMaster=master" dnd-moved="stencil.masters.splice($index, 1)" dnd-effect-allowed="move" class="master property {{master.Icon | icon_file}}" ng-class="{'selected':stencil.selectedMaster===master}">
+                {{ master.Property }}
+            </li>
+
+        </ul>
+
+        <div>
+
+            <h3>Generated Model</h3>
+            <pre>{{stencil | json}}</pre>
+
+        </div>
+
+    </aside>
+
+    <summary>
+
+        <p>Plan Name</p>
+        <div>Brief of the Plan</div>
+
+    </summary>
+
+    <footer>
+
+        <div id="generate-brd">Write BRD</div>
+
+    </footer>
+
+</body>
+
+</html>

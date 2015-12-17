@@ -6,11 +6,15 @@
     'use strict';
 
     //
-    angular.module('stencilApp')
-        .directive('myDraggable', ['$document', function ($document) {
+    angular.module('etsDraggableDirective', [])
+        .directive('etsDraggable', ['$document', function ($document) {
+            
             return {
                 link: function (scope, element, attr) {
-                    var startX = 0, startY = 0, x = 0, y = 0;
+                    var startX = 0,
+                        startY = 0,
+                        x = 0,
+                        y = 0;
 
                     function mousemove(event) {
                         y = event.pageY - startY;
@@ -41,8 +45,9 @@
                         backgroundColor: 'lightgrey',
                         cursor: 'pointer'
                     });
-
+                    
                 }
+                
             };
         }]);
 

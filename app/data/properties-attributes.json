@@ -1,4 +1,4 @@
-var properties_attributes = [{
+[{
     "Property": "Account",
     "Collection": "Plans",
     "Icon": "Account",
@@ -5123,4 +5123,4 @@ var properties_attributes = [{
         "User": "",
         "Sum of Show": "3"
     }]
-}];
+}]
