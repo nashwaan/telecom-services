@@ -1,66 +1,72 @@
 <!doctype html>
-<html>
+<html ng-app="TheApp">
 
 <head>
 
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1" />
 
     <title>Product Designer</title>
 
+    <link href="script/angular-material.css" rel="stylesheet"></link>
+    <link href="script/angular-gridster.min.css" rel="stylesheet"></link>
     <link href="telecom-services.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <!--
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <script src="../node_modules/angular/angular.js"></script>
-    <script src="../node_modules/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
-    -->
+
     <script src="script/jquery.js"></script>
     <script src="script/angular.js"></script>
+    <script src="script/angular-route.js"></script>
+    <script src="script/angular-animate.js"></script>
+    <script src="script/angular-aria.js"></script>
+    <script src="script/angular-material.js"></script>
     <script src="script/angular-drag-and-drop-lists.js"></script>
+    <script src="script/angular-gridster.js"></script>
 
     <script src="draggable-directive.js"></script>
     <script src="app.js"></script>
     <script src="filters.js"></script>
+    <script src="navigation-part/navigation-controller.js"></script>
     <script src="stencil-part/stencil-controller.js"></script>
     <script src="canvas-part/canvas-controller.js"></script>
-    
+    <script src="actions-part/actions-controller.js"></script>
+    <script src="manufacture-part/manufacture-controller.js"></script>
+
 </head>
 
-<body>
+<body layout="column" ng-cloak>
 
-    <aside ng-app="servicesDesignerApp" ng-controller="stencilController" id="masters-panel" class="panel">
-        <!--ets-draggable>-->
+    <div ng-include="'navigation-part/navigation-view.html'"></div>
 
-        <p>Drag an item and drop it onto the canvas:</p>
+    <div layout="row" flex style="overflow:hidden;">
 
-        <ul id="masters" class="component" dnd-list="stencil.masters">
+        <div layout="column" ng-include="'stencil-part/stencil-view.html'"></div>
 
-            <li ng-repeat="master in stencil.masters" dnd-draggable="master" dnd-selected="stencil.selectedMaster=master" dnd-moved="stencil.masters.splice($index, 1)" dnd-effect-allowed="move" class="master property {{master.Icon | icon_file}}" ng-class="{'selected':stencil.selectedMaster===master}">
-                {{ master.Property }}
-            </li>
+        <md-content flex id="content" ng-controller="canvasController as cntrl">
 
-        </ul>
+            <md-button id="actions" ng-click="cntrl.showActions($event)" aria-label="Show Actions" style="position:absolute;top:10px;right:10px;z-index:1;" md-no-ink>
 
-        <div>
+                <md-tooltip>Contact {{ 1 }}</md-tooltip>
+                <md-icon md-svg-icon="share"></md-icon>
 
-            <h3>Generated Model</h3>
-            <pre>{{stencil | json}}</pre>
+            </md-button>
 
-        </div>
+            <div gridster="gridsterOpts">
 
-    </aside>
+                <ul>
 
-    <summary>
+                    <li gridster-item="item" ng-repeat="item in standardItems">
 
-        <p>Plan Name</p>
-        <div>Brief of the Plan</div>
+                        <p>Heading</p>
+                        {{ item.sizeX }} and {{ item.sizeY }}
 
-    </summary>
+                    </li>
 
-    <footer>
+                </ul>
 
-        <div id="generate-brd">Write BRD</div>
+            </div>
 
-    </footer>
+        </md-content>
+
+    </div>
 
 </body>
 

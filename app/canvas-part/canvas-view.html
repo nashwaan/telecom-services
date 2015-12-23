@@ -1,0 +1,18 @@
+<md-content flex id="content" ng-controller="canvasController as cntrl">
+
+    <div gridster="gridsterOpts">
+
+        <ul>
+
+            <li gridster-item="item" ng-repeat="item in standardItems">
+                
+                <p>Heading</p>
+                {{ item.sizeX }} and {{ item.sizeY }}
+                
+            </li>
+
+        </ul>
+
+    </div>
+
+</md-content>

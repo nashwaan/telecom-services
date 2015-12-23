@@ -1,4 +1,16 @@
 @import "property-icons.css";
+
+/* Hide when Angular is not yet loaded and initialized */
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
 body {
     margin: 0;
     font-family: "Segoe UI";
@@ -10,12 +22,15 @@ body {
     user-select: none;
 }
 
-.lol {
-    color: coral;
-}
-
 
 /* Properties panel */
+
+.Master {
+    width: 44%;
+    text-transform: none;
+    text-align: left;
+    box-sizing: border-box;
+}
 
 .panel {
     position: absolute;
@@ -58,7 +73,7 @@ ul[dnd-list] .dndPlaceholder {
     margin: 0.2em;
     padding: 0.5em 0.5em 0.5em 2.5em;
     float: left;
-    box-sizing:border-box ;
+    box-sizing: border-box;
 }
 
 .property:hover {
@@ -75,6 +90,23 @@ ul[dnd-list] .dndPlaceholder {
     box-sizing: border-box;
 }
 
+
+/*
+body {
+    background: #004756;
+    color: #fff;
+}
+*/
+
+.gridster .gridster-item {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: #004756;
+    background: #ffffff;
+    padding: 10px;
+}
+
 #main-canvas {
     min-height: 100em;
 }
@@ -86,19 +118,25 @@ ul[dnd-list] .dndPlaceholder {
 }
 
 ul[dnd-list],
-ul[dnd-list] > li {
+ul[dnd-list] > li,
+*[dnd-list],
+dnd-draggable > *[dnd-draggable] {
     position: relative;
 }
 
-ul[dnd-list] .dndDraggingSource {
+ul[dnd-list] .dndDraggingSource,
+*[dnd-list] .dndDraggingSource {
     display: none;
 }
 
-ul[dnd-list] .dndPlaceholder {
+ul[dnd-list] .dndPlaceholder,
+*[dnd-list] .dndPlaceholder {
+    /*display: none;*/
     background-color: darkseagreen;
 }
 
-ul[dnd-list] li.selected {
+ul[dnd-list] li.selected,
+*[dnd-list] .selected {
     /* Show selected elements in green */
     background-color: #dff0d8;
     color: #3c763d;

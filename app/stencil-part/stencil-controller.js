@@ -6,9 +6,8 @@
 (function (angular) {
     'use strict';
 
-
-    // define controller for 'servicesDesignerApp'
-    angular.module('servicesDesignerApp').controller('stencilController', ['$scope', '$http', function ($scope, $http) {
+    // define controller for stencil
+    angular.module('TheApp').controller('stencilController', ['$scope', '$http', function ($scope, $http) {
 
         //  
         $http.get('data/properties-attributes.json').success(function (data) {

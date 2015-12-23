@@ -1,0 +1,18 @@
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="stencil" md-is-locked-open="$mdMedia('gt-sm')">
+
+    <md-list dnd-list="stencil.masters" ng-controller="stencilController as cntrl">
+
+        <md-item ng-repeat="master in stencil.masters" dnd-draggable="master" dnd-selected="stencil.selectedMaster=master" dnd-moved="stencil.masters.splice($index, 1)" dnd-effect-allowed="move">
+
+            <md-button class="md-raised Master" ng-click="stencil.selectedMaster=master" ng-class="{'selected':stencil.selectedMaster===master}" aria-label="{{master.Icon}}">
+
+                <md-icon md-svg-icon="{{master.Icon | icon_provider}}" class="avatar"></md-icon>
+                {{master.Icon}}
+
+            </md-button>
+
+        </md-item>
+
+    </md-list>
+
+</md-sidenav>
