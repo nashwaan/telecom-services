@@ -1,0 +1,77 @@
+{
+    "PlanName": "Business Ultimate",
+    "Bands": [
+        {
+            "BandName": "Business Ultimate Base Plans",
+            "Components": [
+                {
+                    "ComponentName": "B.U. Silver",
+                    "Properties": [
+                        {
+                            "PropertyName": "Base Plan",
+                            "Attributes": [
+                                {
+                                    "AttributeName": "Prorate",
+                                    "Value": "Yes"
+                                },
+                                {
+                                    "AttributeName": "Destination",
+                                    "Value": "STD"
+                                }
+                            ]
+                        },
+                        {
+                            "PropertyName": "Add-on Plan",
+                            "Attributes": [
+                                {
+                                    "AttributeName": "Prorate",
+                                    "Value": "Yes"
+                                },
+                                {
+                                    "AttributeName": "Destination",
+                                    "Value": "STD"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "BandName": "Business Ultimate Add-ons",
+            "Components": [
+                {
+                    "ComponentName": "STD Add-on",
+                    "Properties": [
+                        {
+                            "PropertyName": "Base Plan",
+                            "Attributes": [
+                                {
+                                    "AttributeName": "Prorate",
+                                    "Value": "Yes"
+                                },
+                                {
+                                    "AttributeName": "Destination",
+                                    "Value": "STD"
+                                }
+                            ]
+                        },
+                        {
+                            "PropertyName": "Add-on Plan",
+                            "Attributes": [
+                                {
+                                    "AttributeName": "Prorate",
+                                    "Value": "Yes"
+                                },
+                                {
+                                    "AttributeName": "Destination",
+                                    "Value": "STD"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

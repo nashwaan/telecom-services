@@ -2,72 +2,50 @@
 <html ng-app="TheApp">
 
 <head>
-
+    
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1" />
-
+    
     <title>Product Designer</title>
-
+    
     <link href="script/angular-material.css" rel="stylesheet"></link>
     <link href="script/angular-gridster.min.css" rel="stylesheet"></link>
     <link href="telecom-services.css" media="screen" rel="stylesheet" type="text/css"></link>
-
+    <link href="stencil-part/stencil.css" media="screen" rel="stylesheet" type="text/css"></link>
+    <link href="canvas-part/canvas.css" media="screen" rel="stylesheet" type="text/css"></link>
+    
     <script src="script/jquery.js"></script>
     <script src="script/angular.js"></script>
+    <script src="script/angular-aria.js"></script>
     <script src="script/angular-route.js"></script>
     <script src="script/angular-animate.js"></script>
-    <script src="script/angular-aria.js"></script>
     <script src="script/angular-material.js"></script>
-    <script src="script/angular-drag-and-drop-lists.js"></script>
     <script src="script/angular-gridster.js"></script>
-
-    <script src="draggable-directive.js"></script>
+    <script src="script/angular-drag-and-drop-lists.js"></script>
+    
     <script src="app.js"></script>
     <script src="filters.js"></script>
-    <script src="navigation-part/navigation-controller.js"></script>
-    <script src="stencil-part/stencil-controller.js"></script>
+    <script src="draggable-directive.js"></script>
     <script src="canvas-part/canvas-controller.js"></script>
+    <script src="stencil-part/stencil-controller.js"></script>
     <script src="actions-part/actions-controller.js"></script>
+    <script src="navigation-part/navigation-controller.js"></script>
     <script src="manufacture-part/manufacture-controller.js"></script>
-
+    
 </head>
 
 <body layout="column" ng-cloak>
-
+    
     <div ng-include="'navigation-part/navigation-view.html'"></div>
-
+    
     <div layout="row" flex style="overflow:hidden;">
-
+        
         <div layout="column" ng-include="'stencil-part/stencil-view.html'"></div>
-
-        <md-content flex id="content" ng-controller="canvasController as cntrl">
-
-            <md-button id="actions" ng-click="cntrl.showActions($event)" aria-label="Show Actions" style="position:absolute;top:10px;right:10px;z-index:1;" md-no-ink>
-
-                <md-tooltip>Contact {{ 1 }}</md-tooltip>
-                <md-icon md-svg-icon="share"></md-icon>
-
-            </md-button>
-
-            <div gridster="gridsterOpts">
-
-                <ul>
-
-                    <li gridster-item="item" ng-repeat="item in standardItems">
-
-                        <p>Heading</p>
-                        {{ item.sizeX }} and {{ item.sizeY }}
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </md-content>
-
+        
+        <div layout="column" ng-include="'canvas-part/canvas-view.html'" flex></div>
+        
     </div>
-
+    
 </body>
 
 </html>

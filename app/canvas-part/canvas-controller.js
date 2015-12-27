@@ -6,7 +6,42 @@
     'use strict';
 
     // define controller for canvas
-    angular.module('TheApp').controller('canvasController', ['$scope', '$mdBottomSheet', '$log', function ($scope, $mdBottomSheet, $log) {
+    angular.module('TheApp').controller('canvasController', ['$scope', '$http', '$mdBottomSheet', '$log', function ($scope, $http, $mdBottomSheet, $log) {
+
+        $scope.dropIntoComponent = function (event, index, item, external, type, allowedType) {
+            /*$scope.logListEvent('dropped at', event, index, external, type);
+            if (external) {
+                if (allowedType === 'itemType' && !item.label) return false;
+                if (allowedType === 'containerType' && !angular.isArray(item)) return false;
+            }*/
+            $log.debug(JSON.stringify(event));
+            $log.debug(JSON.stringify(index));
+            $log.debug(JSON.stringify(item));
+            $log.debug(JSON.stringify(type));
+            
+            return item;
+        };
+        
+        //
+        $scope.selected = {
+            band: null,
+            component: null,
+            property: null,
+            attributte: null
+        };
+
+        //  
+        $http.get('data/plan-A.json').success(function (data) {
+
+            $scope.plan = data;
+
+            window.console.log("Plan data was loaded successfully.");
+
+        });
+
+        $scope.$watch('plan', function (plan) {
+            $scope.planAsJson = angular.toJson(plan, true);
+        }, true);
 
         // Show the bottom sheet  
         this.showActions = function ($event) {
@@ -28,7 +63,7 @@
                 bindToController: true,
                 targetEvent: $event
             }).then(function (clickedItem) {
-                clickedItem && $log.debug(clickedItem.name + ' clicked!');
+                //clickedItem && $log.debug(clickedItem.name + ' clicked!');
             });
 
         };
@@ -37,24 +72,20 @@
         // In most cases the sorting should be by row ASC, col ASC
 
         // these map directly to gridsterItem directive options
-        $scope.standardItems = [
-            {
-                sizeX: 2,
-                sizeY: 1,
-                row: 0,
-                col: 0
-            },
-            {
-                sizeX: 1,
-                sizeY: 1,
-                row: 0,
-                col: 4
-            },
-            {
-                row: 3,
-                col: 4
-            }
-        ];
+        $scope.standardItems = [{
+            sizeX: 2,
+            sizeY: 1,
+            row: 0,
+            col: 0
+        }, {
+            sizeX: 1,
+            sizeY: 1,
+            row: 0,
+            col: 4
+        }, {
+            row: 3,
+            col: 4
+        }];
 
         $scope.gridsterOpts = {
             columns: 10, // the width of the grid, in columns
@@ -93,6 +124,7 @@
                 stop: function (event, $element, widget) {} // optional callback fired when item is finished dragging
             }
         };
+
     }]);
 
 }(window.angular));
