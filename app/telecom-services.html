@@ -2,18 +2,19 @@
 <html ng-app="TheApp">
 
 <head>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1" />
-    
+
     <title>Product Designer</title>
-    
+
     <link href="script/angular-material.css" rel="stylesheet"></link>
     <link href="script/angular-gridster.min.css" rel="stylesheet"></link>
     <link href="telecom-services.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <link href="stencil-part/stencil.css" media="screen" rel="stylesheet" type="text/css"></link>
+    <link href="masters-part/masters.css" media="screen" rel="stylesheet" type="text/css"></link>
     <link href="canvas-part/canvas.css" media="screen" rel="stylesheet" type="text/css"></link>
-    
+    <link href="settings-part/settings.css" media="screen" rel="stylesheet" type="text/css"></link>
+
     <script src="script/jquery.js"></script>
     <script src="script/angular.js"></script>
     <script src="script/angular-aria.js"></script>
@@ -22,30 +23,33 @@
     <script src="script/angular-material.js"></script>
     <script src="script/angular-gridster.js"></script>
     <script src="script/angular-drag-and-drop-lists.js"></script>
-    
+
     <script src="app.js"></script>
     <script src="filters.js"></script>
     <script src="draggable-directive.js"></script>
-    <script src="canvas-part/canvas-controller.js"></script>
-    <script src="stencil-part/stencil-controller.js"></script>
-    <script src="actions-part/actions-controller.js"></script>
-    <script src="navigation-part/navigation-controller.js"></script>
-    <script src="manufacture-part/manufacture-controller.js"></script>
-    
+    <script src="canvas-part/canvas.js"></script>
+    <script src="masters-part/masters.js"></script>
+    <script src="actions-part/actions.js"></script>
+    <script src="settings-part/settings.js"></script>
+    <script src="navigation-part/navigation.js"></script>
+    <script src="manufacture-part/manufacture.js"></script>
+
 </head>
 
 <body layout="column" ng-cloak>
-    
-    <div ng-include="'navigation-part/navigation-view.html'"></div>
-    
-    <div layout="row" flex style="overflow:hidden;">
-        
-        <div layout="column" ng-include="'stencil-part/stencil-view.html'"></div>
-        
-        <div layout="column" ng-include="'canvas-part/canvas-view.html'" flex></div>
-        
-    </div>
-    
+
+    <nav ng-include="'navigation-part/navigation.html'"></nav>
+
+    <section layout="row" flex style="overflow:hidden">
+
+        <aside layout="column" ng-include="'masters-part/masters.html'"></aside>
+
+        <article layout="column" flex ng-include="'canvas-part/canvas.html'"></article>
+
+        <aside layout="column" ng-include="'settings-part/settings.html'"></aside>
+
+    </section>
+
 </body>
 
 </html>

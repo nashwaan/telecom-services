@@ -6,7 +6,12 @@
     'use strict';
 
     // define controller for canvas
-    angular.module('TheApp').controller('canvasController', ['$scope', '$http', '$mdBottomSheet', '$log', function ($scope, $http, $mdBottomSheet, $log) {
+    angular.module('TheApp').controller('canvasController', ['$rootScope', '$scope', '$http', '$mdBottomSheet', '$log', function ($rootScope, $scope, $http, $mdBottomSheet, $log) {
+
+        $rootScope.selected = {
+            item: null,
+            type: undefined
+        };
 
         $scope.dropIntoComponent = function (event, index, item, external, type, allowedType) {
             /*$scope.logListEvent('dropped at', event, index, external, type);
@@ -18,16 +23,8 @@
             $log.debug(JSON.stringify(index));
             $log.debug(JSON.stringify(item));
             $log.debug(JSON.stringify(type));
-            
+
             return item;
-        };
-        
-        //
-        $scope.selected = {
-            band: null,
-            component: null,
-            property: null,
-            attributte: null
         };
 
         //  

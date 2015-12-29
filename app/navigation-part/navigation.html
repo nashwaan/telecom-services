@@ -1,0 +1,28 @@
+<md-toolbar flex 
+            layout="row" 
+            class="md-hue-2" 
+            ng-controller="navigationController as cntrl">
+    
+    <md-button class="menu" 
+               ng-click="cntrl.toggleSidenav('masters')" 
+               hide-gt-sm 
+               aria-label="Toggle Masters">
+        
+        <md-icon md-svg-icon="menu"></md-icon>
+        
+    </md-button>
+    
+    <h3 layout-align-gt-sm="center"> Plans Designer </h3>
+    
+    <span flex></span>
+    
+    <md-button class="menu" 
+               ng-click="cntrl.toggleSidenav('settings')" 
+               hide-gt-sm 
+               aria-label="Toggle Settings">
+        
+        <md-icon md-svg-icon="menu"></md-icon>
+        
+    </md-button>
+    
+</md-toolbar>

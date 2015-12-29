@@ -10,10 +10,13 @@
 
         this.toggleSidenav = function (componentId) {
             var pending = $mdBottomSheet.hide() || $q.when(true);
-
             pending.then(function () {
                 $mdSidenav(componentId).toggle();
             });
+        };
+
+        this.isOpenSidenav = function (componentId) {
+            return $mdSidenav(componentId).isOpen();
         };
 
         $scope.$on('$locationChangeStart', function (e, nextURL, currentURL) {

@@ -6,18 +6,18 @@
 (function (angular) {
     'use strict';
 
-    // define controller for stencil
-    angular.module('TheApp').controller('stencilController', ['$scope', '$http', function ($scope, $http) {
+    // define controller for masters
+    angular.module('TheApp').controller('mastersController', ['$scope', '$http', function ($scope, $http) {
 
         //  
         $http.get('data/masters.json').success(function (data) {
 
-            $scope.stencil = {
+            $scope.panel = {
                 selectedMaster: null,
                 masters: data
             };
 
-            window.console.log("properties data was loaded successfully.");
+            window.console.log("Masters data was loaded successfully.");
 
         });
 

@@ -1,0 +1,82 @@
+<md-sidenav class="md-sidenav-left" 
+            layout="column" 
+            md-component-id="masters" 
+            md-is-locked-open="$mdMedia('gt-sm')">
+    
+<!--
+    <md-toolbar class="md-theme-light">
+        
+        <div class="md-toolbar-tools md-headline">Masters</div>
+        
+    </md-toolbar>
+-->
+    <div  ng-controller="mastersController as cntrl">
+        
+        <md-tabs md-border-bottom 
+                 md-dynamic-height>
+
+            <md-tab label="Masters" 
+                    ng-click="selected.item=panel.masters;selected.type='masters'">
+
+                <md-list class="masters" 
+                         dnd-list="panel.masters" 
+                         dnd-allowed-types="['master']">
+
+                    <md-item class="master" 
+                             ng-repeat="master in panel.masters" 
+                             ng-click="selected.item=master;selected.type='master'" 
+                             dnd-draggable="master" 
+                             dnd-type="'master'" 
+                             dnd-effect-allowed="move" 
+                             dnd-selected="panel.selectedMaster=master" 
+                             dnd-moved="panel.masters.splice($index,1)">
+                        
+                        <md-subheader ng-hide="master.Collection===panel.masters[$index-1].Collection">
+                            {{master.Collection}}
+                        </md-subheader>
+                        
+                        <md-button class="md-raised" 
+                                   ng-click="panel.selectedMaster=master" 
+                                   ng-class="{'selected':panel.selectedMaster===master}" 
+                                   aria-label="{{master.Icon}}">
+
+                            <md-icon class="s24" 
+                                     md-svg-icon="{{master.Icon | icon_provider}}" 
+                                     aria-label="{{master.Icon}}">
+                            </md-icon>
+
+                            <span>{{master.Icon}}</span>
+
+                        </md-button>
+
+                    </md-item>
+
+                    <md-item class="master dndPlaceholder">
+
+                        <md-button class="master md-raised" 
+                                   aria-label="{{panel.selectedMaster.Icon}}">
+
+                            <md-icon md-svg-icon="{{panel.selectedMaster.Icon | icon_provider}}" class="avatar"></md-icon>
+                            {{panel.selectedMaster.Icon}}
+
+                        </md-button>
+
+                    </md-item>
+
+                </md-list>
+
+            </md-tab>
+
+            <md-tab label="JSON">
+
+                <p>JSON for the selected {{selected.type}}:</p>
+
+                <pre>{{selected.type | json:2 }}</pre>
+
+            </md-tab>
+
+        </md-tabs>
+        
+    </div>
+    
+</md-sidenav>

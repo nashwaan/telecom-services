@@ -16,11 +16,12 @@
     box-sizing: border-box;
     list-style-type: none;
     display: inline-block;
-    border: 2px solid rgba(222, 150, 150, 0.5);
+    /*border: 2px solid rgba(222, 150, 150, 0.5);*/
 }
 
 .band {
     border-radius: 5px;
+    background-color: rgba(245, 245, 245, 1.0);
 }
 
 .band .head {
@@ -60,8 +61,8 @@
     display: inline;
 }
 
-.head:hover,
-.head:hover * {
+.md-card-header-text:hover,
+.md-card-header-text:hover * {
     color: cadetblue;
 }
 

@@ -1,0 +1,191 @@
+<script type="text/ng-template" id="band.html">
+    
+    <md-list layout="column" 
+             layout-align="start start" 
+             dnd-list="band.Components" 
+             dnd-allowed-types="['component']" 
+             dnd-horizontal-list="true">
+        
+        <div class="md-headline">Band: {{band.BandName}}</div>
+        <div class="md-subhead">Total Components: {{band.Components.length}}</div>
+        
+        <div layout="row" layout-xs="column">
+            
+            <md-item class="component" 
+                     ng-repeat="component in band.Components" 
+                     dnd-draggable="component" 
+                     dnd-type="'component'" 
+                     dnd-effect-allowed="copy" 
+                     dnd-moved="'band.Components.splice($index,1)'" 
+                     dnd-selected="selected.item=component;selected.type='component'" 
+                     ng-click="selected.item=component;selected.type='component'" 
+                     ng-class="{'selected':selected.component===component}" 
+                     ng-include="'component.html'">
+                
+            </md-item>
+            
+        </div>
+        
+    </md-list>
+    
+</script>
+
+
+
+<script type="text/ng-template" id="component.html">
+    
+    <md-card layout="column" 
+             layout-align="start start" 
+             dnd-list="component.Properties" 
+             dnd-allowed-types="['property','master']" 
+             dnd-drop="dropIntoComponent(event,index,item,external,type,'droppedType')">
+        
+        <md-card-header>
+
+            <md-card-avatar>
+                <md-icon class="md-avatar-icon" md-svg-icon="menu"></md-icon>
+            </md-card-avatar>
+
+            <md-card-header-text>
+
+                <div class="md-headline">Component: {{component.ComponentName}}</div>
+                <div class="md-subhead">Total Properties: {{component.Properties.length}}</div>
+
+            </md-card-header-text>
+
+        </md-card-header>
+
+        <md-card-content class="property" 
+                         ng-repeat="property in component.Properties" 
+                         dnd-draggable="property" 
+                         dnd-type="'property'" 
+                         dnd-effect-allowed="move" 
+                         dnd-moved="'component.Properties.splice($index,1)'" 
+                         dnd-selected="selected.item=property;selected.type='property'" 
+                         ng-click="selected.item=property;selected.type='property'" 
+                         ng-class="{'selected':selected.property===property}" 
+                         ng-include="'property.html'">
+
+        </md-card-content>
+
+    </md-card>
+
+</script>
+
+
+
+<script type="text/ng-template" id="property.html">
+    
+    <md-card layout="column" 
+             layout-align="start start" 
+             dnd-list="property.Attributes" 
+             dnd-allowed-types="['attribute']">
+        
+        <md-card-header>
+
+            <md-card-avatar>
+                <md-icon class="md-avatar-icon" md-svg-icon="menu"></md-icon>
+            </md-card-avatar>
+
+            <md-card-header-text>
+
+                <div class="md-headline">Property: {{property.PropertyName}}</div>
+                <div class="md-subhead">Total Attributes: {{property.Attributes.length}}</div>
+
+            </md-card-header-text>
+
+        </md-card-header>
+
+        <div layout="column">
+            
+            <md-card-content class="attribute" 
+                             ng-repeat="attribute in property.Attributes" 
+                             dnd-draggable="attribute" 
+                             dnd-type="'attribute'" 
+                             dnd-effect-allowed="move" 
+                             dnd-moved="'property.Attributes.splice($index,1)'" 
+                             dnd-selected="selected.item=attribute;selected.type='attribute'" 
+                             ng-click="selected.item=attribute;selected.type='attribute'" 
+                             ng-class="{'selected':selected.attribute===attribute}" 
+                             ng-include="'attribute.html'">
+                
+            </md-card-content>
+            
+            <md-divider ng-if="!$last"></md-divider>
+            
+        </div>
+        
+    </md-card>
+    
+</script>
+
+
+
+<script type="text/ng-template" id="attribute.html">
+    
+    <md-list>
+        
+        <md-item class="sub-attribute" 
+                 ng-repeat="(key,value) in attribute">
+            
+            {{key}} : {{value}}
+            
+        </md-item>
+        
+    </md-list>
+    
+</script>
+
+
+
+<md-content flex ng-controller="canvasController as cntrl">
+    
+    <md-button ng-click="cntrl.showActions($event)" 
+               aria-label="Show Actions" 
+               style="position:absolute;top:10px;right:10px;z-index:1;" 
+               md-no-ink>
+        
+        <md-tooltip>Contact {{ 1 }}</md-tooltip>
+        <md-icon md-svg-icon="share"></md-icon>
+        
+    </md-button>
+    
+    <div class="canvas">
+        
+        <md-list layout="column" 
+                 layout-align="start start" 
+                 dnd-list="plan.Bands" 
+                 dnd-allowed-types="['band']">
+            
+            <md-toolbar class="md-theme-light">
+
+            <div class="md-headline">Plan: {{plan.PlanName}}</div>
+            <div class="md-subhead">Total Bands: {{plan.Bands.length}}</div>
+
+            </md-toolbar>
+
+            <div layout="column" layout-padding>
+                
+                <md-item class="band" 
+                         ng-repeat="band in plan.Bands" 
+                         dnd-draggable="band" 
+                         dnd-type="'band'" 
+                         dnd-effect-allowed="move" 
+                         dnd-moved="'plan.Bands.splice($index,1)'" 
+                         dnd-selected="selected.item=band;selected.type='band'" 
+                         ng-click="selected.item=band;selected.type='band'" 
+                         ng-class="{'selected':selected.band===band}" 
+                         ng-include="'band.html'">
+                    
+                </md-item>
+                
+            </div>
+            
+        </md-list>
+        
+        <h2>Generated Model</h2>
+        <pre>{{planAsJson}}</pre>
+        
+    </div>
+    
+</md-content>

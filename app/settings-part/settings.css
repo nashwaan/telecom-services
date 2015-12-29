@@ -1,12 +1,17 @@
-/*md-sidenav,
-md-sidenav.md-locked-open,
-md-sidenav.md-closed.md-locked-open-add-active {
+/*md-sidenav.md-sidenav-right,
+md-sidenav.md-sidenav-right.md-locked-open,
+md-sidenav.md-sidenav-right.md-closed.md-locked-open-add-active {
     min-width: 200px !important;
     width: 85vw !important;
     max-width: 400px !important;
 }*/
 
-.master {
+/*.md-tab {
+    padding-left: 16px;
+    padding-right: 16px;
+}*/
+
+.setting {
     width: 150px;
     /*float: left;
     position: relative;*/
@@ -14,21 +19,21 @@ md-sidenav.md-closed.md-locked-open-add-active {
     display: inline-block;
 }
 
-.master .md-button {
+.setting .md-button {
     width: 90%;
     text-transform: none;
     text-align: left;
 }
 
-.master .md-button:hover {
+.setting .md-button:hover {
     color: cornflowerblue;
 }
 
-.master.dndDragging * {
+.setting.dndDragging * {
     color: deeppink;
 }
 
-.master.dndDraggingSource {
+.setting.dndDraggingSource {
     display: none;
 }
 

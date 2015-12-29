@@ -1,0 +1,61 @@
+<md-sidenav class="md-sidenav-right"
+            layout="column" 
+            md-component-id="settings" 
+            md-is-locked-open="$mdMedia('gt-sm')">
+    
+    <md-tabs md-dynamic-height md-border-bottom>
+    
+        <md-tab label="Settings">
+            
+            <md-list class="settings" 
+                     ng-controller="settingsController as cntrl"
+                     dnd-list="panel.settings"
+                     dnd-allowed-types="['setting']">
+
+                <md-item class="setting"
+                         ng-repeat="setting in panel.settings" 
+                         dnd-draggable="setting" 
+                         dnd-type="'setting'"
+                         dnd-effect-allowed="move" 
+                         dnd-selected="panel.selectedSetting=setting" 
+                         dnd-moved="panel.settings.splice($index,1)">
+
+                    <md-button class="md-raised" 
+                               ng-click="panel.selectedSetting=setting" 
+                               ng-class="{'selected':panel.selectedSetting===setting}" 
+                               aria-label="{{setting.Icon}}">
+
+                        <md-icon md-svg-icon="{{setting.Icon | icon_provider}}"></md-icon>
+                        {{setting.Icon}}
+
+                    </md-button>
+
+                </md-item>
+
+                <md-item class="setting dndPlaceholder">
+
+                    <md-button class="setting md-raised" 
+                               aria-label="{{panel.selectedSetting.Icon}}">
+
+                        <md-icon md-svg-icon="{{panel.selectedSetting.Icon | icon_provider}}" class="avatar"></md-icon>
+                        {{panel.selectedSetting.Icon}}
+
+                    </md-button>
+
+                </md-item>
+
+            </md-list>
+
+        </md-tab>
+        
+        <md-tab label="JSON">
+        
+            <p>JSON for the selected {{selected.type}}:</p>
+            
+            <pre>{{selected.item | json:2 }}</pre>
+            
+        </md-tab>
+        
+    </md-tabs>
+        
+</md-sidenav>
