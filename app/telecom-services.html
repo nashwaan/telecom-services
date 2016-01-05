@@ -11,8 +11,9 @@
     <link href="script/angular-material.css" rel="stylesheet"></link>
     <link href="script/angular-gridster.min.css" rel="stylesheet"></link>
     <link href="telecom-services.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <link href="masters-part/masters.css" media="screen" rel="stylesheet" type="text/css"></link>
+    <link href="writer-part/writer.css" media="screen" rel="stylesheet" type="text/css"></link>
     <link href="canvas-part/canvas.css" media="screen" rel="stylesheet" type="text/css"></link>
+    <link href="masters-part/masters.css" media="screen" rel="stylesheet" type="text/css"></link>
     <link href="settings-part/settings.css" media="screen" rel="stylesheet" type="text/css"></link>
 
     <script src="script/jquery.js"></script>
@@ -23,11 +24,13 @@
     <script src="script/angular-material.js"></script>
     <script src="script/angular-gridster.js"></script>
     <script src="script/angular-drag-and-drop-lists.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/1.3.0/angular-drag-and-drop-lists.js"></script>-->
 
     <script src="app.js"></script>
     <script src="filters.js"></script>
     <script src="draggable-directive.js"></script>
     <script src="canvas-part/canvas.js"></script>
+    <script src="writer-part/writer.js"></script>
     <script src="masters-part/masters.js"></script>
     <script src="actions-part/actions.js"></script>
     <script src="settings-part/settings.js"></script>
@@ -36,7 +39,9 @@
 
 </head>
 
-<body layout="column" ng-cloak>
+
+
+<script type="text/ng-template" id="design.html">
 
     <nav ng-include="'navigation-part/navigation.html'"></nav>
 
@@ -49,6 +54,28 @@
         <aside layout="column" ng-include="'settings-part/settings.html'"></aside>
 
     </section>
+
+</script>
+
+
+
+<script type="text/ng-template" id="manufacture.html">
+
+    <nav ng-include="'navigation-part/navigation.html'"></nav>
+
+    <div ng-include="'manufacture-part/manufacture.html'"></div>
+
+</script>
+
+
+
+<body layout="column" ng-cloak>
+
+    <div class="view-animate-container">
+
+        <div ng-view class="view-animate"></div>
+
+    </div>
 
 </body>
 

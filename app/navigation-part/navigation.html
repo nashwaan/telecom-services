@@ -1,5 +1,6 @@
 <md-toolbar flex 
             layout="row" 
+            layout-align="start center" 
             class="md-hue-2" 
             ng-controller="navigationController as cntrl">
     
@@ -10,15 +11,27 @@
         
         <md-icon md-svg-icon="menu"></md-icon>
         
-    </md-button>
+    </md-button>    
+        
+    <md-button ng-click="cntrl.changeMode()">
+        
+        <md-icon style="width:48px;height:48px" md-svg-icon="logo"></md-icon>
     
-    <h3 layout-align-gt-sm="center"> Plans Designer </h3>
+        <md-tooltip>Change Mode</md-tooltip>
+        
+    </md-button>
+        
+    <div flex="15"></div>
+
+    <div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
+        Plans Designer
+    </div>
     
     <span flex></span>
     
     <md-button class="menu" 
                ng-click="cntrl.toggleSidenav('settings')" 
-               hide-gt-sm 
+               hide-gt-xl 
                aria-label="Toggle Settings">
         
         <md-icon md-svg-icon="menu"></md-icon>

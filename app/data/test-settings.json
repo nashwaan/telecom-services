@@ -1,0 +1,142 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://www.etisalat.ae",
+    "title": "Root schema.",
+    "description": "An explanation about the puropose of this instance described by this schema.",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "Subscription": {
+            "title": "Subscription Date",
+            "description": "An explanation about Subscription date and more description text",
+            "type": "string",
+            "format": "date-time",
+            "value": null
+        },
+        "Nature": {
+            "id": "http://www.etisalat.ae/Nature",
+            "title": "Nature",
+            "description": "An explanation about Nature and more description text.",
+            "value": "",
+            "type": "string",
+            "enum": ["STD", "IDD", "CUG"]
+        },
+        "FreebeesAmount": {
+            "id": "http://www.etisalat.ae/FreebeesAmount",
+            "title": "FreebeesAmount",
+            "description": "An explanation about FreebeesAmount and more description text.",
+            "value": "",
+            "type": "number",
+            "multipleOf": 1,
+            "maximum": 1000,
+            "minimum": 0,
+            "exclusiveMaximum": false,
+            "exclusiveMinimum": false
+        },
+        "UnitPulse": {
+            "id": "http://www.etisalat.ae/UnitPulse",
+            "title": "UnitPulse",
+            "description": "An explanation about UnitPulse and more description text.",
+            "value": "",
+            "type": "string"
+        },
+        "ProrateOnSubscribe": {
+            "id": "http://www.etisalat.ae/ProrateOnSubscribe",
+            "title": "ProrateOnSubscribe",
+            "description": "An explanation about ProrateOnSubscribe and more description text.",
+            "value": "",
+            "type": "boolean"
+        },
+        "MoreObject": {
+            "id": "http://www.etisalat.ae/ProrateOnSubscribe",
+            "title": "MoreObject",
+            "description": "An explanation about MoreObject and more description text.",
+            "value": "",
+            "type": "object",
+            "properties": {
+                "Nature": {
+                    "id": "http://www.etisalat.ae/Nature",
+                    "title": "Nature",
+                    "description": "An explanation about Nature and more description text.",
+                    "value": "",
+                    "type": "string",
+                    "enum": ["STD", "IDD", "CUG"]
+                },
+                "FreebeesAmount": {
+                    "id": "http://www.etisalat.ae/FreebeesAmount",
+                    "title": "FreebeesAmount",
+                    "description": "An explanation about FreebeesAmount and more description text.",
+                    "value": "",
+                    "type": "number",
+                    "multipleOf": 1,
+                    "maximum": 1000,
+                    "minimum": 0,
+                    "exclusiveMaximum": false,
+                    "exclusiveMinimum": false
+                },
+                "UnitPulse": {
+                    "id": "http://www.etisalat.ae/UnitPulse",
+                    "title": "UnitPulse",
+                    "description": "An explanation about UnitPulse and more description text.",
+                    "value": "",
+                    "type": "string"
+                },
+                "ProrateOnSubscribe": {
+                    "id": "http://www.etisalat.ae/ProrateOnSubscribe",
+                    "title": "ProrateOnSubscribe",
+                    "description": "An explanation about ProrateOnSubscribe and more description text.",
+                    "value": "",
+                    "type": "boolean"
+                }
+            }
+        },
+        "MoreArray": {
+            "id": "http://www.etisalat.ae/ProrateOnSubscribe",
+            "title": "MoreArray",
+            "description": "An explanation about MoreArray.",
+            "value": "",
+            "type": "array",
+            "items": [
+                {
+                    "id": "http://www.etisalat.ae/Nature",
+                    "title": "Nature",
+                    "description": "An explanation about Nature.",
+                    "value": "",
+                    "type": "string",
+                    "enum": ["STD", "IDD", "CUG"]
+                        },
+                {
+                    "id": "http://www.etisalat.ae/FreebeesAmount",
+                    "title": "FreebeesAmount",
+                    "description": "An explanation about FreebeesAmount.",
+                    "value": "",
+                    "type": "number",
+                    "multipleOf": 1,
+                    "maximum": 1000,
+                    "minimum": 0,
+                    "exclusiveMaximum": false,
+                    "exclusiveMinimum": false
+                        },
+                {
+                    "id": "http://www.etisalat.ae/UnitPulse",
+                    "title": "UnitPulse",
+                    "description": "An explanation about UnitPulse.",
+                    "value": "",
+                    "type": "string"
+                        },
+                {
+                    "id": "http://www.etisalat.ae/ProrateOnSubscribe",
+                    "title": "ProrateOnSubscribe",
+                    "description": "An explanation about ProrateOnSubscribe.",
+                    "value": "",
+                    "type": "boolean"
+                        }
+                    ]
+        }
+    },
+    "required": [
+                "Nature",
+                "FreebeesAmount",
+                "UnitPulse"
+            ]
+}

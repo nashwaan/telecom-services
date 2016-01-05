@@ -1,30 +1,35 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
-/*global properties_attributes*/
 
 
 (function (angular) {
     'use strict';
 
     // define controller for settings
-    angular.module('TheApp').controller('settingsController', ['$rootScope', '$scope', '$http', function ($rootScope, $scope, $http) {
+    angular.module('TheApp').controller('settingsController', ['$rootScope', '$scope', '$http', 'mastersService', function ($rootScope, $scope, $http, mastersService) {
 
-//        $scope.selected = {
-//            item: $rootScope.item,
-//            type: $rootScope.type
-//        };
+        function transformSchema() {
 
+        }
+        
         //  
-        $http.get('data/masters.json').success(function (data) {
+        $http.get('data/test-settings.json').success(function (data) {
 
-            $scope.panel = {
-                selectedSetting: null,
-                settings: data
-            };
-
+            $scope.schema = data;
+            
             window.console.log("Settings data was loaded successfully.");
 
         });
+
+        //
+        $scope.property = {
+            "inputData": {
+                "Nature": "STD",
+                "FreebeesAmount": 100,
+                "UnitPulse": "Per Second"
+            },
+            "inputSchema": $scope.schema
+        };
 
     }]);
 

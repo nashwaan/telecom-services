@@ -1,6 +1,7 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
 
+
 (function (angular) {
     'use strict';
 
@@ -11,53 +12,110 @@
                               'dndLists',
                               'etsDraggableDirective',
                               'etsFilters'])
-        .config(['$routeProvider', '$mdThemingProvider', '$mdIconProvider', function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
+        .config(['$routeProvider', '$locationProvider', '$mdThemingProvider', '$mdIconProvider', function ($routeProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {
 
             //
             $routeProvider
-                .when('/produce', {
-                    templateUrl: 'canvas-part/canvas-view.html',
-                    controller: 'canvasController'
+                .when('/design', {
+                    templateUrl: 'design.html'
                 })
                 .when('/manufacture', {
-                    templateUrl: 'manufacture-part/manufacture-view.html',
+                    templateUrl: 'manufacture.html',
                     controller: 'manufactureController'
                 })
                 .otherwise({
-                    redirectTo: '/produce'
+                    redirectTo: '/design'
                 });
+            
+            // use the HTML5 History API to avoid '#' in the URL
+            //$locationProvider.html5Mode(true);
+            
+            /*jslint bitwise: true*/
+            
+            function rgbToHex(r, g, b) {
+                return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+            }
 
-            $mdThemingProvider.definePalette('amazingPaletteName', {
-                '50': 'ffebee',
-                '100': 'ffcdd2',
-                '200': 'ef9a9a',
-                '300': 'e57373',
-                '400': 'ef5350',
-                '500': 'f44336',
-                '600': 'e53935',
-                '700': 'd32f2f',
-                '800': 'c62828',
-                '900': 'b71c1c',
-                'A100': 'ff8a80',
-                'A200': 'ff5252',
-                'A400': 'ff1744',
-                'A700': 'd50000',
-                // whether, by default, text (contrast)  on this palette should be dark or light
-                'contrastDefaultColor': 'light',
-                //hues which contrast should be 'dark' by default
+            function shadeColor(color, percent) {
+                var f = parseInt(color.slice(1), 16),
+                    t = percent < 0 ? 0 : 255,
+                    p = percent < 0 ? percent * -1 : percent,
+                    R = f >> 16,
+                    G = f >> 8 & 0x00FF,
+                    B = f & 0x0000FF;
+                return "#" + (0x1000000 + (Math.round((t - R) * p) + R) * 0x10000 + (Math.round((t - G) * p) + G) * 0x100 + (Math.round((t - B) * p) + B)).toString(16).slice(1);
+            }
+
+            function blendColors(c0, c1, p) {
+                var f = parseInt(c0.slice(1), 16),
+                    t = parseInt(c1.slice(1), 16),
+                    R1 = f >> 16,
+                    G1 = f >> 8 & 0x00FF,
+                    B1 = f & 0x0000FF,
+                    R2 = t >> 16,
+                    G2 = t >> 8 & 0x00FF,
+                    B2 = t & 0x0000FF;
+                return "#" + (0x1000000 + (Math.round((R2 - R1) * p) + R1) * 0x10000 + (Math.round((G2 - G1) * p) + G1) * 0x100 + (Math.round((B2 - B1) * p) + B1)).toString(16).slice(1);
+            }
+            
+            /*jslint bitwise: false*/
+
+            var primaryColor = blendColors("#BED308", "#719E19", 0.5),
+                accentColor = "#878881";
+            $mdThemingProvider.definePalette('etisalatGreenPalette', {
+                '50': shadeColor(primaryColor, 0.80),
+                '100': shadeColor(primaryColor, 0.60),
+                '200': shadeColor(primaryColor, 0.40),
+                '300': shadeColor(primaryColor, 0.20),
+                '400': shadeColor(primaryColor, 0.0),
+                '500': shadeColor(primaryColor, -0.20),
+                '600': shadeColor(primaryColor, -0.40),
+                '700': shadeColor(primaryColor, -0.55),
+                '800': shadeColor(primaryColor, -0.70),
+                '900': shadeColor(primaryColor, -0.85),
+                'A100': shadeColor(primaryColor, 0.40),
+                'A200': shadeColor(primaryColor, 0.0),
+                'A400': shadeColor(primaryColor, -0.40),
+                'A700': shadeColor(primaryColor, -0.70),
+                'contrastDefaultColor': 'light', //  whether text (contrast) on this palette should be dark or light
                 'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100'],
-                'contrastLightColors': undefined // could also specify this if default was 'dark'
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A400', 'A700']
+            });
+            $mdThemingProvider.definePalette('etisalatGreyPalette', {
+                '50': shadeColor(accentColor, 0.80),
+                '100': shadeColor(accentColor, 0.60),
+                '200': shadeColor(accentColor, 0.40),
+                '300': shadeColor(accentColor, 0.20),
+                '400': shadeColor(accentColor, 0.0),
+                '500': shadeColor(accentColor, -0.20),
+                '600': shadeColor(accentColor, -0.40),
+                '700': shadeColor(accentColor, -0.55),
+                '800': shadeColor(accentColor, -0.70),
+                '900': shadeColor(accentColor, -0.85),
+                'A100': shadeColor(accentColor, 0.40),
+                'A200': shadeColor(accentColor, 0.0),
+                'A400': shadeColor(accentColor, -0.40),
+                'A700': shadeColor(accentColor, -0.70),
+                'contrastDefaultColor': 'dark', //  whether text (contrast) on this palette should be dark or light
+                'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100'],
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A400', 'A700']
             });
 
-            //
+            // configure the default theme
             $mdThemingProvider.theme('default')
-                .primaryPalette('lime')
-                .accentPalette('brown');
-//                .backgroundPalette('')
-//                .warnPalette('');
+                .primaryPalette('etisalatGreenPalette')
+                .accentPalette('etisalatGreyPalette');
+            //  .backgroundPalette('')
+            //  .warnPalette('');
+
+            // configure 'etisalat-dark' theme
+            $mdThemingProvider.theme('etisalat-dark', 'default')
+                .primaryPalette('orange')
+                .dark();
 
             // Configure URLs for icons specified by [set:]id.
             $mdIconProvider
+                .icon('logo', 'icons/logo.svg')
                 .icon('menu', 'icons/menu.svg')
                 .icon('share', 'icons/share.svg')
                 .icon('Property:Account', 'icons/property/Account.svg')

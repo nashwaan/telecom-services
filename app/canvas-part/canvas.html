@@ -38,7 +38,7 @@
              layout-align="start start" 
              dnd-list="component.Properties" 
              dnd-allowed-types="['property','master']" 
-             dnd-drop="dropIntoComponent(event,index,item,external,type,'droppedType')">
+             dnd-drop="dropIntoComponent(event,index,item,external,type,['property','master'])">
         
         <md-card-header>
 
@@ -62,7 +62,7 @@
                          dnd-effect-allowed="move" 
                          dnd-moved="'component.Properties.splice($index,1)'" 
                          dnd-selected="selected.item=property;selected.type='property'" 
-                         ng-click="selected.item=property;selected.type='property'" 
+                         ng-click="selected.item=property;selected.type='property';showSettings(property,'property')" 
                          ng-class="{'selected':selected.property===property}" 
                          ng-include="'property.html'">
 
@@ -76,46 +76,43 @@
 
 <script type="text/ng-template" id="property.html">
     
-    <md-card layout="column" 
+    <md-list layout="column" 
              layout-align="start start" 
              dnd-list="property.Attributes" 
              dnd-allowed-types="['attribute']">
         
-        <md-card-header>
+        <md-button aria-label="{{property.Property}}">
 
-            <md-card-avatar>
-                <md-icon class="md-avatar-icon" md-svg-icon="menu"></md-icon>
-            </md-card-avatar>
+            <md-icon class="" 
+                     md-svg-icon="{{property.Property | icon_provider}}" 
+                     aria-label="{{property.Property}}">
+            </md-icon>
 
-            <md-card-header-text>
+            <span>{{master.Property}}</span>
 
-                <div class="md-headline">Property: {{property.PropertyName}}</div>
-                <div class="md-subhead">Total Attributes: {{property.Attributes.length}}</div>
-
-            </md-card-header-text>
-
-        </md-card-header>
+        </md-button>
 
         <div layout="column">
             
-            <md-card-content class="attribute" 
-                             ng-repeat="attribute in property.Attributes" 
-                             dnd-draggable="attribute" 
-                             dnd-type="'attribute'" 
-                             dnd-effect-allowed="move" 
-                             dnd-moved="'property.Attributes.splice($index,1)'" 
-                             dnd-selected="selected.item=attribute;selected.type='attribute'" 
-                             ng-click="selected.item=attribute;selected.type='attribute'" 
-                             ng-class="{'selected':selected.attribute===attribute}" 
-                             ng-include="'attribute.html'">
+            <md-item class="attribute" 
+                     ng-repeat="attribute in property.Attributes" 
+                     dnd-draggable="attribute" 
+                     dnd-type="'attribute'" 
+                     dnd-effect-allowed="move" 
+                     dnd-moved="'property.Attributes.splice($index,1)'" 
+                     dnd-selected="selected.item=attribute;selected.type='attribute'" 
+                     ng-click="selected.item=attribute;selected.type='attribute'" 
+                     ng-class="{'selected':selected.attribute===attribute}" 
+                     ng-show="display.attributes" 
+                     ng-include="'attribute.html'">
                 
-            </md-card-content>
+            </md-item>
             
             <md-divider ng-if="!$last"></md-divider>
             
         </div>
         
-    </md-card>
+    </md-list>
     
 </script>
 
@@ -182,9 +179,6 @@
             </div>
             
         </md-list>
-        
-        <h2>Generated Model</h2>
-        <pre>{{planAsJson}}</pre>
         
     </div>
     

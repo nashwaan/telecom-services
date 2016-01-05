@@ -1,0 +1,350 @@
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+    <style>
+        .content {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-flow: column nowrap;
+            -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+            -webkit-justify-content: space-around;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -webkit-align-content: space-around;
+            -ms-flex-line-pack: distribute;
+            align-content: space-around;
+            padding: 7px;
+        }
+        
+        .row {
+            min-height: 50px;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-flow: row nowrap;
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -webkit-justify-content: space-around;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -webkit-align-content: space-around;
+            -ms-flex-line-pack: distribute;
+            align-content: space-around;
+        }
+        
+        .row.resizable {
+            -webkit-box-flex: 0;
+            -webkit-flex: 0 0 300px;
+            -ms-flex: 0 0 300px;
+            flex: 0 0 300px;
+        }
+        
+        section {
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding: 1.25em 1.75em;
+            background: #ddd;
+            border: 7px solid #fff;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            min-width: 30px;
+        }
+        
+        section.resizable {
+            -webkit-box-flex: 0;
+            -webkit-flex: 0 0 300px;
+            -ms-flex: 0 0 300px;
+            flex: 0 0 300px;
+        }
+        
+        #one,
+        #two,
+        #three,
+        #four {
+            background: #38e4ae;
+            color: #107354;
+        }
+        
+        .resizable {
+            position: relative;
+        }
+        
+        .resizable.no-transition {
+            -webkit-transition: none !important;
+            transition: none !important;
+        }
+        
+        .rg-right,
+        .rg-left,
+        .rg-top,
+        .rg-bottom {
+            display: block;
+            width: 14px;
+            height: 14px;
+            line-height: 14px;
+            position: absolute;
+            z-index: 1;
+            -moz-user-select: -moz-none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .rg-right span,
+        .rg-left span,
+        .rg-top span,
+        .rg-bottom span {
+            position: absolute;
+            box-sizing: border-box;
+            display: block;
+            border: 1px solid #ccc;
+        }
+        
+        .rg-right span,
+        .rg-left span {
+            border-width: 0 1px;
+            top: 50%;
+            margin-top: -10px;
+            margin: -10px 0 0 3.5px;
+            height: 20px;
+            width: 7px;
+        }
+        
+        .rg-top span,
+        .rg-bottom span {
+            border-width: 1px 0;
+            left: 50%;
+            margin: 3.5px 0 0 -10px;
+            width: 20px;
+            height: 7px;
+        }
+        
+        .rg-top {
+            cursor: row-resize;
+            width: 100%;
+            top: 0;
+            left: 0;
+            margin-top: -7px;
+        }
+        
+        .rg-right {
+            cursor: col-resize;
+            height: 100%;
+            right: 0;
+            top: 0;
+            margin-right: -14px;
+        }
+        
+        .rg-bottom {
+            cursor: row-resize;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            margin-bottom: -7px;
+        }
+        
+        .rg-left {
+            cursor: col-resize;
+            height: 100%;
+            left: 0;
+            top: 0;
+            margin-left: -14px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        angular.module('angularResizable', [])
+            .directive('resizable', function () {
+                var toCall;
+
+                function throttle(fun) {
+                    if (toCall === undefined) {
+                        toCall = fun;
+                        setTimeout(function () {
+                            toCall();
+                            toCall = undefined;
+                        }, 100);
+                    } else {
+                        toCall = fun;
+                    }
+                }
+                return {
+                    restrict: 'AE',
+                    scope: {
+                        rDirections: '=',
+                        rCenteredX: '=',
+                        rCenteredY: '=',
+                        rWidth: '=',
+                        rHeight: '=',
+                        rFlex: '=',
+                        rGrabber: '@',
+                        rDisabled: '@'
+                    },
+                    link: function (scope, element, attr) {
+                        var flexBasis = 'flexBasis' in document.documentElement.style ? 'flexBasis' :
+                            'webkitFlexBasis' in document.documentElement.style ? 'webkitFlexBasis' :
+                            'msFlexPreferredSize' in document.documentElement.style ? 'msFlexPreferredSize' : 'flexBasis';
+
+                        // register watchers on width and height attributes if they are set
+                        scope.$watch('rWidth', function (value) {
+                            element[0].style.width = scope.rWidth + 'px';
+                        });
+                        scope.$watch('rHeight', function (value) {
+                            element[0].style.height = scope.rHeight + 'px';
+                        });
+
+                        element.addClass('resizable');
+
+                        var style = window.getComputedStyle(element[0], null),
+                            w,
+                            h,
+                            dir = scope.rDirections,
+                            vx = scope.rCenteredX ? 2 : 1, // if centered double velocity
+                            vy = scope.rCenteredY ? 2 : 1, // if centered double velocity
+                            inner = scope.rGrabber ? scope.rGrabber : '<span></span>',
+                            start,
+                            dragDir,
+                            axis,
+                            info = {};
+
+                        var updateInfo = function (e) {
+                            info.width = false;
+                            info.height = false;
+                            if (axis === 'x')
+                                info.width = parseInt(element[0].style[scope.rFlex ? flexBasis : 'width']);
+                            else
+                                info.height = parseInt(element[0].style[scope.rFlex ? flexBasis : 'height']);
+                            info.id = element[0].id;
+                            info.evt = e;
+                        };
+
+                        var dragging = function (e) {
+                            var prop, offset = axis === 'x' ? start - e.clientX : start - e.clientY;
+                            switch (dragDir) {
+                            case 'top':
+                                prop = scope.rFlex ? flexBasis : 'height';
+                                element[0].style[prop] = h + (offset * vy) + 'px';
+                                break;
+                            case 'bottom':
+                                prop = scope.rFlex ? flexBasis : 'height';
+                                element[0].style[prop] = h - (offset * vy) + 'px';
+                                break;
+                            case 'right':
+                                prop = scope.rFlex ? flexBasis : 'width';
+                                element[0].style[prop] = w - (offset * vx) + 'px';
+                                break;
+                            case 'left':
+                                prop = scope.rFlex ? flexBasis : 'width';
+                                element[0].style[prop] = w + (offset * vx) + 'px';
+                                break;
+                            }
+                            updateInfo(e);
+                            throttle(function () {
+                                scope.$emit('angular-resizable.resizing', info);
+                            });
+                        };
+                        var dragEnd = function (e) {
+                            updateInfo();
+                            scope.$emit('angular-resizable.resizeEnd', info);
+                            scope.$apply();
+                            document.removeEventListener('mouseup', dragEnd, false);
+                            document.removeEventListener('mousemove', dragging, false);
+                            element.removeClass('no-transition');
+                        };
+                        var dragStart = function (e, direction) {
+                            dragDir = direction;
+                            axis = dragDir === 'left' || dragDir === 'right' ? 'x' : 'y';
+                            start = axis === 'x' ? e.clientX : e.clientY;
+                            w = parseInt(style.getPropertyValue('width'));
+                            h = parseInt(style.getPropertyValue('height'));
+
+                            //prevent transition while dragging
+                            element.addClass('no-transition');
+
+                            document.addEventListener('mouseup', dragEnd, false);
+                            document.addEventListener('mousemove', dragging, false);
+
+                            // Disable highlighting while dragging
+                            if (e.stopPropagation) e.stopPropagation();
+                            if (e.preventDefault) e.preventDefault();
+                            e.cancelBubble = true;
+                            e.returnValue = false;
+
+                            updateInfo(e);
+                            scope.$emit('angular-resizable.resizeStart', info);
+                            scope.$apply();
+                        };
+
+                        dir.forEach(function (direction) {
+                            var grabber = document.createElement('div');
+
+                            // add class for styling purposes
+                            grabber.setAttribute('class', 'rg-' + direction);
+                            grabber.innerHTML = inner;
+                            element[0].appendChild(grabber);
+                            grabber.ondragstart = function () {
+                                return false;
+                            };
+                            grabber.addEventListener('mousedown', function (e) {
+                                var disabled = (scope.rDisabled === 'true');
+                                if (!disabled && e.which === 1) {
+                                    // left mouse click
+                                    dragStart(e, direction);
+                                }
+                            }, false);
+                        });
+                    }
+                };
+            });
+    </script>
+
+</head>
+
+<body ng-app="angularResizable">
+    <nav resizable r-directions="['right']">
+        <br />
+        <br />
+        <h1> Angular Resizable </h1>
+        <p> A teensy weensy directive for creating resizable containers. </p>
+    </nav>
+    <div class="content">
+        <div class="row" resizable r-directions="['bottom']" r-flex="true">
+            <section id="one" resizable r-directions="['right']" r-flex="true">
+                <p>Works with flexbox.</p>
+            </section>
+            <section id="two">
+                <p>2</p>
+            </section>
+        </div>
+        <div class="row">
+            <section id="three" resizable r-directions="['right']" r-flex="true">
+                <p>Completely seperates <b>layout logic</b> from <b>resize logic</b>. All layout logic must be done by you in the CSS (as it should be).</p>
+            </section>
+            <section id="four">4</section>
+        </div>
+    </div>
+
+</body>
+
+</html>

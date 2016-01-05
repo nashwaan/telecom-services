@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://www.etisalat.ae",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "Nature": {
+            "id": "http://www.etisalat.ae/Nature",
+            "type": "string",
+            "enum": ["STD", "IDD", "CUG"]
+        },
+        "FreebeesAmount": {
+            "id": "http://www.etisalat.ae/FreebeesAmount",
+            "type": "integer",
+            "multipleOf": 1,
+            "maximum": 1000,
+            "minimum": 0,
+            "exclusiveMaximum": false,
+            "exclusiveMinimum": false
+        },
+        "UnitPulse": {
+            "id": "http://www.etisalat.ae/UnitPulse",
+            "type": "string",
+            "enum": ["Per Second", "Per Minute"]
+        }
+    },
+    "required": [
+    "Nature",
+    "FreebeesAmount",
+    "UnitPulse"
+    ]
+}

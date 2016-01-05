@@ -6,84 +6,41 @@ md-sidenav.md-sidenav-right.md-closed.md-locked-open-add-active {
     max-width: 400px !important;
 }*/
 
-/*.md-tab {
-    padding-left: 16px;
-    padding-right: 16px;
-}*/
-
-.setting {
-    width: 150px;
-    /*float: left;
-    position: relative;*/
-    box-sizing: border-box;
-    display: inline-block;
+md-input-container:not(.md-input-invalid).md-input-has-value .md-input {
+    border-color: rgb(122, 148, 14);
 }
 
-.setting .md-button {
-    width: 90%;
-    text-transform: none;
-    text-align: left;
+md-input-container:not(.md-input-invalid).md-input-has-value label {
+    color: rgb(122, 148, 14);
 }
 
-.setting .md-button:hover {
-    color: cornflowerblue;
+.attribute-group,
+.attribute-string,
+.attribute-number,
+.attribute-boolean,
+.attribute-choice,
+.attribute-date {
+    /*    border: 2px solid rgba(0, 155, 255, 0.6);*/
 }
 
-.setting.dndDragging * {
-    color: deeppink;
+.attribute-group {
+    margin-left: 15px;
 }
 
-.setting.dndDraggingSource {
-    display: none;
+.attribute-description {
+    width:100%;
+    color: grey;
+    font-size: 12px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
 }
 
-
-/*
-md-list[dnd-list] .dndPlaceholderX {
-    width: 49%;
-    height: 10px;
-    position: relative;
-    background-color: darkseagreen;
-    display: inline-block;
-    box-sizing: border-box;
+.attribute-description.ng-hide,
+.attribute-description.ng-enter,
+.attribute-description.ng-leave.ng-leave-active {
+    opacity: 0;
 }
 
-.property,
-ul[dnd-list] .dndPlaceholder {
-    width: 48%;
-    height: 4em;
-    background-color: cornsilk;
-    background-position: left top;
-    background-size: auto 60%;
-    background-repeat: no-repeat;
-    border-color: deepskyblue;
-    border-width: 0px; nbj
-    margin: 0.2em;
-    padding: 0.5em 0.5em 0.5em 2.5em;
-    float: left;
-    box-sizing: border-box;
+.attribute-description.ng-leave,
+.attribute-description.ng-enter.ng-enter-active {
+    opacity: 1;
 }
-
-ul[dnd-list],
-ul[dnd-list] > li,
-*[dnd-list],
-dnd-draggable > *[dnd-draggable] {
-    position: relative;
-}
-
-ul[dnd-list] .dndDraggingSource,
-*[dnd-list] .dndDraggingSource {
-    display: none;
-}
-
-ul[dnd-list] .dndPlaceholder,
-*[dnd-list] .dndPlaceholder {
-    background-color: darkseagreen;
-}
-
-ul[dnd-list] li.selected,
-*[dnd-list] .selected {
-    background-color: #dff0d8;
-    color: #3c763d;
-}
-*/

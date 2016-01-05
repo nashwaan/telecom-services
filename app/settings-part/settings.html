@@ -1,4 +1,108 @@
-<md-sidenav class="md-sidenav-right"
+<script type="text/ng-template" id="attribute-group.html">
+    
+    <md-list class="attribute-group"
+             layout="column" 
+             layout-align="start start" >
+        
+        <div class="md-headline">Attributes Group: {{attribute.title}}</div>
+        <div class="md-subhead">{{attribute.description}}</div>
+        
+        <div layout="column">
+            
+            <md-item class="attributes" 
+                     ng-repeat="attribute in (attribute.type==='object'?attribute.properties:attribute.items)" 
+                     ng-click="selected.item=attribute.properties;selected.type='object'" 
+                     ng-class="{'selected':selected.item===attribute.properties}" 
+                     ng-include="'attribute-'+(attribute.type==='object'||attribute.type==='array'?'group':(attribute.enum!==undefined?'choice':(attribute.format==='date-time'?'date':attribute.type)))+'.html'">
+                
+            </md-item>
+            
+        </div>
+        
+    </md-list>
+    
+</script>
+
+
+
+<script type="text/ng-template" id="attribute-string.html">
+     
+    <md-input-container class="md-block attribute-string">
+         
+        <label>{{attribute.title}}</label>
+        
+        <input required ng-model="attribute.value" md-maxlength="{{attribute.maxLength}}" />
+        
+        <div class="attribute-description">{{attribute.description}}</div>
+         
+    </md-input-container>
+
+</script>
+
+
+
+<script type="text/ng-template" id="attribute-choice.html">
+     
+    <md-input-container class="md-block attribute-choice">
+         
+        <label>{{attribute.title}}</label>
+        
+        <md-select ng-model="attribute.value" ng-if="attribute.enum!==undefined">
+            
+            <md-option ng-repeat="option in attribute.enum" value="{{option}}">
+            {{option}}
+            </md-option>
+            
+        </md-select>
+        
+        <div class="attribute-description">{{attribute.description}}</div>
+         
+    </md-input-container>
+
+</script>
+
+
+
+<script type="text/ng-template" id="attribute-number.html">
+     
+    <md-input-container class="md-block attribute-number">
+         
+         <label>{{attribute.title}}</label>
+        
+         <input type="number" ng-model="attribute.value" step="any" min="1" max="4999"/>
+        
+         <div class="attribute-description">{{attribute.description}}</div>
+         
+    </md-input-container>
+
+</script>
+
+
+
+<script type="text/ng-template" id="attribute-boolean.html">
+    
+    <md-checkbox class="attribute-boolean" ng-model="attribute.value">
+         
+        {{attribute.title}}
+        <div class="attribute-description">{{attribute.description}}</div>
+         
+    </md-checkbox>
+
+</script>
+
+
+
+<script type="text/ng-template" id="attribute-date.html">
+    
+    <md-datepicker ng-model="attribute.value" md-placeholder="{{attribute.title}}"></md-datepicker>
+    
+    <div class="attribute-description">{{attribute.description}}</div>
+    
+</script>
+
+
+
+<md-sidenav class="md-sidenav-right" 
             layout="column" 
             md-component-id="settings" 
             md-is-locked-open="$mdMedia('gt-sm')">
@@ -7,49 +111,25 @@
     
         <md-tab label="Settings">
             
-            <md-list class="settings" 
-                     ng-controller="settingsController as cntrl"
-                     dnd-list="panel.settings"
-                     dnd-allowed-types="['setting']">
-
-                <md-item class="setting"
-                         ng-repeat="setting in panel.settings" 
-                         dnd-draggable="setting" 
-                         dnd-type="'setting'"
-                         dnd-effect-allowed="move" 
-                         dnd-selected="panel.selectedSetting=setting" 
-                         dnd-moved="panel.settings.splice($index,1)">
-
-                    <md-button class="md-raised" 
-                               ng-click="panel.selectedSetting=setting" 
-                               ng-class="{'selected':panel.selectedSetting===setting}" 
-                               aria-label="{{setting.Icon}}">
-
-                        <md-icon md-svg-icon="{{setting.Icon | icon_provider}}"></md-icon>
-                        {{setting.Icon}}
-
-                    </md-button>
-
+            <div ng-controller="settingsController as cntrl">
+                
+                <md-item ng-repeat="attribute in [schema]" 
+                         ng-include="'attribute-group.html'">
+                                        
                 </md-item>
-
-                <md-item class="setting dndPlaceholder">
-
-                    <md-button class="setting md-raised" 
-                               aria-label="{{panel.selectedSetting.Icon}}">
-
-                        <md-icon md-svg-icon="{{panel.selectedSetting.Icon | icon_provider}}" class="avatar"></md-icon>
-                        {{panel.selectedSetting.Icon}}
-
-                    </md-button>
-
-                </md-item>
-
+                
             </md-list>
-
+            
+        </div>
+        
+        <md-tab label="BRD">
+            
+            <div layout="column" ng-include="'writer-part/writer.html'"></div>
+            
         </md-tab>
         
         <md-tab label="JSON">
-        
+            
             <p>JSON for the selected {{selected.type}}:</p>
             
             <pre>{{selected.item | json:2 }}</pre>
@@ -57,5 +137,5 @@
         </md-tab>
         
     </md-tabs>
-        
+    
 </md-sidenav>
