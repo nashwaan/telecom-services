@@ -28,7 +28,7 @@
         });
 
         this.changeMode = function () {
-            $location.path($location.path() === '/design' ? 'manufacture' : 'design');
+            $location.path($location.path() === '/assemble' ? 'manufacture' : 'assemble');
         };
 
     }]);

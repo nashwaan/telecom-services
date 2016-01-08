@@ -8,7 +8,7 @@
     //
     angular.module('TheApp').factory('mastersService', ['$http', '$q', function ($http, $q) {
 
-        var masters = null;
+        var masters = {};
 
         return masters;
 
@@ -19,15 +19,20 @@
 
         $http.get('data/masters.json').success(function (data) {
 
-            $scope.panel = {
+            //
+            window.console.log("Masters data was retrieved successfully.");
+
+            /*$scope.panel = {
                 "groups": data
+            };*/
+
+            //
+            mastersService.groups = data; //window.alert("mastersService.length " + mastersService.length);
+            
+            //
+            $scope.panel = {
+                "groups": mastersService.groups
             };
-
-            //
-            window.console.log("Masters data was loaded successfully.");
-
-            //
-            mastersService = data; //window.alert("mastersService.length " + mastersService.length);
             
         });
 

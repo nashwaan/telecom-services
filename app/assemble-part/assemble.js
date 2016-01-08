@@ -5,8 +5,8 @@
 (function (angular) {
     'use strict';
 
-    // define controller for canvas
-    angular.module('TheApp').controller('canvasController', ['$rootScope', '$scope', '$http', '$mdBottomSheet', '$log', function ($rootScope, $scope, $http, $mdBottomSheet, $log) {
+    // define controller for assemble
+    angular.module('TheApp').controller('assembleController', ['$rootScope', '$scope', '$http', '$mdBottomSheet', '$log', function ($rootScope, $scope, $http, $mdBottomSheet, $log) {
 
         $rootScope.selected = {
             item: null,

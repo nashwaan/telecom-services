@@ -16,22 +16,21 @@
 
             //
             $routeProvider
-                .when('/design', {
-                    templateUrl: 'design.html'
+                .when('/assemble', {
+                    templateUrl: 'assemble-part/assemble.html'
                 })
                 .when('/manufacture', {
-                    templateUrl: 'manufacture.html',
-                    controller: 'manufactureController'
+                    templateUrl: 'manufacture-part/manufacture.html'
                 })
                 .otherwise({
-                    redirectTo: '/design'
+                    redirectTo: '/manufacture'
                 });
-            
+
             // use the HTML5 History API to avoid '#' in the URL
             //$locationProvider.html5Mode(true);
-            
+
             /*jslint bitwise: true*/
-            
+
             function rgbToHex(r, g, b) {
                 return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
             }
@@ -57,7 +56,7 @@
                     B2 = t & 0x0000FF;
                 return "#" + (0x1000000 + (Math.round((R2 - R1) * p) + R1) * 0x10000 + (Math.round((G2 - G1) * p) + G1) * 0x100 + (Math.round((B2 - B1) * p) + B1)).toString(16).slice(1);
             }
-            
+
             /*jslint bitwise: false*/
 
             var primaryColor = blendColors("#BED308", "#719E19", 0.5),

@@ -1,2 +1,75 @@
-<h1>Hello</h1>
-<p>How are you?</p>
+<md-content flex ng-controller="manufactureController as cntrl">
+
+    <md-toolbar flex 
+                layout="row" 
+                layout-align="start center" 
+                class="md-hue-2">
+
+        <md-button ng-click="cntrl.newMaster()" 
+                   aria-label="New Master">
+
+            <md-icon md-svg-icon="menu"></md-icon>
+
+        </md-button>    
+
+        <div flex="15"></div>
+
+        <div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
+            Editing Master
+        </div>
+
+        <span flex></span>
+
+        <md-button ng-click="cntrl.newMaster()" 
+                   aria-label="New Master">
+
+            <md-icon md-svg-icon="menu"></md-icon>
+            <md-tooltip>New Master</md-tooltip>
+            
+        </md-button>
+
+        <md-button ng-click="cntrl.addAttribute()" 
+                   aria-label="Add Attribute">
+
+            <md-icon md-svg-icon="menu"></md-icon>
+            <md-tooltip>Add Attribute</md-tooltip>
+
+        </md-button>
+
+    </md-toolbar>
+
+    <md-item class="master md-button md-raised" 
+             layout="row" 
+             layout-align="start center" 
+             ng-show="cntrl.editMaster"
+             ng-click="cntrl.editMaster(cntrl.masterEdit)">
+        
+        <md-icon class="master-icon" 
+                 md-svg-icon="{{cntrl.masterEdit.Property | icon_provider}}" >
+        </md-icon>
+        
+        <span>{{cntrl.masterEdit.Property}}</span>
+
+    </md-item>
+
+    <md-list layout="column" 
+             dnd-list="cntrl.masterEdit.Attributes" 
+             dnd-allowed-types="['edit-attribute']">
+        
+        <md-item class="edit-attribute" 
+                 layout="row" 
+                 layout-align="start center" 
+                 ng-click="cntrl.editAttribute(attribute)" 
+                 ng-repeat="attribute in cntrl.masterEdit.Attributes">
+            
+            <div flex="40" ng-repeat="setting in [attribute.schema]" ng-include="'setting-'+setting.type+'.html'"></div>
+
+            <span flex="5"></span>
+            
+            <md-button ng-click="cntrl.masterEdit.Attributes.splice($index,1)">delete</md-button>
+
+        </md-item>
+
+    </md-list>
+    
+</md-content>

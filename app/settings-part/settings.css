@@ -14,33 +14,31 @@ md-input-container:not(.md-input-invalid).md-input-has-value label {
     color: rgb(122, 148, 14);
 }
 
-.attribute-group,
-.attribute-string,
-.attribute-number,
-.attribute-boolean,
-.attribute-choice,
-.attribute-date {
+.setting {
+    width: 96%;
+    display: inline-block;
     /*    border: 2px solid rgba(0, 155, 255, 0.6);*/
 }
 
-.attribute-group {
+.setting.group {
     margin-left: 15px;
 }
 
-.attribute-description {
-    width:100%;
+.setting-description {
+    width: 100%;
     color: grey;
     font-size: 12px;
+    /*padding-top: 34px;*/
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
 }
 
-.attribute-description.ng-hide,
-.attribute-description.ng-enter,
-.attribute-description.ng-leave.ng-leave-active {
+.setting-description.ng-hide,
+.setting-description.ng-enter,
+.setting-description.ng-leave.ng-leave-active {
     opacity: 0;
 }
 
-.attribute-description.ng-leave,
-.attribute-description.ng-enter.ng-enter-active {
+.setting-description.ng-leave,
+.setting-description.ng-enter.ng-enter-active {
     opacity: 1;
 }

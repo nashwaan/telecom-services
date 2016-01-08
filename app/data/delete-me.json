@@ -1,0 +1,87 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://www.etisalat.ae",
+    "title": "Attribute schema.",
+    "description": "Schema for editing sub-attributes of an attribute.",
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {
+        "title": {
+            "title": "Name of Sub-attribute",
+            "description": "For 'title' of sub-attribute schema.",
+            "type": "string",
+            "default": ""
+        },
+        "description": {
+            "title": "Description of Sub-attribute",
+            "description": "For 'description' of sub-attribute schema.",
+            "type": "string",
+            "default": ""
+        },
+        "type": {
+            "title": "Type of Sub-attribute",
+            "description": "For 'type' of sub-attribute schema.",
+            "type": "string",
+            "enum": ["string", "number", "boolean", "choice", "options"],
+            "default": ""
+        },
+        "required": {
+            "title": "Required Sub-attribute?",
+            "description": "For 'type' of sub-attribute schema.",
+            "type": "boolean",
+            "default": ""
+        },
+        "minLength": {
+            "title": "Minimum Length of Sub-attribute",
+            "description": "For 'minLength' of sub-attribute schema.",
+            "type": "number",
+            "default": ""
+        },
+        "maxLength": {
+            "title": "Maximum Length of Sub-attribute",
+            "description": "For 'maxLength' of sub-attribute schema.",
+            "type": "number",
+            "default": ""
+        },
+        "minimum": {
+            "title": "Minimum of Sub-attribute",
+            "description": "For 'minimum' of sub-attribute schema.",
+            "type": "number",
+            "default": ""
+        },
+        "exclusiveMinimum": {
+            "title": "Exclusive Minimum?",
+            "description": "For 'exclusiveMinimum' of sub-attribute schema.",
+            "type": "boolean",
+            "default": ""
+        },
+        "maximum": {
+            "title": "Maximum of Sub-attribute",
+            "description": "For 'maximum' of sub-attribute schema.",
+            "type": "number",
+            "default": ""
+        },
+        "exclusiveMaximum": {
+            "title": "Exclusive Maximum?",
+            "description": "For 'exclusiveMaximum' of sub-attribute schema.",
+            "type": "boolean",
+            "default": ""
+        },
+        "multipleOf": {
+            "title": "Step of Sub-attribute",
+            "description": "For 'multipleOf' of sub-attribute schema.",
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true,
+            "maximum": 1000,
+            "exclusiveMaximum": false,
+            "default": ""
+        },
+        "default": {
+            "title": "Default of Sub-attribute",
+            "description": "For 'default' of sub-attribute schema.",
+            "type": "string",
+            "default": ""
+        }
+    }
+}

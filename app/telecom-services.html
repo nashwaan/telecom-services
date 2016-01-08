@@ -8,14 +8,6 @@
 
     <title>Product Designer</title>
 
-    <link href="script/angular-material.css" rel="stylesheet"></link>
-    <link href="script/angular-gridster.min.css" rel="stylesheet"></link>
-    <link href="telecom-services.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <link href="writer-part/writer.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <link href="canvas-part/canvas.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <link href="masters-part/masters.css" media="screen" rel="stylesheet" type="text/css"></link>
-    <link href="settings-part/settings.css" media="screen" rel="stylesheet" type="text/css"></link>
-
     <script src="script/jquery.js"></script>
     <script src="script/angular.js"></script>
     <script src="script/angular-aria.js"></script>
@@ -29,19 +21,27 @@
     <script src="app.js"></script>
     <script src="filters.js"></script>
     <script src="draggable-directive.js"></script>
-    <script src="canvas-part/canvas.js"></script>
     <script src="writer-part/writer.js"></script>
     <script src="masters-part/masters.js"></script>
     <script src="actions-part/actions.js"></script>
     <script src="settings-part/settings.js"></script>
+    <script src="assemble-part/assemble.js"></script>
     <script src="navigation-part/navigation.js"></script>
     <script src="manufacture-part/manufacture.js"></script>
 
+    <link href="script/angular-material.css" rel="stylesheet"></link>
+    <link href="script/angular-gridster.min.css" rel="stylesheet"></link>
+
+    <link href="telecom-services.css" rel="stylesheet"></link>
+    <link href="writer-part/writer.css" rel="stylesheet"></link>
+    <link href="masters-part/masters.css" rel="stylesheet"></link>
+    <link href="assemble-part/assemble.css" rel="stylesheet"></link>
+    <link href="settings-part/settings.css" rel="stylesheet"></link>
+    <link href="manufacture-part/manufacture.css" rel="stylesheet"></link>
+
 </head>
 
-
-
-<script type="text/ng-template" id="design.html">
+<body layout="column" ng-cloak>
 
     <nav ng-include="'navigation-part/navigation.html'"></nav>
 
@@ -49,33 +49,16 @@
 
         <aside layout="column" ng-include="'masters-part/masters.html'"></aside>
 
-        <article layout="column" flex ng-include="'canvas-part/canvas.html'"></article>
+        <md-content flex>
+
+            <!--<div ng-include="'writer-part/writer.html'"></div>-->
+            <md-content ng-view class="view-animate">Loading...</md-content>
+
+        </md-content>
 
         <aside layout="column" ng-include="'settings-part/settings.html'"></aside>
 
     </section>
-
-</script>
-
-
-
-<script type="text/ng-template" id="manufacture.html">
-
-    <nav ng-include="'navigation-part/navigation.html'"></nav>
-
-    <div ng-include="'manufacture-part/manufacture.html'"></div>
-
-</script>
-
-
-
-<body layout="column" ng-cloak>
-
-    <div class="view-animate-container">
-
-        <div ng-view class="view-animate"></div>
-
-    </div>
 
 </body>
 

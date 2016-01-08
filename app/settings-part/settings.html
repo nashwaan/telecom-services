@@ -1,19 +1,16 @@
-<script type="text/ng-template" id="attribute-group.html">
+<script type="text/ng-template" id="setting-group.html">
     
-    <md-list class="attribute-group"
+    <md-list class="setting group"
              layout="column" 
              layout-align="start start" >
         
-        <div class="md-headline">Attributes Group: {{attribute.title}}</div>
-        <div class="md-subhead">{{attribute.description}}</div>
+        <div class="md-subhead">{{setting.title}}</div>
+        <p>{{setting.description}}</p>
         
         <div layout="column">
             
-            <md-item class="attributes" 
-                     ng-repeat="attribute in (attribute.type==='object'?attribute.properties:attribute.items)" 
-                     ng-click="selected.item=attribute.properties;selected.type='object'" 
-                     ng-class="{'selected':selected.item===attribute.properties}" 
-                     ng-include="'attribute-'+(attribute.type==='object'||attribute.type==='array'?'group':(attribute.enum!==undefined?'choice':(attribute.format==='date-time'?'date':attribute.type)))+'.html'">
+            <md-item ng-repeat="setting in (setting.type==='object'?setting.properties:setting.items)" 
+                     ng-include="'setting-'+(setting.type==='object'||setting.type==='array'?'group':(setting.enum!==undefined?'choice':(setting.format==='date-time'?'date':setting.type)))+'.html'">
                 
             </md-item>
             
@@ -25,15 +22,15 @@
 
 
 
-<script type="text/ng-template" id="attribute-string.html">
+<script type="text/ng-template" id="setting-string.html">
      
-    <md-input-container class="md-block attribute-string">
+    <md-input-container class="md-block setting string">
          
-        <label>{{attribute.title}}</label>
+        <label>{{setting.title}}</label>
         
-        <input required ng-model="attribute.value" md-maxlength="{{attribute.maxLength}}" />
+        <input required ng-model="setting.value" md-maxlength="{{setting.maxLength}}" />
         
-        <div class="attribute-description">{{attribute.description}}</div>
+        <div class="setting-description">{{setting.description}}</div>
          
     </md-input-container>
 
@@ -41,21 +38,21 @@
 
 
 
-<script type="text/ng-template" id="attribute-choice.html">
+<script type="text/ng-template" id="setting-choice.html">
      
-    <md-input-container class="md-block attribute-choice">
+    <md-input-container class="md-block setting choice">
          
-        <label>{{attribute.title}}</label>
+        <label>{{setting.title}}</label>
         
-        <md-select ng-model="attribute.value" ng-if="attribute.enum!==undefined">
+        <md-select ng-model="setting.value" ng-if="setting.enum!==undefined">
             
-            <md-option ng-repeat="option in attribute.enum" value="{{option}}">
+            <md-option ng-repeat="option in setting.enum" value="{{option}}">
             {{option}}
             </md-option>
             
         </md-select>
         
-        <div class="attribute-description">{{attribute.description}}</div>
+        <div class="setting-description">{{setting.description}}</div>
          
     </md-input-container>
 
@@ -63,15 +60,15 @@
 
 
 
-<script type="text/ng-template" id="attribute-number.html">
+<script type="text/ng-template" id="setting-number.html">
      
-    <md-input-container class="md-block attribute-number">
+    <md-input-container class="md-block setting number">
          
-         <label>{{attribute.title}}</label>
+         <label>{{setting.title}}</label>
         
-         <input type="number" ng-model="attribute.value" step="any" min="1" max="4999"/>
+         <input type="number" ng-model="setting.value" step="any" min="1" max="4999"/>
         
-         <div class="attribute-description">{{attribute.description}}</div>
+         <div class="setting-description">{{setting.description}}</div>
          
     </md-input-container>
 
@@ -79,30 +76,30 @@
 
 
 
-<script type="text/ng-template" id="attribute-boolean.html">
+<script type="text/ng-template" id="setting-boolean.html">
     
-    <md-checkbox class="attribute-boolean" ng-model="attribute.value">
-         
-        {{attribute.title}}
-        <div class="attribute-description">{{attribute.description}}</div>
-         
+    <md-checkbox class="setting boolean" ng-model="setting.value">
+        
+        {{setting.title}}
+        <div class="setting-description">{{setting.description}}</div>
+        
     </md-checkbox>
 
 </script>
 
 
 
-<script type="text/ng-template" id="attribute-date.html">
+<script type="text/ng-template" id="setting-date.html">
     
-    <md-datepicker ng-model="attribute.value" md-placeholder="{{attribute.title}}"></md-datepicker>
+    <md-datepicker class="setting date" ng-model="setting.value" md-placeholder="{{setting.title}}"></md-datepicker>
     
-    <div class="attribute-description">{{attribute.description}}</div>
+    <div class="setting-description">{{setting.description}}</div>
     
 </script>
 
 
 
-<md-sidenav class="md-sidenav-right" 
+<md-sidenav class="md-sidenav-right Xmd-whiteframe-z2" 
             layout="column" 
             md-component-id="settings" 
             md-is-locked-open="$mdMedia('gt-sm')">
@@ -113,14 +110,40 @@
             
             <div ng-controller="settingsController as cntrl">
                 
-                <md-item ng-repeat="attribute in [schema]" 
-                         ng-include="'attribute-group.html'">
-                                        
+                <div layout="column" layout-align="start" flex>
+                    
+                    <div layout="row" layout-align="space-around">
+                        
+                        <md-button class="md-primary md-raised" 
+                                   flex="30" 
+                                   ng-disabled="!cntrl.settings.isDirty()" 
+                                   ng-click="cntrl.updateValues($event)">
+                            Update
+                        </md-button>
+
+                        <md-button class="md-primary md-raised" 
+                                   flex="30" 
+                                   ng-disabled="!cntrl.settings.isDirty()" 
+                                   ng-click="cntrl.revertValues($event)">
+                            Revert
+                        </md-button>
+
+                        <md-button ng-click="cntrl.check()" flex="20">Check</md-button>
+                        
+                    </div>
+                    
+                </div>
+                
+                <p>{{settings | json }}</p>
+                
+                <md-item ng-repeat="setting in [cntrl.settings.get()]" 
+                         ng-include="'setting-group.html'">
+                    
                 </md-item>
                 
-            </md-list>
+            </div>
             
-        </div>
+        </md-tab>
         
         <md-tab label="BRD">
             
