@@ -14,15 +14,17 @@
         <md-tabs md-border-bottom 
                  md-dynamic-height>
 
-            <md-tab label="{{group.Group}}" 
-                    ng-repeat="group in panel.groups" 
+            <md-tab label="{{group.name}}" 
+                    ng-repeat="group in cntrl.masters.get().Groups" 
                     ng-click="selected.item=group;selected.type='group'">
+
+                <md-button ng-click="cntrl.masters.check()" aria-label="Check">Check</md-button>
 
                 <section ng-repeat="collection in group.Collections" 
                          ng-click="selected.item=collection;selected.type='collection'">
                     
                     <md-subheader class="collection">
-                        {{collection.Collection}}
+                        {{collection.name}}
                     </md-subheader>
                     
                     <md-list class="masters" 
@@ -30,8 +32,8 @@
                              dnd-allowed-types="['master']">
 
                         <md-item class="master md-button md-raised" 
-                                 ng-repeat="master in collection.Properties" 
-                                 ng-click="selected.item=master;selected.type='master'" 
+                                 ng-repeat="master in collection.Masters" 
+                                 ng-click="cntrl.selectMaster(group.name,collection.name,master)" 
                                  ng-class="{'selected':selected.item===master}" 
                                  dnd-draggable="master" 
                                  dnd-type="'master'" 
@@ -41,21 +43,23 @@
                                  aria-label="{{master.Property}}">
 
                             <md-icon class="master-icon" 
-                                     md-svg-icon="{{master.Property | icon_provider}}" >
+                                     md-svg-icon="{{master.name | icon_provider}}" >
                             </md-icon>
-
-                            <span>{{master.Property}}</span>
+                            
+                            <md-tooltip ng-if="master.description">{{master.description}}</md-tooltip>
+                            
+                            <span>{{master.name}}</span>
 
                         </md-item>
 
                         <md-item class="master dndPlaceholder md-button md-raised"
-                                 aria-label="{{selected.item.Property}}">
+                                 aria-label="{{selected.item.name}}">
 
                             <md-icon class="avatar" 
-                                     md-svg-icon="{{selected.item.Property | icon_provider}}">
+                                     md-svg-icon="{{selected.item.name | icon_provider}}">
                             </md-icon>
                             
-                            <span>{{selected.item.Property}}</span>
+                            <span>{{selected.item.name}}</span>
 
                         </md-item>
 

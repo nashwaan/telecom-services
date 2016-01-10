@@ -21,6 +21,28 @@
             $scope.styleUrl = 'demo/' + $scope.page + '/style.css';
         });
 
+        /*// Show the bottom sheet  
+        this.showActions = function ($event) {
+            var user = "$scope.selected";
+            // Bottom Sheet controller  
+            function ContactPanelController($mdBottomSheet) {
+                this.user = user;
+                this.submitContact = function (action) {
+                    $mdBottomSheet.hide(action);
+                };
+            }
+            return $mdBottomSheet.show({
+                parent: angular.element(document.getElementById('content')),
+                templateUrl: 'actions-part/actions-view.html',
+                controller: ['$mdBottomSheet', ContactPanelController],
+                controllerAs: 'cp',
+                bindToController: true,
+                targetEvent: $event
+            }).then(function (clickedItem) {
+                //clickedItem && $log.debug(clickedItem.name + ' clicked!');
+            });
+        };*/
+
     }]);
 
 }(window.angular));

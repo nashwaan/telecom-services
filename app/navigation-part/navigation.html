@@ -9,20 +9,20 @@
                hide-gt-sm 
                aria-label="Toggle Masters">
         
-        <md-icon md-svg-icon="menu"></md-icon>
+        <md-icon md-svg-icon="apps"></md-icon>
+        <md-tooltip>Show/hide masters panel</md-tooltip>
         
     </md-button>    
-        
+    
     <md-button ng-click="cntrl.changeMode()">
         
         <md-icon style="width:48px;height:48px" md-svg-icon="logo"></md-icon>
-    
         <md-tooltip>Change Mode</md-tooltip>
         
     </md-button>
-        
+    
     <div flex="15"></div>
-
+    
     <div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
         Plans Designer
     </div>
@@ -30,11 +30,12 @@
     <span flex></span>
     
     <md-button class="menu" 
-               ng-click="cntrl.toggleSidenav('settings')" 
+               ng-click="cntrl.toggleSidenav('properties')" 
                hide-gt-xl 
-               aria-label="Toggle Settings">
+               aria-label="Toggle Properties">
         
-        <md-icon md-svg-icon="menu"></md-icon>
+        <md-icon md-svg-icon="lines"></md-icon>
+        <md-tooltip>Show/hide properties panel</md-tooltip>
         
     </md-button>
     

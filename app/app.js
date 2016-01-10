@@ -8,6 +8,7 @@
     // initialize 'servicesDesignerApp' module
     angular.module('TheApp', ['ngRoute',
                               'ngMaterial',
+                              'ngMdIcons',
                               'gridster',
                               'dndLists',
                               'etsDraggableDirective',
@@ -23,7 +24,7 @@
                     templateUrl: 'manufacture-part/manufacture.html'
                 })
                 .otherwise({
-                    redirectTo: '/manufacture'
+                    redirectTo: '/assemble'
                 });
 
             // use the HTML5 History API to avoid '#' in the URL
@@ -112,57 +113,80 @@
                 .primaryPalette('orange')
                 .dark();
 
-            // Configure URLs for icons specified by [set:]id.
+            // set default size of md-icon
+            $mdIconProvider.defaultViewBoxSize(40);
+
+            // configure URLs for icons specified by [set:]id.
             $mdIconProvider
                 .icon('logo', 'icons/logo.svg')
                 .icon('menu', 'icons/menu.svg')
+                .icon('apps', 'icons/apps.svg')
+                .icon('new', 'icons/new.svg')
+                .icon('add', 'icons/add.svg')
+                .icon('undo', 'icons/undo.svg')
+                .icon('redo', 'icons/redo.svg')
+                .icon('save', 'icons/save.svg')
+                .icon('delete', 'icons/delete.svg')
+                .icon('up', 'icons/up.svg')
+                .icon('down', 'icons/down.svg')
                 .icon('share', 'icons/share.svg')
-                .icon('Property:Account', 'icons/property/Account.svg')
-                .icon('Property:Add-on', 'icons/property/Add-on.svg')
-                .icon('Property:BasePlan', 'icons/property/BasePlan.svg')
-                .icon('Property:Bundle', 'icons/property/Bundle.svg')
-                .icon('Property:CallFreebees', 'icons/property/CallFreebees.svg')
-                .icon('Property:CallTariff', 'icons/property/CallTariff.svg')
-                .icon('Property:ChangeArrow', 'icons/property/ChangeArrow.svg')
-                .icon('Property:ChangeFlavor', 'icons/property/ChangeFlavor.svg')
-                .icon('Property:Charge', 'icons/property/Charge.svg')
-                .icon('Property:Constraint', 'icons/property/Constraint.svg')
-                .icon('Property:Contract', 'icons/property/Contract.svg')
-                .icon('Property:Credit', 'icons/property/Credit.svg')
-                .icon('Property:DataFreebees', 'icons/property/DataFreebees.svg')
-                .icon('Property:DataTariff', 'icons/property/DataTariff.svg')
-                .icon('Property:Device', 'icons/property/Device.svg')
-                .icon('Property:DownArrow', 'icons/property/DownArrow.svg')
-                .icon('Property:EndArrow', 'icons/property/EndArrow.svg')
-                .icon('Property:File', 'icons/property/File.svg')
-                .icon('Property:Info', 'icons/property/Info.svg')
-                .icon('Property:Inquiry', 'icons/property/Inquiry.svg')
-                .icon('Property:LeftArrow', 'icons/property/LeftArrow.svg')
-                .icon('Property:MessageFreebees', 'icons/property/MessageFreebees.svg')
-                .icon('Property:MessageTariff', 'icons/property/MessageTariff.svg')
-                .icon('Property:Migrate', 'icons/property/Migrate.svg')
-                .icon('Property:Migration', 'icons/property/Migration.svg')
-                .icon('Property:Notification', 'icons/property/Notification.svg')
-                .icon('Property:Project', 'icons/property/Project.svg')
-                .icon('Property:Provisioning', 'icons/property/Provisioning.svg')
-                .icon('Property:Report', 'icons/property/Report.svg')
-                .icon('Property:Rewards', 'icons/property/Rewards.svg')
-                .icon('Property:RightArrow', 'icons/property/RightArrow.svg')
-                .icon('Property:SimCard', 'icons/property/SimCard.svg')
-                .icon('Property:Square', 'icons/property/Square.svg')
-                .icon('Property:SquareAim', 'icons/property/SquareAim.svg')
-                .icon('Property:SquareDashed', 'icons/property/SquareDashed.svg')
-                .icon('Property:Stakeholder', 'icons/property/Stakeholder.svg')
-                .icon('Property:Subscribe', 'icons/property/Subscribe.svg')
-                .icon('Property:Support', 'icons/property/Support.svg')
-                .icon('Property:Unsubscribe', 'icons/property/Unsubscribe.svg')
-                .icon('Property:UpArrow', 'icons/property/UpArrow.svg')
-                .icon('Property:Xor', 'icons/property/Xor.svg');
+                .icon('box', 'icons/box.svg')
+                .icon('stand', 'icons/stand.svg')
+                .icon('brick', 'icons/brick.svg')
+                .icon('lines', 'icons/lines.svg')
+                .icon('Master:Account', 'icons/property/Account.svg')
+                .icon('Master:Add-on', 'icons/property/Add-on.svg')
+                .icon('Master:BasePlan', 'icons/property/BasePlan.svg')
+                .icon('Master:Bundle', 'icons/property/Bundle.svg')
+                .icon('Master:CallFreebees', 'icons/property/CallFreebees.svg')
+                .icon('Master:CallTariff', 'icons/property/CallTariff.svg')
+                .icon('Master:ChangeArrow', 'icons/property/ChangeArrow.svg')
+                .icon('Master:ChangeFlavor', 'icons/property/ChangeFlavor.svg')
+                .icon('Master:Charge', 'icons/property/Charge.svg')
+                .icon('Master:Constraint', 'icons/property/Constraint.svg')
+                .icon('Master:Contract', 'icons/property/Contract.svg')
+                .icon('Master:Credit', 'icons/property/Credit.svg')
+                .icon('Master:DataFreebees', 'icons/property/DataFreebees.svg')
+                .icon('Master:DataTariff', 'icons/property/DataTariff.svg')
+                .icon('Master:Device', 'icons/property/Device.svg')
+                .icon('Master:DownArrow', 'icons/property/DownArrow.svg')
+                .icon('Master:EndArrow', 'icons/property/EndArrow.svg')
+                .icon('Master:File', 'icons/property/File.svg')
+                .icon('Master:Info', 'icons/property/Info.svg')
+                .icon('Master:Inquiry', 'icons/property/Inquiry.svg')
+                .icon('Master:LeftArrow', 'icons/property/LeftArrow.svg')
+                .icon('Master:MessageFreebees', 'icons/property/MessageFreebees.svg')
+                .icon('Master:MessageTariff', 'icons/property/MessageTariff.svg')
+                .icon('Master:Migrate', 'icons/property/Migrate.svg')
+                .icon('Master:Migration', 'icons/property/Migration.svg')
+                .icon('Master:Notification', 'icons/property/Notification.svg')
+                .icon('Master:Project', 'icons/property/Project.svg')
+                .icon('Master:Provisioning', 'icons/property/Provisioning.svg')
+                .icon('Master:Report', 'icons/property/Report.svg')
+                .icon('Master:Rewards', 'icons/property/Rewards.svg')
+                .icon('Master:RightArrow', 'icons/property/RightArrow.svg')
+                .icon('Master:SimCard', 'icons/property/SimCard.svg')
+                .icon('Master:Square', 'icons/property/Square.svg')
+                .icon('Master:SquareAim', 'icons/property/SquareAim.svg')
+                .icon('Master:SquareDashed', 'icons/property/SquareDashed.svg')
+                .icon('Master:Stakeholder', 'icons/property/Stakeholder.svg')
+                .icon('Master:Subscribe', 'icons/property/Subscribe.svg')
+                .icon('Master:Support', 'icons/property/Support.svg')
+                .icon('Master:Unsubscribe', 'icons/property/Unsubscribe.svg')
+                .icon('Master:UpArrow', 'icons/property/UpArrow.svg')
+                .icon('Master:Xor', 'icons/property/Xor.svg');
 
         }])
         .run(function ($log) {
             $log.debug("TheApp with its dependecies is loaded and running...");
         });
 
+    // define controller for assemble
+    angular.module('TheApp').controller('selectController', ['$rootScope', function ($rootScope) {
+        $rootScope.selected = {
+            "item": null,
+            "type": ""
+        };
+    }]);
 
 }(window.angular));

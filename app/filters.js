@@ -36,7 +36,7 @@
                 var filename = input.replace(/\s+/g, '');
 
                 // prepend 'Property:' to filename
-                return 'Property:' + filename;
+                return 'Master:' + filename;
             };
 
         });

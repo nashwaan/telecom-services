@@ -7,7 +7,7 @@
 
 .band,
 .component,
-.property,
+.feature,
 .attribute {
     min-width: 300px;
     min-height: 30px;
@@ -15,16 +15,17 @@
     padding-left: 10px;
     box-sizing: border-box;
     list-style-type: none;
-    display: inline-block;
     border: 2px solid rgba(255, 255, 255, 0.0);
 }
 
 .band {
+    display: block !important;
     border-radius: 10px;
     background-color: rgba(245, 245, 245, 1.0);
 }
 
 .component {
+    display: inline-block;
     border-radius: 4px;
 }
 
@@ -32,11 +33,12 @@
     border-color: rgba(70, 150, 240, 0.2);
 }
 
-.property {
+.feature {
+    display: inline-block;
     border-radius: 3px;
 }
 
-.property:hover {
+.feature:hover {
     border-color: rgba(70, 150, 240, 0.4);
 }
 

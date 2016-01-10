@@ -2,234 +2,68 @@
 /*global angular*/
 
 
+
 (function (angular) {
     'use strict';
 
-    // define controller for navigation
-    angular.module('TheApp').controller('manufactureController', ['$rootScope', '$scope', 'mastersService', 'settingsService', function ($rootScope, $scope, mastersService, settingsService) {
+    // define service for manufacture
+    angular.module('TheApp').factory('manufactureService', ['mastersService', function (mastersService) {
+        var masterEdit = null;
+        //
+        return {
+            "setMasterEdit": function (master) {
+                masterEdit = angular.copy(master);
+            },
+            "getMasterEdit": function () {
+                if (masterEdit === null) {
+                    this.setMasterEdit(mastersService.getSelected());
+                }
+                return masterEdit;
+            },
+            "isMasterDirty": function () {
+                return angular.equals(mastersService.getSelected(), masterEdit);
+            }
+        };
+    }]);
 
+    // define controller for navigation
+    angular.module('TheApp').controller('manufactureController', ['manufactureService', 'schemasService', 'propertiesService', function (manufactureService, schemasService, propertiesService) {
         // Model to JSON for demo purpose
         /*$scope.$watch('models', function (model) {
             $scope.modelAsJson = angular.toJson(model, true);
         }, true);*/
-
-        $rootScope.selected = {
-            "item": null,
-            "type": undefined
-        };
-
-        this.masterEdit = {
-            "Attributes": []
-        };
-
         //
+        //this.masters = mastersService;
+        //this.properties = propertiesService;
+        //
+        //this.masterEdit = null;
+        this.getEditMaster = function () {
+            return manufactureService.getMasterEdit();
+        };
+        this.selectMaster = function () {
+            this.editMaster(manufactureService.getMasterEdit());
+        };
         this.newMaster = function () {
-
-            //
-            var master = {
-                "Attributes": [],
-                "schema": {
-                    "Group": "",
-                    "Collection": "",
-                    "Name": "",
-                    "Icon": "",
-                    "Type": ""
-                }
-            };
-
-            //
-            this.masterEdit = master;
-
-            //
-            this.editMaster(master);
-
+            manufactureService.setMasterEdit(schemasService.masterFresh());
+            this.editMaster(manufactureService.getMasterEdit());
         };
-
-        //
         this.editMaster = function (master) {
-
-            //
-            var masterSchema = {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "id": "http://www.etisalat.ae",
-                "title": "Master schema.",
-                "description": "Schema for editing settings of a master.",
-                "type": "object",
-                "additionalProperties": true,
-                "properties": {
-                    "Group": {
-                        "title": "Group Name",
-                        "description": "Specify group name for this master.",
-                        "type": "string",
-                        "default": ""
-                    },
-                    "Collection": {
-                        "title": "Collection Name",
-                        "description": "Specify group name for this master.",
-                        "type": "string",
-                        "default": ""
-                    },
-                    "Name": {
-                        "title": "Master Name",
-                        "description": "Specify name for this master.",
-                        "type": "string",
-                        "default": ""
-                    },
-                    "Icon": {
-                        "title": "Icon",
-                        "description": "Specify icon for the master.",
-                        "type": "string",
-                        "enum": ["Device", "Charge", "Call", "Message", "Data"],
-                        "default": ""
-                    },
-                    "Type": {
-                        "title": "Type",
-                        "description": "Specify type of the master.",
-                        "type": "string",
-                        "enum": ["Standard", "Modifier"],
-                        "default": ""
-                    }
-                }
-            };
-
-            //
-            settingsService.set(masterSchema, master.schema); //window.alert(JSON.stringify(settingsService.get()));
-
+            propertiesService.manage(schemasService.masterSchema(), master, "Attributes"); //window.alert(JSON.stringify(propertiesService.get()));
         };
-
-        //
         this.addAttribute = function () {
-
-            //
-            var attribute = {
-                "schema": {
-                    "title": "No Title",
-                    "description": "No Description",
-                    "type": "string",
-                    "enum": [],
-                    "required": false,
-                    "minLength": 0,
-                    "maxLength": 100,
-                    "minimum": 0,
-                    "exclusiveMinimum": false,
-                    "maximum": 0,
-                    "exclusiveMaximum": false,
-                    "multipleOf": 1,
-                    "default": ""
-                }
-            };
-
-            //
-            this.masterEdit.Attributes.push(attribute);
-
-            //
+            var attribute = schemasService.attributeFresh();
+            manufactureService.getMasterEdit().Attributes.properties.push(attribute);
             this.editAttribute(attribute);
-
         };
-
-        //
         this.editAttribute = function (attribute) {
-
-            //
-            var attributeSchema = {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "id": "http://www.etisalat.ae",
-                "title": "Attribute schema.",
-                "description": "Schema for editing settings of an attribute.",
-                "type": "object",
-                "additionalProperties": true,
-                "properties": {
-                    "title": {
-                        "title": "Name of Sub-attribute",
-                        "description": "For 'title' of sub-attribute schema.",
-                        "type": "string",
-                        "default": ""
-                    },
-                    "description": {
-                        "title": "Description of Sub-attribute",
-                        "description": "For 'description' of sub-attribute schema.",
-                        "type": "string",
-                        "default": ""
-                    },
-                    "type": {
-                        "title": "Type of Sub-attribute",
-                        "description": "For 'type' of sub-attribute schema.",
-                        "type": "string",
-                        "enum": ["string", "number", "boolean", "choice", "options"],
-                        "default": ""
-                    },
-                    "required": {
-                        "title": "Required Sub-attribute?",
-                        "description": "For 'type' of sub-attribute schema.",
-                        "type": "boolean",
-                        "default": ""
-                    },
-                    "enum": {
-                        "title": "Enum of Sub-attribute",
-                        "description": "For 'enum' of sub-attribute schema.",
-                        "type": "array",
-                        "default": ""
-                    },
-                    "minLength": {
-                        "title": "Minimum Length of Sub-attribute",
-                        "description": "For 'minLength' of sub-attribute schema.",
-                        "type": "number",
-                        "default": ""
-                    },
-                    "maxLength": {
-                        "title": "Maximum Length of Sub-attribute",
-                        "description": "For 'maxLength' of sub-attribute schema.",
-                        "type": "number",
-                        "default": ""
-                    },
-                    "minimum": {
-                        "title": "Minimum of Sub-attribute",
-                        "description": "For 'minimum' of sub-attribute schema.",
-                        "type": "number",
-                        "default": ""
-                    },
-                    "exclusiveMinimum": {
-                        "title": "Exclusive Minimum?",
-                        "description": "For 'exclusiveMinimum' of sub-attribute schema.",
-                        "type": "boolean",
-                        "default": ""
-                    },
-                    "maximum": {
-                        "title": "Maximum of Sub-attribute",
-                        "description": "For 'maximum' of sub-attribute schema.",
-                        "type": "number",
-                        "default": ""
-                    },
-                    "exclusiveMaximum": {
-                        "title": "Exclusive Maximum?",
-                        "description": "For 'exclusiveMaximum' of sub-attribute schema.",
-                        "type": "boolean",
-                        "default": ""
-                    },
-                    "multipleOf": {
-                        "title": "Step of Sub-attribute",
-                        "description": "For 'multipleOf' of sub-attribute schema.",
-                        "type": "number",
-                        "minimum": 0,
-                        "exclusiveMinimum": true,
-                        "maximum": 1000,
-                        "exclusiveMaximum": false,
-                        "default": ""
-                    },
-                    "default": {
-                        "title": "Default of Sub-attribute",
-                        "description": "For 'default' of sub-attribute schema.",
-                        "type": "string",
-                        "default": ""
-                    }
-                }
-            };
-
-            //
-            settingsService.set(attributeSchema, attribute.schema); //window.alert(JSON.stringify(settingsService.get()));
-
+            propertiesService.manage(schemasService.attributeSchema(), attribute, "value"); //window.alert(JSON.stringify(propertiesService.get()));
         };
-
+        this.isMasterDirty = function () {
+            return manufactureService.isMasterDirty();
+        };
+        this.isEditingMaster = function () {
+            return true; //this.masterEdit !== null;
+        };
     }]);
 
 }(window.angular));
