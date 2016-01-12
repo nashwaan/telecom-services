@@ -32,11 +32,16 @@
         this.componentActive = null;
         this.featureActive = null;
         this.attributeActive = null;
-        //
-        this.getPlan = function () {
-            //window.alert("getPlan() called");
-            return assembleService.getPlan();
+        this.planStored = null;
+        this.bandStored = null;
+        this.componentStored = null;
+        this.featureStored = null;
+        this.attributeStored = null;
+        this.copy = function (object) {
+            return angular.copy(object);
         };
+        //
+        //this.newPlan();
         this.newPlan = function () {
             var plan = schemasService.planFresh();
             plan.name = "New Plan";
@@ -44,12 +49,19 @@
             assembleService.setPlan(plan);
             this.editPlan(plan);
         };
+        this.getPlan = function () {
+            //window.alert("getPlan() called");
+            return assembleService.getPlan();
+        };
         this.editPlan = function (plan) {
             propertiesService.manage(schemasService.planSchema(), plan, "Bands");
         };
         this.activatePlan = function (plan) {
             this.planActive = plan;
             this.editPlan(plan);
+        };
+        this.loadPlan = function () {
+            assembleService.loadPlan('data/plan-A.json');
         };
         this.savePlan = function (plan) {
             return true;
@@ -99,6 +111,9 @@
             this.featureActive = feature;
             this.editFeature(feature);
         };
+        this.getMasterName = function (feature) {
+            return feature.masterPath.split(">")[2];
+        };
         //
         this.dropIntoComponent = function (event, index, item, external, type, allowedTypes) {
             //window.console.log(JSON.stringify(event) + '\n' + JSON.stringify(index) + '\n' + JSON.stringify(item) + '\n' + JSON.stringify(external) + '\n' + JSON.stringify(type) + '\n' + JSON.stringify(allowedType));
@@ -112,7 +127,6 @@
                         feature[attribute] = null;
                     }
                 }
-                feature.masterName = item.name;
                 feature.masterPath = item.groupName + ">" + item.collectionName + ">" + item.name;
             }
             return feature;

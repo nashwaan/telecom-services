@@ -18,8 +18,6 @@
                     ng-repeat="group in cntrl.masters.get().Groups" 
                     ng-click="selected.item=group;selected.type='group'">
 
-                <md-button ng-click="cntrl.masters.check()" aria-label="Check">Check</md-button>
-
                 <section ng-repeat="collection in group.Collections" 
                          ng-click="selected.item=collection;selected.type='collection'">
                     

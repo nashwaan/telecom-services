@@ -15,7 +15,7 @@
                 masterEdit = angular.copy(master);
             },
             "getMasterEdit": function () {
-                if (masterEdit === null) {
+                if (!angular.equals(masterEdit, mastersService.getSelected())) {
                     this.setMasterEdit(mastersService.getSelected());
                 }
                 return masterEdit;

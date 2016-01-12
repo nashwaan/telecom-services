@@ -1,73 +1,103 @@
 {
-    "PlanName": "Business Ultimate",
+    "name": "Business Ultimate",
+    "description": "Business Ultimate plan is cool.",
     "Bands": [
         {
-            "BandName": "Business Ultimate Base Plans",
+            "name": "Base Plans",
+            "description": "There are interesting base plans to offer.",
             "Components": [
                 {
-                    "ComponentName": "B.U. Silver",
+                    "name": "Gold",
+                    "description": "Description for the Gold flavour.",
                     "Features": [
                         {
-                            "FeatureName": "Base Plan",
-                            "Attributes": [
-                                {
-                                    "AttributeName": "Prorate",
-                                    "Value": "Yes"
-                                },
-                                {
-                                    "AttributeName": "Destination",
-                                    "Value": "STD"
-                                }
-                            ]
+                            "carryOverCycles": 1,
+                            "destinationsAssignment": "Changeable by Customer only",
+                            "freebeesAmount": null,
+                            "freebeesCap": null,
+                            "freebeesDuration": null,
+                            "freebeesDurationType": null,
+                            "freebeesPriority": null,
+                            "freebeesTrigger": null,
+                            "freebeesUnit": null,
+                            "maxDestinationChanges": null,
+                            "maxDestinations": null,
+                            "nature": null,
+                            "networkLines": null,
+                            "notes": null,
+                            "outOfBundleCharge": null,
+                            "outOfBundlePulse": null,
+                            "permittedDestinations": null,
+                            "permittedSources": null,
+                            "prohibitedDestinations": null,
+                            "prohibitedSources": null,
+                            "prorateOnExit": null,
+                            "prorateOnSubscribe": null,
+                            "refillCycle": null,
+                            "technology": null,
+                            "unitPulse": null,
+                            "masterPath": "Mobile>Benefits>Call Freebees"
                         },
                         {
-                            "FeatureName": "Add-on Plan",
-                            "Attributes": [
-                                {
-                                    "AttributeName": "Prorate",
-                                    "Value": "Yes"
-                                },
-                                {
-                                    "AttributeName": "Destination",
-                                    "Value": "STD"
-                                }
-                            ]
+                            "calculationRoundUp": null,
+                            "changeBasePlan": "Change Device Flavor to Match Base Plan",
+                            "deviceSiCs": null,
+                            "deviceSourceCost": null,
+                            "deviceSubsidy": 2000,
+                            "deviceType": null,
+                            "glCode": null,
+                            "maxAllowedCost": null,
+                            "notes": null,
+                            "overflowAfterSubsidy": null,
+                            "requiredDeviceTags": null,
+                            "masterPath": "General>Benefits>Device"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "BandName": "Business Ultimate Add-ons",
-            "Components": [
+                },
                 {
-                    "ComponentName": "STD Add-on",
+                    "name": "Silver",
+                    "description": "Description for the Silver flavour.",
                     "Features": [
                         {
-                            "FeatureName": "Base Plan",
-                            "Attributes": [
-                                {
-                                    "AttributeName": "Prorate",
-                                    "Value": "Yes"
-                                },
-                                {
-                                    "AttributeName": "Destination",
-                                    "Value": "STD"
-                                }
-                            ]
+                            "carryOverCycles": 200,
+                            "destinationsAssignment": "Changeable by Customer only",
+                            "freebeesAmount": null,
+                            "freebeesCap": null,
+                            "freebeesDuration": null,
+                            "freebeesDurationType": null,
+                            "freebeesPriority": null,
+                            "freebeesTrigger": null,
+                            "freebeesUnit": null,
+                            "maxDestinationChanges": null,
+                            "maxDestinations": null,
+                            "nature": null,
+                            "networkLines": null,
+                            "notes": null,
+                            "outOfBundleCharge": null,
+                            "outOfBundlePulse": null,
+                            "permittedDestinations": null,
+                            "permittedSources": null,
+                            "prohibitedDestinations": null,
+                            "prohibitedSources": null,
+                            "prorateOnExit": null,
+                            "prorateOnSubscribe": null,
+                            "refillCycle": null,
+                            "technology": null,
+                            "unitPulse": null,
+                            "masterPath": "Mobile>Benefits>Call Freebees"
                         },
                         {
-                            "FeatureName": "Add-on Plan",
-                            "Attributes": [
-                                {
-                                    "AttributeName": "Prorate",
-                                    "Value": "Yes"
-                                },
-                                {
-                                    "AttributeName": "Destination",
-                                    "Value": "STD"
-                                }
-                            ]
+                            "calculationRoundUp": null,
+                            "changeBasePlan": "Change Device Flavor to Match Base Plan",
+                            "deviceSiCs": null,
+                            "deviceSourceCost": null,
+                            "deviceType": null,
+                            "glCode": null,
+                            "maxAllowedCost": null,
+                            "notes": null,
+                            "overflowAfterSubsidy": null,
+                            "requiredDeviceTags": null,
+                            "masterPath": "General>Benefits>Device"
                         }
                     ]
                 }

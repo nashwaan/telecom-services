@@ -133,22 +133,22 @@
                         <md-button class="md-primary md-raised" 
                                    flex="33" 
                                    ng-disabled="!cntrl.properties.isDirty()" 
-                                   ng-click="cntrl.updateValues($event)">
+                                   ng-click="cntrl.revertValues($event)">
                             
-                            <md-icon md-svg-icon="save"></md-icon>
-                            <md-tooltip>Apply changes made to values of properties</md-tooltip>
-                            Update
+                            <md-icon md-svg-icon="undo"></md-icon>
+                            <md-tooltip>Revert values of properties to previous state</md-tooltip>
+                            Revert
                             
                         </md-button>
                         
                         <md-button class="md-primary md-raised" 
                                    flex="33" 
                                    ng-disabled="!cntrl.properties.isDirty()" 
-                                   ng-click="cntrl.revertValues($event)">
+                                   ng-click="cntrl.updateValues($event)">
                             
-                            <md-icon md-svg-icon="undo"></md-icon>
-                            <md-tooltip>Revert values of properties to previous state</md-tooltip>
-                            Revert
+                            <md-icon md-svg-icon="save"></md-icon>
+                            <md-tooltip>Apply changes made to values of properties</md-tooltip>
+                            Update
                             
                         </md-button>
                         

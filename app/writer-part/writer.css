@@ -1,9 +1,86 @@
-h1.writer {
+.writer .title {
     font-family: "Segoe UI Light";
     font-size: 200%;
 }
 
+.writer h1 {
+    font-family: "Segoe UI Light";
+    font-size: 200%;
+    color: rgb(84, 118, 18);
+}
+
+.writer h2 {
+    font-family: "Segoe UI Light";
+    font-size: 160%;
+    color: rgb(141, 157, 8);
+}
+
+.writer h3 {
+    font-family: "Segoe UI Light";
+    font-size: 130%;
+    color: rgb(135, 136, 129);
+}
+
+.writer h4 {
+    font-family: "Segoe UI Light";
+    font-size: 120%;
+}
+
 .writer p {
     font-family: "Segoe UI";
-    font-size: 80%;
+    font-size: 100%;
+}
+
+body {
+    counter-reset: h1counter;
+}
+
+h1:before {
+    counter-increment: h1counter;
+    content: counter(h1counter) ". ";
+}
+
+h1 {
+    counter-reset: h2counter;
+}
+
+h2:before {
+    counter-increment: h2counter;
+    content: counter(h1counter) "." counter(h2counter) " ";
+}
+
+h2 {
+    counter-reset: h3counter;
+}
+
+h3:before {
+    counter-increment: h3counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) " ";
+}
+
+h3 {
+    counter-reset: h4counter;
+}
+
+h4:before {
+    counter-increment: h4counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) " ";
+}
+
+h4 {
+    counter-reset: h5counter;
+}
+
+h5:before {
+    counter-increment: h5counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) " ";
+}
+
+h5 {
+    counter-reset: h6counter;
+}
+
+h6:before {
+    counter-increment: h6counter;
+    content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter) " ";
 }

@@ -21,7 +21,7 @@
 .band {
     display: block !important;
     border-radius: 10px;
-    background-color: rgba(245, 245, 245, 1.0);
+    background-color: rgb(250, 250, 250)
 }
 
 .component {
@@ -58,6 +58,10 @@
 
 .canvas .md-item *:hover {
     color: cornflowerblue;
+}
+
+.assemble-warn {
+    color: crimson;
 }
 
 ddd.dndDragging {

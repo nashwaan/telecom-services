@@ -1,15 +1,53 @@
 <md-content flex ng-controller="manufactureController as cntrl">
 
-    <md-toolbar flex 
-                layout="row" 
-                layout-align="start center" 
-                class="md-hue-2">
-        
-        <div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
-            Editing Master: <b>{{cntrl.getEditMaster().Name}}</b>
+    <md-toolbar layout="row" class="md-theme-light">
+
+        <div class="fab-size" layout="row">
+        <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+            <md-fab-trigger>
+
+                <md-button class="md-fab md-mini md-primary md-raised" style="box-shadow:none;transform:scale(1.3)" aria-label="Master Options"> 
+                    <md-icon md-svg-src="3dots"></md-icon>
+                    <md-tooltip>Master Options</md-tooltip>
+                </md-button>
+
+            </md-fab-trigger>
+
+            <md-fab-actions>
+
+                <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addBand(plan)" aria-label="New Master">
+                    <md-icon md-svg-src="brick" aria-label="New Master"></md-icon>
+                    <md-tooltip>New Master</md-tooltip>
+                </md-button>
+
+                <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.saveMaster()" aria-label="Save Master">
+                    <md-icon md-svg-src="save" aria-label="Save Master"></md-icon>
+                    <md-tooltip>Save Master</md-tooltip>
+                </md-button>
+
+                <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addAttribute()" aria-label="Add Attribute">
+                    <md-icon md-svg-src="add" aria-label="Add Attribute"></md-icon>
+                    <md-tooltip>Add Attribute</md-tooltip>
+                </md-button>
+
+            </md-fab-actions>
+
+        </md-fab-speed-dial>
         </div>
+
+            <div layout="column" flex>
+
+                <div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
+                Editing Master: <b>{{cntrl.getEditMaster().name}}</b>
+                </div>
+
+            </div>
+
+        <!--<div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
+            Editing Master: <b>{{cntrl.getEditMaster().name}}</b>
+        </div>-->
         
-        <span flex></span>
+        <!--<span flex></span>
         
         <md-button ng-click="cntrl.saveMaster()" ng-disabled="cntrl.isMasterDirty()" aria-label="Save Master">
             
@@ -30,7 +68,7 @@
             <ng-md-icon icon="playlist_add"></ng-md-icon>
             <md-tooltip>Add Attribute</md-tooltip>
             
-        </md-button>
+        </md-button>-->
         
     </md-toolbar>
     
@@ -64,24 +102,6 @@
             <div flex="40" ng-repeat="property in [attribute]" ng-include="'property-'+property.type+'.html'"></div>
 
             <span flex="5"></span>
-            
-            <!--<div layout="column">
-            
-                <md-button ng-click="cntrl.moveAttributeUp(attribute)" aria-label="Move Attribute Up">
-
-                    <md-icon md-svg-icon="up"></md-icon>
-                    <md-tooltip>Move Attribute Up</md-tooltip>
-
-                </md-button>
-
-                <md-button ng-click="cntrl.moveAttributeDown(attribute)" aria-label="Move Attribute Down">
-
-                    <md-icon md-svg-icon="down"></md-icon>
-                    <md-tooltip>Move Attribute Down</md-tooltip>
-
-                </md-button>
-
-            </div>-->
             
             <md-button ng-click="cntrl.deleteAttribute(attribute)" aria-label="Delete Attribute">
             

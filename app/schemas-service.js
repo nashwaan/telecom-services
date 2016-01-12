@@ -23,8 +23,8 @@
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Master schema.",
-                    "description": "Schema for editing properties of a master.",
+                    "title": "Master",
+                    "description": "Edit master properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
@@ -92,8 +92,8 @@
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Attribute schema.",
-                    "description": "Schema for editing properties of a attribute.",
+                    "title": "Attribute",
+                    "description": "Edit attribute properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
@@ -194,8 +194,8 @@
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Plan schema.",
-                    "description": "Schema for editing properties of a plan.",
+                    "title": "Plan",
+                    "description": "Edit plan properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
@@ -225,8 +225,8 @@
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Band schema.",
-                    "description": "Schema for editing properties of a band.",
+                    "title": "Band",
+                    "description": "Edit band properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
@@ -256,8 +256,8 @@
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Component schema.",
-                    "description": "Schema for editing properties of a component.",
+                    "title": "Component",
+                    "description": "Edit component properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
@@ -287,8 +287,8 @@
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Feature schema.",
-                    "description": "Schema for editing properties of a feature.",
+                    "title": "Feature",
+                    "description": "Edit feature properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {

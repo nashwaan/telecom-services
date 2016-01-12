@@ -8,35 +8,55 @@
         
         <md-toolbar layout="row" class="md-theme-light">
 
-            <div layout="column" ng-click="cntrl.activatePlan(plan);selected.item=plan;selected.type='plan'">
-
-                <div class="md-headline">Plan: {{plan.name}}</div>
-                <div class="md-subhead">Total Bands: {{plan.Bands.length}}</div>
-
+            <div class="fab-size" layout="row">
+            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+                <md-fab-trigger>
+                    
+                    <md-button class="md-fab md-mini md-primary md-raised" style="box-shadow:none;transform:scale(1.3)" aria-label="Plan Options"> 
+                        <md-icon md-svg-src="3dots"></md-icon>
+                        <md-tooltip>Plan Options</md-tooltip>
+                    </md-button>
+                    
+                </md-fab-trigger>
+                
+                <md-fab-actions>
+                    
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addBand(plan)" aria-label="Add Band">
+                        <md-icon md-svg-src="add" aria-label="Add Band"></md-icon>
+                        <md-tooltip>Add Band</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.loadPlan()" aria-label="Load Plan">
+                        <md-icon md-svg-src="download" aria-label="Load Plan"></md-icon>
+                        <md-tooltip>Load Plan</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.savePlan()" aria-label="Save Plan">
+                        <md-icon md-svg-src="save" aria-label="Save Plan"></md-icon>
+                        <md-tooltip>Save Plan</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.newPlan()" aria-label="New Plan">
+                        <md-icon md-svg-src="new" aria-label="New Plan"></md-icon>
+                        <md-tooltip>New Plan</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="designer.Plans.splice($index,1)" aria-label="Delete Plan">
+                        <md-icon md-svg-src="delete" aria-label="Delete Plan"></md-icon>
+                        <md-tooltip>Delete Plan</md-tooltip>
+                    </md-button>
+                    
+                </md-fab-actions>
+                
+            </md-fab-speed-dial>
             </div>
 
-            <span flex></span>
+            <div layout="column" flex ng-click="cntrl.activatePlan(plan);selected.item=plan;selected.type='plan'">
 
-            <md-button ng-click="cntrl.savePlan(plan)" aria-label="Save Plan">
+                <div class="md-headline">{{plan.name?plan.name:'Plan:'}}</div>
+                <div class="md-subhead" ng-class="{'assemble-warn':!plan.Bands.length}">{{plan.Bands.length?"Total Bands: "+plan.Bands.length:"Add 'Band' to this plan."}}</div>
 
-                <md-icon md-svg-icon="save"></md-icon>
-                <md-tooltip>Save Plan</md-tooltip>
-
-            </md-button>    
-
-            <md-button ng-click="cntrl.newPlan()" aria-label="New Plan">
-
-                <md-icon md-svg-icon="new"></md-icon>
-                <md-tooltip>New Plan</md-tooltip>
-
-            </md-button>    
-
-            <md-button ng-click="cntrl.addBand(plan)" aria-label="Add Band">
-
-                <md-icon md-svg-icon="box"></md-icon>
-                <md-tooltip>Add Band</md-tooltip>
-
-            </md-button>    
+            </div>
 
         </md-toolbar>
 
@@ -65,30 +85,64 @@
 
 <script type="text/ng-template" id="band.html">
     
-    <md-list layout="column" 
+    <md-list layout="column" class="md-accent"
              layout-align="start start" 
              dnd-list="band.Components" 
              dnd-allowed-types="['component']" 
              dnd-horizontal-list="true">
         
-        <div layout="row" layout-align="space-between center">
+        <div layout="row" layout-align="start center">
             
+            <div class="fab-size-mini" layout="row">
+            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+                <md-fab-trigger>
+                    
+                    <md-button class="md-fab md-mini md-raised" style="box-shadow:none;transform:scale(1.3)" aria-label="Band Options">
+                        <md-icon md-svg-src="3dots"></md-icon>
+                        <md-tooltip>Band Options</md-tooltip>
+                    </md-button>
+                    
+                </md-fab-trigger>
+                
+                <md-fab-actions>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.addComponent(band)" aria-label="Add Component">
+                        <md-icon md-svg-src="add" aria-label="Add Component"></md-icon>
+                        <md-tooltip>Add Compnent</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandStored=cntrl.copy(band);plan.Bands.splice($index,1)" aria-label="Cut Band">
+                        <md-icon md-svg-src="cut" aria-label="Cut Band"></md-icon>
+                        <md-tooltip>Cut Band</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandStored=cntrl.copy(band)" aria-label="Copy Band">
+                        <md-icon md-svg-src="copy" aria-label="Copy Band"></md-icon>
+                        <md-tooltip>Copy Band</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.componentStored?band.Components.push(cntrl.componentStored):0" aria-label="Paste Component">
+                        <md-icon md-svg-src="paste" aria-label="Paste Component"></md-icon>
+                        <md-tooltip>Paste Component</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="plan.Bands.splice($index,1)" aria-label="Delete Band">
+                        <md-icon md-svg-src="delete" aria-label="Delete Band"></md-icon>
+                        <md-tooltip>Delete Band</md-tooltip>
+                    </md-button>
+                    
+                </md-fab-actions>
+                
+            </md-fab-speed-dial>
+            </div>
+
             <div layout="column">
                 
-                <div class="md-headline">Band: {{band.name}}</div>
-                <div class="md-subhead">Total Components: {{band.Components.length}}</div>
+                <div class="md-headline">{{band.name?band.name:'Band:'}}</div>
+                <div class="md-caption" ng-class="{'assemble-warn':!band.Components.length}">{{band.Components.length?"Total Components: "+band.Components.length:"Add 'Component' to this band."}}</div>
                 
             </div>
             
-            <md-card-avatar ng-click="cntrl.addComponent(band)" aria-label="Add Component">
-            <!--<md-button ng-click="cntrl.addComponent(band)" aria-label="Add Component">-->
-
-                <md-icon class="md-avatar-icon" md-svg-icon="stand"></md-icon>
-                <md-tooltip>Add Component</md-tooltip>
-
-            <!--</md-button>-->
-            </md-card-avatar>
-
         </div>
         
         <div layout="row" layout-xs="column">
@@ -122,16 +176,50 @@
              dnd-allowed-types="['feature','master']" 
              dnd-drop="cntrl.dropIntoComponent(event,index,item,external,type,['feature','master'])">
         
-        <md-card-header>
+        <md-card-header layout="row" layout-align="start start">
             
-            <md-card-avatar>
-                <md-icon class="md-avatar-icon" md-svg-icon="menu"></md-icon>
-            </md-card-avatar>
-            
+            <div class="fab-size-mini" layout="row">
+            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+                <md-fab-trigger>
+                    
+                    <md-button class="md-fab md-mini md-raised" style="background:#fff;box-shadow:none;transform:scale(1.3)" aria-label="Component Options">
+                        <md-icon md-svg-src="3dots"></md-icon>
+                        <md-tooltip>Component Options</md-tooltip>
+                    </md-button>
+                    
+                </md-fab-trigger>
+                
+                <md-fab-actions>
+                    
+                     <md-button class="md-fab md-mini md-raised" ng-click="cntrl.componentStored=cntrl.copy(component);band.Components.splice($index,1)" aria-label="Cut Component">
+                        <md-icon md-svg-src="cut" aria-label="Cut Component"></md-icon>
+                        <md-tooltip>Cut Component</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.componentStored=cntrl.copy(component)" aria-label="Copy Component">
+                        <md-icon md-svg-src="copy" aria-label="Copy Component"></md-icon>
+                        <md-tooltip>Copy Component</md-tooltip>
+                    </md-button>
+                    
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.featureStored?component.Features.push(cntrl.featureStored):0" aria-label="Paste Feature">
+                        <md-icon md-svg-src="paste" aria-label="Paste Feature"></md-icon>
+                        <md-tooltip>Paste Feature</md-tooltip>
+                    </md-button>
+                    
+                   <md-button class="md-fab md-mini md-raised" ng-click="band.Components.splice($index,1)" aria-label="Delete Component">
+                        <md-icon md-svg-src="delete" aria-label="Delete Component"></md-icon>
+                        <md-tooltip>Delete Component</md-tooltip>
+                    </md-button>
+                    
+                </md-fab-actions>
+                
+            </md-fab-speed-dial>
+            </div>
+
             <md-card-header-text>
                 
-                <div class="md-headline">Component: {{component.name}}</div>
-                <div class="md-subhead">Total Features: {{component.Features.length}}</div>
+                <div class="md-subhead">{{component.name?component.name:'Component:'}}</div>
+                <div class="md-caption" ng-class="{'assemble-warn':!component.Features.length}">{{component.Features.length?"Total Features: "+component.Features.length:"Add 'Feature' to this component."}}</div>
                 
             </md-card-header-text>
             
@@ -163,14 +251,14 @@
              dnd-list="feature.Attributes" 
              dnd-allowed-types="['attribute']">
         
-        <div aria-label="{{feature.masterName}}">
+        <div aria-label="{{cntrl.getMasterName(feature)}}">
             
             <md-icon class="" 
-                     md-svg-icon="{{feature.masterName | icon_provider}}" 
-                     aria-label="{{feature.masterName}}">
+                     md-svg-icon="{{cntrl.getMasterName(feature) | icon_provider}}" 
+                     aria-label="{{cntrl.getMasterName(feature)}}">
             </md-icon>
             
-            <span>{{feature.masterName}}</span>
+            <span>{{cntrl.getMasterName(feature)}}</span>
             
         </div>
         
