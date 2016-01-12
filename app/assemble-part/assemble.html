@@ -9,7 +9,8 @@
         <md-toolbar layout="row" class="md-theme-light">
 
             <div class="fab-size" layout="row">
-            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+            <md-fab-speed-dial md-direction="right" class="md-scale md-hover-full">
+                
                 <md-fab-trigger>
                     
                     <md-button class="md-fab md-mini md-primary md-raised" style="box-shadow:none;transform:scale(1.3)" aria-label="Plan Options"> 
@@ -87,14 +88,14 @@
     
     <md-list layout="column" class="md-accent"
              layout-align="start start" 
-             dnd-list="band.Components" 
-             dnd-allowed-types="['component']" 
+             dnd-list="band.Flavors" 
+             dnd-allowed-types="['flavor']" 
              dnd-horizontal-list="true">
         
         <div layout="row" layout-align="start center">
             
             <div class="fab-size-mini" layout="row">
-            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+            <md-fab-speed-dial md-direction="right" class="md-scale md-hover-full">
                 <md-fab-trigger>
                     
                     <md-button class="md-fab md-mini md-raised" style="box-shadow:none;transform:scale(1.3)" aria-label="Band Options">
@@ -106,9 +107,9 @@
                 
                 <md-fab-actions>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.addComponent(band)" aria-label="Add Component">
-                        <md-icon md-svg-src="add" aria-label="Add Component"></md-icon>
-                        <md-tooltip>Add Compnent</md-tooltip>
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.addFlavor(band)" aria-label="Add Flavor">
+                        <md-icon md-svg-src="add" aria-label="Add Flavor"></md-icon>
+                        <md-tooltip>Add Flavor</md-tooltip>
                     </md-button>
                     
                     <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandStored=cntrl.copy(band);plan.Bands.splice($index,1)" aria-label="Cut Band">
@@ -121,9 +122,9 @@
                         <md-tooltip>Copy Band</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.componentStored?band.Components.push(cntrl.componentStored):0" aria-label="Paste Component">
-                        <md-icon md-svg-src="paste" aria-label="Paste Component"></md-icon>
-                        <md-tooltip>Paste Component</md-tooltip>
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorStored?band.Flavors.push(cntrl.flavorStored):0" aria-label="Paste Flavor">
+                        <md-icon md-svg-src="paste" aria-label="Paste Flavor"></md-icon>
+                        <md-tooltip>Paste Flavor</md-tooltip>
                     </md-button>
                     
                     <md-button class="md-fab md-mini md-raised" ng-click="plan.Bands.splice($index,1)" aria-label="Delete Band">
@@ -139,7 +140,7 @@
             <div layout="column">
                 
                 <div class="md-headline">{{band.name?band.name:'Band:'}}</div>
-                <div class="md-caption" ng-class="{'assemble-warn':!band.Components.length}">{{band.Components.length?"Total Components: "+band.Components.length:"Add 'Component' to this band."}}</div>
+                <div class="md-caption" ng-class="{'assemble-warn':!band.Flavors.length}">{{band.Flavors.length?"Total Flavors: "+band.Flavors.length:"Add 'Flavor' to this band."}}</div>
                 
             </div>
             
@@ -147,16 +148,16 @@
         
         <div layout="row" layout-xs="column">
             
-            <md-item class="component" 
-                     ng-repeat="component in band.Components" 
-                     dnd-draggable="component" 
-                     dnd-type="'component'" 
+            <md-item class="flavor" 
+                     ng-repeat="flavor in band.Flavors" 
+                     dnd-draggable="flavor" 
+                     dnd-type="'flavor'" 
                      dnd-effect-allowed="copy" 
-                     dnd-moved="'band.Components.splice($index,1)'" 
-                     dnd-selected="selected.item=component;selected.type='component'" 
-                     ng-click="cntrl.activateComponent(component)" 
-                     ng-class="{'selected':cntrl.componentActive===component}" 
-                     ng-include="'component.html'">
+                     dnd-moved="'band.Flavors.splice($index,1)'" 
+                     dnd-selected="selected.item=flavor;selected.type='flavor'" 
+                     ng-click="cntrl.activateFlavor(flavor)" 
+                     ng-class="{'selected':cntrl.flavorActive===flavor}" 
+                     ng-include="'flavor.html'">
                 
             </md-item>
             
@@ -168,47 +169,47 @@
 
 
 
-<script type="text/ng-template" id="component.html">
+<script type="text/ng-template" id="flavor.html">
     
     <md-card layout="column" 
              layout-align="start start" 
-             dnd-list="component.Features" 
+             dnd-list="flavor.Features" 
              dnd-allowed-types="['feature','master']" 
-             dnd-drop="cntrl.dropIntoComponent(event,index,item,external,type,['feature','master'])">
+             dnd-drop="cntrl.dropIntoFlavor(event,index,item,external,type,['feature','master'])">
         
         <md-card-header layout="row" layout-align="start start">
             
             <div class="fab-size-mini" layout="row">
-            <md-fab-speed-dial md-open="false" md-direction="right" class="md-scale">
+            <md-fab-speed-dial md-direction="right" class="md-scale md-hover-full">
                 <md-fab-trigger>
                     
-                    <md-button class="md-fab md-mini md-raised" style="background:#fff;box-shadow:none;transform:scale(1.3)" aria-label="Component Options">
+                    <md-button class="md-fab md-mini md-raised" style="background:#fff;box-shadow:none;transform:scale(1.3)" aria-label="Flavor Options">
                         <md-icon md-svg-src="3dots"></md-icon>
-                        <md-tooltip>Component Options</md-tooltip>
+                        <md-tooltip>Flavor Options</md-tooltip>
                     </md-button>
                     
                 </md-fab-trigger>
                 
                 <md-fab-actions>
                     
-                     <md-button class="md-fab md-mini md-raised" ng-click="cntrl.componentStored=cntrl.copy(component);band.Components.splice($index,1)" aria-label="Cut Component">
-                        <md-icon md-svg-src="cut" aria-label="Cut Component"></md-icon>
-                        <md-tooltip>Cut Component</md-tooltip>
+                     <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorStored=cntrl.copy(flavor);band.Flavors.splice($index,1)" aria-label="Cut Flavor">
+                        <md-icon md-svg-src="cut" aria-label="Cut Flavor"></md-icon>
+                        <md-tooltip>Cut Flavor</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.componentStored=cntrl.copy(component)" aria-label="Copy Component">
-                        <md-icon md-svg-src="copy" aria-label="Copy Component"></md-icon>
-                        <md-tooltip>Copy Component</md-tooltip>
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorStored=cntrl.copy(flavor)" aria-label="Copy Flavor">
+                        <md-icon md-svg-src="copy" aria-label="Copy Flavor"></md-icon>
+                        <md-tooltip>Copy Flavor</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.featureStored?component.Features.push(cntrl.featureStored):0" aria-label="Paste Feature">
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.featureStored?flavor.Features.push(cntrl.featureStored):0" aria-label="Paste Feature">
                         <md-icon md-svg-src="paste" aria-label="Paste Feature"></md-icon>
                         <md-tooltip>Paste Feature</md-tooltip>
                     </md-button>
                     
-                   <md-button class="md-fab md-mini md-raised" ng-click="band.Components.splice($index,1)" aria-label="Delete Component">
-                        <md-icon md-svg-src="delete" aria-label="Delete Component"></md-icon>
-                        <md-tooltip>Delete Component</md-tooltip>
+                   <md-button class="md-fab md-mini md-raised" ng-click="band.Flavors.splice($index,1)" aria-label="Delete Flavor">
+                        <md-icon md-svg-src="delete" aria-label="Delete Flavor"></md-icon>
+                        <md-tooltip>Delete Flavor</md-tooltip>
                     </md-button>
                     
                 </md-fab-actions>
@@ -218,19 +219,19 @@
 
             <md-card-header-text>
                 
-                <div class="md-subhead">{{component.name?component.name:'Component:'}}</div>
-                <div class="md-caption" ng-class="{'assemble-warn':!component.Features.length}">{{component.Features.length?"Total Features: "+component.Features.length:"Add 'Feature' to this component."}}</div>
+                <div class="md-subhead">{{flavor.name?flavor.name:'Flavor:'}}</div>
+                <div class="md-caption" ng-class="{'assemble-warn':!flavor.Features.length}">{{flavor.Features.length?"Total Features: "+flavor.Features.length:"Add 'Feature' to this flavor."}}</div>
                 
             </md-card-header-text>
             
         </md-card-header>
         
         <md-card-content class="feature" 
-                         ng-repeat="feature in component.Features" 
+                         ng-repeat="feature in flavor.Features" 
                          dnd-draggable="feature" 
                          dnd-type="'feature'" 
                          dnd-effect-allowed="move" 
-                         dnd-moved="'component.Features.splice($index,1)'" 
+                         dnd-moved="'flavor.Features.splice($index,1)'" 
                          dnd-selected="selected.item=feature;selected.type='feature'" 
                          ng-click="cntrl.activateFeature(feature)" 
                          ng-class="{'selected':cntrl.featureActive===feature}" 
@@ -312,8 +313,8 @@
                style="position:absolute;top:-10px;right:10px;z-index:1000;" 
                md-no-ink>
         
-        <md-tooltip>Actions</md-tooltip>
         <md-icon md-svg-icon="share"></md-icon>
+        <md-tooltip>Actions</md-tooltip>
         
     </md-button>
     

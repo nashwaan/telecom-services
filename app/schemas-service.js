@@ -218,7 +218,7 @@
                 return {
                     "name": "",
                     "description": "",
-                    "Components": []
+                    "Flavors": []
                 };
             },
             bandSchema: function () {
@@ -245,31 +245,31 @@
                     }
                 };
             },
-            componentFresh: function () {
+            flavorFresh: function () {
                 return {
                     "name": "",
                     "description": "",
                     "Features": []
                 };
             },
-            componentSchema: function () {
+            flavorSchema: function () {
                 return {
                     "$schema": "http://json-schema.org/draft-04/schema#",
                     "id": "http://www.etisalat.ae",
-                    "title": "Component",
-                    "description": "Edit component properties.",
+                    "title": "Flavor",
+                    "description": "Edit flavor properties.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
                         "name": {
-                            "title": "Component Name",
-                            "description": "Specify name for this component.",
+                            "title": "Flavor Name",
+                            "description": "Specify name for this flavor.",
                             "type": "string",
                             "default": ""
                         },
                         "description": {
-                            "title": "Component Description",
-                            "description": "Specify description for this component.",
+                            "title": "Flavor Description",
+                            "description": "Specify description for this flavor.",
                             "type": "string",
                             "default": ""
                         }

@@ -1,74 +1,70 @@
 <md-sidenav class="md-sidenav-left Xmd-whiteframe-z2" 
             layout="column" 
             md-component-id="masters" 
-            md-is-locked-open="$mdMedia('gt-sm')">
-    
-    <!--<md-toolbar class="md-theme-light">
-        
+            md-is-locked-open="$mdMedia('gt-sm')&&cntrl.isDocked('masters')">
+
+    <md-toolbar class="md-theme-light">
+
         <div class="md-toolbar-tools md-headline">Masters</div>
-        
-    </md-toolbar>-->
 
-    <div ng-controller="mastersController as cntrl">
-        
-        <md-tabs md-border-bottom 
-                 md-dynamic-height>
+    </md-toolbar>
 
-            <md-tab label="{{group.name}}" 
-                    ng-repeat="group in cntrl.masters.get().Groups" 
-                    ng-click="selected.item=group;selected.type='group'">
+    <md-tabs md-border-bottom 
+             md-dynamic-height>
 
-                <section ng-repeat="collection in group.Collections" 
-                         ng-click="selected.item=collection;selected.type='collection'">
-                    
-                    <md-subheader class="collection">
-                        {{collection.name}}
-                    </md-subheader>
-                    
-                    <md-list class="masters" 
-                             dnd-list="collection.Properties" 
-                             dnd-allowed-types="['master']">
+        <md-tab label="{{group.name}}" 
+                ng-repeat="group in cntrl.getGroups()" 
+                ng-click="selected.item=group;selected.type='group'">
 
-                        <md-item class="master md-button md-raised" 
-                                 ng-repeat="master in collection.Masters" 
-                                 ng-click="cntrl.selectMaster(group.name,collection.name,master)" 
-                                 ng-class="{'selected':selected.item===master}" 
-                                 dnd-draggable="master" 
-                                 dnd-type="'master'" 
-                                 dnd-effect-allowed="move" 
-                                 dnd-selected="selected.item=master;selected.type='master'" 
-                                 dnd-moved="collection.Properties.splice($index,1)" 
-                                 aria-label="{{master.Property}}">
+            <section ng-repeat="collection in group.Collections" 
+                     ng-click="selected.item=collection;selected.type='collection'">
 
-                            <md-icon class="master-icon" 
-                                     md-svg-icon="{{master.name | icon_provider}}" >
-                            </md-icon>
-                            
-                            <md-tooltip ng-if="master.description">{{master.description}}</md-tooltip>
-                            
-                            <span>{{master.name}}</span>
+                <md-subheader class="collection">
+                    {{collection.name}}
+                </md-subheader>
 
-                        </md-item>
+                <md-list class="masters" 
+                         dnd-list="collection.Properties" 
+                         dnd-allowed-types="['master']">
 
-                        <md-item class="master dndPlaceholder md-button md-raised"
-                                 aria-label="{{selected.item.name}}">
+                    <md-item class="master md-button md-raised" 
+                             ng-repeat="master in collection.Masters" 
+                             ng-click="cntrl.selectMaster(group.name,collection.name,master)" 
+                             ng-class="{'selected':selected.item===master}" 
+                             dnd-draggable="master" 
+                             dnd-type="'master'" 
+                             dnd-effect-allowed="move" 
+                             dnd-selected="selected.item=master;selected.type='master'" 
+                             dnd-moved="collection.Properties.splice($index,1)" 
+                             aria-label="{{master.Property}}">
 
-                            <md-icon class="avatar" 
-                                     md-svg-icon="{{selected.item.name | icon_provider}}">
-                            </md-icon>
-                            
-                            <span>{{selected.item.name}}</span>
+                        <md-icon class="master-icon" 
+                                 md-svg-icon="{{master.name | icon_provider}}" >
+                        </md-icon>
 
-                        </md-item>
+                        <md-tooltip ng-if="master.description">{{master.description}}</md-tooltip>
 
-                    </md-list>
-                    
-                </section>
-                
-            </md-tab>
+                        <span>{{master.name}}</span>
 
-        </md-tabs>
-        
-    </div>
-    
+                    </md-item>
+
+                    <md-item class="master dndPlaceholder md-button md-raised"
+                             aria-label="{{selected.item.name}}">
+
+                        <md-icon class="avatar" 
+                                 md-svg-icon="{{selected.item.name | icon_provider}}">
+                        </md-icon>
+
+                        <span>{{selected.item.name}}</span>
+
+                    </md-item>
+
+                </md-list>
+
+            </section>
+
+        </md-tab>
+
+    </md-tabs>
+
 </md-sidenav>

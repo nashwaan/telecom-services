@@ -118,66 +118,62 @@
 <md-sidenav class="md-sidenav-right Xmd-whiteframe-z2" 
             layout="column" 
             md-component-id="properties" 
-            md-is-locked-open="$mdMedia('gt-sm')">
-    
+            md-is-locked-open="$mdMedia('gt-sm')&&cntrl.isDocked('properties')">
+
     <md-tabs md-dynamic-height md-border-bottom>
-        
+
         <md-tab label="properties">
-            
-            <div ng-controller="propertiesController as cntrl">
-                
-                <div layout="column" layout-align="start" flex>
-                    
-                    <div layout="row" layout-align="space-around">
-                        
-                        <md-button class="md-primary md-raised" 
-                                   flex="33" 
-                                   ng-disabled="!cntrl.properties.isDirty()" 
-                                   ng-click="cntrl.revertValues($event)">
-                            
-                            <md-icon md-svg-icon="undo"></md-icon>
-                            <md-tooltip>Revert values of properties to previous state</md-tooltip>
-                            Revert
-                            
-                        </md-button>
-                        
-                        <md-button class="md-primary md-raised" 
-                                   flex="33" 
-                                   ng-disabled="!cntrl.properties.isDirty()" 
-                                   ng-click="cntrl.updateValues($event)">
-                            
-                            <md-icon md-svg-icon="save"></md-icon>
-                            <md-tooltip>Apply changes made to values of properties</md-tooltip>
-                            Update
-                            
-                        </md-button>
-                        
-                        <!--<md-button ng-click="cntrl.check()" flex="20">Check</md-button>-->
-                        
-                    </div>
-                    
+
+            <div layout="column" layout-align="start" flex>
+
+                <div layout="row" layout-align="space-around">
+
+                    <md-button class="md-primary md-raised" 
+                               flex="33" 
+                               ng-disabled="!cntrl.isPropertiesDirty()" 
+                               ng-click="cntrl.revertValues($event)">
+
+                        <md-icon md-svg-icon="undo"></md-icon>
+                        <md-tooltip>Revert values of properties to previous state</md-tooltip>
+                        Revert
+
+                    </md-button>
+
+                    <md-button class="md-primary md-raised" 
+                               flex="33" 
+                               ng-disabled="!cntrl.isPropertiesDirty()" 
+                               ng-click="cntrl.updateValues($event)">
+
+                        <md-icon md-svg-icon="save"></md-icon>
+                        <md-tooltip>Apply changes made to values of properties</md-tooltip>
+                        Update
+
+                    </md-button>
+
+                    <!--<md-button ng-click="cntrl.check()" flex="20">Check</md-button>-->
+
                 </div>
-                
-                <md-item ng-repeat="property in [cntrl.properties.get()]" ng-include="'property-selector.html'"></md-item>
-                                
+
             </div>
-            
+
+            <md-item ng-repeat="property in [cntrl.getProperties()]" ng-include="'property-selector.html'"></md-item>
+
         </md-tab>
-        
+
         <md-tab label="BRD">
-            
+
             <div class="highlightable" layout="column" ng-include="'writer-part/writer.html'"></div>
-            
+
         </md-tab>
-        
+
         <md-tab label="JSON">
-            
+
             <p>JSON for the selected {{selected.type}}:</p>
-            
+
             <pre class="highlightable">{{selected.item | json:4 }}</pre>
-            
+
         </md-tab>
-        
+
     </md-tabs>
-    
+
 </md-sidenav>

@@ -137,20 +137,20 @@
     }]);
 
     // define controller for masters
-    angular.module('TheApp').controller('mastersController', ['mastersService', 'propertiesService', function (mastersService, propertiesService) {
-
-        this.masters = mastersService;
-
-        this.properties = propertiesService;
-
-        this.selectMaster = function (groupName, collectionName, master) {
+    angular.module('TheApp').controller('mastersController', ['mastersService', 'propertiesService', 'navigationService', function (mastersService, propertiesService, navigationService) {
+        var self = this;
+        self.isDocked = function (componentId) {
+            return navigationService.isSidenavLocked(componentId);
+        };
+        self.getGroups = function () {
+            return mastersService.get().Groups;
+        };
+        self.selectMaster = function (groupName, collectionName, master) {
             // track selected master
             mastersService.select(groupName, collectionName, master);
-
             // show attributes of master
             propertiesService.manage(master.Attributes);
         };
-
     }]);
 
 }(window.angular));

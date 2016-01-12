@@ -23,23 +23,23 @@
 
             <p>{{band.description}}</p>
 
-            <p>There are {{band.Components.length}} flavors in <i>{{band.name}}</i>:</p>
+            <p>There are {{band.Flavors.length}} flavors in <i>{{band.name}}</i>:</p>
             <ol>
-                <li ng-repeat="component in band.Components">{{component.name}}</li>
+                <li ng-repeat="flavor in band.Flavors">{{flavor.name}}</li>
             </ol>
 
-            <div ng-repeat="component in band.Components">
+            <div ng-repeat="flavor in band.Flavors">
 
-                <h2>{{component.name}}</h2>
+                <h2>{{flavor.name}}</h2>
 
-                <p>{{component.description}}</p>
+                <p>{{flavor.description}}</p>
 
-                <p>There are {{component.Features.length}} features in <i>{{component.name}}</i>:</p>
+                <p>There are {{flavor.Features.length}} features in <i>{{flavor.name}}</i>:</p>
                 <ol>
-                    <li ng-repeat="feature in component.Features">{{wrtr.getMasterName(feature)}}</li>
+                    <li ng-repeat="feature in flavor.Features">{{wrtr.getMasterName(feature)}}</li>
                 </ol>
 
-                <div ng-repeat="feature in component.Features">
+                <div ng-repeat="feature in flavor.Features">
 
                     <h3>{{wrtr.getMasterName(feature)}}</h3>
 

@@ -60,8 +60,8 @@
 
             /*jslint bitwise: false*/
 
-            var primaryColor = blendColors("#BED308", "#719E19", 0.5),
-                accentColor = "#878881";
+            var primaryColor = "#84b478",
+                accentColor = "#fce2c7";
             $mdThemingProvider.definePalette('etisalatGreenPalette', {
                 '50': shadeColor(primaryColor, 0.80),
                 '100': shadeColor(primaryColor, 0.60),

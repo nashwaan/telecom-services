@@ -5,7 +5,7 @@
         {
             "name": "Base Plans",
             "description": "There are interesting base plans to offer.",
-            "Components": [
+            "Flavors": [
                 {
                     "name": "Gold",
                     "description": "Description for the Gold flavour.",

@@ -51,7 +51,7 @@
 
     <section layout="row" flex style="overflow:hidden">
 
-        <aside layout="column" ng-include="'masters-part/masters.html'"></aside>
+        <aside layout="column" ng-include="'masters-part/masters.html'" ng-controller="mastersController as cntrl"></aside>
 
         <md-content flex>
 
@@ -60,7 +60,7 @@
 
         </md-content>
 
-        <aside layout="column" ng-include="'properties-part/properties.html'"></aside>
+        <aside layout="column" ng-include="'properties-part/properties.html'" ng-controller="propertiesController as cntrl"></aside>
 
     </section>
 

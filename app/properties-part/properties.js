@@ -81,20 +81,26 @@
     });
 
     // define controller for properties
-    angular.module('TheApp').controller('propertiesController', ['propertiesService', 'mastersService', function (propertiesService, mastersService) {
-
-        this.properties = propertiesService;
-
-        this.updateValues = function (e) {
+    angular.module('TheApp').controller('propertiesController', ['navigationService', 'propertiesService', 'mastersService', function (navigationService, propertiesService, mastersService) {
+        var self = this;
+        self.isDocked = function (componentId) {
+            return navigationService.isSidenavLocked(componentId);
+        };
+        self.properties = propertiesService;
+        self.updateValues = function (e) {
             propertiesService.update();
         };
-
-        this.revertValues = function (e) {
+        self.isPropertiesDirty = function () {
+            return propertiesService.isDirty();
+        };
+        self.revertValues = function (e) {
             propertiesService.revert();
         };
-
-        this.check = function () {
+        self.check = function () {
             propertiesService.check();
+        };
+        self.getProperties = function () {
+            return propertiesService.get();
         };
 
     }]);
