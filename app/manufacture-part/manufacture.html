@@ -7,7 +7,7 @@
             <md-fab-trigger>
 
                 <md-button class="md-fab md-mini md-primary md-raised md-hue-2" style="box-shadow:none;transform:scale(1.3)" aria-label="Master Options"> 
-                    <md-icon md-svg-src="3dots"></md-icon>
+                    <md-icon md-svg-icon="gui:hdots"></md-icon>
                     <md-tooltip>Master Options</md-tooltip>
                 </md-button>
 
@@ -16,17 +16,17 @@
             <md-fab-actions>
 
                 <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addBand(plan)" aria-label="New Master">
-                    <md-icon md-svg-src="brick" aria-label="New Master"></md-icon>
+                    <md-icon md-svg-icon="gui:brick" aria-label="New Master"></md-icon>
                     <md-tooltip>New Master</md-tooltip>
                 </md-button>
 
                 <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.saveMaster()" aria-label="Save Master">
-                    <md-icon md-svg-src="save" aria-label="Save Master"></md-icon>
+                    <md-icon md-svg-icon="gui:save" aria-label="Save Master"></md-icon>
                     <md-tooltip>Save Master</md-tooltip>
                 </md-button>
 
                 <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addAttribute()" aria-label="Add Attribute">
-                    <md-icon md-svg-src="add" aria-label="Add Attribute"></md-icon>
+                    <md-icon md-svg-icon="gui:add" aria-label="Add Attribute"></md-icon>
                     <md-tooltip>Add Attribute</md-tooltip>
                 </md-button>
 
@@ -43,33 +43,6 @@
 
             </div>
 
-        <!--<div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
-            Editing Master: <b>{{cntrl.getEditMaster().name}}</b>
-        </div>-->
-        
-        <!--<span flex></span>
-        
-        <md-button ng-click="cntrl.saveMaster()" ng-disabled="cntrl.isMasterDirty()" aria-label="Save Master">
-            
-            <md-icon md-svg-icon="save"></md-icon>
-            <md-tooltip>Save Master</md-tooltip>
-            
-        </md-button>
-        
-        <md-button ng-click="cntrl.newMaster()" aria-label="New Master">
-            
-            <md-icon md-svg-icon="brick"></md-icon>
-            <md-tooltip>New Master</md-tooltip>
-            
-        </md-button>    
-        
-        <md-button ng-click="cntrl.addAttribute()" aria-label="Add Attribute">
-
-            <ng-md-icon icon="playlist_add"></ng-md-icon>
-            <md-tooltip>Add Attribute</md-tooltip>
-            
-        </md-button>-->
-        
     </md-toolbar>
     
     <md-item class="master md-button md-raised" 
@@ -105,7 +78,7 @@
             
             <md-button ng-click="cntrl.deleteAttribute(attribute)" aria-label="Delete Attribute">
             
-                <md-icon md-svg-icon="delete"></md-icon>
+                <md-icon md-svg-icon="gui:delete"></md-icon>
                 <md-tooltip>Delete Attribute</md-tooltip>
                 
             </md-button>

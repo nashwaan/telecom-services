@@ -1,7 +1,7 @@
 <md-sidenav class="md-sidenav-left Xmd-whiteframe-z2" 
             layout="column" 
             md-component-id="masters" 
-            md-is-locked-open="$mdMedia('gt-sm')&&cntrl.isDocked('masters')">
+            md-is-locked-open="$mdMedia('gt-md')&&cntrl.isDocked('masters')">
 
     <md-toolbar class="md-theme-light">
 
@@ -38,9 +38,8 @@
                              dnd-moved="collection.Properties.splice($index,1)" 
                              aria-label="{{master.Property}}">
 
-                        <md-icon class="master-icon" 
-                                 md-svg-icon="{{master.name | icon_provider}}" >
-                        </md-icon>
+                        <!--<md-icon md-svg-icon="gui:stand"></md-icon>-->
+                        <md-icon class="master-icon" md-svg-icon="{{master.name | icon_provider}}"></md-icon>
 
                         <md-tooltip ng-if="master.description">{{master.description}}</md-tooltip>
 

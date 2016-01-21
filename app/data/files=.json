@@ -1,0 +1,504 @@
+[  
+   {  
+      "children":[  
+         {  
+            "children":[  
+               {  
+                  "data":{  
+                     "dateModified":"13/03/2014 10:14",
+                     "name":"bfsve.exe",
+                     "size":"56 kb",
+                     "type":"Application"
+                  },
+                  "group":false
+               },
+               {  
+                  "data":{  
+                     "dateModified":"27/11/2012 04:12",
+                     "name":"csup.txt",
+                     "size":"1 kb",
+                     "type":"Text Document"
+                  },
+                  "group":false
+               },
+               {  
+                  "data":{  
+                     "dateModified":"18/03/2014 00:56",
+                     "name":"diagwrn.xml",
+                     "size":"21 kb",
+                     "type":"XML File"
+                  },
+                  "group":false
+               }
+            ],
+            "data":{  
+               "dateModified":"27/02/2014 04:12",
+               "name":"Windows",
+               "size":"",
+               "type":"File Folder"
+            },
+            "group":true
+         },
+         {  
+            "children":[  
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"ASUS",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"Classic Shell",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"Common Files",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"DisplayLink Core Software",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"Intel",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"Internet Explorer",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"Intel Corporation",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "group":true
+               },
+               {  
+                  "children":[  
+                     {  
+                        "children":[  
+                           {  
+                              "data":{  
+                                 "dateModified":"13/03/2014 10:14",
+                                 "name":"java.exe",
+                                 "size":"56 kb",
+                                 "type":"Application"
+                              },
+                              "group":false
+                           },
+                           {  
+                              "data":{  
+                                 "dateModified":"27/11/2012 04:12",
+                                 "name":"javac.exe",
+                                 "size":"1 kb",
+                                 "type":"Application"
+                              },
+                              "group":false
+                           },
+                           {  
+                              "data":{  
+                                 "dateModified":"18/03/2014 00:56",
+                                 "name":"weblaunch.exe",
+                                 "size":"21 kb",
+                                 "type":"Application"
+                              },
+                              "group":false
+                           }
+                        ],
+                        "data":{  
+                           "dateModified":"13/03/2014 1014",
+                           "name":"jdk1.8.0",
+                           "size":"",
+                           "type":"File Folder"
+                        },
+                        "group":true
+                     },
+                     {  
+                        "children":[  
+                           {  
+                              "data":{  
+                                 "dateModified":"13/03/2014 10:14",
+                                 "name":"java.exe",
+                                 "size":"56 kb",
+                                 "type":"Application"
+                              },
+                              "group":false
+                           },
+                           {  
+                              "data":{  
+                                 "dateModified":"27/11/2012 04:12",
+                                 "name":"javac.exe",
+                                 "size":"1 kb",
+                                 "type":"Application"
+                              },
+                              "group":false
+                           },
+                           {  
+                              "data":{  
+                                 "dateModified":"18/03/2014 00:56",
+                                 "name":"weblaunch.exe",
+                                 "size":"21 kb",
+                                 "type":"Application"
+                              },
+                              "group":false
+                           }
+                        ],
+                        "data":{  
+                           "dateModified":"13/03/2014 1014",
+                           "name":"jre1.8.0_31",
+                           "size":"",
+                           "type":"File Folder"
+                        },
+                        "group":true
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"13/03/2014 10:14",
+                           "name":"bfsve.exe",
+                           "size":"56 kb",
+                           "type":"Application"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"27/11/2012 04:12",
+                           "name":"csup.txt",
+                           "size":"1 kb",
+                           "type":"Text Document"
+                        },
+                        "group":false
+                     },
+                     {  
+                        "data":{  
+                           "dateModified":"18/03/2014 00:56",
+                           "name":"diagwrn.xml",
+                           "size":"21 kb",
+                           "type":"XML File"
+                        },
+                        "group":false
+                     }
+                  ],
+                  "data":{  
+                     "dateModified":"13/03/2014 1014",
+                     "name":"Java",
+                     "size":"",
+                     "type":"File Folder"
+                  },
+                  "expanded":true,
+                  "group":true
+               }
+            ],
+            "data":{  
+               "dateModified":"11/09/2013 02:11",
+               "name":"Program Files",
+               "size":"",
+               "type":"File Folder"
+            },
+            "expanded":true,
+            "group":true
+         },
+         {  
+            "data":{  
+               "dateModified":"27/11/2012 04:12",
+               "name":"boot.ini",
+               "size":"16 kb",
+               "type":"Boot File"
+            },
+            "group":false
+         },
+         {  
+            "data":{  
+               "dateModified":"18/03/2014 00:56",
+               "name":"system.cfg",
+               "size":"13 kb",
+               "type":"System File"
+            },
+            "group":false
+         }
+      ],
+      "data":{  
+         "name":"C:"
+      },
+      "expanded":true,
+      "group":true
+   },
+   {  
+      "children":[  
+         {  
+            "data":{  
+               "dateModified":"13/03/2014 10:14",
+               "name":"Game of Thrones s05e01.avi",
+               "size":"1034 mb",
+               "type":"Movie"
+            },
+            "group":false
+         },
+         {  
+            "data":{  
+               "dateModified":"27/11/2012 04:12",
+               "name":"The Knick s01e01",
+               "size":"523 mb",
+               "type":"Text Document"
+            },
+            "group":false
+         },
+         {  
+            "data":{  
+               "dateModified":"18/03/2014 00:56",
+               "name":"musicbackup1.zip",
+               "size":"25 mb",
+               "type":"Compressed Zip File"
+            },
+            "group":false
+         },
+         {  
+            "data":{  
+               "dateModified":"18/03/2014 00:56",
+               "name":"musicbackup2.zip",
+               "size":"25 mb",
+               "type":"Compressed Zip File"
+            },
+            "group":false
+         }
+      ],
+      "data":{  
+         "name":"D:"
+      },
+      "group":true
+   }
+]

@@ -28,15 +28,15 @@
         })
         .filter('icon_provider', function () {
             return function (input) {
-
-                // ensure the input is a valid string
-                input = input || '';
+                
+                // default to 'generic' if no input is supplied
+                input = input || 'generic';
 
                 // remove white space from the string (regex: \s white space  + one or more occurance  /g global search)
-                var filename = input.replace(/\s+/g, '');
+                var svgId = input.replace(/\s+/g, '');
 
-                // prepend 'Property:' to filename
-                return 'Master:' + filename;
+                // prepend 'master:' to svgId
+                return 'master:' + svgId;
             };
 
         });

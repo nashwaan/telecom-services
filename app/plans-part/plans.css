@@ -1,0 +1,56 @@
+/*md-sidenav.md-sidenav-left,
+md-sidenav.md-sidenav-left.md-locked-open,
+md-sidenav.md-sidenav-left.md-closed.md-locked-open-add-active {
+    min-width: 200px !important;
+    width: 85vw !important;
+    max-width: 400px !important;
+}*/
+
+.plans {}
+
+.plans-browser .ag-root {
+    border: 1px solid grey;
+}
+
+.plans-browser .ag-cell {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.plans-browser .ag-header-container {
+    background: -webkit-linear-gradient(white, lightgrey); /* For Safari 5.1 to 6.0 */
+    background: -moz-linear-gradient(white, lightgrey); /* For Firefox 3.6 to 15 */
+    background: -o-linear-gradient(white, lightgrey); /* For Opera 11.1 to 12.0 */
+    background: linear-gradient(white, lightgrey); /* Standard syntax */
+    border-bottom: 1px solid grey;
+    /*background: #dedede;*/
+}
+
+.plans-browser .ag-header-cell {
+    border-right: 1px solid grey;
+}
+
+.plans-browser .ag-header-cell-label {
+    padding: 4px;
+}
+
+.plans-browser .ag-row:hover {
+    background-color: aliceblue;
+}
+
+.plans-browser .ag-body {
+    background-color: #ffffff;
+}
+
+.plans-browser .ag-body-viewport {
+    background-color: #ffffff;
+}
+
+.ag-row {
+    /*display: table;*/
+}
+
+.ag-cell {
+    /*display: table-cell;
+    vertical-align: text-top;*/
+}

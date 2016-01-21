@@ -35,52 +35,52 @@ body {
     counter-reset: h1counter;
 }
 
-h1:before {
+.writer h1:before {
     counter-increment: h1counter;
     content: counter(h1counter) ". ";
 }
 
-h1 {
+.writer h1 {
     counter-reset: h2counter;
 }
 
-h2:before {
+.writer h2:before {
     counter-increment: h2counter;
     content: counter(h1counter) "." counter(h2counter) " ";
 }
 
-h2 {
+.writer h2 {
     counter-reset: h3counter;
 }
 
-h3:before {
+.writer h3:before {
     counter-increment: h3counter;
     content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) " ";
 }
 
-h3 {
+.writer h3 {
     counter-reset: h4counter;
 }
 
-h4:before {
+.writer h4:before {
     counter-increment: h4counter;
     content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) " ";
 }
 
-h4 {
+.writer h4 {
     counter-reset: h5counter;
 }
 
-h5:before {
+.writer h5:before {
     counter-increment: h5counter;
     content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) " ";
 }
 
-h5 {
+.writer h5 {
     counter-reset: h6counter;
 }
 
-h6:before {
+.writer h6:before {
     counter-increment: h6counter;
     content: counter(h1counter) "." counter(h2counter) "." counter(h3counter) "." counter(h4counter) "." counter(h5counter) "." counter(h6counter) " ";
 }

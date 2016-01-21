@@ -1,0 +1,40 @@
+[  
+   {  
+      "children":[  
+         {  
+            "children":[  
+               {  
+                  "data":{  
+                     "dateModified":"18/03/2014 00:56",
+                     "name":"diagwrn.xml",
+                     "size":"21 kb",
+                     "type":"XML File"
+                  },
+                  "group":false
+               }
+            ],
+            "data":{  
+               "dateModified":"27/02/2014 04:12",
+               "name":"Windows",
+               "size":"",
+               "type":"File Folder"
+            },
+            "group":true
+         },
+         {  
+            "data":{  
+               "dateModified":"18/03/2014 00:56",
+               "name":"system.cfg",
+               "size":"13 kb",
+               "type":"System File"
+            },
+            "group":false
+         }
+      ],
+      "data":{  
+         "name":"C:"
+      },
+      "expanded":true,
+      "group":true
+   }
+]

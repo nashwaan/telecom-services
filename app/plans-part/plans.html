@@ -1,0 +1,22 @@
+ <!--<div ng-controller="plansController as cntrl" ag-grid="gridOptions" class="ag-fresh" style="height:100%"></div>-->
+
+<md-sidenav class="md-sidenav-left Xmd-whiteframe-z2" 
+            layout="column" 
+            md-component-id="plans" 
+            md-is-locked-open="$mdMedia('gt-md')&&cntrl.isDocked('plans')">
+    
+    <md-toolbar class="md-theme-light">
+        
+        <div class="md-toolbar-tools md-headline">Plans</div>
+        
+    </md-toolbar>
+    
+    <!--<div ng-controller="plansController2 as cntrl" ag-grid="cntrl.gridOptions" class="ag-fresh" style="height:100%;"></div>-->
+    
+    <div ng-controller="plansController2 as cntrl" style="width:100%;height:100%">
+        <div>Title: {{cntrl.getTitle()}}</div>
+        <div>{{selectedPlan}}</div>
+        <div class="plans-browser" ag-grid="cntrl.gridOptions" style="width:100%;height:800px"></div>
+    </div>
+    
+</md-sidenav>

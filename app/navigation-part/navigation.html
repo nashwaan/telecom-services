@@ -1,17 +1,32 @@
 <md-toolbar flex 
             layout="row" 
             layout-align="start center" 
-            class="md-hue-2" 
+            class="navigation md-hue-2" 
             ng-controller="navigationController as cntrl">
+    
+    <md-button class="menu" 
+               ng-click="cntrl.toggleSidenav('plans')" 
+               aria-label="Toggle Plans">
+        
+        <md-icon md-svg-icon="gui:stand"></md-icon>
+        <md-tooltip>Plans panel</md-tooltip>
+        
+    </md-button>
     
     <md-button class="menu" 
                ng-click="cntrl.toggleSidenav('masters')" 
                aria-label="Toggle Masters">
         
-        <md-icon md-svg-icon="apps"></md-icon>
-        <md-tooltip>Show/hide masters panel</md-tooltip>
+        <md-icon md-svg-icon="gui:rect"></md-icon>
+        <md-tooltip>Masters panel</md-tooltip>
         
     </md-button>
+    
+    <div class="md-headline" style="font-family:'Segoe UI Light'" layout-align-gt-sm="center">
+        {{cntrl.getTitle()}}
+    </div>
+    
+    <div flex></div>
     
     <md-button ng-click="cntrl.changeMode()">
         
@@ -20,20 +35,12 @@
         
     </md-button>
     
-    <!--<div flex="15"></div>-->
-    
-    <div class="md-headline" style="font-family:'Segoe UI Light'" layout-align-gt-sm="center">
-        Plans Designer
-    </div>
-    
-    <span flex></span>
-    
     <md-button class="menu" 
                ng-click="cntrl.toggleSidenav('properties')" 
                aria-label="Toggle Properties">
         
-        <md-icon md-svg-icon="lines"></md-icon>
-        <md-tooltip>Show/hide properties panel</md-tooltip>
+        <md-icon md-svg-icon="gui:rect"></md-icon>
+        <md-tooltip>Properties panel</md-tooltip>
         
     </md-button>
     

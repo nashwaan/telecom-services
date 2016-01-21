@@ -1,0 +1,131 @@
+{
+    "version": "0.1",
+    "name": "Telecom Plans",
+    "Level1": [
+        {
+            "name": "Mobile",
+            "description": "Level 1 - Mobile.",
+            "Level2": [
+                {
+                    "name": "Business",
+                    "description": "Level 2 - Mobile Business.",
+                    "Level3": [
+                        {
+                            "name": "Bespokes",
+                            "description": "Level 3 - Mobile Business Bespokes",
+                            "Plans": [
+                                {
+                                    "name": "Business Ultimate",
+                                    "description": "Business Ultimate plan is cool.",
+                                    "Bands": [
+                                        {
+                                            "name": "Base Plans",
+                                            "description": "There are interesting base plans to offer.",
+                                            "Flavors": [
+                                                {
+                                                    "name": "Gold",
+                                                    "description": "Description for the Gold flavour.",
+                                                    "Features": [
+                                                        {
+                                                            "carryOverCycles": 1,
+                                                            "destinationsAssignment": "Changeable by Customer only",
+                                                            "freebeesAmount": null,
+                                                            "freebeesCap": null,
+                                                            "freebeesDuration": null,
+                                                            "freebeesDurationType": null,
+                                                            "freebeesPriority": null,
+                                                            "freebeesTrigger": null,
+                                                            "freebeesUnit": null,
+                                                            "maxDestinationChanges": null,
+                                                            "maxDestinations": null,
+                                                            "nature": null,
+                                                            "networkLines": null,
+                                                            "notes": null,
+                                                            "outOfBundleCharge": null,
+                                                            "outOfBundlePulse": null,
+                                                            "permittedDestinations": null,
+                                                            "permittedSources": null,
+                                                            "prohibitedDestinations": null,
+                                                            "prohibitedSources": null,
+                                                            "prorateOnExit": null,
+                                                            "prorateOnSubscribe": null,
+                                                            "refillCycle": null,
+                                                            "technology": null,
+                                                            "unitPulse": null,
+                                                            "masterPath": "Mobile>Benefits>Call Freebees"
+                                                        },
+                                                        {
+                                                            "calculationRoundUp": null,
+                                                            "changeBasePlan": "Change Device Flavor to Match Base Plan",
+                                                            "deviceSiCs": null,
+                                                            "deviceSourceCost": null,
+                                                            "deviceSubsidy": 2000,
+                                                            "deviceType": null,
+                                                            "glCode": null,
+                                                            "maxAllowedCost": null,
+                                                            "notes": null,
+                                                            "overflowAfterSubsidy": null,
+                                                            "requiredDeviceTags": null,
+                                                            "masterPath": "General>Benefits>Device"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Silver",
+                                                    "description": "Description for the Silver flavour.",
+                                                    "Features": [
+                                                        {
+                                                            "carryOverCycles": 200,
+                                                            "destinationsAssignment": "Changeable by Customer only",
+                                                            "freebeesAmount": null,
+                                                            "freebeesCap": null,
+                                                            "freebeesDuration": null,
+                                                            "freebeesDurationType": null,
+                                                            "freebeesPriority": null,
+                                                            "freebeesTrigger": null,
+                                                            "freebeesUnit": null,
+                                                            "maxDestinationChanges": null,
+                                                            "maxDestinations": null,
+                                                            "nature": null,
+                                                            "networkLines": null,
+                                                            "notes": null,
+                                                            "outOfBundleCharge": null,
+                                                            "outOfBundlePulse": null,
+                                                            "permittedDestinations": null,
+                                                            "permittedSources": null,
+                                                            "prohibitedDestinations": null,
+                                                            "prohibitedSources": null,
+                                                            "prorateOnExit": null,
+                                                            "prorateOnSubscribe": null,
+                                                            "refillCycle": null,
+                                                            "technology": null,
+                                                            "unitPulse": null,
+                                                            "masterPath": "Mobile>Benefits>Call Freebees"
+                                                        },
+                                                        {
+                                                            "calculationRoundUp": null,
+                                                            "changeBasePlan": "Change Device Flavor to Match Base Plan",
+                                                            "deviceSiCs": null,
+                                                            "deviceSourceCost": null,
+                                                            "deviceType": null,
+                                                            "glCode": null,
+                                                            "maxAllowedCost": null,
+                                                            "notes": null,
+                                                            "overflowAfterSubsidy": null,
+                                                            "requiredDeviceTags": null,
+                                                            "masterPath": "General>Benefits>Device"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
