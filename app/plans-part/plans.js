@@ -51,12 +51,13 @@
                 return agGridData;
             },
             "load": function (path, gridOptions) {
-                $http.get(path).success(function (data) {
-                    plans = data;
+                $http.get(path).then(function (response) {
+                    plans = response.data;
                     window.console.log("Plans data was retrieved successfully.");
                     agGridData = toAgGridNested(plans.Level1);
-                    window.console.log(JSON.stringify(agGridData));
                     gridOptions.api.setRowData(agGridData);
+                }, function (response) {
+                    window.console.warn("Could not load plans data." + response.status);
                 });
             }
         };

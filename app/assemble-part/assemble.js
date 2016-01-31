@@ -16,9 +16,11 @@
                 return plan;
             },
             "loadPlan": function (filename) {
-                $http.get(filename).success(function (data) {
-                    plan = data;
+                $http.get(filename).then(function (response) {
+                    plan = response.data;
                     window.console.log("Plan data was loaded successfully.");
+                }, function (response) {
+                    window.console.warn("Could not load plan data." + response.status);
                 });
             }
         };
@@ -44,7 +46,7 @@
         //
         //self.newPlan();
         self.newPlan = function () {
-            var plan = schemasService.planFresh();
+            var plan = schemasService.fresh('plan');
             plan.name = "New Plan";
             plan.description = "Description for the new plan";
             assembleService.setPlan(plan);
@@ -55,7 +57,7 @@
             return assembleService.getPlan();
         };
         self.editPlan = function (plan) {
-            propertiesService.manage(schemasService.planSchema(), plan, "Bands");
+            propertiesService.manage(schemasService.schema('plan'), plan, "Bands");
         };
         self.activatePlan = function (plan) {
             self.planActive = plan;
@@ -72,7 +74,7 @@
                 self.newPlan();
                 plan = self.getPlan();
             }
-            var band = schemasService.bandFresh();
+            var band = schemasService.fresh('band');
             band.name = "New Band";
             band.description = "Description for the new band";
             plan.Bands.push(band);
@@ -80,7 +82,7 @@
             return band;
         };
         self.editBand = function (band) {
-            propertiesService.manage(schemasService.bandSchema(), band, "Flavors");
+            propertiesService.manage(schemasService.schema('band'), band, "Flavors");
         };
         self.activateBand = function (band) {
             self.bandActive = band;
@@ -90,7 +92,7 @@
             if (!band) {
                 band = self.addBand();
             }
-            var flavor = schemasService.flavorFresh();
+            var flavor = schemasService.fresh('flavor');
             flavor.name = "New Flavor";
             flavor.description = "Description for the new flavor";
             band.Flavors.push(flavor);
@@ -98,7 +100,7 @@
             return flavor;
         };
         self.editFlavor = function (flavor) {
-            propertiesService.manage(schemasService.flavorSchema(), flavor, "Features");
+            propertiesService.manage(schemasService.schema('flavor'), flavor, "Features");
         };
         self.activateFlavor = function (flavor) {
             self.flavorActive = flavor;
@@ -114,6 +116,9 @@
         };
         self.getMasterName = function (feature) {
             return feature.masterPath.split(">")[2];
+        };
+        self.getMasterIcon = function (feature) {
+            return mastersService.getMasterFromPath(feature.masterPath).icon;
         };
         //
         self.dropIntoFlavor = function (event, index, item, external, type, allowedTypes) {

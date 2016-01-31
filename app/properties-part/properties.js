@@ -10,34 +10,55 @@
         var properties = null,
             valuesSaved = null,
             valuesTracked = null,
-            ignoreProperties = "",
-            saveValues = function () {
-                valuesSaved = angular.copy(valuesTracked);
-                if (valuesSaved) {
-                    var i, ignorePropertyList = ignoreProperties.split(";");
-                    for (i = 0; i < ignorePropertyList.length; i += 1) {
-                        if (valuesSaved.hasOwnProperty(ignorePropertyList[i])) {
-                            delete valuesSaved[ignorePropertyList[i]];
+            ignoreProperties = "";
+
+        function saveValues() {
+            valuesSaved = angular.copy(valuesTracked);
+            if (valuesSaved) {
+                var key, i, ignorePropertyList;
+                for (key in properties.properties) {
+                    if (properties.properties.hasOwnProperty(key) && !valuesSaved.hasOwnProperty(key)) {
+                        if (properties.properties[key].hasOwnProperty('default')) {
+                            valuesSaved[key] = properties.properties[key]['default'];
+                        } else {
+                            valuesSaved[key] = null;
                         }
                     }
                 }
-            };
+                ignorePropertyList = ignoreProperties.split(";");
+                for (i = 0; i < ignorePropertyList.length; i += 1) {
+                    if (valuesSaved.hasOwnProperty(ignorePropertyList[i])) {
+                        delete valuesSaved[ignorePropertyList[i]];
+                        delete properties.properties[ignorePropertyList[i]];
+                    }
+                }
+            }
+        }
+
         return {
             "manage": function (schema, values, ignoreObjectProperties) {
-                properties = schema;
+                properties = angular.copy(schema);
                 valuesTracked = values;
                 ignoreProperties = ignoreObjectProperties;
                 saveValues();
                 if (values !== undefined) {
-                    //window.console.log(JSON.stringify(properties.properties));
-                    //window.console.log(JSON.stringify(values));
                     var key;
-                    for (key in valuesSaved) {
+                    /*for (key in valuesSaved) {
                         if (valuesSaved.hasOwnProperty(key) && properties.properties.hasOwnProperty(key)) {
                             properties.properties[key].value = angular.copy(values[key]);
                         }
+                    }*/
+                    for (key in properties.properties) {
+                        if (properties.properties.hasOwnProperty(key)) {
+                            if (valuesSaved.hasOwnProperty(key)) {
+                                properties.properties[key].value = angular.copy(values[key]);
+                            } else if (properties.properties[key].hasOwnProperty('default')) {
+                                properties.properties[key].value = angular.copy(properties.properties[key]['default']);
+                            } else {
+                                properties.properties[key].value = null;
+                            }
+                        }
                     }
-
                 }
             },
             "get": function () {
@@ -83,17 +104,18 @@
     // define controller for properties
     angular.module('TheApp').controller('propertiesController', ['navigationService', 'propertiesService', 'mastersService', function (navigationService, propertiesService, mastersService) {
         var self = this;
+        self.showDescription = false;
         self.isDocked = function (componentId) {
             return navigationService.isSidenavLocked(componentId);
         };
         self.properties = propertiesService;
-        self.updateValues = function (e) {
+        self.updateValues = function (ev) {
             propertiesService.update();
         };
         self.isPropertiesDirty = function () {
             return propertiesService.isDirty();
         };
-        self.revertValues = function (e) {
+        self.revertValues = function (ev) {
             propertiesService.revert();
         };
         self.check = function () {

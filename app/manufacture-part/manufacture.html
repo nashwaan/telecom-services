@@ -1,87 +1,83 @@
 <md-content flex ng-controller="manufactureController as cntrl">
 
-    <md-toolbar layout="row" class="md-theme-light md-hue-2">
+    <div layout="row">
 
-        <div class="fab-size" layout="row">
-        <md-fab-speed-dial md-direction="right" class="md-scale md-hover-full">
-            <md-fab-trigger>
+        <md-item class="master md-button md-raised" 
+                 layout="row" 
+                 layout-align="start center" 
+                 ng-show="true"
+                 ng-click="cntrl.selectMaster();selected.item=cntrl.getEditMaster();selected.type='master'">
 
-                <md-button class="md-fab md-mini md-primary md-raised md-hue-2" style="box-shadow:none;transform:scale(1.3)" aria-label="Master Options"> 
-                    <md-icon md-svg-icon="gui:hdots"></md-icon>
-                    <md-tooltip>Master Options</md-tooltip>
-                </md-button>
+            <md-icon class="master-icon" md-svg-icon="{{cntrl.getEditMaster().icon}}"></md-icon>
 
-            </md-fab-trigger>
+            <span>{{cntrl.getEditMaster().name}}</span>
 
-            <md-fab-actions>
+        </md-item>
 
-                <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addBand(plan)" aria-label="New Master">
-                    <md-icon md-svg-icon="gui:brick" aria-label="New Master"></md-icon>
-                    <md-tooltip>New Master</md-tooltip>
-                </md-button>
+        <md-checkbox class="md-fab md-mini" ng-model="cntrl.autoEditSelectedMaster" ng-click="cntrl.editSelectedMaster(!cntrl.autoEditSelectedMaster)" aria-label="Edit Selected" title="Edit Selected Master">
+            <md-tooltip>Edit Selected Master</md-tooltip>
+        </md-checkbox>
 
-                <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.saveMaster()" aria-label="Save Master">
-                    <md-icon md-svg-icon="gui:save" aria-label="Save Master"></md-icon>
-                    <md-tooltip>Save Master</md-tooltip>
-                </md-button>
+        <span flex="5"></span>
 
-                <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addAttribute()" aria-label="Add Attribute">
-                    <md-icon md-svg-icon="gui:add" aria-label="Add Attribute"></md-icon>
-                    <md-tooltip>Add Attribute</md-tooltip>
-                </md-button>
+        <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.revertMaster($event)" aria-label="Revert Master"  ng-disabled="!cntrl.isMasterDirty()">
+            <md-icon md-svg-icon="gui:undo" aria-label="Revert Master"></md-icon>
+            <md-tooltip>Revert Master</md-tooltip>
+        </md-button>
 
-            </md-fab-actions>
+        <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.saveMaster($event)" aria-label="Save Master"  ng-disabled="!cntrl.isMasterDirty()">
+            <md-icon md-svg-icon="gui:save" aria-label="Save Master"></md-icon>
+            <md-tooltip>Save Master</md-tooltip>
+        </md-button>
 
-        </md-fab-speed-dial>
-        </div>
+        <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.newMaster($event)" aria-label="New Master">
+            <md-icon md-svg-icon="gui:brick" aria-label="New Master"></md-icon>
+            <md-tooltip>New Master</md-tooltip>
+        </md-button>
 
-            <div layout="column" flex>
+        <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.addAttribute($event)" aria-label="Add Attribute">
+            <md-icon md-svg-icon="gui:add" aria-label="Add Attribute"></md-icon>
+            <md-tooltip>Add Attribute</md-tooltip>
+        </md-button>
 
-                <div style="font-family:'Segoe UI Light';font-size:150%" layout-align-gt-sm="center">
-                Editing Master: <b>{{cntrl.getEditMaster().name}}</b>
-                </div>
+        <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.deleteMaster($event)" aria-label="Delete Master">
+            <md-icon md-svg-icon="gui:delete" aria-label="Delete Master"></md-icon>
+            <md-tooltip>Delete Master</md-tooltip>
+        </md-button>
 
-            </div>
-
-    </md-toolbar>
+    </div>
     
-    <md-item class="master md-button md-raised" 
-             layout="row" 
-             layout-align="start center" 
-             ng-show="true"
-             ng-click="cntrl.selectMaster()">
-        
-        <md-icon class="master-icon" md-svg-icon="{{cntrl.getEditMaster().name | icon_provider}}"></md-icon>
-        
-        <span>{{cntrl.getEditMaster().name}}</span>
-        
-    </md-item>
-
     <md-list layout="column" 
-             dnd-list="cntrl.getEditMaster().Attributes.properties" 
+             dnd-list="cntrl.getEditMaster().Attributes.items" 
              dnd-allowed-types="['edit-attribute']">
         
         <md-item class="edit-attribute" 
                  layout="row" 
                  layout-align="start center" 
                  ng-click="cntrl.editAttribute(attribute)" 
-                 ng-repeat="attribute in cntrl.getEditMaster().Attributes.properties"
+                 ng-repeat="attribute in cntrl.getEditMaster().Attributes.items"
                  dnd-draggable="attribute" 
                  dnd-type="'edit-attribute'" 
                  dnd-effect-allowed="move" 
-                 dnd-selected="selected.item=master;selected.type='master'" 
-                 dnd-moved="cntrl.getEditMaster().Attributes.properties.splice($index,1)">
+                 dnd-selected="selected.item=attribute;selected.type='attribute'" 
+                 dnd-moved="cntrl.getEditMaster().Attributes.items.splice($index,1)">
             
-            <div flex="40" ng-repeat="property in [attribute]" ng-include="'property-'+property.type+'.html'"></div>
+            <div style="width:292px;margin-left:10px" ng-repeat="property in [attribute]" ng-include="'property-'+property.type+'.html'"></div>
 
             <span flex="5"></span>
             
-            <md-button ng-click="cntrl.deleteAttribute(attribute)" aria-label="Delete Attribute">
+            <md-button ng-click="cntrl.deleteAttribute($event,attribute,$index)" aria-label="Delete Attribute">
             
                 <md-icon md-svg-icon="gui:delete"></md-icon>
                 <md-tooltip>Delete Attribute</md-tooltip>
                 
             </md-button>
+
+        </md-item>
+
+        <md-item class="dndPlaceholder">
+
+            <div style="width:290px;height:3px;background-color:#158FD0;border-width:10px 3px;border-color:white #158FD0;border-style:solid"></div>
 
         </md-item>
 

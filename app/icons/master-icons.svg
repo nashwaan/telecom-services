@@ -223,16 +223,9 @@
     </svg>
   </defs>
   <defs>
-    <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="SimCard">
+    <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="SIMCard">
       <g transform="translate(0 -219.74)">
         <path d="M69.27 439.48C30.82 439.48 0 470.3 0 508.75v839.31c0 38.44 30.82 69.26 69.27 69.26h1157.45l186.3-186.3c1.38-1.37 2.91-2.52 4.3-3.82V508.75c0-38.45-31.29-69.27-69.74-69.27H69.27zm74.04 41.08h235.02c29.78 37.97 38.11 92.73 38.7 131.85.27 49.16-11.4 97.6-27.71 118.46H73.57V549.83c0-38.45 31.29-69.27 69.74-69.27zm275.15 0h674.99c38.44 0 69.26 30.82 69.26 69.27V730.4H843.13c-9.97-.62-10.31.93-17.19 4.77-29.34 31.02-39.82 88.08-40.13 145.22-.27 50.01 7.44 100.41 30.09 132.8-23.63 32.31-32.67 84.17-32.96 136.15-.27 49.55 7.43 98.95 29.62 131.36H421.33c22.18-32.41 29.41-81.81 29.14-131.36-.29-51.83-8.99-103.82-32.49-136.15 22.56-32.39 29.89-82.8 29.62-132.8-.28-50.76-8.63-101.31-31.05-133.75 23.69-32.22 31.33-83.19 31.05-134.23-.27-49.56-7.91-99.34-29.14-131.85zm425.63 280.89h318.62v237.89H844.09c-16.32-20.87-27.98-69.77-27.71-118.95.27-48.64 12.18-97.35 27.71-118.94zm-770.52.47h315.75c15.53 21.54 27.44 69.84 27.71 118.47.27 49.17-11.4 98.08-27.71 118.95H73.57V761.92zm0 268.47H390.28c22.32 35.64 29.13 84.11 29.61 118.94-4.4 47.41-7.84 97.7-39.64 131.37H143.31c-38.45 0-69.74-30.82-69.74-69.26v-181.05zm769.56 0h319.58v181.05c0 38.44-30.82 69.26-69.26 69.26H853.64c-32.54-35.35-39.96-93.52-40.12-131.37.24-44.27 9.92-88.79 23.4-112.73 2.01-2.82 3.66-4.65 6.21-6.21z" style="fill:#a0968c;stroke:none;stroke-linecap:butt;stroke-width:0.75"/>
-      </g>
-    </svg>
-  </defs>
-  <defs>
-    <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="Square">
-      <g>
-        <path d="M0 0v1417.32h1417.32V0H0zm93.17 93.17h1230.99v1230.99H93.17V93.17z" style="fill:#a0968c;stroke:none;stroke-linecap:butt;stroke-width:4.5"/>
       </g>
     </svg>
   </defs>
@@ -247,6 +240,13 @@
     <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="SquareDashed">
       <g>
         <path d="M0 0v377.03h93.17V93.17h283.86V0H0zm501.25 0v93.17h414.82V0H501.25zm539.04 0v93.17h283.87v283.86h93.16V0h-377.03zM0 501.25v414.82h93.17V501.25H0zm1324.16 0v414.82h93.16V501.25h-93.16zM0 1040.29v377.03h377.03v-93.16H93.17v-283.87H0zm1324.16 0v283.87h-283.87v93.16h377.03v-377.03h-93.16zm-822.91 283.87v93.16h414.82v-93.16H501.25z" style="fill:#a0968c;stroke:none;stroke-linecap:butt;stroke-width:4.5"/>
+      </g>
+    </svg>
+  </defs>
+  <defs>
+    <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="Square">
+      <g>
+        <path d="M0 0v1417.32h1417.32V0H0zm93.17 93.17h1230.99v1230.99H93.17V93.17z" style="fill:#a0968c;stroke:none;stroke-linecap:butt;stroke-width:4.5"/>
       </g>
     </svg>
   </defs>
@@ -286,7 +286,7 @@
     </svg>
   </defs>
   <defs>
-    <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="Xor">
+    <svg viewBox="0 0 1417.32 1417.32" color-interpolation-filters="sRGB" style="fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3" id="XOR">
       <g>
         <path d="M1417.32 708.66A708.66 708.66-180 1 0 0 708.66a708.66 708.66-180 1 0 1417.32 0zm-107.37 0a601.288 601.288-180 1 0-1202.58 0 601.288 601.288-180 1 0 1202.58 0zM765.93 651.4V236.22H651.4V651.4H236.22v114.53H651.4v415.17h114.53V765.93h415.17V651.4H765.93z" style="fill:#000000;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75"/>
       </g>

@@ -1,47 +1,55 @@
 [{
-    "data": {},
+    "data": {
+        "name": "Mobile",
+        "description": "Level 1 - Mobile.",
+        "level": 1
+    },
     "group": true,
+    "expanded": true,
     "children": [{
         "data": {
-            "name": "Mobile",
-            "description": "Level 1 - Mobile."
+            "name": "Business",
+            "description": "Level 2 - Mobile Business.",
+            "level": 2
         },
         "group": true,
+        "expanded": true,
         "children": [{
             "data": {
-                "name": "Business",
-                "description": "Level 2 - Mobile Business."
+                "name": "Bespokes",
+                "description": "Level 3 - Mobile Business Bespokes",
+                "level": 3
             },
             "group": true,
+            "expanded": true,
             "children": [{
                 "data": {
-                    "name": "Bespokes",
-                    "description": "Level 3 - Mobile Business Bespokes"
+                    "name": "Business Ultimate",
+                    "description": "Business Ultimate plan is cool.",
+                    "level": 4
                 },
                 "group": true,
+                "expanded": true,
                 "children": [{
                     "data": {
-                        "name": "Business Ultimate",
-                        "description": "Business Ultimate plan is cool."
+                        "name": "Base Plans",
+                        "description": "There are interesting base plans to offer.",
+                        "level": 5
                     },
                     "group": true,
+                    "expanded": true,
                     "children": [{
                         "data": {
-                            "name": "Base Plans",
-                            "description": "There are interesting base plans to offer."
-                        },
-                        "group": true,
-                        "children": [{
-                            "data": {
-                                "name": "Gold",
-                                "description": "Description for the Gold flavour."
-                            }
-                        }, {
-                            "data": {
-                                "name": "Silver",
-                                "description": "Description for the Silver flavour."
-                            }
-                        }]
+                            "name": "Gold",
+                            "description": "Description for the Gold flavour.",
+                            "level": 6
+                        }
+                    }, {
+                        "data": {
+                            "name": "Silver",
+                            "description": "Description for the Silver flavour.",
+                            "level": 6
+                        }
                     }]
                 }]
             }]

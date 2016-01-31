@@ -9,83 +9,122 @@
     angular.module('TheApp').factory('mastersService', ['$http', function ($http) {
         var masters = null,
             masterSelected = null,
-            masterEdit = null,
-            findGroup = function (masters, groupName) {
-                var i, group = null;
+            masterEdit = null;
+
+        function findGroup(masters, groupName) {
+            var i, group;
+            if (masters && masters.Groups) {
                 for (i = 0; i < masters.Groups.length; i += 1) {
                     if (masters.Groups[i].name === groupName) {
-                        group = masters[i];
+                        group = masters.Groups[i];
+                        break;
                     }
                 }
-                return group;
-            },
-            findCollection = function (group, collectionName) {
-                var i, collection = null;
+            }
+            return group;
+        }
+
+        function findCollection(group, collectionName) {
+            var i, collection;
+            if (group && group.Collections) {
                 for (i = 0; i < group.Collections.length; i += 1) {
                     if (group.Collections[i].name === collectionName) {
                         collection = group.Collections[i];
+                        break;
                     }
                 }
-                return collection;
-            },
-            findMaster = function (collection, masterName) {
-                var i, master = null;
+            }
+            return collection;
+        }
+
+        function findMaster(collection, masterName) {
+            var i, master;
+            if (collection && collection.Masters) {
                 for (i = 0; i < collection.Masters.length; i += 1) {
                     if (collection.Masters[i].name === masterName) {
                         master = collection.Masters[i];
+                        break;
                     }
                 }
-                return master;
-            },
-            addParentNames = function () {
-                var i, j, k, master;
-                for (i = 0; i < masters.Groups.length; i += 1) {
-                    for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
-                        for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
-                            master = masters.Groups[i].Collections[j].Masters[k];
-                            master.groupName = masters.Groups[i].name;
-                            master.collectionName = masters.Groups[i].Collections[j].name;
-                        }
+            }
+            return master;
+        }
+
+        function deleteMaster(master) {
+            var group, collection, i;
+            group = findGroup(masters, master.groupName);
+            collection = findCollection(group, master.collectionName);
+            if (collection) {
+                for (i = 0; i < collection.Masters.length; i += 1) {
+                    if (collection.Masters[i].name === master.name) {
+                        collection.Masters.splice(i, 1);
+                        return i;
                     }
                 }
-            },
-            removeParentNames = function () {
-                var i, j, k, master;
-                for (i = 0; i < masters.Groups.length; i += 1) {
-                    for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
-                        for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
-                            delete masters.Groups[i].Collections[j].Masters[k].groupName;
-                            delete masters.Groups[i].Collections[j].Masters[k].collectionName;
-                        }
-                    }
-                }
-            },
-            getMasterFromPath = function (masterFullPath) {
-                var i, j, k, master, masterPath = masterFullPath.split(">");
-                for (i = 0; i < masters.Groups.length; i += 1) {
-                    if (masters.Groups[i].name === masterPath[0]) {
-                        for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
-                            if (masters.Groups[i].Collections[j].name === masterPath[1]) {
-                                for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
-                                    if (masters.Groups[i].Collections[j].Masters[k].name === masterPath[2]) {
-                                        return masters.Groups[i].Collections[j].Masters[k];
-                                    }
-                                }
-                                return null;
+            }
+        }
+
+        function addParentNames(masters) {
+            var i, j, k, master, key;
+            for (i = 0; i < masters.Groups.length; i += 1) {
+                for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
+                    for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
+                        master = masters.Groups[i].Collections[j].Masters[k];
+                        master.groupName = masters.Groups[i].name;
+                        master.collectionName = masters.Groups[i].Collections[j].name;
+                        for (key in master.Attributes.properties) {
+                            if (master.Attributes.properties.hasOwnProperty(key)) {
+                                master.icon = master.icon.replace(/\s+/g, "");
                             }
                         }
                     }
                 }
-            },
-            load = function (path) {
-                $http.get(path).success(function (data) {
-                    masters = data;
-                    addParentNames();
-                    window.console.log("Masters data was retrieved successfully.");
-                    /*window.console.log(JSON.stringify(masters));*/
-                });
-            };
+            }
+            //window.console.log(JSON.stringify(masters));
+        }
+
+        function removeParentNames(masters) {
+            var i, j, k, master;
+            for (i = 0; i < masters.Groups.length; i += 1) {
+                for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
+                    for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
+                        delete masters.Groups[i].Collections[j].Masters[k].groupName;
+                        delete masters.Groups[i].Collections[j].Masters[k].collectionName;
+                    }
+                }
+            }
+        }
+
+        function getMasterFromPath(masterFullPath) {
+            var i, j, k, master, masterPath = masterFullPath.split(">");
+            for (i = 0; i < masters.Groups.length; i += 1) {
+                if (masters.Groups[i].name === masterPath[0]) {
+                    for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
+                        if (masters.Groups[i].Collections[j].name === masterPath[1]) {
+                            for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
+                                if (masters.Groups[i].Collections[j].Masters[k].name === masterPath[2]) {
+                                    return masters.Groups[i].Collections[j].Masters[k];
+                                }
+                            }
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+
+        function load(path) {
+            $http.get(path).then(function (response) {
+                masters = response.data;
+                addParentNames(masters);
+                window.console.log("Masters data was retrieved successfully.");
+            }, function (response) {
+                window.console.warn("Could not load masters data." + response.status);
+            });
+        }
+
         load('data/masters.json');
+
         return {
             "select": function (groupName, collectionName, master) {
                 masterSelected = angular.copy(master);
@@ -97,17 +136,19 @@
                 return masterSelected;
             },
             "add": function (master, masterToReplace) {
-                var group, collection, collectionOfReplacedMaster;
+                var insertIndex, group, collection;
                 if (masterToReplace) {
-                    collectionOfReplacedMaster = findGroup(masters, masterToReplace.groupName).findCollection(group.Collections, masterToReplace.collectionName);
-                    collectionOfReplacedMaster.splice(collectionOfReplacedMaster.indexOf(masterToReplace), 1);
+                    insertIndex = deleteMaster(masterToReplace);
                 }
                 if (!master.groupName) {
                     master.groupName = "General";
                 }
+                if (!masters.Groups) {
+                    masters.Groups = [];
+                }
                 group = findGroup(masters, master.groupName);
                 if (!group) {
-                    masters.push({
+                    masters.Groups.push({
                         "name": master.groupName
                     });
                     group = masters.Groups[masters.Groups.length - 1];
@@ -115,14 +156,27 @@
                 if (!master.collectionName) {
                     master.collectionName = "General";
                 }
-                collection = findCollection(group.Collections, master.collectionName);
+                if (!group.Collections) {
+                    group.Collections = [];
+                }
+                collection = findCollection(group, master.collectionName);
                 if (!collection) {
                     group.Collections.push({
                         "name": master.collectionName
                     });
-                    collection = masters.Collections[masters.Collections.length - 1];
+                    collection = group.Collections[group.Collections.length - 1];
                 }
-                collection.Masters.push(master);
+                if (!collection.Masters) {
+                    collection.Masters = [];
+                }
+                if (isNaN(insertIndex)) {
+                    collection.Masters.push(master);
+                } else {
+                    collection.Masters.splice(insertIndex, 0, master);
+                }
+            },
+            "remove": function (master) {
+                deleteMaster(master);
             },
             "getMasterFromPath": function (masterFullPath) {
                 return getMasterFromPath(masterFullPath);
@@ -131,7 +185,7 @@
                 return masters;
             },
             "check": function () {
-                window.alert(JSON.stringify(masters));
+                window.console.warn(JSON.stringify(masters));
             }
         };
     }]);

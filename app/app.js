@@ -120,7 +120,7 @@
             // configure URLs for icons specified by [set:]id.
             $mdIconProvider
                 .iconSet('gui', 'icons/gui-icons.svg')
-                .iconSet('master', 'icons/master-icons.svg')
+                .iconSet('$default', 'icons/master-icons.svg')
                 .icon('logo', 'icons/logo.svg');
 
         }])
@@ -128,8 +128,8 @@
             $log.debug("TheApp with its dependecies is loaded and running...");
         });
 
-    // define controller for assemble
-    angular.module('TheApp').controller('selectController', ['$rootScope', function ($rootScope) {
+    // define controller for app, schemasService is injected here for early initialization
+    angular.module('TheApp').controller('selectController', ['$rootScope', 'schemasService', function ($rootScope, schemasService) {
         $rootScope.selected = {
             "item": null,
             "type": ""

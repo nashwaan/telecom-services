@@ -39,7 +39,7 @@
                              aria-label="{{master.Property}}">
 
                         <!--<md-icon md-svg-icon="gui:stand"></md-icon>-->
-                        <md-icon class="master-icon" md-svg-icon="{{master.name | icon_provider}}"></md-icon>
+                        <md-icon class="master-icon" md-svg-icon="{{master.icon}}"></md-icon>
 
                         <md-tooltip ng-if="master.description">{{master.description}}</md-tooltip>
 
@@ -51,7 +51,7 @@
                              aria-label="{{selected.item.name}}">
 
                         <md-icon class="avatar" 
-                                 md-svg-icon="{{selected.item.name | icon_provider}}">
+                                 md-svg-icon="{{selected.item.icon}}">
                         </md-icon>
 
                         <span>{{selected.item.name}}</span>

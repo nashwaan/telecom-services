@@ -8,7 +8,7 @@
     // define controller for navigation
     angular.module('TheApp').factory('navigationService', ['manufactureService', 'assembleService', '$location', function (manufactureService, assembleService, $location) {
         var lockedSidenav = {
-            "plans": true,
+            "plans": false,
             "masters": true,
             "properties": true
         };

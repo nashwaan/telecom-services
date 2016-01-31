@@ -8,7 +8,7 @@
 
 <script type="text/ng-template" id="property-.html">
     
-    <div>Nothing selected. No properties to show.</div>
+    <div>Property type is not defined.</div>
     
 </script>
 
@@ -44,10 +44,11 @@
          
         <label>{{property.title}}</label>
         
-        <input required ng-model="property.value" md-maxlength="{{property.maxLength}}" />
+        <input required="not required" ng-model="property.value" md-maxlength="{{property.maxLength}}" />
         
-        <div class="md-caption property-description">{{property.description}}</div>
-         
+        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
+        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
+
     </md-input-container>
 
 </script>
@@ -60,15 +61,14 @@
          
         <label>{{property.title}}</label>
         
-        <md-select ng-model="property.value" ng-if="property.enum!==undefined">
+        <md-select ng-model="property.value">
             
-            <md-option ng-repeat="option in property.enum" value="{{option}}">
-            {{option}}
-            </md-option>
+            <md-option ng-repeat="option in property.enum" value="{{option}}">{{option}}</md-option>
             
         </md-select>
         
-        <div class="md-caption property-description">{{property.description}}</div>
+        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
+        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
          
     </md-input-container>
 
@@ -80,12 +80,13 @@
      
     <md-input-container class="md-block property number">
          
-         <label>{{property.title}}</label>
-        
-         <input type="number" ng-model="property.value" step="any" min="1" max="4999"/>
-        
-         <div class="md-caption property-description">{{property.description}}</div>
-         
+        <label>{{property.title}}</label>
+
+        <input type="number" ng-model="property.value" step="any" min="1" max="4999"/>
+
+        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
+        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
+
     </md-input-container>
 
 </script>
@@ -97,7 +98,8 @@
     <md-checkbox class="property boolean" ng-model="property.value">
         
         {{property.title}}
-        <div class="md-caption property-description">{{property.description}}</div>
+        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
+        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
         
     </md-checkbox>
 
@@ -109,7 +111,8 @@
     
     <md-datepicker class="property date" ng-model="property.value" md-placeholder="{{property.title}}"></md-datepicker>
     
-    <div class="md-caption property-description">{{property.description}}</div>
+    <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
+    <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
     
 </script>
 
@@ -129,7 +132,6 @@
                 <div layout="row" layout-align="space-around">
 
                     <md-button class="md-primary md-raised" 
-                               flex="33" 
                                ng-disabled="!cntrl.isPropertiesDirty()" 
                                ng-click="cntrl.revertValues($event)">
 
@@ -140,7 +142,6 @@
                     </md-button>
 
                     <md-button class="md-primary md-raised" 
-                               flex="33" 
                                ng-disabled="!cntrl.isPropertiesDirty()" 
                                ng-click="cntrl.updateValues($event)">
 
@@ -149,8 +150,6 @@
                         Update
 
                     </md-button>
-
-                    <!--<md-button ng-click="cntrl.check()" flex="20">Check</md-button>-->
 
                 </div>
 
