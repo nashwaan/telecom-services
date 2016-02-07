@@ -1,5 +1,6 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
+/*global console*/
 
 
 (function (angular) {
@@ -18,9 +19,9 @@
             "loadPlan": function (filename) {
                 $http.get(filename).then(function (response) {
                     plan = response.data;
-                    window.console.log("Plan data was loaded successfully.");
+                    console.log("Plan data was loaded successfully.");
                 }, function (response) {
-                    window.console.warn("Could not load plan data." + response.status);
+                    console.warn("Could not load plan data." + response.status);
                 });
             }
         };
@@ -57,7 +58,7 @@
             return assembleService.getPlan();
         };
         self.editPlan = function (plan) {
-            propertiesService.manage(schemasService.schema('plan'), plan, "Bands");
+            propertiesService.manage(schemasService.schema('plan'), plan, ["Bands"]);
         };
         self.activatePlan = function (plan) {
             self.planActive = plan;
@@ -82,7 +83,7 @@
             return band;
         };
         self.editBand = function (band) {
-            propertiesService.manage(schemasService.schema('band'), band, "Flavors");
+            propertiesService.manage(schemasService.schema('band'), band, ["Flavors"]);
         };
         self.activateBand = function (band) {
             self.bandActive = band;
@@ -100,7 +101,7 @@
             return flavor;
         };
         self.editFlavor = function (flavor) {
-            propertiesService.manage(schemasService.schema('flavor'), flavor, "Features");
+            propertiesService.manage(schemasService.schema('flavor'), flavor, ["Features"]);
         };
         self.activateFlavor = function (flavor) {
             self.flavorActive = flavor;
@@ -108,7 +109,7 @@
         };
         self.editFeature = function (feature) {
             var master = mastersService.getMasterFromPath(feature.masterPath);
-            propertiesService.manage(master.Attributes, feature, "Attributes");
+            propertiesService.manage(master.Attributes, feature, ["Attributes"]);
         };
         self.activateFeature = function (feature) {
             self.featureActive = feature;
@@ -122,7 +123,7 @@
         };
         //
         self.dropIntoFlavor = function (event, index, item, external, type, allowedTypes) {
-            //window.console.log(JSON.stringify(event) + '\n' + JSON.stringify(index) + '\n' + JSON.stringify(item) + '\n' + JSON.stringify(external) + '\n' + JSON.stringify(type) + '\n' + JSON.stringify(allowedType));
+            //console.log(JSON.stringify(event) + '\n' + JSON.stringify(index) + '\n' + JSON.stringify(item) + '\n' + JSON.stringify(external) + '\n' + JSON.stringify(type) + '\n' + JSON.stringify(allowedType));
             var feature, attribute;
             if (type === "feature") {
                 feature = item;

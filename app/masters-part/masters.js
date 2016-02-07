@@ -1,5 +1,6 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
+/*global console*/
 
 
 (function (angular) {
@@ -65,22 +66,18 @@
         }
 
         function addParentNames(masters) {
-            var i, j, k, master, key;
-            for (i = 0; i < masters.Groups.length; i += 1) {
-                for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
-                    for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
-                        master = masters.Groups[i].Collections[j].Masters[k];
-                        master.groupName = masters.Groups[i].name;
-                        master.collectionName = masters.Groups[i].Collections[j].name;
-                        for (key in master.Attributes.properties) {
-                            if (master.Attributes.properties.hasOwnProperty(key)) {
-                                master.icon = master.icon.replace(/\s+/g, "");
+            masters.Groups.forEach(function (group) {
+                group.Collections.forEach(function (collection) {
+                    collection.Masters.forEach(function (master) {
+                        angular.forEach(master.Attributes.properties, function (property, key) {
+                            if (property.mandatory) {
+                                delete property.mandatory;
                             }
-                        }
-                    }
-                }
-            }
-            //window.console.log(JSON.stringify(masters));
+                        })
+                    })
+                })
+            });
+            //console.log(JSON.stringify(masters));
         }
 
         function removeParentNames(masters) {
@@ -117,9 +114,9 @@
             $http.get(path).then(function (response) {
                 masters = response.data;
                 addParentNames(masters);
-                window.console.log("Masters data was retrieved successfully.");
+                console.log("Masters data was retrieved successfully.");
             }, function (response) {
-                window.console.warn("Could not load masters data." + response.status);
+                console.warn("Could not load masters data." + response.status);
             });
         }
 
@@ -185,7 +182,7 @@
                 return masters;
             },
             "check": function () {
-                window.console.warn(JSON.stringify(masters));
+                console.warn(JSON.stringify(masters));
             }
         };
     }]);

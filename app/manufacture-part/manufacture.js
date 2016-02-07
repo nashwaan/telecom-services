@@ -99,7 +99,7 @@
             self.editMaster(manufactureService.getMasterEdit());
         };
         self.editMaster = function (master) {
-            propertiesService.manage(schemasService.schema('master'), master, "Attributes"); //window.alert(JSON.stringify(propertiesService.get()));
+            propertiesService.manage(schemasService.schema('master'), master, ["Attributes"]); //window.alert(JSON.stringify(propertiesService.get()));
         };
         self.newMaster = function (ev) {
             var confirm, masterNew;
@@ -148,7 +148,7 @@
             self.editAttribute(attribute);
         };
         self.editAttribute = function (attribute) {
-            propertiesService.manage(schemasService.schema('attribute'), attribute, "value;sortKey"); //window.alert(JSON.stringify(propertiesService.get()));
+            propertiesService.manage(schemasService.schema('attribute'), attribute, ["value", "sortKey"]); //window.alert(JSON.stringify(propertiesService.get()));
         };
         self.isMasterDirty = function () {
             return manufactureService.isMasterDirty();

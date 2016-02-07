@@ -1,5 +1,6 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
+/*global console*/
 
 
 (function (angular) {
@@ -13,7 +14,7 @@
             $http.get(path).then(function (response) {
                 schemas = response.data;
             }, function (response) {
-                window.console.warn("Could not load schemas." + response.status);
+                console.warn("Could not load schemas." + response.status);
             });
         }('data/schemas.json'));
 
@@ -21,7 +22,7 @@
             $http.get(path).then(function (response) {
                 masterIcons = response.data;
             }, function (response) {
-                window.console.warn("Could not load masters icons." + response.status);
+                console.warn("Could not load masters icons." + response.status);
             });
         }('data/master-icons.json'));
 

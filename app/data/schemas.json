@@ -2,11 +2,11 @@
     "masterFresh": {
         "name": "",
         "description": "",
-        "icon": "",
         "type": "",
         "Attributes": {},
         "groupName": "",
-        "collectionName": ""
+        "collectionName": "",
+        "icon": ""
     },
     "masterSchema": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -28,13 +28,6 @@
                 "type": "string",
                 "default": ""
             },
-            "icon": {
-                "title": "Icon",
-                "description": "Specify icon for the master.",
-                "type": "string",
-                "enum": ["Account", "Add-on", "BasePlan", "Bundle", "CallFreebees", "CallTariff", "ChangeArrow", "ChangeFlavor", "Charge", "Constraint", "Contract", "Credit", "DataFreebees", "DataTariff", "Device", "DownArrow", "EndArrow", "File", "Info", "Inquiry", "LeftArrow", "MessageFreebees", "MessageTariff", "Migrate", "Migration", "Notification", "Project", "Provisioning", "Report", "Rewards", "RightArrow", "SIMCard", "SquareAim", "SquareDashed", "Square", "Stakeholder", "Subscribe", "Support", "Unsubscribe", "UpArrow", "XOR"],
-                "default": ""
-            },
             "type": {
                 "title": "Type",
                 "description": "Specify type of the master.",
@@ -53,23 +46,38 @@
                 "description": "Specify collection name for this master.",
                 "type": "string",
                 "default": ""
+            },
+            "icon": {
+                "title": "Icon",
+                "description": "Specify icon for the master.",
+                "type": "string",
+                "enum": ["Account", "Add-on", "BasePlan", "Bundle", "CallFreebees", "CallTariff", "ChangeArrow", "ChangeFlavor", "Charge", "Constraint", "Contract", "Credit", "DataFreebees", "DataTariff", "Device", "DownArrow", "EndArrow", "File", "Info", "Inquiry", "LeftArrow", "MessageFreebees", "MessageTariff", "Migrate", "Migration", "Notification", "Project", "Provisioning", "Report", "Rewards", "RightArrow", "SIMCard", "SquareAim", "SquareDashed", "Square", "Stakeholder", "Subscribe", "Support", "Unsubscribe", "UpArrow", "XOR"],
+                "default": ""
             }
         }
     },
     "attributeFresh": {
         "title": "No Title",
         "description": "No Description",
+        "definition": "No Definition",
         "type": "string",
+        "format": "",
         "enum": [],
-        "required": false,
+        "mandatory": false,
         "minLength": 0,
-        "maxLength": 100,
+        "maxLength": 1000,
         "minimum": 0,
         "exclusiveMinimum": false,
-        "maximum": 0,
+        "maximum": 1000,
         "exclusiveMaximum": false,
         "multipleOf": 1,
+        "minItems": 0,
+        "uniqueItems": false,
+        "additionalItems": true,
+        "additionalProperties": true,
         "default": "",
+        "options": 0,
+        "dependents": 0,
         "sortKey": 0
     },
     "attributeSchema": {
@@ -79,89 +87,187 @@
         "description": "Edit attribute properties.",
         "type": "object",
         "additionalProperties": true,
+        "required": ["title", "type"],
         "properties": {
             "title": {
-                "title": "Name of attribute",
+                "title": "Name",
                 "description": "For 'title' of attribute schema.",
                 "type": "string",
                 "default": ""
             },
             "description": {
-                "title": "Description of attribute",
+                "title": "Description",
                 "description": "For 'description' of attribute schema.",
                 "type": "string",
                 "default": ""
             },
+            "definition": {
+                "title": "Definition",
+                "description": "For 'definition' of non-standard attribute schema.",
+                "type": "string",
+                "default": ""
+            },
             "type": {
-                "title": "Type of attribute",
+                "title": "Type",
                 "description": "For 'type' of attribute schema.",
                 "type": "string",
-                "enum": ["string", "number", "boolean", "choice", "options"],
+                "enum": ["string", "number", "boolean", "array", "object"],
                 "default": ""
             },
-            "required": {
-                "title": "Required attribute?",
-                "description": "For 'required' of attribute schema.",
-                "type": "boolean",
-                "default": ""
+            "format": {
+                "title": "Format",
+                "description": "For 'format' of attribute schema.",
+                "type": "string",
+                "default": "",
+                "enum": ["string-free", "string-choice", "array-fix", "array-var", "object-json"]
             },
             "enum": {
-                "title": "Enum of attribute",
+                "title": "Choice",
                 "description": "For 'enum' of attribute schema.",
                 "type": "array",
-                "default": ""
+                "format": "array-var",
+                "default": "",
+                "dependents": {
+                    "type": "string",
+                    "format": "string-choice"
+                }
+            },
+            "mandatory": {
+                "title": "Mandatory",
+                "description": "For 'mandatory' of non-standard attribute schema.",
+                "type": "boolean",
+                "default": false
             },
             "minLength": {
-                "title": "Minimum Length of attribute",
+                "title": "Minimum Length",
                 "description": "For 'minLength' of attribute schema.",
                 "type": "number",
-                "default": ""
+                "default": 0,
+                "dependents": {
+                    "type": "string"
+                }
             },
             "maxLength": {
-                "title": "Maximum Length of attribute",
+                "title": "Maximum Length",
                 "description": "For 'maxLength' of attribute schema.",
                 "type": "number",
-                "default": ""
+                "default": 1000,
+                "dependents": {
+                    "type": "string"
+                }
             },
             "minimum": {
-                "title": "Minimum of attribute",
+                "title": "Minimum",
                 "description": "For 'minimum' of attribute schema.",
                 "type": "number",
-                "default": ""
+                "default": 0,
+                "dependents": {
+                    "type": "number"
+                }
             },
             "exclusiveMinimum": {
-                "title": "Exclusive Minimum?",
+                "title": "Exclude Minimum",
                 "description": "For 'exclusiveMinimum' of attribute schema.",
                 "type": "boolean",
-                "default": ""
+                "default": false,
+                "dependents": {
+                    "type": "number"
+                }
             },
             "maximum": {
-                "title": "Maximum of attribute",
+                "title": "Maximum",
                 "description": "For 'maximum' of attribute schema.",
                 "type": "number",
-                "default": ""
+                "default": 1000,
+                "dependents": {
+                    "type": "number"
+                }
             },
             "exclusiveMaximum": {
-                "title": "Exclusive Maximum?",
+                "title": "Exclude Maximum",
                 "description": "For 'exclusiveMaximum' of attribute schema.",
                 "type": "boolean",
-                "default": ""
+                "default": false,
+                "dependents": {
+                    "type": "number"
+                }
             },
             "multipleOf": {
-                "title": "Step of attribute",
+                "title": "Increment Step",
                 "description": "For 'multipleOf' of attribute schema.",
                 "type": "number",
                 "minimum": 0,
                 "exclusiveMinimum": true,
                 "maximum": 1000,
                 "exclusiveMaximum": false,
-                "default": ""
+                "default": 1,
+                "dependents": {
+                    "type": "number"
+                }
+            },
+            "minItems": {
+                "title": "Minimum Array Items",
+                "description": "For 'minItems' of attribute schema.",
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
+                "default": 0,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "uniqueItems": {
+                "title": "No Redundant Array Items",
+                "description": "For 'uniqueItems' of attribute schema.",
+                "type": "boolean",
+                "default": false,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "additionalItems": {
+                "title": "Allow Additional Items",
+                "description": "For 'additionalItems' of attribute schema.",
+                "type": "boolean",
+                "default": true,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "additionalProperties": {
+                "title": "Allow Additional Properties",
+                "description": "For 'additionalProperties' of attribute schema.",
+                "type": "boolean",
+                "default": true,
+                "dependents": {
+                    "type": "object"
+                }
             },
             "default": {
-                "title": "Default of attribute",
+                "title": "Default",
                 "description": "For 'default' of attribute schema.",
                 "type": "string",
                 "default": ""
+            },
+            "options": {
+                "title": "Options",
+                "description": "For 'options' of non-standard attribute schema.",
+                "type": "array",
+                "format": "array-var",
+                "default": [],
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "dependents": {
+                "title": "Dependents",
+                "description": "For 'dependents' of non-standard attribute schema.",
+                "type": "object",
+                "format": "object-json",
+                "additionalProperties": true,
+                "default": {}
             },
             "sortKey": {
                 "title": "Order of attribute",

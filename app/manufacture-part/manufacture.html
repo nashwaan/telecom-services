@@ -47,6 +47,9 @@
 
     </div>
     
+
+
+
     <md-list layout="column" 
              dnd-list="cntrl.getEditMaster().Attributes.items" 
              dnd-allowed-types="['edit-attribute']">
@@ -62,10 +65,13 @@
                  dnd-selected="selected.item=attribute;selected.type='attribute'" 
                  dnd-moved="cntrl.getEditMaster().Attributes.items.splice($index,1)">
             
-            <div style="width:292px;margin-left:10px" ng-repeat="property in [attribute]" ng-include="'property-'+property.type+'.html'"></div>
-
-            <span flex="5"></span>
+            <table class="properties" style="width:345px;margin-left:10px">
+                
+                <tr ng-repeat="property in [attribute]" 
+                    ng-include="'property-'+(property.format==='object-json'?'json':(property.format.indexOf('array-')>=0?'options':(property.type==='object'||property.type==='array'?'group':(property.enum!==undefined?'choice':(property.format==='date-time'?'date':property.type)))))+'.html'"></tr>
             
+            </table>
+    
             <md-button ng-click="cntrl.deleteAttribute($event,attribute,$index)" aria-label="Delete Attribute">
             
                 <md-icon md-svg-icon="gui:delete"></md-icon>
@@ -77,7 +83,7 @@
 
         <md-item class="dndPlaceholder">
 
-            <div style="width:290px;height:3px;background-color:#158FD0;border-width:10px 3px;border-color:white #158FD0;border-style:solid"></div>
+            <div style="width:340px;height:3px;background-color:#158FD0;border-width:10px 3px;border-color:white #158FD0;border-style:solid"></div>
 
         </md-item>
 

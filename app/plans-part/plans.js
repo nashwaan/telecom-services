@@ -1,5 +1,6 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
+/*global console*/
 
 
 (function (angular) {
@@ -53,11 +54,11 @@
             "load": function (path, gridOptions) {
                 $http.get(path).then(function (response) {
                     plans = response.data;
-                    window.console.log("Plans data was retrieved successfully.");
+                    console.log("Plans data was retrieved successfully.");
                     agGridData = toAgGridNested(plans.Level1);
                     gridOptions.api.setRowData(agGridData);
                 }, function (response) {
-                    window.console.warn("Could not load plans data." + response.status);
+                    console.warn("Could not load plans data." + response.status);
                 });
             }
         };

@@ -1,5 +1,6 @@
 // silence JSLint error: variable used before it was defined
 /*global angular*/
+/*global console*/
 
 
 (function (angular) {
@@ -15,51 +16,70 @@
         function saveValues() {
             valuesSaved = angular.copy(valuesTracked);
             if (valuesSaved) {
-                var key, i, ignorePropertyList;
-                for (key in properties.properties) {
-                    if (properties.properties.hasOwnProperty(key) && !valuesSaved.hasOwnProperty(key)) {
-                        if (properties.properties[key].hasOwnProperty('default')) {
-                            valuesSaved[key] = properties.properties[key]['default'];
-                        } else {
-                            valuesSaved[key] = null;
-                        }
+                ignoreProperties.forEach(function (ignoreProperty) {
+                    if (valuesSaved.hasOwnProperty(ignoreProperty)) {
+                        delete valuesSaved[ignoreProperty];
                     }
-                }
-                ignorePropertyList = ignoreProperties.split(";");
-                for (i = 0; i < ignorePropertyList.length; i += 1) {
-                    if (valuesSaved.hasOwnProperty(ignorePropertyList[i])) {
-                        delete valuesSaved[ignorePropertyList[i]];
-                        delete properties.properties[ignorePropertyList[i]];
+                    if (properties.properties.hasOwnProperty(ignoreProperty)) {
+                        delete properties.properties[ignoreProperty];
                     }
-                }
+                });
+                angular.forEach(properties.properties, function (property, key) {
+                    if (!valuesSaved.hasOwnProperty(key)) {
+                        valuesSaved[key] = null;
+                    }
+                });
             }
         }
 
         return {
             "manage": function (schema, values, ignoreObjectProperties) {
+                if (!schema) {
+                    console.error("schema not provided");
+                    return;
+                }
                 properties = angular.copy(schema);
                 valuesTracked = values;
                 ignoreProperties = ignoreObjectProperties;
                 saveValues();
-                if (values !== undefined) {
-                    var key;
-                    /*for (key in valuesSaved) {
-                        if (valuesSaved.hasOwnProperty(key) && properties.properties.hasOwnProperty(key)) {
-                            properties.properties[key].value = angular.copy(values[key]);
+                if (properties.required) {
+                    properties.required.forEach(function (required) {
+                        if (properties.properties[required]) {
+                            properties.properties[required].mandatory = true;
                         }
-                    }*/
-                    for (key in properties.properties) {
-                        if (properties.properties.hasOwnProperty(key)) {
-                            if (valuesSaved.hasOwnProperty(key)) {
-                                properties.properties[key].value = angular.copy(values[key]);
-                            } else if (properties.properties[key].hasOwnProperty('default')) {
-                                properties.properties[key].value = angular.copy(properties.properties[key]['default']);
+                    })
+                }
+                angular.forEach(properties.properties, function (property, key) {
+                    if (valuesSaved && valuesSaved.hasOwnProperty(key) && valuesSaved[key] !== null) {
+                        property.value = angular.copy(valuesSaved[key]);
+                    } else if (property.hasOwnProperty('default')) {
+                        property.value = angular.copy(property['default']);
+                    } else {
+                        switch (property.type) {
+                        case "string":
+                            property.value = "";
+                            break;
+                        case "number":
+                            if (property.minimum) {
+                                property.value = property.minimum;
                             } else {
-                                properties.properties[key].value = null;
+                                property.value = 0;
                             }
+                            break;
+                        case "boolean":
+                            property.value = false;
+                            break;
+                        case "array":
+                            property.value = [];
+                            break;
+                        case "object":
+                            property.value = {};
+                            break;
+                        default:
+                            property.value = null;
                         }
                     }
-                }
+                });
             },
             "get": function () {
                 return properties;
@@ -95,6 +115,9 @@
                 }
                 return false;
             },
+            "isDisabled": function () {
+                return valuesTracked === undefined;
+            },
             "check": function () {
                 window.alert(JSON.stringify(valuesTracked));
             }
@@ -104,16 +127,17 @@
     // define controller for properties
     angular.module('TheApp').controller('propertiesController', ['navigationService', 'propertiesService', 'mastersService', function (navigationService, propertiesService, mastersService) {
         var self = this;
-        self.showDescription = false;
         self.isDocked = function (componentId) {
             return navigationService.isSidenavLocked(componentId);
         };
-        self.properties = propertiesService;
         self.updateValues = function (ev) {
             propertiesService.update();
         };
         self.isPropertiesDirty = function () {
             return propertiesService.isDirty();
+        };
+        self.isPropertiesDisabled = function () {
+            return propertiesService.isDisabled();
         };
         self.revertValues = function (ev) {
             propertiesService.revert();
@@ -124,7 +148,38 @@
         self.getProperties = function () {
             return propertiesService.get();
         };
-
-    }]);
+        self.jsonToText = function (obj) {
+            return JSON.stringify(obj);
+        };
+        self.makeJson = function (text) {
+            try {
+                var obj = JSON.parse(text);
+                if (obj && typeof obj === "object") {
+                    return obj;
+                }
+            } catch (e) {}
+            return null;
+        };
+        self.isValidDependencies = function (property) {
+            var key, properties;
+            if (property && property.dependents) {
+                properties = propertiesService.get().properties;
+                for (key in property.dependents) {
+                    if (property.dependents.hasOwnProperty(key)) {
+                        if (property.dependents[key].charAt(0) === "!") {
+                            if (properties[key].value === property.dependents[key].slice(1)) {
+                                return false;
+                            }
+                        } else {
+                            if (properties[key].value !== property.dependents[key]) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        };
+   }]);
 
 }(window.angular));

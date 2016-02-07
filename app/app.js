@@ -12,8 +12,8 @@
                               'gridster',
                               'dndLists',
                               'agGrid',
-                              'etsDraggableDirective',
-                              'etsFilters'])
+                              'etsFilters',
+                              'etsDirectives'])
         .config(['$routeProvider', '$locationProvider', '$mdThemingProvider', '$mdIconProvider', function ($routeProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {
 
             //

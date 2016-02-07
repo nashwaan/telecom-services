@@ -1,6 +1,7 @@
 <script type="text/ng-template" id="property-selector.html">
     
-    <md-item ng-include="'property-'+(property.type==='object'||property.type==='array'?'group':(property.enum!==undefined?'choice':(property.format==='date-time'?'date':property.type)))+'.html'"></md-item>
+    <tr ng-if="cntrl.isValidDependencies(property)"
+        ng-include="'property-'+(property.format==='object-json'?'json':(property.format.indexOf('array-')>=0?'options':(property.type==='object'||property.type==='array'?'group':(property.enum!==undefined?'choice':(property.format==='date-time'?'date':property.type)))))+'.html'"></tr>
     
 </script>
 
@@ -8,7 +9,11 @@
 
 <script type="text/ng-template" id="property-.html">
     
-    <div>Property type is not defined.</div>
+    <td colspan="2">
+        
+        <div>Property type is not defined.</div>
+    
+    </td>
     
 </script>
 
@@ -16,61 +21,33 @@
 
 <script type="text/ng-template" id="property-group.html">
     
-    <md-list class="property group"
-             layout="column" 
-             layout-align="start start" >
+    <td colspan="2">
         
-        <div class="md-subhead">{{property.title}}</div>
-        <p class="md-body-1">{{property.description}}</p>
-        
-        <div layout="column">
+        <div class="md-subhead">{{property.title}} {{property.description}}</div>
+
+        <table>
             
-            <md-item ng-repeat="property in (property.type==='object'?property.properties:property.items)" 
-                     ng-include="'property-selector.html'">
-                
-            </md-item>
+            <tbody ng-repeat="property in (property.type==='object'?property.properties:property.items)" ng-include="'property-selector.html'"></tbody>
             
-        </div>
+        </table>
         
-    </md-list>
-    
+    </td>
+
 </script>
 
 
 
 <script type="text/ng-template" id="property-string.html">
      
-    <md-input-container class="md-block property string">
-         
-        <label>{{property.title}}</label>
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
+    </td>
+
+    <td>
+        <textarea elastic ng-model="property.value" maxlength="{{property.maxLength}}" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
         
-        <input required="not required" ng-model="property.value" md-maxlength="{{property.maxLength}}" />
-        
-        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
-        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
-
-    </md-input-container>
-
-</script>
-
-
-
-<script type="text/ng-template" id="property-choice.html">
-     
-    <md-input-container class="md-block property choice">
-         
-        <label>{{property.title}}</label>
-        
-        <md-select ng-model="property.value">
-            
-            <md-option ng-repeat="option in property.enum" value="{{option}}">{{option}}</md-option>
-            
-        </md-select>
-        
-        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
-        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
-         
-    </md-input-container>
+        <!--<pre>property.value = {{property.value | json}}</pre>-->
+    </td>
 
 </script>
 
@@ -78,16 +55,13 @@
 
 <script type="text/ng-template" id="property-number.html">
      
-    <md-input-container class="md-block property number">
-         
-        <label>{{property.title}}</label>
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
+    </td>
 
-        <input type="number" ng-model="property.value" step="any" min="1" max="4999"/>
-
-        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
-        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
-
-    </md-input-container>
+    <td>
+        <input type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+    </td>
 
 </script>
 
@@ -95,13 +69,23 @@
 
 <script type="text/ng-template" id="property-boolean.html">
     
-    <md-checkbox class="property boolean" ng-model="property.value">
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}?</label>
+    </td>
+
+    <td>
+
+        <label>
+            <input type="radio" ng-model="property.value" ng-value="true" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <div>Yes</div>
+        </label>
         
-        {{property.title}}
-        <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
-        <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
+        <label>
+            <input type="radio" ng-model="property.value" ng-value="false" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <div>No</div>
+        </label>
         
-    </md-checkbox>
+    </td>
 
 </script>
 
@@ -109,11 +93,81 @@
 
 <script type="text/ng-template" id="property-date.html">
     
-    <md-datepicker class="property date" ng-model="property.value" md-placeholder="{{property.title}}"></md-datepicker>
-    
-    <md-tooltip ng-if="!cntrl.showDescription">{{property.description}}</md-tooltip>
-    <div ng-if="cntrl.showDescription" class="md-caption property-description">{{property.description}}</div>
-    
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
+    </td>
+
+    <td>
+        <input type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" />
+    </td>
+
+</script>
+
+
+
+<script type="text/ng-template" id="property-choice.html">
+     
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
+    </td>
+
+    <td>
+        
+        <label ng-if="property.enum.length<10" ng-repeat="option in property.enum">
+            
+            <input type="radio" ng-model="property.value" value="{{option}}" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <div>{{option}}</div>
+            
+        </label>
+        
+        <select ng-if="property.enum.length>=10" ng-model="property.value" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()">
+            
+            <option value="{{option}}" ng-repeat="option in property.enum">{{option}}</option>
+            
+        </select>
+        
+    </td>
+
+</script>
+
+
+
+<script type="text/ng-template" id="property-options.html">
+     
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
+    </td>
+
+    <td>
+        
+        <label class="options" ng-repeat="option in property.options">
+            
+            <input type="checkbox" ng-init="property.value=(property.value.length>=1?property.value:[])" ng-click="property.value.indexOf(option)>=0?property.value.splice(property.value.indexOf(option),1):property.value.splice($index,0,option)" value="{{option}}" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <div>{{option}}</div>
+            
+        </label>
+        
+        <textarea elastic ng-if="property.format==='array-var'" placeholder="Type and hit <Enter>" ng-init="property.options=(property.options.length>=1?property.options:[])" ng-model="textInput" ng-keyup="$event.keyCode===13&&(!textInput||property.options.indexOf(textInput)>=0?0:property.options.push(textInput))" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        
+    </td>
+
+</script>
+
+
+
+<script type="text/ng-template" id="property-json.html">
+     
+    <td>
+        <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
+    </td>
+
+    <td>
+        
+        <textarea elastic placeholder="Type JSON object" ng-init="jsonInput=cntrl.jsonToText(property.value)" ng-model="jsonInput" ng-keyup="property.value=cntrl.makeJson(jsonInput)" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" ></textarea>
+        <pre>property.value = {{property.value | json}}</pre>
+        
+    </td>
+
 </script>
 
 
@@ -122,57 +176,80 @@
             layout="column" 
             md-component-id="properties" 
             md-is-locked-open="$mdMedia('gt-sm')&&cntrl.isDocked('properties')">
-
+    
     <md-tabs md-dynamic-height md-border-bottom>
-
+        
         <md-tab label="properties">
-
+            
             <div layout="column" layout-align="start" flex>
-
+                
                 <div layout="row" layout-align="space-around">
-
+                    
                     <md-button class="md-primary md-raised" 
                                ng-disabled="!cntrl.isPropertiesDirty()" 
                                ng-click="cntrl.revertValues($event)">
-
+                        
                         <md-icon md-svg-icon="gui:undo"></md-icon>
                         <md-tooltip>Revert values of properties to previous state</md-tooltip>
                         Revert
-
+                        
                     </md-button>
-
+                    
                     <md-button class="md-primary md-raised" 
                                ng-disabled="!cntrl.isPropertiesDirty()" 
                                ng-click="cntrl.updateValues($event)">
-
+                        
                         <md-icon md-svg-icon="gui:save"></md-icon>
                         <md-tooltip>Apply changes made to values of properties</md-tooltip>
                         Update
-
+                        
                     </md-button>
-
+                    
                 </div>
-
+                
             </div>
-
-            <md-item ng-repeat="property in [cntrl.getProperties()]" ng-include="'property-selector.html'"></md-item>
-
+            
+            <form name="properties" novalidate>
+                <pre>properties.$pristine = {{properties.$pristine | json}}</pre>
+                <pre>properties.$dirty = {{properties.$dirty | json}}</pre>
+                <pre>properties.$valid = {{properties.$valid | json}}</pre>
+                <pre>properties.$invalid = {{properties.$invalid | json}}</pre>
+                <pre>properties.$submitted = {{properties.$submitted | json}}</pre>
+                <!--<pre>properties = {{properties | json}}</pre>-->
+                
+                <table class="properties">
+                
+                    <thead>
+                        
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <tbody ng-repeat="property in [cntrl.getProperties()]" ng-include="'property-selector.html'"></tbody>
+                    
+                </table>
+                
+            </form>
+            
         </md-tab>
-
+        
         <md-tab label="BRD">
-
+            
             <div class="highlightable" layout="column" ng-include="'writer-part/writer.html'"></div>
-
+            
         </md-tab>
-
+        
         <md-tab label="JSON">
-
+            
             <p>JSON for the selected {{selected.type}}:</p>
-
+            
             <pre class="highlightable">{{selected.item | json:4 }}</pre>
-
+            
         </md-tab>
-
+        
     </md-tabs>
-
+    
 </md-sidenav>
