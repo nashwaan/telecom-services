@@ -22,6 +22,9 @@
                 case '/assemble':
                     active = assembleService.getPlan();
                     return active ? active.name : "Design Mode";
+                case '/international':
+                    active = assembleService.getPlan();
+                    return active ? active.name : "World Map";
                 default:
                     return "Telecom Designer";
                 }
@@ -65,7 +68,9 @@
             $scope.styleUrl = 'demo/' + $scope.page + '/style.css';
         });
         self.changeMode = function () {
-            $location.path($location.path() === '/assemble' ? 'manufacture' : 'assemble');
+            var paths = ['manufacture', 'assemble', 'international'],
+                index = paths.indexOf($location.path().substring(1));
+            $location.path(paths[(index + 1) % paths.length]);
         };
     }]);
 

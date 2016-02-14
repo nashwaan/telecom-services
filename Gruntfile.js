@@ -1,6 +1,8 @@
 // silence JSLint error: variable used before it was defined
 /*global module*/
 /*global require*/
+/*global console*/
+/*jslint nomen: true*/
 
 // wrapper function (required by grunt and its plugins)
 module.exports = function (grunt) {
@@ -115,7 +117,7 @@ module.exports = function (grunt) {
                             }
                         }(result));
                         result.svg.$.id = filename.replace(/\s+/g, "");
-                        optimizedSvg = result; //xmlBuilder.buildObject(result);
+                        optimizedSvg = result;
                     });
                 });
                 console.log("Parsed " + filepath);
@@ -128,7 +130,6 @@ module.exports = function (grunt) {
                 }
             };
             contents = xmlBuilder.buildObject(contents);
-                //grunt.file.write(file.dest, pd.xml('<svg><defs>' + contents + '</defs></svg>')); // write joined contents to destination filepath.
             grunt.file.write(file.dest, pd.xml(contents)); // write joined contents to destination filepath.
             grunt.log.writeln('File "' + file.dest + '" created.'); // print a success message.
             grunt.file.write(path.dirname(file.dest) + '/../data/' + path.basename(file.dest, path.extname(file.dest)) + '.json', JSON.stringify(filenames));
@@ -151,12 +152,115 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerMultiTask('cleanMap', 'Clean Visio exported svg file.', function () {
+        var done = this.async(),
+            _ = require('lodash'),
+            xml2js = require('xml2js'),
+            xmlParser = new xml2js.Parser(),
+            xmlBuilder = new xml2js.Builder(),
+            pd = require('pretty-data').pd,
+            path = require('path'),
+            svgpath = require('svgpath'),
+            SVGO = require('svgo'),
+            svgo = new SVGO({
+                plugins: [{
+                    sortAttrs: true
+                }, {
+                    removeDimensions: true
+                }]
+            });
+
+        this.files.forEach(function (file) {
+            file.src.filter(function (filepath) {
+                if (!grunt.file.exists(filepath)) { // Remove nonexistent files (it's up to you to filter or warn here).
+                    grunt.log.warn('Source file "' + filepath + '" not found.');
+                    return false;
+                } else {
+                    return true;
+                }
+            }).map(function (filepath) {
+                svgo.optimize(grunt.file.read(filepath), function (result) {
+                    function removeParent(nodeGrand, parentProperty) {
+                        var key;
+                        for (key in nodeGrand[parentProperty]) {
+                            if (nodeGrand[parentProperty].hasOwnProperty(key) && key !== "$") {
+                                nodeGrand[key] = nodeGrand[parentProperty][key];
+                            }
+                        }
+                        //delete nodeGrand[parentProperty];
+                    }
+                    xmlParser.parseString(result.data, function (err, result) {
+                        var transform = "",
+                            countryCodes = [];
+                        result.svg.$.width = "100%";
+                        result.svg.$.height = "100%";
+                        delete result.svg.$['class'];
+                        delete result.svg.$['color-interpolation-filters'];
+                        delete result.svg.style;
+                        delete result.svg.g.$;
+                        //transform = result.svg.g[0].$.transform;
+                        //result.svg.g = result.svg.g[0].g;
+                        delete result.svg.title;
+                        result.svg.path = [];
+                        //result.svg.use = [];
+                        result.svg.g.forEach(function (group) {
+                            //group.path = group.g[0].path;
+                            delete group.path[0].$["class"];
+                            group.path[0].$.id = group.title[0];
+                            group.path[0].$["class"] = "country";
+                            group.path[0].$.transform = transform + " " + group.$.transform;
+                            var d = group.path[0].$.d;
+                            delete group.path[0].$.d;
+                            group.path[0].$.d = d;
+                            delete group.title;
+                            delete group.g;
+                            delete group.$.transform;
+                            group.path[0].$.d = svgpath(group.path[0].$.d)
+                                .transform(group.path[0].$.transform).rel().round(2).toString();
+                            delete group.path[0].$.transform;
+                            countryCodes.push(group.path[0].$.id);
+                            result.svg.path.push(group.path[0]);
+                            /*result.svg.use.push({
+                                $: {
+                                    "xlink:href": "#" + group.path[0].$.id,
+                                    "class": "border"
+                                }
+                            });*/
+                        });
+                        delete result.svg.g;
+                        result.svg.path = _.sortBy(result.svg.path, "$.id");
+                        //result.svg.use = _.sortBy(result.svg.use, "$.xlink:href");
+                        //console.log(JSON.stringify(result));
+                        console.log("Parsed " + filepath);
+                        console.log("Country Codes: ['" + countryCodes.sort().join("', '") + "']");
+                        result = xmlBuilder.buildObject(result);
+                        grunt.file.write(file.dest, pd.xml(result)); // write joined contents to destination filepath.
+                        grunt.log.writeln('File "' + file.dest + '" created.'); // print a success message.
+                    });
+                });
+            });
+
+        });
+        done(true);
+    });
+    grunt.config('cleanMap', {
+        options: {
+            banner: '<!--\n <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> \n-->\n'
+        },
+        map: {
+            nonull: true,
+            src: ['app/icons/world-map-visio.svg'],
+            dest: 'app/icons/world-map.svg'
+        }
+    });
+
     // this default task will go through all configuration (dev and production) in each task 
     grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'icons']);
 
-    // this task will only run the dev configuration 
+    // register custom tasks
     //grunt.registerTask('icons', ['svgcombine:master-icons', 'combineIcons']);
     grunt.registerTask('icons', ['combineIcons']);
+    grunt.registerTask('map', ['cleanMap']);
 
     // only run production configuration 
     grunt.registerTask('production', ['jshint:production', 'uglify:production', 'cssmin:production', 'less:production']);

@@ -26,6 +26,7 @@
     "angular-gridster": "*",
     "angular-material": "^1.0.4",
     "angular-material-icons": "*",
+    "angular-messages": "^1.5.0",
     "angular-mocks": "^1.4.9",
     "angular-route": "^1.4.9",
     "grunt-contrib-jshint": "^0.12.0",
@@ -52,7 +53,8 @@
     "karma-jasmine": "*",
     "node-jsxml": "*",
     "pretty-data": "*",
-    "protractor": "latest"
+    "protractor": "latest",
+    "svgpath": "^2.1.5"
   },
   "scripts": {
     "prestart": "",

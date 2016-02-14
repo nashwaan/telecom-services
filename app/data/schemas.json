@@ -4,8 +4,8 @@
         "description": "",
         "type": "",
         "Attributes": {},
-        "groupName": "",
         "collectionName": "",
+        "groupName": "",
         "icon": ""
     },
     "masterSchema": {
@@ -15,6 +15,7 @@
         "description": "Edit master properties.",
         "type": "object",
         "additionalProperties": true,
+        "required": ["name", "type", "collectionName", "groupName"],
         "properties": {
             "name": {
                 "title": "Master Name",
@@ -35,15 +36,15 @@
                 "enum": ["Standard", "Modifier"],
                 "default": ""
             },
-            "groupName": {
-                "title": "Group Name",
-                "description": "Specify group name for this master.",
-                "type": "string",
-                "default": ""
-            },
             "collectionName": {
                 "title": "Collection Name",
                 "description": "Specify collection name for this master.",
+                "type": "string",
+                "default": ""
+            },
+            "groupName": {
+                "title": "Group Name",
+                "description": "Specify group name for this master.",
                 "type": "string",
                 "default": ""
             },
@@ -62,7 +63,7 @@
         "definition": "No Definition",
         "type": "string",
         "format": "",
-        "enum": [],
+        "enum": "",
         "mandatory": false,
         "minLength": 0,
         "maxLength": 1000,
@@ -72,6 +73,7 @@
         "exclusiveMaximum": false,
         "multipleOf": 1,
         "minItems": 0,
+        "maxItems": 1000,
         "uniqueItems": false,
         "additionalItems": true,
         "additionalProperties": true,
@@ -112,14 +114,14 @@
                 "description": "For 'type' of attribute schema.",
                 "type": "string",
                 "enum": ["string", "number", "boolean", "array", "object"],
-                "default": ""
+                "default": "string"
             },
             "format": {
                 "title": "Format",
                 "description": "For 'format' of attribute schema.",
                 "type": "string",
                 "default": "",
-                "enum": ["string-free", "string-choice", "array-fix", "array-var", "object-json"]
+                "enum": ["", "email", "date-time", "array-fix", "array-var", "object-json"]
             },
             "enum": {
                 "title": "Choice",
@@ -128,8 +130,7 @@
                 "format": "array-var",
                 "default": "",
                 "dependents": {
-                    "type": "string",
-                    "format": "string-choice"
+                    "type": "string"
                 }
             },
             "mandatory": {
@@ -142,6 +143,10 @@
                 "title": "Minimum Length",
                 "description": "For 'minLength' of attribute schema.",
                 "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
                 "default": 0,
                 "dependents": {
                     "type": "string"
@@ -151,6 +156,10 @@
                 "title": "Maximum Length",
                 "description": "For 'maxLength' of attribute schema.",
                 "type": "number",
+                "minimum": 1,
+                "exclusiveMinimum": false,
+                "maximum": 1000000,
+                "exclusiveMaximum": false,
                 "default": 1000,
                 "dependents": {
                     "type": "string"
@@ -160,6 +169,10 @@
                 "title": "Minimum",
                 "description": "For 'minimum' of attribute schema.",
                 "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
                 "default": 0,
                 "dependents": {
                     "type": "number"
@@ -178,6 +191,10 @@
                 "title": "Maximum",
                 "description": "For 'maximum' of attribute schema.",
                 "type": "number",
+                "minimum": 1,
+                "exclusiveMinimum": false,
+                "maximum": 1000000,
+                "exclusiveMaximum": false,
                 "default": 1000,
                 "dependents": {
                     "type": "number"
@@ -210,10 +227,23 @@
                 "description": "For 'minItems' of attribute schema.",
                 "type": "number",
                 "minimum": 0,
-                "exclusiveMinimum": true,
+                "exclusiveMinimum": false,
                 "maximum": 1000,
                 "exclusiveMaximum": false,
                 "default": 0,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "maxItems": {
+                "title": "Maximum Array Items",
+                "description": "For 'maxItems' of attribute schema.",
+                "type": "number",
+                "minimum": 1,
+                "exclusiveMinimum": false,
+                "maximum": 1000000,
+                "exclusiveMaximum": false,
+                "default": 1000,
                 "dependents": {
                     "type": "array"
                 }
@@ -293,6 +323,7 @@
         "description": "Edit plan properties.",
         "type": "object",
         "additionalProperties": true,
+        "required": ["name"],
         "properties": {
             "name": {
                 "title": "Plan Name",
@@ -320,6 +351,7 @@
         "description": "Edit band properties.",
         "type": "object",
         "additionalProperties": true,
+        "required": ["name"],
         "properties": {
             "name": {
                 "title": "Band Name",
@@ -347,6 +379,7 @@
         "description": "Edit flavor properties.",
         "type": "object",
         "additionalProperties": true,
+        "required": ["name"],
         "properties": {
             "name": {
                 "title": "Flavor Name",

@@ -38,6 +38,9 @@
                     console.error("schema not provided");
                     return;
                 }
+                if (values && values === valuesTracked) {
+                    return;
+                }
                 properties = angular.copy(schema);
                 valuesTracked = values;
                 ignoreProperties = ignoreObjectProperties;
@@ -47,7 +50,7 @@
                         if (properties.properties[required]) {
                             properties.properties[required].mandatory = true;
                         }
-                    })
+                    });
                 }
                 angular.forEach(properties.properties, function (property, key) {
                     if (valuesSaved && valuesSaved.hasOwnProperty(key) && valuesSaved[key] !== null) {
@@ -79,27 +82,36 @@
                             property.value = null;
                         }
                     }
+                    if (property.value instanceof Array && property.format.indexOf('array-') >= 0) {
+                        property.options = property.options || [];
+                        property.options = property.options.concat(property.value.filter(function (item) {
+                            return property.options.indexOf(item) < 0;
+                        }));
+                    }
                 });
             },
             "get": function () {
                 return properties;
             },
             "update": function () {
-                var key;
-                for (key in valuesSaved) {
-                    if (valuesSaved.hasOwnProperty(key) && properties.properties.hasOwnProperty(key)) {
-                        valuesTracked[key] = angular.copy(properties.properties[key].value);
+                angular.forEach(properties.properties, function (property, key) {
+                    if (valuesSaved.hasOwnProperty(key)) {
+                        valuesTracked[key] = angular.copy(property.value);
                     }
-                }
+                    if (properties.title === 'Attribute') {
+                        if (key === 'enum' && property.value && property.value.length === 0) {
+                            delete valuesTracked[key];
+                        }
+                    }
+                });
                 saveValues();
             },
             "revert": function () {
-                var key;
-                for (key in valuesSaved) {
-                    if (valuesSaved.hasOwnProperty(key) && properties.properties.hasOwnProperty(key)) {
-                        properties.properties[key].value = valuesSaved[key];
+                angular.forEach(properties.properties, function (property, key) {
+                    if (valuesSaved.hasOwnProperty(key)) {
+                        property.value = valuesSaved[key];
                     }
-                }
+                });
             },
             "isDirty": function () {
                 if (valuesTracked === undefined) {
@@ -132,6 +144,13 @@
         };
         self.updateValues = function (ev) {
             propertiesService.update();
+        };
+        self.submittable = function (form) {
+            //console.log(JSON.stringify(form));
+            angular.forEach(form, function (input) {
+                
+            });
+            return true;
         };
         self.isPropertiesDirty = function () {
             return propertiesService.isDirty();
@@ -180,6 +199,6 @@
             }
             return true;
         };
-   }]);
+    }]);
 
 }(window.angular));

@@ -1,0 +1,21 @@
+<h1>Hello</h1>
+
+<div class="container" ng-controller="internationalController as cntrl">
+
+    <div svg-map></div>
+
+    <div class="countrylist">
+
+        <div ng-repeat="(key,country) in getCountries()" 
+             ng-class="{active:hoverCountry===key}"
+             ng-mouseover="changeHoverCountry(key)">
+
+            <div>{{key}}</div>
+
+            <div>{{country.iso}}</div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,7 +1,21 @@
+<script type="text/ng-template" id="property-messages.html">
+    
+    <div class="messages" ng-messages="propertiesForm[key].$error" ng-if="propertiesForm.$submitted||propertiesForm[key].$touched">
+        
+        <div ng-message="minlength">Input is less than {{}} characters</div>
+        <div ng-message="maxlength">Your is more than {{}} characters</div>
+        <div ng-message="required">This is required.</div>
+        
+    </div>
+    
+</script>
+
+
+
 <script type="text/ng-template" id="property-selector.html">
     
-    <tr ng-if="cntrl.isValidDependencies(property)"
-        ng-include="'property-'+(property.format==='object-json'?'json':(property.format.indexOf('array-')>=0?'options':(property.type==='object'||property.type==='array'?'group':(property.enum!==undefined?'choice':(property.format==='date-time'?'date':property.type)))))+'.html'"></tr>
+    <tr ng-if="!cntrl.isValidDependencies||cntrl.isValidDependencies(property)"
+        ng-include="'property-'+(property.type==='object'&&property.format==='object-json'?'json':(property.type==='array'&&property.format.indexOf('array-')>=0?'options':(property.type==='object'||property.type==='array'?'group':(property.enum?'choice':(property.format==='date-time'?'date':property.type)))))+'.html'"></tr>
     
 </script>
 
@@ -27,7 +41,7 @@
 
         <table>
             
-            <tbody ng-repeat="property in (property.type==='object'?property.properties:property.items)" ng-include="'property-selector.html'"></tbody>
+            <tbody ng-repeat="(key,property) in (property.type==='object'?property.properties:property.items)" ng-include="'property-selector.html'"></tbody>
             
         </table>
         
@@ -44,9 +58,8 @@
     </td>
 
     <td>
-        <textarea elastic ng-model="property.value" maxlength="{{property.maxLength}}" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
-        
-        <!--<pre>property.value = {{property.value | json}}</pre>-->
+        <textarea name="{{key}}" elastic ng-model="property.value" maxlength="{{property.maxLength}}" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        <div ng-include="'property-messages.html'"></div>
     </td>
 
 </script>
@@ -60,7 +73,8 @@
     </td>
 
     <td>
-        <input type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        <input name="{{key}}" type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        <div ng-include="'property-messages.html'"></div>
     </td>
 
 </script>
@@ -76,12 +90,12 @@
     <td>
 
         <label>
-            <input type="radio" ng-model="property.value" ng-value="true" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <input name="{{key+'-yes'}}" type="radio" ng-model="property.value" ng-value="true" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
             <div>Yes</div>
         </label>
         
         <label>
-            <input type="radio" ng-model="property.value" ng-value="false" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <input name="{{key+'no'}}" type="radio" ng-model="property.value" ng-value="false" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
             <div>No</div>
         </label>
         
@@ -98,7 +112,8 @@
     </td>
 
     <td>
-        <input type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" />
+        <input name="{{key}}" type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" />
+        <div ng-include="'property-messages.html'"></div>
     </td>
 
 </script>
@@ -138,16 +153,18 @@
         <label ng-class="{mandatory:property.mandatory}" title="{{property.description}}">{{property.title}}</label>
     </td>
 
-    <td>
+    <td ng-init="">
         
         <label class="options" ng-repeat="option in property.options">
             
-            <input type="checkbox" ng-init="property.value=(property.value.length>=1?property.value:[])" ng-click="property.value.indexOf(option)>=0?property.value.splice(property.value.indexOf(option),1):property.value.splice($index,0,option)" value="{{option}}" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+            <input type="checkbox" ng-checked="property.value.indexOf(option)>=0" ng-click="property.value=(property.value.length>=1?property.value:[]);property.value.indexOf(option)>=0?property.value.splice(property.value.indexOf(option),1):property.value.splice($index,0,option)" value="{{option}}" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
             <div>{{option}}</div>
             
         </label>
         
-        <textarea elastic ng-if="property.format==='array-var'" placeholder="Type and hit <Enter>" ng-init="property.options=(property.options.length>=1?property.options:[])" ng-model="textInput" ng-keyup="$event.keyCode===13&&(!textInput||property.options.indexOf(textInput)>=0?0:property.options.push(textInput))" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        <textarea elastic ng-if="property.format==='array-var'" placeholder="Type and hit <Enter>" ng-init="property.options=(property.options.length>=1?property.options:[])" ng-model="textInput" ng-keyup="$event.keyCode===13&&(!textInput||property.options.indexOf(textInput)>=0?0:property.options.push(textInput)&&property.value.push(textInput));textInput=$event.keyCode===13?'':textInput" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        
+        <pre>value: {{property.value | json}}</pre>
         
     </td>
 
@@ -163,7 +180,7 @@
 
     <td>
         
-        <textarea elastic placeholder="Type JSON object" ng-init="jsonInput=cntrl.jsonToText(property.value)" ng-model="jsonInput" ng-keyup="property.value=cntrl.makeJson(jsonInput)" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" ></textarea>
+        <textarea name="{{key}}" elastic placeholder="Type JSON object" ng-init="jsonInput=cntrl.jsonToText(property.value)" ng-model="jsonInput" ng-keyup="property.value=cntrl.makeJson(jsonInput)" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" ></textarea>
         <pre>property.value = {{property.value | json}}</pre>
         
     </td>
@@ -183,6 +200,16 @@
             
             <div layout="column" layout-align="start" flex>
                 
+            </div>
+            
+            <form name="propertiesForm" novalidate>
+                <!--<pre>propertiesForm.$pristine = {{propertiesForm.$pristine | json}}</pre>
+                <pre>propertiesForm.$dirty = {{propertiesForm.$dirty | json}}</pre>
+                <pre>propertiesForm.$valid = {{propertiesForm.$valid | json}}</pre>
+                <pre>propertiesForm.$invalid = {{propertiesForm.$invalid | json}}</pre>
+                <pre>propertiesForm.$submitted = {{propertiesForm.$submitted | json}}</pre>-->
+                <!--<pre>propertiesForm = {{propertiesForm | json}}</pre>-->
+                
                 <div layout="row" layout-align="space-around">
                     
                     <md-button class="md-primary md-raised" 
@@ -196,8 +223,9 @@
                     </md-button>
                     
                     <md-button class="md-primary md-raised" 
-                               ng-disabled="!cntrl.isPropertiesDirty()" 
-                               ng-click="cntrl.updateValues($event)">
+                               type="submit"
+                               ng-disabled="!cntrl.isPropertiesDirty()&&!cntrl.submittable(propertiesForm)" 
+                               ng-click="!propertiesForm.$invalid&&cntrl.updateValues($event)">
                         
                         <md-icon md-svg-icon="gui:save"></md-icon>
                         <md-tooltip>Apply changes made to values of properties</md-tooltip>
@@ -206,16 +234,6 @@
                     </md-button>
                     
                 </div>
-                
-            </div>
-            
-            <form name="properties" novalidate>
-                <pre>properties.$pristine = {{properties.$pristine | json}}</pre>
-                <pre>properties.$dirty = {{properties.$dirty | json}}</pre>
-                <pre>properties.$valid = {{properties.$valid | json}}</pre>
-                <pre>properties.$invalid = {{properties.$invalid | json}}</pre>
-                <pre>properties.$submitted = {{properties.$submitted | json}}</pre>
-                <!--<pre>properties = {{properties | json}}</pre>-->
                 
                 <table class="properties">
                 
@@ -229,7 +247,7 @@
                     </thead>
                     
                     <tbody ng-repeat="property in [cntrl.getProperties()]" ng-include="'property-selector.html'"></tbody>
-                    
+                
                 </table>
                 
             </form>
@@ -246,7 +264,7 @@
             
             <p>JSON for the selected {{selected.type}}:</p>
             
-            <pre class="highlightable">{{selected.item | json:4 }}</pre>
+            <pre class="highlightable">{{selected.item | json:4}}</pre>
             
         </md-tab>
         

@@ -7,13 +7,12 @@
 
     // initialize 'servicesDesignerApp' module
     angular.module('TheApp', ['ngRoute',
+                              'ngMessages',
                               'ngMaterial',
                               'ngMdIcons',
                               'gridster',
                               'dndLists',
-                              'agGrid',
-                              'etsFilters',
-                              'etsDirectives'])
+                              'agGrid'])
         .config(['$routeProvider', '$locationProvider', '$mdThemingProvider', '$mdIconProvider', function ($routeProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {
 
             //
@@ -23,6 +22,9 @@
                 })
                 .when('/manufacture', {
                     templateUrl: 'manufacture-part/manufacture.html'
+                })
+                .when('/international', {
+                    templateUrl: 'international-part/international.html'
                 })
                 .otherwise({
                     redirectTo: '/assemble'

@@ -73,9 +73,9 @@
                             if (property.mandatory) {
                                 delete property.mandatory;
                             }
-                        })
-                    })
-                })
+                        });
+                    });
+                });
             });
             //console.log(JSON.stringify(masters));
         }

@@ -6,7 +6,7 @@
     'use strict';
 
     //
-    angular.module('etsFilters', [])
+    angular.module('TheApp')
         .filter('icon_file', function () {
             return function (input, uppercase) {
 

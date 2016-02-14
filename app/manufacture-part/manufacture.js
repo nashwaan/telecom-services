@@ -12,13 +12,26 @@
             masterEditOriginal,
             toggleEditSelectedMaster = false;
 
+        function toCamelCase(s) {
+            // remove chars that should not be in the beginning of the variable
+            s = s.replace(/([^a-zA-Z0-9_\- ])|^[_0-9]+/g, "").trim().toLowerCase();
+            // uppercase letters preceeded by a hyphen or a space
+            s = s.replace(/([ \-]+)([a-zA-Z0-9])/g, function (a, b, c) {
+                return c.toUpperCase();
+            });
+            // uppercase letters following numbers
+            s = s.replace(/([0-9]+)([a-zA-Z])/g, function (a, b, c) {
+                return b + c.toUpperCase();
+            });
+            return s;
+        }
+
         function propertiesToItems(master) {
             master.Attributes.items = [];
             var key;
             for (key in master.Attributes.properties) {
                 if (master.Attributes.properties.hasOwnProperty(key)) {
                     master.Attributes.items.push(master.Attributes.properties[key]);
-                    master.Attributes.items[master.Attributes.items.length - 1].property = key;
                 }
             }
             master.Attributes.type = "array";
@@ -30,10 +43,9 @@
             master.Attributes.properties = {};
             var i, key;
             for (i = 0; i < master.Attributes.items.length; i += 1) {
-                key = master.Attributes.items[i].property;
+                key = toCamelCase(master.Attributes.items[i].title);
                 master.Attributes.properties[key] = master.Attributes.items[i];
                 master.Attributes.properties[key].sortKey = i + 1;
-                delete master.Attributes.properties[key].property;
             }
             master.Attributes.type = "object";
             delete master.Attributes.items;
@@ -64,6 +76,15 @@
                 var masterSave = angular.copy(masterEdit);
                 itemsToProperties(masterSave);
                 delete masterSave.reference;
+                angular.forEach(masterSave.Attributes.properties, function (property, key) {
+                    if (property.mandatory && masterSave.Attributes.required.indexOf(key) < 0) {
+                        if (!masterSave.Attributes.required) {
+                            masterSave.Attributes.required = [];
+                        }
+                        masterSave.Attributes.required.push(key);
+                    }
+                    delete property.mandatory;
+                });
                 mastersService.add(masterSave, replaceOriginal ? masterEditOriginal : undefined);
                 masterEditOriginal = angular.copy(masterEdit);
             },

@@ -1,0 +1,1922 @@
+{
+    "ad": {
+        "iso": "AND",
+        "country": "Andorra",
+        "dial": "+376",
+        "area": 468,
+        "population": 84000,
+        "gdp": "4.8 Billion"
+    },
+    "ae": {
+        "iso": "ARE",
+        "country": "United Arab Emirates",
+        "dial": "+971",
+        "area": 82880,
+        "population": 4975593,
+        "gdp": "390 Billion"
+    },
+    "af": {
+        "iso": "AFG",
+        "country": "Afghanistan",
+        "dial": "+93",
+        "area": 647500,
+        "population": 29121286,
+        "gdp": "20.65 Billion"
+    },
+    "ag": {
+        "iso": "ATG",
+        "country": "Antigua and Barbuda",
+        "dial": "+1-268",
+        "area": 443,
+        "population": 86754,
+        "gdp": "1.22 Billion"
+    },
+    "ai": {
+        "iso": "AIA",
+        "country": "Anguilla",
+        "dial": "+1-264",
+        "area": 102,
+        "population": 13254,
+        "gdp": "175.4 Million"
+    },
+    "al": {
+        "iso": "ALB",
+        "country": "Albania",
+        "dial": "+355",
+        "area": 28748,
+        "population": 2986952,
+        "gdp": "12.8 Billion"
+    },
+    "am": {
+        "iso": "ARM",
+        "country": "Armenia",
+        "dial": "+374",
+        "area": 29800,
+        "population": 2968000,
+        "gdp": "10.44 Billion"
+    },
+    "an": {
+        "iso": "ANT",
+        "country": "Netherlands Antilles",
+        "dial": "+599",
+        "area": 960,
+        "population": 136197,
+        "gdp": ""
+    },
+    "ao": {
+        "iso": "AGO",
+        "country": "Angola",
+        "dial": "+244",
+        "area": 1246700,
+        "population": 13068161,
+        "gdp": "124 Billion"
+    },
+    "aq": {
+        "iso": "ATA",
+        "country": "Antarctica",
+        "dial": "+672",
+        "area": 14000000,
+        "population": 0,
+        "gdp": ""
+    },
+    "ar": {
+        "iso": "ARG",
+        "country": "Argentina",
+        "dial": "+54",
+        "area": 2766890,
+        "population": 41343201,
+        "gdp": "484.6 Billion"
+    },
+    "as": {
+        "iso": "ASM",
+        "country": "American Samoa",
+        "dial": "+1-684",
+        "area": 199,
+        "population": 57881,
+        "gdp": "462.2 Million"
+    },
+    "at": {
+        "iso": "AUT",
+        "country": "Austria",
+        "dial": "+43",
+        "area": 83858,
+        "population": 8205000,
+        "gdp": "417.9 Billion"
+    },
+    "au": {
+        "iso": "AUS",
+        "country": "Australia",
+        "dial": "+61",
+        "area": 7686850,
+        "population": 21515754,
+        "gdp": "1.488 Trillion"
+    },
+    "aw": {
+        "iso": "ABW",
+        "country": "Aruba",
+        "dial": "+297",
+        "area": 193,
+        "population": 71566,
+        "gdp": "2.516 Billion"
+    },
+    "az": {
+        "iso": "AZE",
+        "country": "Azerbaijan",
+        "dial": "+994",
+        "area": 86600,
+        "population": 8303512,
+        "gdp": "76.01 Billion"
+    },
+    "ba": {
+        "iso": "BIH",
+        "country": "Bosnia and Herzegovina",
+        "dial": "+387",
+        "area": 51129,
+        "population": 4590000,
+        "gdp": "18.87 Billion"
+    },
+    "bb": {
+        "iso": "BRB",
+        "country": "Barbados",
+        "dial": "+1-246",
+        "area": 431,
+        "population": 285653,
+        "gdp": "4.262 Billion"
+    },
+    "bd": {
+        "iso": "BGD",
+        "country": "Bangladesh",
+        "dial": "+880",
+        "area": 144000,
+        "population": 156118464,
+        "gdp": "140.2 Billion"
+    },
+    "be": {
+        "iso": "BEL",
+        "country": "Belgium",
+        "dial": "+32",
+        "area": 30510,
+        "population": 10403000,
+        "gdp": "507.4 Billion"
+    },
+    "bf": {
+        "iso": "BFA",
+        "country": "Burkina Faso",
+        "dial": "+226",
+        "area": 274200,
+        "population": 16241811,
+        "gdp": "12.13 Billion"
+    },
+    "bg": {
+        "iso": "BGR",
+        "country": "Bulgaria",
+        "dial": "+359",
+        "area": 110910,
+        "population": 7148785,
+        "gdp": "53.7 Billion"
+    },
+    "bh": {
+        "iso": "BHR",
+        "country": "Bahrain",
+        "dial": "+973",
+        "area": 665,
+        "population": 738004,
+        "gdp": "28.36 Billion"
+    },
+    "bi": {
+        "iso": "BDI",
+        "country": "Burundi",
+        "dial": "+257",
+        "area": 27830,
+        "population": 9863117,
+        "gdp": "2.676 Billion"
+    },
+    "bj": {
+        "iso": "BEN",
+        "country": "Benin",
+        "dial": "+229",
+        "area": 112620,
+        "population": 9056010,
+        "gdp": "8.359 Billion"
+    },
+    "bl": {
+        "iso": "BLM",
+        "country": "Saint Barthelemy",
+        "dial": "+590",
+        "area": 21,
+        "population": 8450,
+        "gdp": ""
+    },
+    "bm": {
+        "iso": "BMU",
+        "country": "Bermuda",
+        "dial": "+1-441",
+        "area": 53,
+        "population": 65365,
+        "gdp": "5.6 Billion"
+    },
+    "bn": {
+        "iso": "BRN",
+        "country": "Brunei",
+        "dial": "+673",
+        "area": 5770,
+        "population": 395027,
+        "gdp": "16.56 Billion"
+    },
+    "bo": {
+        "iso": "BOL",
+        "country": "Bolivia",
+        "dial": "+591",
+        "area": 1098580,
+        "population": 9947418,
+        "gdp": "30.79 Billion"
+    },
+    "br": {
+        "iso": "BRA",
+        "country": "Brazil",
+        "dial": "+55",
+        "area": 8511965,
+        "population": 201103330,
+        "gdp": "2.19 Trillion"
+    },
+    "bs": {
+        "iso": "BHS",
+        "country": "Bahamas",
+        "dial": "+1-242",
+        "area": 13940,
+        "population": 301790,
+        "gdp": "8.373 Billion"
+    },
+    "bt": {
+        "iso": "BTN",
+        "country": "Bhutan",
+        "dial": "+975",
+        "area": 47000,
+        "population": 699847,
+        "gdp": "2.133 Billion"
+    },
+    "bw": {
+        "iso": "BWA",
+        "country": "Botswana",
+        "dial": "+267",
+        "area": 600370,
+        "population": 2029307,
+        "gdp": "15.53 Billion"
+    },
+    "by": {
+        "iso": "BLR",
+        "country": "Belarus",
+        "dial": "+375",
+        "area": 207600,
+        "population": 9685000,
+        "gdp": "69.24 Billion"
+    },
+    "bz": {
+        "iso": "BLZ",
+        "country": "Belize",
+        "dial": "+501",
+        "area": 22966,
+        "population": 314522,
+        "gdp": "1.637 Billion"
+    },
+    "ca": {
+        "iso": "CAN",
+        "country": "Canada",
+        "dial": "+1",
+        "area": 9984670,
+        "population": 33679000,
+        "gdp": "1.825 Trillion"
+    },
+    "cc": {
+        "iso": "CCK",
+        "country": "Cocos Islands",
+        "dial": "+61",
+        "area": 14,
+        "population": 628,
+        "gdp": ""
+    },
+    "cd": {
+        "iso": "COD",
+        "country": "Democratic Republic of the Congo",
+        "dial": "+243",
+        "area": 2345410,
+        "population": 70916439,
+        "gdp": "18.56 Billion"
+    },
+    "cf": {
+        "iso": "CAF",
+        "country": "Central African Republic",
+        "dial": "+236",
+        "area": 622984,
+        "population": 4844927,
+        "gdp": "2.05 Billion"
+    },
+    "cg": {
+        "iso": "COG",
+        "country": "Republic of the Congo",
+        "dial": "+242",
+        "area": 342000,
+        "population": 3039126,
+        "gdp": "14.25 Billion"
+    },
+    "ch": {
+        "iso": "CHE",
+        "country": "Switzerland",
+        "dial": "+41",
+        "area": 41290,
+        "population": 7581000,
+        "gdp": "646.2 Billion"
+    },
+    "ci": {
+        "iso": "CIV",
+        "country": "Ivory Coast",
+        "dial": "+225",
+        "area": 322460,
+        "population": 21058798,
+        "gdp": "28.28 Billion"
+    },
+    "ck": {
+        "iso": "COK",
+        "country": "Cook Islands",
+        "dial": "+682",
+        "area": 240,
+        "population": 21388,
+        "gdp": "183.2 Million"
+    },
+    "cl": {
+        "iso": "CHL",
+        "country": "Chile",
+        "dial": "+56",
+        "area": 756950,
+        "population": 16746491,
+        "gdp": "281.7 Billion"
+    },
+    "cm": {
+        "iso": "CMR",
+        "country": "Cameroon",
+        "dial": "+237",
+        "area": 475440,
+        "population": 19294149,
+        "gdp": "27.88 Billion"
+    },
+    "cn": {
+        "iso": "CHN",
+        "country": "China",
+        "dial": "+86",
+        "area": 9596960,
+        "population": 1330044000,
+        "gdp": "9.33 Trillion"
+    },
+    "co": {
+        "iso": "COL",
+        "country": "Colombia",
+        "dial": "+57",
+        "area": 1138910,
+        "population": 47790000,
+        "gdp": "369.2 Billion"
+    },
+    "cr": {
+        "iso": "CRI",
+        "country": "Costa Rica",
+        "dial": "+506",
+        "area": 51100,
+        "population": 4516220,
+        "gdp": "48.51 Billion"
+    },
+    "cu": {
+        "iso": "CUB",
+        "country": "Cuba",
+        "dial": "+53",
+        "area": 110860,
+        "population": 11423000,
+        "gdp": "72.3 Billion"
+    },
+    "cv": {
+        "iso": "CPV",
+        "country": "Cape Verde",
+        "dial": "+238",
+        "area": 4033,
+        "population": 508659,
+        "gdp": "1.955 Billion"
+    },
+    "cw": {
+        "iso": "CUW",
+        "country": "Curacao",
+        "dial": "+599",
+        "area": 444,
+        "population": 141766,
+        "gdp": "5.6 Billion"
+    },
+    "cx": {
+        "iso": "CXR",
+        "country": "Christmas Island",
+        "dial": "+61",
+        "area": 135,
+        "population": 1500,
+        "gdp": ""
+    },
+    "cy": {
+        "iso": "CYP",
+        "country": "Cyprus",
+        "dial": "+357",
+        "area": 9250,
+        "population": 1102677,
+        "gdp": "21.78 Billion"
+    },
+    "cz": {
+        "iso": "CZE",
+        "country": "Czech Republic",
+        "dial": "+420",
+        "area": 78866,
+        "population": 10476000,
+        "gdp": "194.8 Billion"
+    },
+    "de": {
+        "iso": "DEU",
+        "country": "Germany",
+        "dial": "+49",
+        "area": 357021,
+        "population": 81802257,
+        "gdp": "3.593 Trillion"
+    },
+    "dj": {
+        "iso": "DJI",
+        "country": "Djibouti",
+        "dial": "+253",
+        "area": 23000,
+        "population": 740528,
+        "gdp": "1.459 Billion"
+    },
+    "dk": {
+        "iso": "DNK",
+        "country": "Denmark",
+        "dial": "+45",
+        "area": 43094,
+        "population": 5484000,
+        "gdp": "324.3 Billion"
+    },
+    "dm": {
+        "iso": "DMA",
+        "country": "Dominica",
+        "dial": "+1-767",
+        "area": 754,
+        "population": 72813,
+        "gdp": "495 Million"
+    },
+    "do": {
+        "iso": "DOM",
+        "country": "Dominican Republic",
+        "dial": "+1-809, 1-829, 1-849",
+        "area": 48730,
+        "population": 9823821,
+        "gdp": "59.27 Billion"
+    },
+    "dz": {
+        "iso": "DZA",
+        "country": "Algeria",
+        "dial": "+213",
+        "area": 2381740,
+        "population": 34586184,
+        "gdp": "215.7 Billion"
+    },
+    "ec": {
+        "iso": "ECU",
+        "country": "Ecuador",
+        "dial": "+593",
+        "area": 283560,
+        "population": 14790608,
+        "gdp": "91.41 Billion"
+    },
+    "ee": {
+        "iso": "EST",
+        "country": "Estonia",
+        "dial": "+372",
+        "area": 45226,
+        "population": 1291170,
+        "gdp": "24.28 Billion"
+    },
+    "eg": {
+        "iso": "EGY",
+        "country": "Egypt",
+        "dial": "+20",
+        "area": 1001450,
+        "population": 80471869,
+        "gdp": "262 Billion"
+    },
+    "eh": {
+        "iso": "ESH",
+        "country": "Western Sahara",
+        "dial": "+212",
+        "area": 266000,
+        "population": 273008,
+        "gdp": ""
+    },
+    "er": {
+        "iso": "ERI",
+        "country": "Eritrea",
+        "dial": "+291",
+        "area": 121320,
+        "population": 5792984,
+        "gdp": "3.438 Billion"
+    },
+    "es": {
+        "iso": "ESP",
+        "country": "Spain",
+        "dial": "+34",
+        "area": 504782,
+        "population": 46505963,
+        "gdp": "1.356 Trillion"
+    },
+    "et": {
+        "iso": "ETH",
+        "country": "Ethiopia",
+        "dial": "+251",
+        "area": 1127127,
+        "population": 88013491,
+        "gdp": "47.34 Billion"
+    },
+    "fi": {
+        "iso": "FIN",
+        "country": "Finland",
+        "dial": "+358",
+        "area": 337030,
+        "population": 5244000,
+        "gdp": "259.6 Billion"
+    },
+    "fj": {
+        "iso": "FJI",
+        "country": "Fiji",
+        "dial": "+679",
+        "area": 18270,
+        "population": 875983,
+        "gdp": "4.218 Billion"
+    },
+    "fk": {
+        "iso": "FLK",
+        "country": "Falkland Islands",
+        "dial": "+500",
+        "area": 12173,
+        "population": 2638,
+        "gdp": "164.5 Million"
+    },
+    "fm": {
+        "iso": "FSM",
+        "country": "Micronesia",
+        "dial": "+691",
+        "area": 702,
+        "population": 107708,
+        "gdp": "339 Million"
+    },
+    "fo": {
+        "iso": "FRO",
+        "country": "Faroe Islands",
+        "dial": "+298",
+        "area": 1399,
+        "population": 48228,
+        "gdp": "2.32 Billion"
+    },
+    "fr": {
+        "iso": "FRA",
+        "country": "France",
+        "dial": "+33",
+        "area": 547030,
+        "population": 64768389,
+        "gdp": "2.739 Trillion"
+    },
+    "ga": {
+        "iso": "GAB",
+        "country": "Gabon",
+        "dial": "+241",
+        "area": 267667,
+        "population": 1545255,
+        "gdp": "19.97 Billion"
+    },
+    "gb": {
+        "iso": "GBR",
+        "country": "United Kingdom",
+        "dial": "+44",
+        "area": 244820,
+        "population": 62348447,
+        "gdp": "2.49 Trillion"
+    },
+    "gd": {
+        "iso": "GRD",
+        "country": "Grenada",
+        "dial": "+1-473",
+        "area": 344,
+        "population": 107818,
+        "gdp": "811 Million"
+    },
+    "ge": {
+        "iso": "GEO",
+        "country": "Georgia",
+        "dial": "+995",
+        "area": 69700,
+        "population": 4630000,
+        "gdp": "15.95 Billion"
+    },
+    "gg": {
+        "iso": "GGY",
+        "country": "Guernsey",
+        "dial": "+44-1481",
+        "area": 78,
+        "population": 65228,
+        "gdp": "2.742 Billion"
+    },
+    "gh": {
+        "iso": "GHA",
+        "country": "Ghana",
+        "dial": "+233",
+        "area": 239460,
+        "population": 24339838,
+        "gdp": "45.55 Billion"
+    },
+    "gi": {
+        "iso": "GIB",
+        "country": "Gibraltar",
+        "dial": "+350",
+        "area": 7,
+        "population": 27884,
+        "gdp": "1.106 Billion"
+    },
+    "gl": {
+        "iso": "GRL",
+        "country": "Greenland",
+        "dial": "+299",
+        "area": 2166086,
+        "population": 56375,
+        "gdp": "2.16 Billion"
+    },
+    "gm": {
+        "iso": "GMB",
+        "country": "Gambia",
+        "dial": "+220",
+        "area": 11300,
+        "population": 1593256,
+        "gdp": "896 Million"
+    },
+    "gn": {
+        "iso": "GIN",
+        "country": "Guinea",
+        "dial": "+224",
+        "area": 245857,
+        "population": 10324025,
+        "gdp": "6.544 Billion"
+    },
+    "gq": {
+        "iso": "GNQ",
+        "country": "Equatorial Guinea",
+        "dial": "+240",
+        "area": 28051,
+        "population": 1014999,
+        "gdp": "17.08 Billion"
+    },
+    "gr": {
+        "iso": "GRC",
+        "country": "Greece",
+        "dial": "+30",
+        "area": 131940,
+        "population": 11000000,
+        "gdp": "243.3 Billion"
+    },
+    "gt": {
+        "iso": "GTM",
+        "country": "Guatemala",
+        "dial": "+502",
+        "area": 108890,
+        "population": 13550440,
+        "gdp": "53.9 Billion"
+    },
+    "gu": {
+        "iso": "GUM",
+        "country": "Guam",
+        "dial": "+1-671",
+        "area": 549,
+        "population": 159358,
+        "gdp": "4.6 Billion"
+    },
+    "gw": {
+        "iso": "GNB",
+        "country": "Guinea-Bissau",
+        "dial": "+245",
+        "area": 36120,
+        "population": 1565126,
+        "gdp": "880 Million"
+    },
+    "gy": {
+        "iso": "GUY",
+        "country": "Guyana",
+        "dial": "+592",
+        "area": 214970,
+        "population": 748486,
+        "gdp": "3.02 Billion"
+    },
+    "hk": {
+        "iso": "HKG",
+        "country": "Hong Kong",
+        "dial": "+852",
+        "area": 1092,
+        "population": 6898686,
+        "gdp": "272.1 Billion"
+    },
+    "hn": {
+        "iso": "HND",
+        "country": "Honduras",
+        "dial": "+504",
+        "area": 112090,
+        "population": 7989415,
+        "gdp": "18.88 Billion"
+    },
+    "hr": {
+        "iso": "HRV",
+        "country": "Croatia",
+        "dial": "+385",
+        "area": 56542,
+        "population": 4491000,
+        "gdp": "59.14 Billion"
+    },
+    "ht": {
+        "iso": "HTI",
+        "country": "Haiti",
+        "dial": "+509",
+        "area": 27750,
+        "population": 9648924,
+        "gdp": "8.287 Billion"
+    },
+    "hu": {
+        "iso": "HUN",
+        "country": "Hungary",
+        "dial": "+36",
+        "area": 93030,
+        "population": 9982000,
+        "gdp": "130.6 Billion"
+    },
+    "id": {
+        "iso": "IDN",
+        "country": "Indonesia",
+        "dial": "+62",
+        "area": 1919440,
+        "population": 242968342,
+        "gdp": "867.5 Billion"
+    },
+    "ie": {
+        "iso": "IRL",
+        "country": "Ireland",
+        "dial": "+353",
+        "area": 70280,
+        "population": 4622917,
+        "gdp": "220.9 Billion"
+    },
+    "il": {
+        "iso": "ISR",
+        "country": "Israel",
+        "dial": "+972",
+        "area": 20770,
+        "population": 7353985,
+        "gdp": "272.7 Billion"
+    },
+    "im": {
+        "iso": "IMN",
+        "country": "Isle of Man",
+        "dial": "+44-1624",
+        "area": 572,
+        "population": 75049,
+        "gdp": "4.076 Billion"
+    },
+    "in": {
+        "iso": "IND",
+        "country": "India",
+        "dial": "+91",
+        "area": 3287590,
+        "population": 1173108018,
+        "gdp": "1.67 Trillion"
+    },
+    "io": {
+        "iso": "IOT",
+        "country": "British Indian Ocean Territory",
+        "dial": "+246",
+        "area": 60,
+        "population": 4000,
+        "gdp": ""
+    },
+    "iq": {
+        "iso": "IRQ",
+        "country": "Iraq",
+        "dial": "+964",
+        "area": 437072,
+        "population": 29671605,
+        "gdp": "221.8 Billion"
+    },
+    "ir": {
+        "iso": "IRN",
+        "country": "Iran",
+        "dial": "+98",
+        "area": 1648000,
+        "population": 76923300,
+        "gdp": "411.9 Billion"
+    },
+    "is": {
+        "iso": "ISL",
+        "country": "Iceland",
+        "dial": "+354",
+        "area": 103000,
+        "population": 308910,
+        "gdp": "14.59 Billion"
+    },
+    "it": {
+        "iso": "ITA",
+        "country": "Italy",
+        "dial": "+39",
+        "area": 301230,
+        "population": 60340328,
+        "gdp": "2.068 Trillion"
+    },
+    "je": {
+        "iso": "JEY",
+        "country": "Jersey",
+        "dial": "+44-1534",
+        "area": 116,
+        "population": 90812,
+        "gdp": "5.1 Billion"
+    },
+    "jm": {
+        "iso": "JAM",
+        "country": "Jamaica",
+        "dial": "+1-876",
+        "area": 10991,
+        "population": 2847232,
+        "gdp": "14.39 Billion"
+    },
+    "jo": {
+        "iso": "JOR",
+        "country": "Jordan",
+        "dial": "+962",
+        "area": 92300,
+        "population": 6407085,
+        "gdp": "34.08 Billion"
+    },
+    "jp": {
+        "iso": "JPN",
+        "country": "Japan",
+        "dial": "+81",
+        "area": 377835,
+        "population": 127288000,
+        "gdp": "5.007 Trillion"
+    },
+    "ke": {
+        "iso": "KEN",
+        "country": "Kenya",
+        "dial": "+254",
+        "area": 582650,
+        "population": 40046566,
+        "gdp": "45.31 Billion"
+    },
+    "kg": {
+        "iso": "KGZ",
+        "country": "Kyrgyzstan",
+        "dial": "+996",
+        "area": 198500,
+        "population": 5508626,
+        "gdp": "7.234 Billion"
+    },
+    "kh": {
+        "iso": "KHM",
+        "country": "Cambodia",
+        "dial": "+855",
+        "area": 181040,
+        "population": 14453680,
+        "gdp": "15.64 Billion"
+    },
+    "ki": {
+        "iso": "KIR",
+        "country": "Kiribati",
+        "dial": "+686",
+        "area": 811,
+        "population": 92533,
+        "gdp": "173 Million"
+    },
+    "km": {
+        "iso": "COM",
+        "country": "Comoros",
+        "dial": "+269",
+        "area": 2170,
+        "population": 773407,
+        "gdp": "658 Million"
+    },
+    "kn": {
+        "iso": "KNA",
+        "country": "Saint Kitts and Nevis",
+        "dial": "+1-869",
+        "area": 261,
+        "population": 51134,
+        "gdp": "767 Million"
+    },
+    "kp": {
+        "iso": "PRK",
+        "country": "North Korea",
+        "dial": "+850",
+        "area": 120540,
+        "population": 22912177,
+        "gdp": "28 Billion"
+    },
+    "kr": {
+        "iso": "KOR",
+        "country": "South Korea",
+        "dial": "+82",
+        "area": 98480,
+        "population": 48422644,
+        "gdp": "1.198 Trillion"
+    },
+    "kw": {
+        "iso": "KWT",
+        "country": "Kuwait",
+        "dial": "+965",
+        "area": 17820,
+        "population": 2789132,
+        "gdp": "179.5 Billion"
+    },
+    "ky": {
+        "iso": "CYM",
+        "country": "Cayman Islands",
+        "dial": "+1-345",
+        "area": 262,
+        "population": 44270,
+        "gdp": "2.25 Billion"
+    },
+    "kz": {
+        "iso": "KAZ",
+        "country": "Kazakhstan",
+        "dial": "+7",
+        "area": 2717300,
+        "population": 15340000,
+        "gdp": "224.9 Billion"
+    },
+    "la": {
+        "iso": "LAO",
+        "country": "Laos",
+        "dial": "+856",
+        "area": 236800,
+        "population": 6368162,
+        "gdp": "10.1 Billion"
+    },
+    "lb": {
+        "iso": "LBN",
+        "country": "Lebanon",
+        "dial": "+961",
+        "area": 10400,
+        "population": 4125247,
+        "gdp": "43.49 Billion"
+    },
+    "lc": {
+        "iso": "LCA",
+        "country": "Saint Lucia",
+        "dial": "+1-758",
+        "area": 616,
+        "population": 160922,
+        "gdp": "1.377 Billion"
+    },
+    "li": {
+        "iso": "LIE",
+        "country": "Liechtenstein",
+        "dial": "+423",
+        "area": 160,
+        "population": 35000,
+        "gdp": "5.113 Billion"
+    },
+    "lk": {
+        "iso": "LKA",
+        "country": "Sri Lanka",
+        "dial": "+94",
+        "area": 65610,
+        "population": 21513990,
+        "gdp": "65.12 Billion"
+    },
+    "lr": {
+        "iso": "LBR",
+        "country": "Liberia",
+        "dial": "+231",
+        "area": 111370,
+        "population": 3685076,
+        "gdp": "1.977 Billion"
+    },
+    "ls": {
+        "iso": "LSO",
+        "country": "Lesotho",
+        "dial": "+266",
+        "area": 30355,
+        "population": 1919552,
+        "gdp": "2.457 Billion"
+    },
+    "lt": {
+        "iso": "LTU",
+        "country": "Lithuania",
+        "dial": "+370",
+        "area": 65200,
+        "population": 2944459,
+        "gdp": "46.71 Billion"
+    },
+    "lu": {
+        "iso": "LUX",
+        "country": "Luxembourg",
+        "dial": "+352",
+        "area": 2586,
+        "population": 497538,
+        "gdp": "60.54 Billion"
+    },
+    "lv": {
+        "iso": "LVA",
+        "country": "Latvia",
+        "dial": "+371",
+        "area": 64589,
+        "population": 2217969,
+        "gdp": "30.38 Billion"
+    },
+    "ly": {
+        "iso": "LBY",
+        "country": "Libya",
+        "dial": "+218",
+        "area": 1759540,
+        "population": 6461454,
+        "gdp": "70.92 Billion"
+    },
+    "ma": {
+        "iso": "MAR",
+        "country": "Morocco",
+        "dial": "+212",
+        "area": 446550,
+        "population": 31627428,
+        "gdp": "104.8 Billion"
+    },
+    "mc": {
+        "iso": "MCO",
+        "country": "Monaco",
+        "dial": "+377",
+        "area": 2,
+        "population": 32965,
+        "gdp": "5.748 Billion"
+    },
+    "md": {
+        "iso": "MDA",
+        "country": "Moldova",
+        "dial": "+373",
+        "area": 33843,
+        "population": 4324000,
+        "gdp": "7.932 Billion"
+    },
+    "me": {
+        "iso": "MNE",
+        "country": "Montenegro",
+        "dial": "+382",
+        "area": 14026,
+        "population": 666730,
+        "gdp": "4.518 Billion"
+    },
+    "mf": {
+        "iso": "MAF",
+        "country": "Saint Martin",
+        "dial": "+590",
+        "area": 53,
+        "population": 35925,
+        "gdp": "561.5 Million"
+    },
+    "mg": {
+        "iso": "MDG",
+        "country": "Madagascar",
+        "dial": "+261",
+        "area": 587040,
+        "population": 21281844,
+        "gdp": "10.53 Billion"
+    },
+    "mh": {
+        "iso": "MHL",
+        "country": "Marshall Islands",
+        "dial": "+692",
+        "area": 181,
+        "population": 65859,
+        "gdp": "193 Million"
+    },
+    "mk": {
+        "iso": "MKD",
+        "country": "Macedonia",
+        "dial": "+389",
+        "area": 25333,
+        "population": 2062294,
+        "gdp": "10.65 Billion"
+    },
+    "ml": {
+        "iso": "MLI",
+        "country": "Mali",
+        "dial": "+223",
+        "area": 1240000,
+        "population": 13796354,
+        "gdp": "11.37 Billion"
+    },
+    "mm": {
+        "iso": "MMR",
+        "country": "Myanmar",
+        "dial": "+95",
+        "area": 678500,
+        "population": 53414374,
+        "gdp": "59.43 Billion"
+    },
+    "mn": {
+        "iso": "MNG",
+        "country": "Mongolia",
+        "dial": "+976",
+        "area": 1565000,
+        "population": 3086918,
+        "gdp": "11.14 Billion"
+    },
+    "mo": {
+        "iso": "MAC",
+        "country": "Macao",
+        "dial": "+853",
+        "area": 254,
+        "population": 449198,
+        "gdp": "51.68 Billion"
+    },
+    "mp": {
+        "iso": "MNP",
+        "country": "Northern Mariana Islands",
+        "dial": "+1-670",
+        "area": 477,
+        "population": 53883,
+        "gdp": "733 Million"
+    },
+    "mr": {
+        "iso": "MRT",
+        "country": "Mauritania",
+        "dial": "+222",
+        "area": 1030700,
+        "population": 3205060,
+        "gdp": "4.183 Billion"
+    },
+    "ms": {
+        "iso": "MSR",
+        "country": "Montserrat",
+        "dial": "+1-664",
+        "area": 102,
+        "population": 9341,
+        "gdp": ""
+    },
+    "mt": {
+        "iso": "MLT",
+        "country": "Malta",
+        "dial": "+356",
+        "area": 316,
+        "population": 403000,
+        "gdp": "9.541 Billion"
+    },
+    "mu": {
+        "iso": "MUS",
+        "country": "Mauritius",
+        "dial": "+230",
+        "area": 2040,
+        "population": 1294104,
+        "gdp": "11.9 Billion"
+    },
+    "mv": {
+        "iso": "MDV",
+        "country": "Maldives",
+        "dial": "+960",
+        "area": 300,
+        "population": 395650,
+        "gdp": "2.27 Billion"
+    },
+    "mw": {
+        "iso": "MWI",
+        "country": "Malawi",
+        "dial": "+265",
+        "area": 118480,
+        "population": 15447500,
+        "gdp": "3.683 Billion"
+    },
+    "mx": {
+        "iso": "MEX",
+        "country": "Mexico",
+        "dial": "+52",
+        "area": 1972550,
+        "population": 112468855,
+        "gdp": "1.327 Trillion"
+    },
+    "my": {
+        "iso": "MYS",
+        "country": "Malaysia",
+        "dial": "+60",
+        "area": 329750,
+        "population": 28274729,
+        "gdp": "312.4 Billion"
+    },
+    "mz": {
+        "iso": "MOZ",
+        "country": "Mozambique",
+        "dial": "+258",
+        "area": 801590,
+        "population": 22061451,
+        "gdp": "14.67 Billion"
+    },
+    "na": {
+        "iso": "NAM",
+        "country": "Namibia",
+        "dial": "+264",
+        "area": 825418,
+        "population": 2128471,
+        "gdp": "12.3 Billion"
+    },
+    "nc": {
+        "iso": "NCL",
+        "country": "New Caledonia",
+        "dial": "+687",
+        "area": 19060,
+        "population": 216494,
+        "gdp": "9.28 Billion"
+    },
+    "ne": {
+        "iso": "NER",
+        "country": "Niger",
+        "dial": "+227",
+        "area": 1267000,
+        "population": 15878271,
+        "gdp": "7.304 Billion"
+    },
+    "ng": {
+        "iso": "NGA",
+        "country": "Nigeria",
+        "dial": "+234",
+        "area": 923768,
+        "population": 154000000,
+        "gdp": "502 Billion"
+    },
+    "ni": {
+        "iso": "NIC",
+        "country": "Nicaragua",
+        "dial": "+505",
+        "area": 129494,
+        "population": 5995928,
+        "gdp": "11.26 Billion"
+    },
+    "nl": {
+        "iso": "NLD",
+        "country": "Netherlands",
+        "dial": "+31",
+        "area": 41526,
+        "population": 16645000,
+        "gdp": "722.3 Billion"
+    },
+    "no": {
+        "iso": "NOR",
+        "country": "Norway",
+        "dial": "+47",
+        "area": 324220,
+        "population": 5009150,
+        "gdp": "515.8 Billion"
+    },
+    "np": {
+        "iso": "NPL",
+        "country": "Nepal",
+        "dial": "+977",
+        "area": 140800,
+        "population": 28951852,
+        "gdp": "19.34 Billion"
+    },
+    "nr": {
+        "iso": "NRU",
+        "country": "Nauru",
+        "dial": "+674",
+        "area": 21,
+        "population": 10065,
+        "gdp": ""
+    },
+    "nu": {
+        "iso": "NIU",
+        "country": "Niue",
+        "dial": "+683",
+        "area": 260,
+        "population": 2166,
+        "gdp": "10.01 Million"
+    },
+    "nz": {
+        "iso": "NZL",
+        "country": "New Zealand",
+        "dial": "+64",
+        "area": 268680,
+        "population": 4252277,
+        "gdp": "181.1 Billion"
+    },
+    "om": {
+        "iso": "OMN",
+        "country": "Oman",
+        "dial": "+968",
+        "area": 212460,
+        "population": 2967717,
+        "gdp": "81.95 Billion"
+    },
+    "pa": {
+        "iso": "PAN",
+        "country": "Panama",
+        "dial": "+507",
+        "area": 78200,
+        "population": 3410676,
+        "gdp": "40.62 Billion"
+    },
+    "pe": {
+        "iso": "PER",
+        "country": "Peru",
+        "dial": "+51",
+        "area": 1285220,
+        "population": 29907003,
+        "gdp": "210.3 Billion"
+    },
+    "pf": {
+        "iso": "PYF",
+        "country": "French Polynesia",
+        "dial": "+689",
+        "area": 4167,
+        "population": 270485,
+        "gdp": "5.65 Billion"
+    },
+    "pg": {
+        "iso": "PNG",
+        "country": "Papua New Guinea",
+        "dial": "+675",
+        "area": 462840,
+        "population": 6064515,
+        "gdp": "16.1 Billion"
+    },
+    "ph": {
+        "iso": "PHL",
+        "country": "Philippines",
+        "dial": "+63",
+        "area": 300000,
+        "population": 99900177,
+        "gdp": "272.2 Billion"
+    },
+    "pk": {
+        "iso": "PAK",
+        "country": "Pakistan",
+        "dial": "+92",
+        "area": 803940,
+        "population": 184404791,
+        "gdp": "236.5 Billion"
+    },
+    "pl": {
+        "iso": "POL",
+        "country": "Poland",
+        "dial": "+48",
+        "area": 312685,
+        "population": 38500000,
+        "gdp": "513.9 Billion"
+    },
+    "pm": {
+        "iso": "SPM",
+        "country": "Saint Pierre and Miquelon",
+        "dial": "+508",
+        "area": 242,
+        "population": 7012,
+        "gdp": "215.3 Million"
+    },
+    "pn": {
+        "iso": "PCN",
+        "country": "Pitcairn",
+        "dial": "+64",
+        "area": 47,
+        "population": 46,
+        "gdp": ""
+    },
+    "pr": {
+        "iso": "PRI",
+        "country": "Puerto Rico",
+        "dial": "+1-787, 1-939",
+        "area": 9104,
+        "population": 3916632,
+        "gdp": "93.52 Billion"
+    },
+    "ps": {
+        "iso": "PSE",
+        "country": "Palestine",
+        "dial": "+970",
+        "area": 5970,
+        "population": 3800000,
+        "gdp": "6.641 Billion"
+    },
+    "pt": {
+        "iso": "PRT",
+        "country": "Portugal",
+        "dial": "+351",
+        "area": 92391,
+        "population": 10676000,
+        "gdp": "219.3 Billion"
+    },
+    "pw": {
+        "iso": "PLW",
+        "country": "Palau",
+        "dial": "+680",
+        "area": 458,
+        "population": 19907,
+        "gdp": "221 Million"
+    },
+    "py": {
+        "iso": "PRY",
+        "country": "Paraguay",
+        "dial": "+595",
+        "area": 406750,
+        "population": 6375830,
+        "gdp": "30.56 Billion"
+    },
+    "qa": {
+        "iso": "QAT",
+        "country": "Qatar",
+        "dial": "+974",
+        "area": 11437,
+        "population": 840926,
+        "gdp": "213.1 Billion"
+    },
+    "re": {
+        "iso": "REU",
+        "country": "Reunion",
+        "dial": "+262",
+        "area": 2517,
+        "population": 776948,
+        "gdp": ""
+    },
+    "ro": {
+        "iso": "ROU",
+        "country": "Romania",
+        "dial": "+40",
+        "area": 237500,
+        "population": 21959278,
+        "gdp": "188.9 Billion"
+    },
+    "rs": {
+        "iso": "SRB",
+        "country": "Serbia",
+        "dial": "+381",
+        "area": 88361,
+        "population": 7344847,
+        "gdp": "43.68 Billion"
+    },
+    "ru": {
+        "iso": "RUS",
+        "country": "Russia",
+        "dial": "+7",
+        "area": 17100000,
+        "population": 140702000,
+        "gdp": "2.113 Trillion"
+    },
+    "rw": {
+        "iso": "RWA",
+        "country": "Rwanda",
+        "dial": "+250",
+        "area": 26338,
+        "population": 11055976,
+        "gdp": "7.7 Billion"
+    },
+    "sa": {
+        "iso": "SAU",
+        "country": "Saudi Arabia",
+        "dial": "+966",
+        "area": 1960582,
+        "population": 25731776,
+        "gdp": "718.5 Billion"
+    },
+    "sb": {
+        "iso": "SLB",
+        "country": "Solomon Islands",
+        "dial": "+677",
+        "area": 28450,
+        "population": 559198,
+        "gdp": "1.099 Billion"
+    },
+    "sc": {
+        "iso": "SYC",
+        "country": "Seychelles",
+        "dial": "+248",
+        "area": 455,
+        "population": 88340,
+        "gdp": "1.271 Billion"
+    },
+    "sd": {
+        "iso": "SDN",
+        "country": "Sudan",
+        "dial": "+249",
+        "area": 1861484,
+        "population": 35000000,
+        "gdp": "52.5 Billion"
+    },
+    "se": {
+        "iso": "SWE",
+        "country": "Sweden",
+        "dial": "+46",
+        "area": 449964,
+        "population": 9555893,
+        "gdp": "552 Billion"
+    },
+    "sg": {
+        "iso": "SGP",
+        "country": "Singapore",
+        "dial": "+65",
+        "area": 693,
+        "population": 4701069,
+        "gdp": "295.7 Billion"
+    },
+    "sh": {
+        "iso": "SHN",
+        "country": "Saint Helena",
+        "dial": "+290",
+        "area": 410,
+        "population": 7460,
+        "gdp": ""
+    },
+    "si": {
+        "iso": "SVN",
+        "country": "Slovenia",
+        "dial": "+386",
+        "area": 20273,
+        "population": 2007000,
+        "gdp": "46.82 Billion"
+    },
+    "sj": {
+        "iso": "SJM",
+        "country": "Svalbard and Jan Mayen",
+        "dial": "+47",
+        "area": 62049,
+        "population": 2550,
+        "gdp": ""
+    },
+    "sk": {
+        "iso": "SVK",
+        "country": "Slovakia",
+        "dial": "+421",
+        "area": 48845,
+        "population": 5455000,
+        "gdp": "96.96 Billion"
+    },
+    "sl": {
+        "iso": "SLE",
+        "country": "Sierra Leone",
+        "dial": "+232",
+        "area": 71740,
+        "population": 5245695,
+        "gdp": "4.607 Billion"
+    },
+    "sm": {
+        "iso": "SMR",
+        "country": "San Marino",
+        "dial": "+378",
+        "area": 61,
+        "population": 31477,
+        "gdp": "1.866 Billion"
+    },
+    "sn": {
+        "iso": "SEN",
+        "country": "Senegal",
+        "dial": "+221",
+        "area": 196190,
+        "population": 12323252,
+        "gdp": "15.36 Billion"
+    },
+    "so": {
+        "iso": "SOM",
+        "country": "Somalia",
+        "dial": "+252",
+        "area": 637657,
+        "population": 10112453,
+        "gdp": "2.372 Billion"
+    },
+    "sr": {
+        "iso": "SUR",
+        "country": "Suriname",
+        "dial": "+597",
+        "area": 163270,
+        "population": 492829,
+        "gdp": "5.009 Billion"
+    },
+    "ss": {
+        "iso": "SSD",
+        "country": "South Sudan",
+        "dial": "+211",
+        "area": 644329,
+        "population": 8260490,
+        "gdp": "11.77 Billion"
+    },
+    "st": {
+        "iso": "STP",
+        "country": "Sao Tome and Principe",
+        "dial": "+239",
+        "area": 1001,
+        "population": 175808,
+        "gdp": "311 Million"
+    },
+    "sv": {
+        "iso": "SLV",
+        "country": "El Salvador",
+        "dial": "+503",
+        "area": 21040,
+        "population": 6052064,
+        "gdp": "24.67 Billion"
+    },
+    "sx": {
+        "iso": "SXM",
+        "country": "Sint Maarten",
+        "dial": "+1-721",
+        "area": 34,
+        "population": 37429,
+        "gdp": "794.7 Million"
+    },
+    "sy": {
+        "iso": "SYR",
+        "country": "Syria",
+        "dial": "+963",
+        "area": 185180,
+        "population": 22198110,
+        "gdp": "64.7 Billion"
+    },
+    "sz": {
+        "iso": "SWZ",
+        "country": "Swaziland",
+        "dial": "+268",
+        "area": 17363,
+        "population": 1354051,
+        "gdp": "3.807 Billion"
+    },
+    "tc": {
+        "iso": "TCA",
+        "country": "Turks and Caicos Islands",
+        "dial": "+1-649",
+        "area": 430,
+        "population": 20556,
+        "gdp": ""
+    },
+    "td": {
+        "iso": "TCD",
+        "country": "Chad",
+        "dial": "+235",
+        "area": 1284000,
+        "population": 10543464,
+        "gdp": "13.59 Billion"
+    },
+    "tg": {
+        "iso": "TGO",
+        "country": "Togo",
+        "dial": "+228",
+        "area": 56785,
+        "population": 6587239,
+        "gdp": "4.299 Billion"
+    },
+    "th": {
+        "iso": "THA",
+        "country": "Thailand",
+        "dial": "+66",
+        "area": 514000,
+        "population": 67089500,
+        "gdp": "400.9 Billion"
+    },
+    "tj": {
+        "iso": "TJK",
+        "country": "Tajikistan",
+        "dial": "+992",
+        "area": 143100,
+        "population": 7487489,
+        "gdp": "8.513 Billion"
+    },
+    "tk": {
+        "iso": "TKL",
+        "country": "Tokelau",
+        "dial": "+690",
+        "area": 10,
+        "population": 1466,
+        "gdp": ""
+    },
+    "tl": {
+        "iso": "TLS",
+        "country": "East Timor",
+        "dial": "+670",
+        "area": 15007,
+        "population": 1154625,
+        "gdp": "6.129 Billion"
+    },
+    "tm": {
+        "iso": "TKM",
+        "country": "Turkmenistan",
+        "dial": "+993",
+        "area": 488100,
+        "population": 4940916,
+        "gdp": "40.56 Billion"
+    },
+    "tn": {
+        "iso": "TUN",
+        "country": "Tunisia",
+        "dial": "+216",
+        "area": 163610,
+        "population": 10589025,
+        "gdp": "48.38 Billion"
+    },
+    "to": {
+        "iso": "TON",
+        "country": "Tonga",
+        "dial": "+676",
+        "area": 748,
+        "population": 122580,
+        "gdp": "477 Million"
+    },
+    "tr": {
+        "iso": "TUR",
+        "country": "Turkey",
+        "dial": "+90",
+        "area": 780580,
+        "population": 77804122,
+        "gdp": "821.8 Billion"
+    },
+    "tt": {
+        "iso": "TTO",
+        "country": "Trinidad and Tobago",
+        "dial": "+1-868",
+        "area": 5128,
+        "population": 1228691,
+        "gdp": "27.13 Billion"
+    },
+    "tv": {
+        "iso": "TUV",
+        "country": "Tuvalu",
+        "dial": "+688",
+        "area": 26,
+        "population": 10472,
+        "gdp": "38 Million"
+    },
+    "tw": {
+        "iso": "TWN",
+        "country": "Taiwan",
+        "dial": "+886",
+        "area": 35980,
+        "population": 22894384,
+        "gdp": "484.7 Billion"
+    },
+    "tz": {
+        "iso": "TZA",
+        "country": "Tanzania",
+        "dial": "+255",
+        "area": 945087,
+        "population": 41892895,
+        "gdp": "31.94 Billion"
+    },
+    "ua": {
+        "iso": "UKR",
+        "country": "Ukraine",
+        "dial": "+380",
+        "area": 603700,
+        "population": 45415596,
+        "gdp": "175.5 Billion"
+    },
+    "ug": {
+        "iso": "UGA",
+        "country": "Uganda",
+        "dial": "+256",
+        "area": 236040,
+        "population": 33398682,
+        "gdp": "22.6 Billion"
+    },
+    "us": {
+        "iso": "USA",
+        "country": "United States",
+        "dial": "+1",
+        "area": 9629091,
+        "population": 310232863,
+        "gdp": "16.72 Trillion"
+    },
+    "uy": {
+        "iso": "URY",
+        "country": "Uruguay",
+        "dial": "+598",
+        "area": 176220,
+        "population": 3477000,
+        "gdp": "57.11 Billion"
+    },
+    "uz": {
+        "iso": "UZB",
+        "country": "Uzbekistan",
+        "dial": "+998",
+        "area": 447400,
+        "population": 27865738,
+        "gdp": "55.18 Billion"
+    },
+    "va": {
+        "iso": "VAT",
+        "country": "Vatican",
+        "dial": "+379",
+        "area": 0,
+        "population": 921,
+        "gdp": ""
+    },
+    "vc": {
+        "iso": "VCT",
+        "country": "Saint Vincent and the Grenadines",
+        "dial": "+1-784",
+        "area": 389,
+        "population": 104217,
+        "gdp": "742 Million"
+    },
+    "ve": {
+        "iso": "VEN",
+        "country": "Venezuela",
+        "dial": "+58",
+        "area": 912050,
+        "population": 27223228,
+        "gdp": "367.5 Billion"
+    },
+    "vg": {
+        "iso": "VGB",
+        "country": "British Virgin Islands",
+        "dial": "+1-284",
+        "area": 153,
+        "population": 21730,
+        "gdp": "1.095 Billion"
+    },
+    "vi": {
+        "iso": "VIR",
+        "country": "U.S. Virgin Islands",
+        "dial": "+1-340",
+        "area": 352,
+        "population": 108708,
+        "gdp": ""
+    },
+    "vn": {
+        "iso": "VNM",
+        "country": "Vietnam",
+        "dial": "+84",
+        "area": 329560,
+        "population": 89571130,
+        "gdp": "170 Billion"
+    },
+    "vu": {
+        "iso": "VUT",
+        "country": "Vanuatu",
+        "dial": "+678",
+        "area": 12200,
+        "population": 221552,
+        "gdp": "828 Million"
+    },
+    "wf": {
+        "iso": "WLF",
+        "country": "Wallis and Futuna",
+        "dial": "+681",
+        "area": 274,
+        "population": 16025,
+        "gdp": ""
+    },
+    "ws": {
+        "iso": "WSM",
+        "country": "Samoa",
+        "dial": "+685",
+        "area": 2944,
+        "population": 192001,
+        "gdp": "705 Million"
+    },
+    "xk": {
+        "iso": "XKX",
+        "country": "Kosovo",
+        "dial": "+383",
+        "area": 10887,
+        "population": 1800000,
+        "gdp": "7.15 Billion"
+    },
+    "ye": {
+        "iso": "YEM",
+        "country": "Yemen",
+        "dial": "+967",
+        "area": 527970,
+        "population": 23495361,
+        "gdp": "43.89 Billion"
+    },
+    "yt": {
+        "iso": "MYT",
+        "country": "Mayotte",
+        "dial": "+262",
+        "area": 374,
+        "population": 159042,
+        "gdp": ""
+    },
+    "za": {
+        "iso": "ZAF",
+        "country": "South Africa",
+        "dial": "+27",
+        "area": 1219912,
+        "population": 49000000,
+        "gdp": "353.9 Billion"
+    },
+    "zm": {
+        "iso": "ZMB",
+        "country": "Zambia",
+        "dial": "+260",
+        "area": 752614,
+        "population": 13460305,
+        "gdp": "22.24 Billion"
+    },
+    "zw": {
+        "iso": "ZWE",
+        "country": "Zimbabwe",
+        "dial": "+263",
+        "area": 390580,
+        "population": 11651858,
+        "gdp": "10.48 Billion"
+    }
+}

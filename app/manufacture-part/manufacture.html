@@ -46,9 +46,6 @@
         </md-button>
 
     </div>
-    
-
-
 
     <md-list layout="column" 
              dnd-list="cntrl.getEditMaster().Attributes.items" 
@@ -67,8 +64,7 @@
             
             <table class="properties" style="width:345px;margin-left:10px">
                 
-                <tr ng-repeat="property in [attribute]" 
-                    ng-include="'property-'+(property.format==='object-json'?'json':(property.format.indexOf('array-')>=0?'options':(property.type==='object'||property.type==='array'?'group':(property.enum!==undefined?'choice':(property.format==='date-time'?'date':property.type)))))+'.html'"></tr>
+                <tbody ng-repeat="property in [attribute]" ng-include="'property-selector.html'"></tbody>
             
             </table>
     

@@ -1,0 +1,241 @@
+cc,iso,country,dial,area,population,gdp
+af,AFG,Afghanistan,+93,647500,29121286,20.65 Billion
+al,ALB,Albania,+355,28748,2986952,12.8 Billion
+dz,DZA,Algeria,+213,2381740,34586184,215.7 Billion
+as,ASM,American Samoa,+1-684,199,57881,462.2 Million
+ad,AND,Andorra,+376,468,84000,4.8 Billion
+ao,AGO,Angola,+244,1246700,13068161,124 Billion
+ai,AIA,Anguilla,+1-264,102,13254,175.4 Million
+aq,ATA,Antarctica,+672,14000000,0,
+ag,ATG,Antigua and Barbuda,+1-268,443,86754,1.22 Billion
+ar,ARG,Argentina,+54,2766890,41343201,484.6 Billion
+am,ARM,Armenia,+374,29800,2968000,10.44 Billion
+aw,ABW,Aruba,+297,193,71566,2.516 Billion
+au,AUS,Australia,+61,7686850,21515754,1.488 Trillion
+at,AUT,Austria,+43,83858,8205000,417.9 Billion
+az,AZE,Azerbaijan,+994,86600,8303512,76.01 Billion
+bs,BHS,Bahamas,+1-242,13940,301790,8.373 Billion
+bh,BHR,Bahrain,+973,665,738004,28.36 Billion
+bd,BGD,Bangladesh,+880,144000,156118464,140.2 Billion
+bb,BRB,Barbados,+1-246,431,285653,4.262 Billion
+by,BLR,Belarus,+375,207600,9685000,69.24 Billion
+be,BEL,Belgium,+32,30510,10403000,507.4 Billion
+bz,BLZ,Belize,+501,22966,314522,1.637 Billion
+bj,BEN,Benin,+229,112620,9056010,8.359 Billion
+bm,BMU,Bermuda,+1-441,53,65365,5.6 Billion
+bt,BTN,Bhutan,+975,47000,699847,2.133 Billion
+bo,BOL,Bolivia,+591,1098580,9947418,30.79 Billion
+ba,BIH,Bosnia and Herzegovina,+387,51129,4590000,18.87 Billion
+bw,BWA,Botswana,+267,600370,2029307,15.53 Billion
+br,BRA,Brazil,+55,8511965,201103330,2.19 Trillion
+io,IOT,British Indian Ocean Territory,+246,60,4000,
+vg,VGB,British Virgin Islands,+1-284,153,21730,1.095 Billion
+bn,BRN,Brunei,+673,5770,395027,16.56 Billion
+bg,BGR,Bulgaria,+359,110910,7148785,53.7 Billion
+bf,BFA,Burkina Faso,+226,274200,16241811,12.13 Billion
+bi,BDI,Burundi,+257,27830,9863117,2.676 Billion
+kh,KHM,Cambodia,+855,181040,14453680,15.64 Billion
+cm,CMR,Cameroon,+237,475440,19294149,27.88 Billion
+ca,CAN,Canada,+1,9984670,33679000,1.825 Trillion
+cv,CPV,Cape Verde,+238,4033,508659,1.955 Billion
+ky,CYM,Cayman Islands,+1-345,262,44270,2.25 Billion
+cf,CAF,Central African Republic,+236,622984,4844927,2.05 Billion
+td,TCD,Chad,+235,1284000,10543464,13.59 Billion
+cl,CHL,Chile,+56,756950,16746491,281.7 Billion
+cn,CHN,China,+86,9596960,1330044000,9.33 Trillion
+cx,CXR,Christmas Island,+61,135,1500,
+cc,CCK,Cocos Islands,+61,14,628,
+co,COL,Colombia,+57,1138910,47790000,369.2 Billion
+km,COM,Comoros,+269,2170,773407,658 Million
+ck,COK,Cook Islands,+682,240,21388,183.2 Million
+cr,CRI,Costa Rica,+506,51100,4516220,48.51 Billion
+hr,HRV,Croatia,+385,56542,4491000,59.14 Billion
+cu,CUB,Cuba,+53,110860,11423000,72.3 Billion
+cw,CUW,Curacao,+599,444,141766,5.6 Billion
+cy,CYP,Cyprus,+357,9250,1102677,21.78 Billion
+cz,CZE,Czech Republic,+420,78866,10476000,194.8 Billion
+cd,COD,Democratic Republic of the Congo,+243,2345410,70916439,18.56 Billion
+dk,DNK,Denmark,+45,43094,5484000,324.3 Billion
+dj,DJI,Djibouti,+253,23000,740528,1.459 Billion
+dm,DMA,Dominica,+1-767,754,72813,495 Million
+do,DOM,Dominican Republic,"+1-809, 1-829, 1-849",48730,9823821,59.27 Billion
+tl,TLS,East Timor,+670,15007,1154625,6.129 Billion
+ec,ECU,Ecuador,+593,283560,14790608,91.41 Billion
+eg,EGY,Egypt,+20,1001450,80471869,262 Billion
+sv,SLV,El Salvador,+503,21040,6052064,24.67 Billion
+gq,GNQ,Equatorial Guinea,+240,28051,1014999,17.08 Billion
+er,ERI,Eritrea,+291,121320,5792984,3.438 Billion
+ee,EST,Estonia,+372,45226,1291170,24.28 Billion
+et,ETH,Ethiopia,+251,1127127,88013491,47.34 Billion
+fk,FLK,Falkland Islands,+500,12173,2638,164.5 Million
+fo,FRO,Faroe Islands,+298,1399,48228,2.32 Billion
+fj,FJI,Fiji,+679,18270,875983,4.218 Billion
+fi,FIN,Finland,+358,337030,5244000,259.6 Billion
+fr,FRA,France,+33,547030,64768389,2.739 Trillion
+pf,PYF,French Polynesia,+689,4167,270485,5.65 Billion
+ga,GAB,Gabon,+241,267667,1545255,19.97 Billion
+gm,GMB,Gambia,+220,11300,1593256,896 Million
+ge,GEO,Georgia,+995,69700,4630000,15.95 Billion
+de,DEU,Germany,+49,357021,81802257,3.593 Trillion
+gh,GHA,Ghana,+233,239460,24339838,45.55 Billion
+gi,GIB,Gibraltar,+350,7,27884,1.106 Billion
+gr,GRC,Greece,+30,131940,11000000,243.3 Billion
+gl,GRL,Greenland,+299,2166086,56375,2.16 Billion
+gd,GRD,Grenada,+1-473,344,107818,811 Million
+gu,GUM,Guam,+1-671,549,159358,4.6 Billion
+gt,GTM,Guatemala,+502,108890,13550440,53.9 Billion
+gg,GGY,Guernsey,+44-1481,78,65228,2.742 Billion
+gn,GIN,Guinea,+224,245857,10324025,6.544 Billion
+gw,GNB,Guinea-Bissau,+245,36120,1565126,880 Million
+gy,GUY,Guyana,+592,214970,748486,3.02 Billion
+ht,HTI,Haiti,+509,27750,9648924,8.287 Billion
+hn,HND,Honduras,+504,112090,7989415,18.88 Billion
+hk,HKG,Hong Kong,+852,1092,6898686,272.1 Billion
+hu,HUN,Hungary,+36,93030,9982000,130.6 Billion
+is,ISL,Iceland,+354,103000,308910,14.59 Billion
+in,IND,India,+91,3287590,1173108018,1.67 Trillion
+id,IDN,Indonesia,+62,1919440,242968342,867.5 Billion
+ir,IRN,Iran,+98,1648000,76923300,411.9 Billion
+iq,IRQ,Iraq,+964,437072,29671605,221.8 Billion
+ie,IRL,Ireland,+353,70280,4622917,220.9 Billion
+im,IMN,Isle of Man,+44-1624,572,75049,4.076 Billion
+il,ISR,Israel,+972,20770,7353985,272.7 Billion
+it,ITA,Italy,+39,301230,60340328,2.068 Trillion
+ci,CIV,Ivory Coast,+225,322460,21058798,28.28 Billion
+jm,JAM,Jamaica,+1-876,10991,2847232,14.39 Billion
+jp,JPN,Japan,+81,377835,127288000,5.007 Trillion
+je,JEY,Jersey,+44-1534,116,90812,5.1 Billion
+jo,JOR,Jordan,+962,92300,6407085,34.08 Billion
+kz,KAZ,Kazakhstan,+7,2717300,15340000,224.9 Billion
+ke,KEN,Kenya,+254,582650,40046566,45.31 Billion
+ki,KIR,Kiribati,+686,811,92533,173 Million
+xk,XKX,Kosovo,+383,10887,1800000,7.15 Billion
+kw,KWT,Kuwait,+965,17820,2789132,179.5 Billion
+kg,KGZ,Kyrgyzstan,+996,198500,5508626,7.234 Billion
+la,LAO,Laos,+856,236800,6368162,10.1 Billion
+lv,LVA,Latvia,+371,64589,2217969,30.38 Billion
+lb,LBN,Lebanon,+961,10400,4125247,43.49 Billion
+ls,LSO,Lesotho,+266,30355,1919552,2.457 Billion
+lr,LBR,Liberia,+231,111370,3685076,1.977 Billion
+ly,LBY,Libya,+218,1759540,6461454,70.92 Billion
+li,LIE,Liechtenstein,+423,160,35000,5.113 Billion
+lt,LTU,Lithuania,+370,65200,2944459,46.71 Billion
+lu,LUX,Luxembourg,+352,2586,497538,60.54 Billion
+mo,MAC,Macao,+853,254,449198,51.68 Billion
+mk,MKD,Macedonia,+389,25333,2062294,10.65 Billion
+mg,MDG,Madagascar,+261,587040,21281844,10.53 Billion
+mw,MWI,Malawi,+265,118480,15447500,3.683 Billion
+my,MYS,Malaysia,+60,329750,28274729,312.4 Billion
+mv,MDV,Maldives,+960,300,395650,2.27 Billion
+ml,MLI,Mali,+223,1240000,13796354,11.37 Billion
+mt,MLT,Malta,+356,316,403000,9.541 Billion
+mh,MHL,Marshall Islands,+692,181,65859,193 Million
+mr,MRT,Mauritania,+222,1030700,3205060,4.183 Billion
+mu,MUS,Mauritius,+230,2040,1294104,11.9 Billion
+yt,MYT,Mayotte,+262,374,159042,
+mx,MEX,Mexico,+52,1972550,112468855,1.327 Trillion
+fm,FSM,Micronesia,+691,702,107708,339 Million
+md,MDA,Moldova,+373,33843,4324000,7.932 Billion
+mc,MCO,Monaco,+377,2,32965,5.748 Billion
+mn,MNG,Mongolia,+976,1565000,3086918,11.14 Billion
+me,MNE,Montenegro,+382,14026,666730,4.518 Billion
+ms,MSR,Montserrat,+1-664,102,9341,
+ma,MAR,Morocco,+212,446550,31627428,104.8 Billion
+mz,MOZ,Mozambique,+258,801590,22061451,14.67 Billion
+mm,MMR,Myanmar,+95,678500,53414374,59.43 Billion
+na,NAM,Namibia,+264,825418,2128471,12.3 Billion
+nr,NRU,Nauru,+674,21,10065,
+np,NPL,Nepal,+977,140800,28951852,19.34 Billion
+nl,NLD,Netherlands,+31,41526,16645000,722.3 Billion
+an,ANT,Netherlands Antilles,+599,960,136197,
+nc,NCL,New Caledonia,+687,19060,216494,9.28 Billion
+nz,NZL,New Zealand,+64,268680,4252277,181.1 Billion
+ni,NIC,Nicaragua,+505,129494,5995928,11.26 Billion
+ne,NER,Niger,+227,1267000,15878271,7.304 Billion
+ng,NGA,Nigeria,+234,923768,154000000,502 Billion
+nu,NIU,Niue,+683,260,2166,10.01 Million
+kp,PRK,North Korea,+850,120540,22912177,28 Billion
+mp,MNP,Northern Mariana Islands,+1-670,477,53883,733 Million
+no,NOR,Norway,+47,324220,5009150,515.8 Billion
+om,OMN,Oman,+968,212460,2967717,81.95 Billion
+pk,PAK,Pakistan,+92,803940,184404791,236.5 Billion
+pw,PLW,Palau,+680,458,19907,221 Million
+ps,PSE,Palestine,+970,5970,3800000,6.641 Billion
+pa,PAN,Panama,+507,78200,3410676,40.62 Billion
+pg,PNG,Papua New Guinea,+675,462840,6064515,16.1 Billion
+py,PRY,Paraguay,+595,406750,6375830,30.56 Billion
+pe,PER,Peru,+51,1285220,29907003,210.3 Billion
+ph,PHL,Philippines,+63,300000,99900177,272.2 Billion
+pn,PCN,Pitcairn,+64,47,46,
+pl,POL,Poland,+48,312685,38500000,513.9 Billion
+pt,PRT,Portugal,+351,92391,10676000,219.3 Billion
+pr,PRI,Puerto Rico,"+1-787, 1-939",9104,3916632,93.52 Billion
+qa,QAT,Qatar,+974,11437,840926,213.1 Billion
+cg,COG,Republic of the Congo,+242,342000,3039126,14.25 Billion
+re,REU,Reunion,+262,2517,776948,
+ro,ROU,Romania,+40,237500,21959278,188.9 Billion
+ru,RUS,Russia,+7,17100000,140702000,2.113 Trillion
+rw,RWA,Rwanda,+250,26338,11055976,7.7 Billion
+bl,BLM,Saint Barthelemy,+590,21,8450,
+sh,SHN,Saint Helena,+290,410,7460,
+kn,KNA,Saint Kitts and Nevis,+1-869,261,51134,767 Million
+lc,LCA,Saint Lucia,+1-758,616,160922,1.377 Billion
+mf,MAF,Saint Martin,+590,53,35925,561.5 Million
+pm,SPM,Saint Pierre and Miquelon,+508,242,7012,215.3 Million
+vc,VCT,Saint Vincent and the Grenadines,+1-784,389,104217,742 Million
+ws,WSM,Samoa,+685,2944,192001,705 Million
+sm,SMR,San Marino,+378,61,31477,1.866 Billion
+st,STP,Sao Tome and Principe,+239,1001,175808,311 Million
+sa,SAU,Saudi Arabia,+966,1960582,25731776,718.5 Billion
+sn,SEN,Senegal,+221,196190,12323252,15.36 Billion
+rs,SRB,Serbia,+381,88361,7344847,43.68 Billion
+sc,SYC,Seychelles,+248,455,88340,1.271 Billion
+sl,SLE,Sierra Leone,+232,71740,5245695,4.607 Billion
+sg,SGP,Singapore,+65,693,4701069,295.7 Billion
+sx,SXM,Sint Maarten,+1-721,34,37429,794.7 Million
+sk,SVK,Slovakia,+421,48845,5455000,96.96 Billion
+si,SVN,Slovenia,+386,20273,2007000,46.82 Billion
+sb,SLB,Solomon Islands,+677,28450,559198,1.099 Billion
+so,SOM,Somalia,+252,637657,10112453,2.372 Billion
+za,ZAF,South Africa,+27,1219912,49000000,353.9 Billion
+kr,KOR,South Korea,+82,98480,48422644,1.198 Trillion
+ss,SSD,South Sudan,+211,644329,8260490,11.77 Billion
+es,ESP,Spain,+34,504782,46505963,1.356 Trillion
+lk,LKA,Sri Lanka,+94,65610,21513990,65.12 Billion
+sd,SDN,Sudan,+249,1861484,35000000,52.5 Billion
+sr,SUR,Suriname,+597,163270,492829,5.009 Billion
+sj,SJM,Svalbard and Jan Mayen,+47,62049,2550,
+sz,SWZ,Swaziland,+268,17363,1354051,3.807 Billion
+se,SWE,Sweden,+46,449964,9555893,552 Billion
+ch,CHE,Switzerland,+41,41290,7581000,646.2 Billion
+sy,SYR,Syria,+963,185180,22198110,64.7 Billion
+tw,TWN,Taiwan,+886,35980,22894384,484.7 Billion
+tj,TJK,Tajikistan,+992,143100,7487489,8.513 Billion
+tz,TZA,Tanzania,+255,945087,41892895,31.94 Billion
+th,THA,Thailand,+66,514000,67089500,400.9 Billion
+tg,TGO,Togo,+228,56785,6587239,4.299 Billion
+tk,TKL,Tokelau,+690,10,1466,
+to,TON,Tonga,+676,748,122580,477 Million
+tt,TTO,Trinidad and Tobago,+1-868,5128,1228691,27.13 Billion
+tn,TUN,Tunisia,+216,163610,10589025,48.38 Billion
+tr,TUR,Turkey,+90,780580,77804122,821.8 Billion
+tm,TKM,Turkmenistan,+993,488100,4940916,40.56 Billion
+tc,TCA,Turks and Caicos Islands,+1-649,430,20556,
+tv,TUV,Tuvalu,+688,26,10472,38 Million
+vi,VIR,U.S. Virgin Islands,+1-340,352,108708,
+ug,UGA,Uganda,+256,236040,33398682,22.6 Billion
+ua,UKR,Ukraine,+380,603700,45415596,175.5 Billion
+ae,ARE,United Arab Emirates,+971,82880,4975593,390 Billion
+gb,GBR,United Kingdom,+44,244820,62348447,2.49 Trillion
+us,USA,United States,+1,9629091,310232863,16.72 Trillion
+uy,URY,Uruguay,+598,176220,3477000,57.11 Billion
+uz,UZB,Uzbekistan,+998,447400,27865738,55.18 Billion
+vu,VUT,Vanuatu,+678,12200,221552,828 Million
+va,VAT,Vatican,+379,0,921,
+ve,VEN,Venezuela,+58,912050,27223228,367.5 Billion
+vn,VNM,Vietnam,+84,329560,89571130,170 Billion
+wf,WLF,Wallis and Futuna,+681,274,16025,
+eh,ESH,Western Sahara,+212,266000,273008,
+ye,YEM,Yemen,+967,527970,23495361,43.89 Billion
+zm,ZMB,Zambia,+260,752614,13460305,22.24 Billion
+zw,ZWE,Zimbabwe,+263,390580,11651858,10.48 Billion
