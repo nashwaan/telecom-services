@@ -7,55 +7,129 @@
     'use strict';
 
     // define service for assemble
-    angular.module('TheApp').factory('assembleService', ['$http', '$mdBottomSheet', function ($http, $mdBottomSheet) {
-        var plan = null;
+    angular.module('TheApp').factory('assembleService', ['$http', '$mdBottomSheet', 'plansService', function ($http, $mdBottomSheet, plansService) {
+        var planEdit,
+            planEditOriginal,
+            toggleEditSelectedPlan = true;
+
+        function isSamePlan(planA, planB) {
+            return planA && planB && planA.name === planB.name && planA.collectionName === planB.collectionName && planA.groupName === planB.groupName;
+        }
+
         return {
-            "setPlan": function (plan_given) {
-                plan = plan_given;
+            "getPlanEdit": function () {
+                var planSelected = plansService.getSelected();
+                if (planSelected && !isSamePlan(planSelected, planEdit) && toggleEditSelectedPlan && !this.isPlanDirty()) { // if (!angular.equals(planEdit, plansService.getSelected())) {
+                    this.setPlanEdit(planSelected);
+                }
+                return planEdit;
             },
-            "getPlan": function () {
-                return plan;
+            "setPlanEdit": function (plan) {
+                planEdit = angular.copy(plan);
+                planEditOriginal = angular.copy(planEdit);
             },
-            "loadPlan": function (filename) {
-                $http.get(filename).then(function (response) {
-                    plan = response.data;
-                    console.log("Plan data was loaded successfully.");
-                }, function (response) {
-                    console.warn("Could not load plan data." + response.status);
+            "revertPlanEdit": function () {
+                planEdit = angular.copy(planEditOriginal);
+            },
+            "savePlanEdit": function (replaceOriginal) {
+                var planSave = angular.copy(planEdit);
+                delete planSave.reference;
+                angular.forEach(planSave.Attributes.properties, function (property, key) {
+                    if (property.mandatory && planSave.Attributes.required.indexOf(key) < 0) {
+                        if (!planSave.Attributes.required) {
+                            planSave.Attributes.required = [];
+                        }
+                        planSave.Attributes.required.push(key);
+                    }
+                    delete property.mandatory;
                 });
+                plansService.add(planSave, replaceOriginal ? planEditOriginal : undefined);
+                planEditOriginal = angular.copy(planEdit);
+            },
+            "isPlanDirty": function () {
+                return !angular.equals(planEdit, planEditOriginal);
+            },
+            "deletePlan": function () {
+                plansService.remove(planEdit);
+                planEdit = null;
+                planEditOriginal = null;
             }
         };
     }]);
 
     // define controller for assemble
-    angular.module('TheApp').controller('assembleController', ['$scope', '$timeout', 'assembleService', 'schemasService', 'propertiesService', 'mastersService', function ($scope, $timeout, assembleService, schemasService, propertiesService, mastersService) {
+    angular.module('TheApp').controller('assembleController', ['$scope', '$mdDialog', 'assembleService', 'schemasService', 'propertiesService', 'mastersService', function ($scope, $mdDialog, assembleService, schemasService, propertiesService, mastersService) {
         //
         var self = this;
+        self.autoEditSelectedPlan = false;
+        self.editSelectedPlan = function (toggle) {
+            assembleService.editSelectedPlan(toggle);
+        };
+        self.getPlan = function () {
+            return assembleService.getPlanEdit();
+        };
+        self.selectPlan = function () {
+            self.editPlan(assembleService.getPlanEdit());
+        };
+        self.editPlan = function (plan) {
+            propertiesService.manage(schemasService.schema('plan'), plan, ["Attributes"]); //window.alert(JSON.stringify(propertiesService.get()));
+        };
+        self.newPlan = function (ev) {
+            var confirm, planNew;
+            if (assembleService.isPlanDirty()) {
+                confirm = $mdDialog.confirm()
+                    .title('Save Plan Changes?')
+                    .textContent('Do you want to save changes made to "' + assembleService.getPlanEdit().name + '" plan?')
+                    .ariaLabel('Save Plan Changes')
+                    .targetEvent(ev)
+                    .ok('Save')
+                    .cancel('Discard');
+                $mdDialog.show(confirm).then(function () {
+                    self.savePlan(ev);
+                }, function () {});
+            }
+            self.autoEditSelectedPlan = false;
+            assembleService.editSelectedPlan(self.autoEditSelectedPlan);
+            planNew = schemasService.fresh('plan');
+            planNew.name = "New Plan";
+            assembleService.setPlanEdit(planNew);
+            self.editPlan(assembleService.getPlanEdit());
+        };
+        self.revertPlan = function () {
+            assembleService.revertPlanEdit();
+        };
+        self.savePlan = function (ev) {
+            var confirm = $mdDialog.confirm()
+                .title('Modify Existing Plan?')
+                .textContent('Do you want to modify existing plan or create new one?')
+                .ariaLabel('Modify Existing Plan')
+                .targetEvent(ev)
+                .ok('Modify Existing')
+                .cancel('Create New');
+            $mdDialog.show(confirm).then(function () {
+                assembleService.savePlanEdit(true);
+            }, function () {
+                assembleService.savePlanEdit(false);
+            });
+        };
+
         self.planActive = null;
         self.bandActive = null;
         self.flavorActive = null;
         self.featureActive = null;
         self.attributeActive = null;
-        self.planStored = null;
-        self.bandStored = null;
-        self.flavorStored = null;
-        self.featureStored = null;
-        self.attributeStored = null;
+        self.planCopied = null;
+        self.bandCopied = null;
+        self.flavorCopied = null;
+        self.featureCopied = null;
+        self.attributeCopied = null;
         self.copy = function (object) {
             return angular.copy(object);
         };
         //
-        //self.newPlan();
-        self.newPlan = function () {
-            var plan = schemasService.fresh('plan');
-            plan.name = "New Plan";
-            plan.description = "Description for the new plan";
-            assembleService.setPlan(plan);
-            self.editPlan(plan);
-        };
         self.getPlan = function () {
             //window.alert("getPlan() called");
-            return assembleService.getPlan();
+            return assembleService.getPlanEdit();
         };
         self.editPlan = function (plan) {
             propertiesService.manage(schemasService.schema('plan'), plan, ["Bands"]);

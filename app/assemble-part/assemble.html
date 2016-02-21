@@ -27,17 +27,12 @@
                         <md-tooltip>Add Band</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.loadPlan()" aria-label="Load Plan">
-                        <md-icon md-svg-icon="gui:download" aria-label="Load Plan"></md-icon>
-                        <md-tooltip>Load Plan</md-tooltip>
-                    </md-button>
-                    
-                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.savePlan()" aria-label="Save Plan">
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.savePlan($event)" aria-label="Save Plan">
                         <md-icon md-svg-icon="gui:save" aria-label="Save Plan"></md-icon>
                         <md-tooltip>Save Plan</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.newPlan()" aria-label="New Plan">
+                    <md-button class="md-fab md-mini md-primary md-raised md-hue-1" ng-click="cntrl.newPlan($event)" aria-label="New Plan">
                         <md-icon md-svg-icon="gui:new" aria-label="New Plan"></md-icon>
                         <md-tooltip>New Plan</md-tooltip>
                     </md-button>
@@ -112,17 +107,17 @@
                         <md-tooltip>Add Flavor</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandStored=cntrl.copy(band);plan.Bands.splice($index,1)" aria-label="Cut Band">
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandCopied=cntrl.copy(band);plan.Bands.splice($index,1)" aria-label="Cut Band">
                         <md-icon md-svg-icon="gui:cut" aria-label="Cut Band"></md-icon>
                         <md-tooltip>Cut Band</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandStored=cntrl.copy(band)" aria-label="Copy Band">
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.bandCopied=cntrl.copy(band)" aria-label="Copy Band">
                         <md-icon md-svg-icon="gui:copy" aria-label="Copy Band"></md-icon>
                         <md-tooltip>Copy Band</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorStored?band.Flavors.push(cntrl.flavorStored):0" aria-label="Paste Flavor">
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorCopied?band.Flavors.push(cntrl.flavorCopied):0" aria-label="Paste Flavor">
                         <md-icon md-svg-icon="gui:paste" aria-label="Paste Flavor"></md-icon>
                         <md-tooltip>Paste Flavor</md-tooltip>
                     </md-button>
@@ -192,17 +187,17 @@
                 
                 <md-fab-actions>
                     
-                     <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorStored=cntrl.copy(flavor);band.Flavors.splice($index,1)" aria-label="Cut Flavor">
+                     <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorCopied=cntrl.copy(flavor);band.Flavors.splice($index,1)" aria-label="Cut Flavor">
                         <md-icon md-svg-icon="gui:cut" aria-label="Cut Flavor"></md-icon>
                         <md-tooltip>Cut Flavor</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorStored=cntrl.copy(flavor)" aria-label="Copy Flavor">
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.flavorCopied=cntrl.copy(flavor)" aria-label="Copy Flavor">
                         <md-icon md-svg-icon="gui:copy" aria-label="Copy Flavor"></md-icon>
                         <md-tooltip>Copy Flavor</md-tooltip>
                     </md-button>
                     
-                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.featureStored?flavor.Features.push(cntrl.featureStored):0" aria-label="Paste Feature">
+                    <md-button class="md-fab md-mini md-raised" ng-click="cntrl.featureCopied?flavor.Features.push(cntrl.featureCopied):0" aria-label="Paste Feature">
                         <md-icon md-svg-icon="gui:paste" aria-label="Paste Feature"></md-icon>
                         <md-tooltip>Paste Feature</md-tooltip>
                     </md-button>

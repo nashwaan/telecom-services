@@ -20,10 +20,10 @@
                     active = manufactureService.getMasterEdit();
                     return active ? active.name : "Manufacture Mode";
                 case '/assemble':
-                    active = assembleService.getPlan();
+                    active = assembleService.getPlanEdit();
                     return active ? active.name : "Design Mode";
                 case '/international':
-                    active = assembleService.getPlan();
+                    active = assembleService.getPlanEdit();
                     return active ? active.name : "World Map";
                 default:
                     return "Telecom Designer";

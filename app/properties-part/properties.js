@@ -148,7 +148,7 @@
         self.submittable = function (form) {
             //console.log(JSON.stringify(form));
             angular.forEach(form, function (input) {
-                
+
             });
             return true;
         };
@@ -180,17 +180,32 @@
             return null;
         };
         self.isValidDependencies = function (property) {
-            var key, properties;
+            var i, key, properties;
+
+            function checkDependentValue(dependentName, dependentValue) {
+                if (dependentValue.charAt(0) === "!") {
+                    if (dependentName.value === dependentValue.slice(1)) {
+                        return false;
+                    }
+                } else {
+                    if (dependentName.value !== dependentValue) {
+                        return false;
+                    }
+                }
+                return true;
+            }
             if (property && property.dependents) {
                 properties = propertiesService.get().properties;
                 for (key in property.dependents) {
                     if (property.dependents.hasOwnProperty(key)) {
-                        if (property.dependents[key].charAt(0) === "!") {
-                            if (properties[key].value === property.dependents[key].slice(1)) {
-                                return false;
+                        if (property.dependents[key] instanceof Array) {
+                            for (i = 0; i < property.dependents[key].length; i += 1) {
+                                if (!checkDependentValue(properties[key], property.dependents[key][i])) {
+                                    return false;
+                                }
                             }
                         } else {
-                            if (properties[key].value !== property.dependents[key]) {
+                            if (!checkDependentValue(properties[key], property.dependents[key])) {
                                 return false;
                             }
                         }

@@ -8,53 +8,38 @@
 
     //
     angular.module('TheApp').factory('mastersService', ['$http', function ($http) {
-        var masters = null,
-            masterSelected = null,
-            masterEdit = null;
+        var masters,
+            masterSelected,
+            masterEdit;
 
-        function findGroup(masters, groupName) {
-            var i, group;
-            if (masters && masters.Groups) {
-                for (i = 0; i < masters.Groups.length; i += 1) {
-                    if (masters.Groups[i].name === groupName) {
-                        group = masters.Groups[i];
-                        break;
+        function getItem(holder, itemsName, itemName, createMissing) {
+            var i, item;
+            if (holder) {
+                if (!holder[itemsName] && createMissing) {
+                    holder[itemsName] = [];
+                }
+                if (holder[itemsName]) {
+                    for (i = 0; i < holder[itemsName].length; i += 1) {
+                        if (holder[itemsName][i].name === itemName) {
+                            item = holder[itemsName][i];
+                            break;
+                        }
                     }
                 }
-            }
-            return group;
-        }
-
-        function findCollection(group, collectionName) {
-            var i, collection;
-            if (group && group.Collections) {
-                for (i = 0; i < group.Collections.length; i += 1) {
-                    if (group.Collections[i].name === collectionName) {
-                        collection = group.Collections[i];
-                        break;
-                    }
+                if (!item && createMissing) {
+                    holder[itemsName].push({
+                        "name": itemName
+                    });
+                    item = holder[itemsName][holder[itemsName].length - 1];
                 }
             }
-            return collection;
-        }
-
-        function findMaster(collection, masterName) {
-            var i, master;
-            if (collection && collection.Masters) {
-                for (i = 0; i < collection.Masters.length; i += 1) {
-                    if (collection.Masters[i].name === masterName) {
-                        master = collection.Masters[i];
-                        break;
-                    }
-                }
-            }
-            return master;
+            return item;
         }
 
         function deleteMaster(master) {
             var group, collection, i;
-            group = findGroup(masters, master.groupName);
-            collection = findCollection(group, master.collectionName);
+            group = getItem(masters, "Groups", master.groupName);
+            collection = getItem(group, "Collections", master.collectionName);
             if (collection) {
                 for (i = 0; i < collection.Masters.length; i += 1) {
                     if (collection.Masters[i].name === master.name) {
@@ -66,9 +51,11 @@
         }
 
         function addParentNames(masters) {
+            var masterPaths = [];
             masters.Groups.forEach(function (group) {
                 group.Collections.forEach(function (collection) {
                     collection.Masters.forEach(function (master) {
+                        masterPaths.push(group.name + ">" + collection.name + ">" + master.name);
                         angular.forEach(master.Attributes.properties, function (property, key) {
                             if (property.mandatory) {
                                 delete property.mandatory;
@@ -77,6 +64,7 @@
                     });
                 });
             });
+            //console.log(masterPaths.join("\n"));
             //console.log(JSON.stringify(masters));
         }
 
@@ -93,21 +81,17 @@
         }
 
         function getMasterFromPath(masterFullPath) {
-            var i, j, k, master, masterPath = masterFullPath.split(">");
-            for (i = 0; i < masters.Groups.length; i += 1) {
-                if (masters.Groups[i].name === masterPath[0]) {
-                    for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
-                        if (masters.Groups[i].Collections[j].name === masterPath[1]) {
-                            for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
-                                if (masters.Groups[i].Collections[j].Masters[k].name === masterPath[2]) {
-                                    return masters.Groups[i].Collections[j].Masters[k];
-                                }
-                            }
-                            return null;
-                        }
+            var group, collection, master, masterPath = masterFullPath.split(">");
+            if (masterPath[0]) {
+                group = getItem(masters, "Groups", masterPath[0]);
+                if (masterPath[1]) {
+                    collection = getItem(group, "Collections", masterPath[1]);
+                    if (masterPath[2]) {
+                        master = getItem(collection, "Masters", masterPath[2]);
                     }
                 }
             }
+            return master;
         }
 
         function load(path) {
@@ -123,14 +107,19 @@
         load('data/masters.json');
 
         return {
+            "get": function () {
+                return masters;
+            },
+            "getMasterFromPath": function (masterFullPath) {
+                return getMasterFromPath(masterFullPath);
+            },
+            "getSelected": function () {
+                return masterSelected;
+            },
             "select": function (groupName, collectionName, master) {
                 masterSelected = angular.copy(master);
                 masterSelected.groupName = groupName;
                 masterSelected.collectionName = collectionName;
-                masterSelected.reference = master;
-            },
-            "getSelected": function () {
-                return masterSelected;
             },
             "add": function (master, masterToReplace) {
                 var insertIndex, group, collection;
@@ -140,29 +129,11 @@
                 if (!master.groupName) {
                     master.groupName = "General";
                 }
-                if (!masters.Groups) {
-                    masters.Groups = [];
-                }
-                group = findGroup(masters, master.groupName);
-                if (!group) {
-                    masters.Groups.push({
-                        "name": master.groupName
-                    });
-                    group = masters.Groups[masters.Groups.length - 1];
-                }
+                group = getItem(masters, "Groups", master.groupName, true);
                 if (!master.collectionName) {
                     master.collectionName = "General";
                 }
-                if (!group.Collections) {
-                    group.Collections = [];
-                }
-                collection = findCollection(group, master.collectionName);
-                if (!collection) {
-                    group.Collections.push({
-                        "name": master.collectionName
-                    });
-                    collection = group.Collections[group.Collections.length - 1];
-                }
+                collection = getItem(group, "Collections", master.collectionName, true);
                 if (!collection.Masters) {
                     collection.Masters = [];
                 }
@@ -173,16 +144,13 @@
                 }
             },
             "remove": function (master) {
+                if (masterEdit === master) {
+                    masterEdit = undefined;
+                }
+                if (masterSelected === master) {
+                    masterSelected = undefined;
+                }
                 deleteMaster(master);
-            },
-            "getMasterFromPath": function (masterFullPath) {
-                return getMasterFromPath(masterFullPath);
-            },
-            "get": function () {
-                return masters;
-            },
-            "check": function () {
-                console.warn(JSON.stringify(masters));
             }
         };
     }]);

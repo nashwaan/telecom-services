@@ -314,6 +314,9 @@
     "planFresh": {
         "name": "",
         "description": "",
+        "level1Name": "",
+        "level2Name": "",
+        "level3Name": "",
         "Bands": []
     },
     "planSchema": {
@@ -323,7 +326,7 @@
         "description": "Edit plan properties.",
         "type": "object",
         "additionalProperties": true,
-        "required": ["name"],
+        "required": ["name", "level1", "level2", "level3"],
         "properties": {
             "name": {
                 "title": "Plan Name",
@@ -334,6 +337,24 @@
             "description": {
                 "title": "Plan Description",
                 "description": "Specify description for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "level1Name": {
+                "title": "Level 1",
+                "description": "Specify 1st level for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "level2Name": {
+                "title": "Level 2",
+                "description": "Specify 2nd level for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "level3Name": {
+                "title": "Level 3",
+                "description": "Specify 3rd level for this plan.",
                 "type": "string",
                 "default": ""
             }

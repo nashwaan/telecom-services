@@ -10,10 +10,10 @@
 
         //
         this.check = function () {
-            window.alert("CHECK:\n" + JSON.stringify(assembleService.getPlan().name));
+            window.alert("CHECK:\n" + JSON.stringify(assembleService.getPlanEdit().name));
         };
         this.getPlan = function () {
-            return assembleService.getPlan();
+            return assembleService.getPlanEdit();
         };
         this.getMasterName = function (feature) {
             return feature.masterPath.split(">")[2];

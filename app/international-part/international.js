@@ -48,7 +48,7 @@
         return {
             restrict: 'A',
             scope: {
-                getCountries: "=",
+                getCountries: "&",
                 hoverCountry: "="
             },
             link: function (scope, element, attrs) {
