@@ -33,9 +33,14 @@
     border-color: rgba(70, 150, 240, 0.2);
 }
 
+.flavor.abstract md-card-header-text {
+    color: rgb(190, 190, 190);
+}
+
 .feature {
     display: inline-block;
     border-radius: 3px;
+    font-size: 90%;
 }
 
 .feature:hover {
@@ -51,9 +56,67 @@
     display: inline;
 }
 
+.md-menu button {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+md-card-header {
+    padding: 0px !important;
+    width: 100%;
+}
+
 .md-card-header-text:hover,
 .md-card-header-text:hover * {
     color: cadetblue;
+}
+
+.band .header {
+    font-size: 150%;
+    font-family: "Segoe UI Semibold";
+}
+
+.flavor .header {
+    font-size: 110%;
+    font-family: "Segoe UI Semibold";
+}
+
+.band .total {
+    font-size: 70%;
+}
+
+.flavor .total {
+    font-size: 60%;
+}
+
+.feature .icon {
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+.feature .label {
+    width: 44%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.feature .label.warn {
+    color: rgb(220, 50, 50);
+}
+
+.feature .value {
+    width: 44%;
+    display: inline-block;
+    vertical-align: top;
+    color: rgb(120, 150, 100);
+}
+
+.feature .label div {
+    /*display: inline-block;*/
+    font-size: 70%;
 }
 
 .canvas .md-item *:hover {

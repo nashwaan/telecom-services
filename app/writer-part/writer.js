@@ -16,7 +16,7 @@
             return assembleService.getPlanEdit();
         };
         this.getMasterName = function (feature) {
-            return feature.masterPath.split(">")[2];
+            return feature.masterPath[2];
         };
         this.getTotalAttributes = function (feature) {
             var key, count = 0;

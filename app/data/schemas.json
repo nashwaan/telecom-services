@@ -6,7 +6,9 @@
         "Attributes": {},
         "collectionName": "",
         "groupName": "",
-        "icon": ""
+        "icon": "",
+        "value": "",
+        "kind": []
     },
     "masterSchema": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -15,7 +17,7 @@
         "description": "Edit master properties.",
         "type": "object",
         "additionalProperties": true,
-        "required": ["name", "type", "collectionName", "groupName"],
+        "required": ["name", "type", "collectionName", "groupName", "value"],
         "properties": {
             "name": {
                 "title": "Master Name",
@@ -53,6 +55,19 @@
                 "description": "Specify icon for the master.",
                 "type": "string",
                 "enum": ["Account", "Add-on", "BasePlan", "Bundle", "CallFreebees", "CallTariff", "ChangeArrow", "ChangeFlavor", "Charge", "Constraint", "Contract", "Credit", "DataFreebees", "DataTariff", "Device", "DownArrow", "EndArrow", "File", "Info", "Inquiry", "LeftArrow", "MessageFreebees", "MessageTariff", "Migrate", "Migration", "Notification", "Project", "Provisioning", "Report", "Rewards", "RightArrow", "SIMCard", "SquareAim", "SquareDashed", "Square", "Stakeholder", "Subscribe", "Support", "Unsubscribe", "UpArrow", "XOR"],
+                "default": ""
+            },
+            "value": {
+                "title": "Value",
+                "description": "Specify attribute field name for the value of the master.",
+                "type": "string",
+                "default": ""
+            },
+            "kind": {
+                "title": "Kind",
+                "description": "Specify attribute field names for the kind of the master.",
+                "type": "array",
+                "format": "array-var",
                 "default": ""
             }
         }
@@ -121,7 +136,7 @@
                 "description": "For 'format' of attribute schema.",
                 "type": "string",
                 "default": "",
-                "enum": ["", "email", "date-time", "array-fix", "array-var", "object-json"]
+                "enum": ["", "email", "currency", "date-time", "array-fix", "array-var", "object-json"]
             },
             "enum": {
                 "title": "Choice",
@@ -391,6 +406,8 @@
     "flavorFresh": {
         "name": "",
         "description": "",
+        "type": "",
+        "inherit": "",
         "Features": []
     },
     "flavorSchema": {
@@ -412,6 +429,20 @@
                 "title": "Flavor Description",
                 "description": "Specify description for this flavor.",
                 "type": "string",
+                "default": ""
+            },
+            "type": {
+                "title": "Flavor Type",
+                "description": "Specify type of this flavor.",
+                "type": "string",
+                "enum": ["Base Standard", "Base Special", "Add-on Standard", "Add-on Special", "Abstract", "Fallback"],
+                "default": "Base Plan"
+            },
+            "inherit": {
+                "title": "Inherit From",
+                "description": "Specify parent for this flavor.",
+                "type": "string",
+                "format": "list-flavors-level2",
                 "default": ""
             }
         }

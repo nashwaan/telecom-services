@@ -22,7 +22,9 @@
         
     </md-button>
     
-    <div class="md-headline" style="font-family:'Segoe UI Light'" layout-align-gt-sm="center">
+    <md-progress-circular md-mode="{{(cntrl.isBusy()?'indeterminate':'')}}" ng-if="cntrl.isBusy()"></md-progress-circular>
+    
+    <div class="md-headline" style="font-family:'Segoe UI Light'" layout-align-gt-sm="center" ng-if="!cntrl.isBusy()">
         {{cntrl.getTitle()}}
     </div>
     

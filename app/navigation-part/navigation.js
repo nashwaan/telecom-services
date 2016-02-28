@@ -7,11 +7,12 @@
 
     // define controller for navigation
     angular.module('TheApp').factory('navigationService', ['manufactureService', 'assembleService', '$location', function (manufactureService, assembleService, $location) {
-        var lockedSidenav = {
-            "plans": false,
-            "masters": true,
-            "properties": true
-        };
+        var busy = false,
+            lockedSidenav = {
+                "plans": true,
+                "masters": false,
+                "properties": true
+            };
         return {
             "getTitle": function () {
                 var active;
@@ -34,6 +35,12 @@
             },
             "isSidenavLocked": function (componentId) {
                 return lockedSidenav[componentId];
+            },
+            "showBusy": function (toggle) {
+                busy = toggle;
+            },
+            "isBusy": function () {
+                return busy;
             }
         };
     }]);
@@ -71,6 +78,9 @@
             var paths = ['manufacture', 'assemble', 'international'],
                 index = paths.indexOf($location.path().substring(1));
             $location.path(paths[(index + 1) % paths.length]);
+        };
+        self.isBusy = function () {
+            return navigationService.isBusy();
         };
     }]);
 

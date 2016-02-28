@@ -50,8 +50,8 @@
             }
         }
 
-        function getPlanFromPath(planFullPath) {
-            var level1, level2, level3, plan, planPath = planFullPath.split(">");
+        function getPlanFromPath(planPath) {
+            var level1, level2, level3, plan;
             if (planPath[0]) {
                 level1 = getItem(plans, "Level1", planPath[0]);
                 if (planPath[1]) {
@@ -139,9 +139,9 @@
                 var plan = getPlanFromPath(planPath);
                 if (plan) {
                     planSelected = angular.copy(plan);
-                    planSelected.level1Name = planPath.split(">")[0];
-                    planSelected.level2Name = planPath.split(">")[1];
-                    planSelected.level3Name = planPath.split(">")[2];
+                    planSelected.level1Name = planPath[0];
+                    planSelected.level2Name = planPath[1];
+                    planSelected.level3Name = planPath[2];
                 }
             },
             "add": function (plan, planToReplace) {
@@ -190,22 +190,29 @@
         };
     }]);
 
-    angular.module('TheApp').controller('plansController2', ['$scope', '$http', '$document', 'plansService', 'navigationService', function ($scope, $http, $document, plansService, navigationService) {
+    angular.module('TheApp').controller('plansController2', ['$scope', '$http', '$document', '$timeout', 'plansService', 'navigationService', function ($scope, $http, $document, $timeout, plansService, navigationService) {
         $scope.selectedPlan = 'Select a file below...';
 
         function getNodePath(node) {
-            var path = node.data.name;
+            var path = [node.data.name];
             while (node.parent) {
-                path = node.parent.data.name + ">" + path;
+                path.unshift(node.parent.data.name); // push element at beginning of array
                 node = node.parent;
             }
             return path;
         }
 
         function rowClicked(params) {
-            console.log(JSON.stringify(params.node.data));
             if (params.node.data.level === 4) {
-                plansService.select(getNodePath(params.node));
+                $scope.$apply(function () {
+                    navigationService.showBusy(true);
+                });
+                $timeout(function () {
+                    plansService.select(getNodePath(params.node));
+                    $scope.$$postDigest(function () {
+                        navigationService.showBusy(false);
+                    });
+                }, 100);
             }
             $scope.selectedPlan = params.node.data.name;
         }

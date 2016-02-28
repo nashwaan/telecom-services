@@ -180,29 +180,25 @@
             return null;
         };
         self.isValidDependencies = function (property) {
-            var i, key, properties;
-
+            var i, key, properties, orValues;
             function checkDependentValue(dependentName, dependentValue) {
                 if (dependentValue.charAt(0) === "!") {
-                    if (dependentName.value === dependentValue.slice(1)) {
-                        return false;
-                    }
+                    return dependentName.value !== dependentValue.slice(1);
                 } else {
-                    if (dependentName.value !== dependentValue) {
-                        return false;
-                    }
+                    return dependentName.value === dependentValue;
                 }
-                return true;
             }
             if (property && property.dependents) {
                 properties = propertiesService.get().properties;
                 for (key in property.dependents) {
                     if (property.dependents.hasOwnProperty(key)) {
                         if (property.dependents[key] instanceof Array) {
+                            orValues = false;
                             for (i = 0; i < property.dependents[key].length; i += 1) {
-                                if (!checkDependentValue(properties[key], property.dependents[key][i])) {
-                                    return false;
-                                }
+                                orValues = orValues || checkDependentValue(properties[key], property.dependents[key][i]);
+                            }
+                            if (orValues === false) {
+                                return false;
                             }
                         } else {
                             if (!checkDependentValue(properties[key], property.dependents[key])) {

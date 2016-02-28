@@ -51,37 +51,30 @@
         }
 
         function addParentNames(masters) {
-            var masterPaths = [];
             masters.Groups.forEach(function (group) {
                 group.Collections.forEach(function (collection) {
                     collection.Masters.forEach(function (master) {
-                        masterPaths.push(group.name + ">" + collection.name + ">" + master.name);
-                        angular.forEach(master.Attributes.properties, function (property, key) {
-                            if (property.mandatory) {
-                                delete property.mandatory;
-                            }
-                        });
+                        master.groupName = group.name;
+                        master.collectionName = collection.name;
                     });
                 });
             });
-            //console.log(masterPaths.join("\n"));
-            //console.log(JSON.stringify(masters));
+            //delete removeParentNames(masters); console.log(JSON.stringify(masters));
         }
 
         function removeParentNames(masters) {
-            var i, j, k, master;
-            for (i = 0; i < masters.Groups.length; i += 1) {
-                for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
-                    for (k = 0; k < masters.Groups[i].Collections[j].Masters.length; k += 1) {
-                        delete masters.Groups[i].Collections[j].Masters[k].groupName;
-                        delete masters.Groups[i].Collections[j].Masters[k].collectionName;
-                    }
-                }
-            }
+            masters.Groups.forEach(function (group) {
+                group.Collections.forEach(function (collection) {
+                    collection.Masters.forEach(function (master) {
+                        delete master.groupName;
+                        delete master.collectionName;
+                    });
+                });
+            });
         }
 
-        function getMasterFromPath(masterFullPath) {
-            var group, collection, master, masterPath = masterFullPath.split(">");
+        function getMasterFromPath(masterPath) {
+            var group, collection, master;
             if (masterPath[0]) {
                 group = getItem(masters, "Groups", masterPath[0]);
                 if (masterPath[1]) {
@@ -110,8 +103,8 @@
             "get": function () {
                 return masters;
             },
-            "getMasterFromPath": function (masterFullPath) {
-                return getMasterFromPath(masterFullPath);
+            "getMasterFromPath": function (masterPath) {
+                return getMasterFromPath(masterPath);
             },
             "getSelected": function () {
                 return masterSelected;

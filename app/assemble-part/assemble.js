@@ -58,9 +58,27 @@
     }]);
 
     // define controller for assemble
-    angular.module('TheApp').controller('assembleController', ['$scope', '$mdDialog', 'assembleService', 'schemasService', 'propertiesService', 'mastersService', function ($scope, $mdDialog, assembleService, schemasService, propertiesService, mastersService) {
+    angular.module('TheApp').controller('assembleController', ['$scope', '$mdDialog', '$filter', 'assembleService', 'schemasService', 'propertiesService', 'mastersService', function ($scope, $mdDialog, $filter, assembleService, schemasService, propertiesService, mastersService) {
+
         //
-        var self = this;
+        var self = this,
+            originatorEv;
+        self.openMenu = function ($mdOpenMenu, ev) {
+            originatorEv = ev;
+            $mdOpenMenu(ev);
+        };
+        self.redial = function () {
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .targetEvent(originatorEv)
+                    .clickOutsideToClose(true)
+                    .parent('body')
+                    .title('Suddenly, a redial')
+                    .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+                    .ok('That was easy')
+            );
+            originatorEv = null;
+        };
         self.autoEditSelectedPlan = false;
         self.editSelectedPlan = function (toggle) {
             assembleService.editSelectedPlan(toggle);
@@ -189,28 +207,70 @@
             self.featureActive = feature;
             self.editFeature(feature);
         };
-        self.getMasterName = function (feature) {
-            return feature.masterPath.split(">")[2];
+        self.getFeatureName = function (feature) {
+            var master = mastersService.getMasterFromPath(feature.masterPath);
+            return master ? master.name : "";
         };
-        self.getMasterIcon = function (feature) {
+        self.getFeatureKind = function (feature) {
+            var i,
+                master = mastersService.getMasterFromPath(feature.masterPath),
+                label = "";
+            if (master.kind) {
+                for (i = 0; i < master.kind.length; i += 1) {
+                    if (feature[master.kind[i]] !== undefined) {
+                        label += (label === "" ? " " : ", ") + feature[master.kind[i]];
+                    }
+                }
+            }
+            return label;
+        };
+        self.getFeatureValue = function (feature) {
+            var master = mastersService.getMasterFromPath(feature.masterPath);
+            if (!master.value || feature[master.value] === undefined) {
+                return "";
+            }
+            switch (master.Attributes.properties[master.value].type) {
+            case 'number':
+                switch (master.Attributes.properties[master.value].format) {
+                case 'currency':
+                    return $filter('currency')(feature[master.value], "AED ", 2);
+                default:
+                    return $filter('number')(feature[master.value]);
+                }
+            default:
+                return feature[master.value];
+            }
+        };
+        self.getFeatureIcon = function (feature) {
             return mastersService.getMasterFromPath(feature.masterPath).icon;
+        };
+        self.IsFeatureRedundant = function (feature, index, flavor) {
+            var i, j, mast, master = mastersService.getMasterFromPath(feature.masterPath);
+            for (i = 0; i < flavor.Features.length; i += 1) {
+                if (i !== index) {
+                    mast = mastersService.getMasterFromPath(flavor.Features[i].masterPath);
+                    if (mast.name === master.name) {
+                        for (j = 0; j < mast.kind.length; j += 1) {
+                            if (flavor.Features[i][mast.kind[j]] !== feature[master.kind[j]]) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+            }
+            return false;
         };
         //
         self.dropIntoFlavor = function (event, index, item, external, type, allowedTypes) {
             //console.log(JSON.stringify(event) + '\n' + JSON.stringify(index) + '\n' + JSON.stringify(item) + '\n' + JSON.stringify(external) + '\n' + JSON.stringify(type) + '\n' + JSON.stringify(allowedType));
-            var feature, attribute;
             if (type === "feature") {
-                feature = item;
+                return item;
             } else { // type === "master"
-                feature = {};
-                for (attribute in item.Attributes.properties) {
-                    if (item.Attributes.properties.hasOwnProperty(attribute)) {
-                        feature[attribute] = null;
-                    }
-                }
-                feature.masterPath = item.groupName + ">" + item.collectionName + ">" + item.name;
+                var master = item, feature = {};
+                feature.masterPath = [master.groupName, master.collectionName, master.name];
+                return feature;
             }
-            return feature;
         };
 
     }]);

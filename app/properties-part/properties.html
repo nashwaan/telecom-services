@@ -73,7 +73,7 @@
     </td>
 
     <td>
-        <input name="{{key}}" type="number" ng-model="property.value" step="any" min="1" max="4999" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
+        <input name="{{key}}" type="number" ng-model="property.value" step="any" min="{{property.minimum}}" max="{{property.maximum}}" ng-required="property.mandatory" ng-disabled="property.disabled||cntrl.isPropertiesDisabled()" />
         <div ng-include="'property-messages.html'"></div>
     </td>
 
