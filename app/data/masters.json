@@ -327,7 +327,7 @@
                                         "title": "Allowed Targets",
                                         "description": "Specify allowed target flavors for upgrade/downgrade.",
                                         "type": "string",
-                                        "definition": "Upgrade/Downgrade can be allowed to specifc flavors. Note if a flavor B can be upgraded to flavor A or it can be downgraded flavor C, then rather than defining these two actions in flavor B, flavor A should state its target flavor is B and flavor B should state its target flavor is C.",
+                                        "definition": "Upgrade/Downgrade can be allowed to specific flavors. Note if a flavor B can be upgraded to flavor A or it can be downgraded flavor C, then rather than defining these two actions in flavor B, flavor A should state its target flavor is B and flavor B should state its target flavor is C.",
                                         "System": "CRM;IN"
                                     },
                                     "fundPrerequisites": {

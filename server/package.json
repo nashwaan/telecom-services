@@ -1,0 +1,44 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "Supports REST API.",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nashwaan/telecom-services.git"
+  },
+  "keywords": [
+    "Telecom",
+    "Server"
+  ],
+  "author": "Yousuf Almarzooqi",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/nashwaan/telecom-services/issues"
+  },
+  "homepage": "https://github.com/nashwaan/telecom-services#readme",
+  "dependencies": {
+    "bluebird": "^3.3.3",
+    "body-parser": "^1.15.0",
+    "chalk": "^1.1.1",
+    "cheerio": "^0.20.0",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "moment": "^2.12.0",
+    "mongodb": "^2.1.7",
+    "morgan": "^1.7.0",
+    "node-notifier": "^4.5.0",
+    "serve-favicon": "^2.3.0",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1"
+  },
+  "scripts": {
+    "prestart": "",
+    "start": "nodemon --debug ./bin/www",
+    "monitor": "nodemon --debug server.js",
+    "debugger": "node-debug server.js"
+  }
+}

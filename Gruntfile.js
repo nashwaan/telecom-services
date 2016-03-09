@@ -1,8 +1,6 @@
 // silence JSLint error: variable used before it was defined
-/*global module*/
-/*global require*/
-/*global console*/
-/*jslint nomen: true*/
+/*jslint node:true */
+/*jslint nomen:true*/
 
 // wrapper function (required by grunt and its plugins)
 module.exports = function (grunt) {

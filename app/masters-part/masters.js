@@ -87,7 +87,7 @@
             return master;
         }
 
-        function load(path) {
+        (function load(path) {
             $http.get(path).then(function (response) {
                 masters = response.data;
                 addParentNames(masters);
@@ -95,9 +95,7 @@
             }, function (response) {
                 console.warn("Could not load masters data." + response.status);
             });
-        }
-
-        load('data/masters.json');
+        }('data/masters.json'));
 
         return {
             "get": function () {

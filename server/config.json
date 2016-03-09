@@ -1,0 +1,18 @@
+{
+    "development": {
+        "host": "127.0.0.1",
+        "port": 6379,
+        "errorHandlerOptions": {
+            "dumpExceptions": true,
+            "showStack": true
+        }
+    },
+    "production": {
+        "host": "10.0.0.1",
+        "port": 6379,
+        "errorHandlerOptions": {
+            "dumpExceptions": false,
+            "showStack": false
+        }
+    }
+}
