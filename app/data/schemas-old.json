@@ -1,0 +1,485 @@
+{
+    "masterFresh": {
+        "name": "",
+        "description": "",
+        "show": true,
+        "type": "",
+        "Attributes": {},
+        "collectionName": "",
+        "groupName": "",
+        "icon": "",
+        "value": [],
+        "kind": []
+    },
+    "masterSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://www.etisalat.ae",
+        "title": "Master",
+        "description": "Edit master properties.",
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name", "type", "collectionName", "groupName", "value"],
+        "properties": {
+            "name": {
+                "title": "Master Name",
+                "description": "Specify name for this master.",
+                "type": "string",
+                "default": ""
+            },
+            "description": {
+                "title": "Master Description",
+                "description": "Specify description for this master.",
+                "type": "string",
+                "default": ""
+            },
+            "show": {
+                "title": "Show",
+                "description": "Whether to show or hide this master.",
+                "type": "boolean",
+                "default": true
+            },
+            "type": {
+                "title": "Type",
+                "description": "Specify type of the master.",
+                "type": "string",
+                "enum": ["Standard", "Modifier"],
+                "default": ""
+            },
+            "collectionName": {
+                "title": "Collection Name",
+                "description": "Specify collection name for this master.",
+                "type": "string",
+                "default": ""
+            },
+            "groupName": {
+                "title": "Group Name",
+                "description": "Specify group name for this master.",
+                "type": "string",
+                "default": ""
+            },
+            "icon": {
+                "title": "Icon",
+                "description": "Specify icon for the master.",
+                "type": "string",
+                "enum": ["Account", "Add-on", "BasePlan", "Bundle", "CallFreebees", "CallTariff", "ChangeArrow", "ChangeFlavor", "Charge", "Constraint", "Contract", "Credit", "DataFreebees", "DataTariff", "Device", "DownArrow", "EndArrow", "File", "Info", "Inquiry", "LeftArrow", "MessageFreebees", "MessageTariff", "Migrate", "Migration", "Notification", "Project", "Provisioning", "Report", "Rewards", "RightArrow", "SIMCard", "SquareAim", "SquareDashed", "Square", "Stakeholder", "Subscribe", "Support", "Unsubscribe", "UpArrow", "XOR"],
+                "default": ""
+            },
+            "value": {
+                "title": "Value",
+                "description": "Specify attribute field name for the value of the master.",
+                "type": "array",
+                "format": "array-var",
+                "default": ""
+            },
+            "kind": {
+                "title": "Kind",
+                "description": "Specify attribute field names for the kind of the master.",
+                "type": "array",
+                "format": "array-var",
+                "default": ""
+            }
+        }
+    },
+    "attributeFresh": {
+        "title": "No Title",
+        "description": "No Description",
+        "definition": "No Definition",
+        "type": "string",
+        "format": "",
+        "enum": "",
+        "mandatory": false,
+        "minLength": 0,
+        "maxLength": 1000,
+        "minimum": 0,
+        "exclusiveMinimum": false,
+        "maximum": 1000,
+        "exclusiveMaximum": false,
+        "multipleOf": 1,
+        "minItems": 0,
+        "maxItems": 1000,
+        "uniqueItems": false,
+        "additionalItems": true,
+        "additionalProperties": true,
+        "default": "",
+        "options": 0,
+        "dependents": 0,
+        "sortKey": 0
+    },
+    "attributeSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://www.etisalat.ae",
+        "title": "Attribute",
+        "description": "Edit attribute properties.",
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["title", "type"],
+        "properties": {
+            "title": {
+                "title": "Name",
+                "description": "For 'title' of attribute schema.",
+                "type": "string",
+                "default": ""
+            },
+            "description": {
+                "title": "Description",
+                "description": "For 'description' of attribute schema.",
+                "type": "string",
+                "default": ""
+            },
+            "definition": {
+                "title": "Definition",
+                "description": "For 'definition' of non-standard attribute schema.",
+                "type": "string",
+                "default": ""
+            },
+            "type": {
+                "title": "Type",
+                "description": "For 'type' of attribute schema.",
+                "type": "string",
+                "enum": ["string", "number", "boolean", "array", "object"],
+                "default": "string"
+            },
+            "format": {
+                "title": "Format",
+                "description": "For 'format' of attribute schema.",
+                "type": "string",
+                "default": "",
+                "enum": ["", "email", "currency", "date-time", "array-fix", "array-var", "object-json"]
+            },
+            "enum": {
+                "title": "Choice",
+                "description": "For 'enum' of attribute schema.",
+                "type": "array",
+                "format": "array-var",
+                "default": "",
+                "dependents": {
+                    "type": "string"
+                }
+            },
+            "mandatory": {
+                "title": "Mandatory",
+                "description": "For 'mandatory' of non-standard attribute schema.",
+                "type": "boolean",
+                "default": false
+            },
+            "minLength": {
+                "title": "Minimum Length",
+                "description": "For 'minLength' of attribute schema.",
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
+                "default": 0,
+                "dependents": {
+                    "type": "string"
+                }
+            },
+            "maxLength": {
+                "title": "Maximum Length",
+                "description": "For 'maxLength' of attribute schema.",
+                "type": "number",
+                "minimum": 1,
+                "exclusiveMinimum": false,
+                "maximum": 1000000,
+                "exclusiveMaximum": false,
+                "default": 1000,
+                "dependents": {
+                    "type": "string"
+                }
+            },
+            "minimum": {
+                "title": "Minimum",
+                "description": "For 'minimum' of attribute schema.",
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
+                "default": 0,
+                "dependents": {
+                    "type": "number"
+                }
+            },
+            "exclusiveMinimum": {
+                "title": "Exclude Minimum",
+                "description": "For 'exclusiveMinimum' of attribute schema.",
+                "type": "boolean",
+                "default": false,
+                "dependents": {
+                    "type": "number"
+                }
+            },
+            "maximum": {
+                "title": "Maximum",
+                "description": "For 'maximum' of attribute schema.",
+                "type": "number",
+                "minimum": 1,
+                "exclusiveMinimum": false,
+                "maximum": 1000000,
+                "exclusiveMaximum": false,
+                "default": 1000,
+                "dependents": {
+                    "type": "number"
+                }
+            },
+            "exclusiveMaximum": {
+                "title": "Exclude Maximum",
+                "description": "For 'exclusiveMaximum' of attribute schema.",
+                "type": "boolean",
+                "default": false,
+                "dependents": {
+                    "type": "number"
+                }
+            },
+            "multipleOf": {
+                "title": "Increment Step",
+                "description": "For 'multipleOf' of attribute schema.",
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
+                "default": 1,
+                "dependents": {
+                    "type": "number"
+                }
+            },
+            "minItems": {
+                "title": "Minimum Array Items",
+                "description": "For 'minItems' of attribute schema.",
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 1000,
+                "exclusiveMaximum": false,
+                "default": 0,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "maxItems": {
+                "title": "Maximum Array Items",
+                "description": "For 'maxItems' of attribute schema.",
+                "type": "number",
+                "minimum": 1,
+                "exclusiveMinimum": false,
+                "maximum": 1000000,
+                "exclusiveMaximum": false,
+                "default": 1000,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "uniqueItems": {
+                "title": "No Redundant Array Items",
+                "description": "For 'uniqueItems' of attribute schema.",
+                "type": "boolean",
+                "default": false,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "additionalItems": {
+                "title": "Allow Additional Items",
+                "description": "For 'additionalItems' of attribute schema.",
+                "type": "boolean",
+                "default": true,
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "additionalProperties": {
+                "title": "Allow Additional Properties",
+                "description": "For 'additionalProperties' of attribute schema.",
+                "type": "boolean",
+                "default": true,
+                "dependents": {
+                    "type": "object"
+                }
+            },
+            "default": {
+                "title": "Default",
+                "description": "For 'default' of attribute schema.",
+                "type": "string",
+                "default": ""
+            },
+            "options": {
+                "title": "Options",
+                "description": "For 'options' of non-standard attribute schema.",
+                "type": "array",
+                "format": "array-var",
+                "default": [],
+                "dependents": {
+                    "type": "array"
+                }
+            },
+            "dependents": {
+                "title": "Dependents",
+                "description": "For 'dependents' of non-standard attribute schema.",
+                "type": "object",
+                "format": "object-json",
+                "additionalProperties": true,
+                "default": {}
+            },
+            "sortKey": {
+                "title": "Order of attribute",
+                "description": "Order number of the attribute.",
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": false,
+                "maximum": 100,
+                "exclusiveMaximum": false,
+                "default": 0
+            }
+        }
+    },
+    "planFresh": {
+        "name": "",
+        "description": "",
+        "level1Name": "",
+        "level2Name": "",
+        "level3Name": "",
+        "Bands": []
+    },
+    "planSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://www.etisalat.ae",
+        "title": "Plan",
+        "description": "Edit plan properties.",
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name", "level1", "level2", "level3"],
+        "properties": {
+            "name": {
+                "title": "Plan Name",
+                "description": "Specify name for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "description": {
+                "title": "Plan Description",
+                "description": "Specify description for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "level1Name": {
+                "title": "Level 1",
+                "description": "Specify 1st level for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "level2Name": {
+                "title": "Level 2",
+                "description": "Specify 2nd level for this plan.",
+                "type": "string",
+                "default": ""
+            },
+            "level3Name": {
+                "title": "Level 3",
+                "description": "Specify 3rd level for this plan.",
+                "type": "string",
+                "default": ""
+            }
+        }
+    },
+    "bandFresh": {
+        "name": "",
+        "description": "",
+        "Flavors": []
+    },
+    "bandSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://www.etisalat.ae",
+        "title": "Band",
+        "description": "Edit band properties.",
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name"],
+        "properties": {
+            "name": {
+                "title": "Band Name",
+                "description": "Specify name for this band.",
+                "type": "string",
+                "default": ""
+            },
+            "description": {
+                "title": "Band Description",
+                "description": "Specify description for this band.",
+                "type": "string",
+                "default": ""
+            }
+        }
+    },
+    "flavorFresh": {
+        "name": "",
+        "description": "",
+        "type": "",
+        "inherit": "",
+        "Features": []
+    },
+    "flavorSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://www.etisalat.ae",
+        "title": "Flavor",
+        "description": "Edit flavor properties.",
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["name"],
+        "properties": {
+            "name": {
+                "title": "Flavor Name",
+                "description": "Specify name for this flavor.",
+                "type": "string",
+                "default": ""
+            },
+            "description": {
+                "title": "Flavor Description",
+                "description": "Specify description for this flavor.",
+                "type": "string",
+                "default": ""
+            },
+            "type": {
+                "title": "Flavor Type",
+                "description": "Specify type of this flavor.",
+                "type": "string",
+                "enum": ["Base Standard", "Base Special", "Add-on Standard", "Add-on Special", "Abstract", "Fallback"],
+                "default": "Base Plan"
+            },
+            "inherit": {
+                "title": "Inherit From",
+                "description": "Specify parent for this flavor.",
+                "type": "string",
+                "format": "list-flavors-level2",
+                "default": ""
+            }
+        }
+    },
+    "featureFresh": {
+        "name": "",
+        "description": "",
+        "Attributes": []
+    },
+    "featureSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "http://www.etisalat.ae",
+        "title": "Feature",
+        "description": "Edit feature properties.",
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+            "name": {
+                "title": "Feature Name",
+                "description": "Specify name for this feature.",
+                "type": "string",
+                "default": ""
+            },
+            "description": {
+                "title": "Feature Description",
+                "description": "Specify description for this feature.",
+                "type": "string",
+                "default": ""
+            }
+        }
+    }
+}

@@ -3,42 +3,35 @@
   "version": "0.1.0",
   "description": "Supports REST API.",
   "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nashwaan/telecom-services.git"
-  },
+  "private": true,
   "keywords": [
     "Telecom",
     "Server"
   ],
   "author": "Yousuf Almarzooqi",
-  "license": "SEE LICENSE IN license.txt",
-  "bugs": {
-    "url": "https://github.com/nashwaan/telecom-services/issues"
-  },
-  "homepage": "https://github.com/nashwaan/telecom-services#readme",
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^3.3.3",
     "body-parser": "^1.15.0",
+    "bunyan": "^1.8.0",
     "chalk": "^1.1.1",
     "cheerio": "^0.20.0",
-    "cookie-parser": "^1.4.1",
     "express": "*",
+    "express-session": "^1.13.0",
     "moment": "^2.12.0",
     "mongodb": "^2.1.7",
     "morgan": "^1.7.0",
     "node-notifier": "^4.5.0",
-    "serve-favicon": "^2.3.0",
-    "winston": "^2.2.0",
-    "winston-daily-rotate-file": "^1.0.1"
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^1.9.1"
+    "nodemon": "^1.9.1",
+    "session-file-store": "^0.2.0"
   },
   "scripts": {
     "prestart": "",
-    "start": "nodemon --debug ./bin/www",
-    "monitor": "nodemon --debug server.js",
+    "start": "nodemon --debug ./bin/www | bunyan",
+    "watch": "nodemon --debug server.js | bunyan",
     "debugger": "node-debug server.js"
   }
 }

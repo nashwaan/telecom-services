@@ -10,7 +10,6 @@
         var plans,
             planEdit,
             planSelected,
-            gridOptions,
             agGridData;
 
         function getItem(holder, itemsName, itemName, createMissing) {

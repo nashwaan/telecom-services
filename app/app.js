@@ -10,7 +10,7 @@
                               'ngMessages',
                               'ngMaterial',
                               'ngMdIcons',
-                              'gridster',
+                              'ui.router',
                               'dndLists',
                               'agGrid'])
         .config(['$routeProvider', '$locationProvider', '$mdThemingProvider', '$mdIconProvider', function ($routeProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {

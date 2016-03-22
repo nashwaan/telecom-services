@@ -1,0 +1,6 @@
+{"name":"ldap-server","hostname":"PC2","pid":6816,"level":30,"msg":"Simple users LDAP server up at ldap://127.0.0.1:389","time":"2016-03-19T07:00:59.289Z","v":0}
+{"name":"ldap-server","hostname":"PC2","pid":336,"level":30,"msg":"Simple users LDAP server up at ldap://127.0.0.1:389","time":"2016-03-19T07:01:05.147Z","v":0}
+{"name":"ldap-server","hostname":"PC2","pid":10348,"level":30,"msg":"Simple users LDAP server up at ldap://127.0.0.1:389","time":"2016-03-19T07:01:15.309Z","v":0}
+{"name":"ldap-server","hostname":"PC2","pid":8432,"level":30,"msg":"Simple users LDAP server up at ldap://127.0.0.1:389","time":"2016-03-19T07:02:45.210Z","v":0}
+{"name":"ldap-server","hostname":"PC2","pid":13452,"level":30,"msg":"Simple users LDAP server up at ldap://127.0.0.1:389","time":"2016-03-19T07:04:34.054Z","v":0}
+{"name":"ldap-server","hostname":"PC2","pid":1292,"level":30,"msg":"Simple users LDAP server up at ldap://127.0.0.1:389","time":"2016-03-19T07:19:38.147Z","v":0}

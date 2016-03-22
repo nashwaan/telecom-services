@@ -50,17 +50,86 @@
             }
         }
 
-        function addParentNames(masters) {
+        function makeHierarchy(mastersGiven) {
+            var masters = {}, m, i, j, r;
+            mastersGiven.forEach(function (master) {
+                 for (r = master.revisions.length - 1; r >=0; r -= 1) {
+                    if (master.revisions[r].show === true) {
+                       if (!masters.Groups) {
+                            masters.Groups = [];
+                        }
+                        for (i = 0; i < masters.Groups.length; i += 1) {
+                            if (masters.Groups[i].name === master.groupName) {
+                                break;
+                            }
+                        }
+                        if (i === masters.Groups.length) {
+                            masters.Groups.push({name: master.groupName});
+                            i = masters.Groups.length - 1;
+                        }
+                        if (!masters.Groups[i].Collections) {
+                            masters.Groups[i].Collections = [];
+                        }
+                        for (j = 0; j < masters.Groups[i].Collections.length; j += 1) {
+                            if (masters.Groups[i].Collections[j].name === master.collectionName) {
+                                break;
+                            }
+                        }
+                        if (j === masters.Groups[i].Collections.length) {
+                            masters.Groups[i].Collections.push({name: master.collectionName});
+                            j = masters.Groups[i].Collections.length - 1;
+                        }
+                        if (!masters.Groups[i].Collections[j].Masters) {
+                            masters.Groups[i].Collections[j].Masters = [];
+                        }
+                        m = {};
+                        m.name = master.name;
+                        m.collectionName = master.collectionName;
+                        m.groupName = master.groupName;
+                        angular.forEach(master.revisions[r], function(val, key) {
+                            m[key] = val;
+                        });
+                        masters.Groups[i].Collections[j].Masters.push(m);
+                        break;
+                    }
+                }
+            });
+            return masters;
+        }
+        
+        /*function addParentNames(masters) {
+            var mas = [], m, rev;
             masters.Groups.forEach(function (group) {
                 group.Collections.forEach(function (collection) {
                     collection.Masters.forEach(function (master) {
-                        master.groupName = group.name;
-                        master.collectionName = collection.name;
+                        m = {};
+                        m.name = master.name;
+                        m.collectionName = collection.name;
+                        m.groupName = group.name;
+                        m.revisions = [];
+                        rev = {};
+                        rev.ver = 1;
+                        rev.by = 'yalmarzooqi';
+                        rev.when = '2016-03-22T11:11:11.111Z';
+                        rev.description = master.description || '';
+                        rev.icon = master.icon || '';
+                        rev.value = master.value;
+                        rev.kind = master.kind;
+                        rev.show = true;
+                        rev.Attributes = {};
+                        rev.Attributes.schema = angular.copy(master.Attributes.$schema);
+                        delete master.Attributes.$schema;
+                        angular.forEach(master.Attributes, function (val, key) {
+                            rev.Attributes[key] = val;
+                        });
+                        m.revisions.push(rev);
+                        mas.push(m);
                     });
                 });
             });
-            //delete removeParentNames(masters); console.log(JSON.stringify(masters));
-        }
+            console.log(JSON.stringify(mas));
+            //removeParentNames(masters); console.log(JSON.stringify(masters));
+        }*/
 
         function removeParentNames(masters) {
             masters.Groups.forEach(function (group) {
@@ -87,7 +156,7 @@
             return master;
         }
 
-        (function load(path) {
+        /*(function load(path) {
             $http.get(path).then(function (response) {
                 masters = response.data;
                 addParentNames(masters);
@@ -95,7 +164,15 @@
             }, function (response) {
                 console.warn("Could not load masters data." + response.status);
             });
-        }('data/masters.json'));
+        }('data/masters.json'));*/
+        (function load(path) {
+            $http.get(path).then(function (response) {
+                masters = makeHierarchy(response.data);
+                console.log("Masters data was retrieved successfully.");
+            }, function (response) {
+                console.warn("Could not load masters data." + response.status);
+            });
+        }('api/masters'));
 
         return {
             "get": function () {
@@ -153,7 +230,7 @@
             return navigationService.isSidenavLocked(componentId);
         };
         self.getGroups = function () {
-            return mastersService.get().Groups;
+            return mastersService.get() ? mastersService.get().Groups : null;
         };
         self.selectMaster = function (groupName, collectionName, master) {
             // track selected master

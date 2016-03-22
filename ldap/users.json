@@ -1,0 +1,22 @@
+[
+    {
+        "displayName": "Yousuf Alsayed Mohamed Esmaeel Al Marzooqi",
+        "id": "18440",
+        "sAMAccountName": "yalmarzooqi",
+        "userPassword": "password",
+        "mail": "yalmarzooqi@etisalat.ae",
+        "mobile": "+971 50 6555878",
+        "telephoneNuber": "+971 50 3717495",
+        "ou": "Information"
+    },
+    {
+        "displayName": "Jehanzeb Qayyum",
+        "id": "PT28208",
+        "sAMAccountName": "jqayyum",
+        "userPassword": "password",
+        "mail": "jqayyum@etisalat.ae",
+        "mobile": "052-8982285",
+        "telephoneNuber": "84-5490",
+        "ou": "Temp Users"
+    }
+]

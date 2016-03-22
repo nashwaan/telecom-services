@@ -1,8 +1,18 @@
-<div ng-controller="writerController as wrtr">
+<div ng-controller="writerController as cntrl">
 
     <div class="writer" layout="column">
 
-        <div class="title md-primary">{{wrtr.getPlan().name}}</div>
+        <md-button class="md-primary md-raised" 
+                   ng-disabled="false" 
+                   ng-click="cntrl.generate($event)">
+
+            <md-icon md-svg-icon="gui:save"></md-icon>
+            <md-tooltip>Export BRD</md-tooltip>
+            Export
+
+        </md-button>
+                    
+        <div class="title md-primary">{{cntrl.getPlan().name}}</div>
 
         <h1>Introduction</h1>
 
@@ -12,12 +22,12 @@
 
         </div>
 
-        <p>There are {{wrtr.getPlan().Bands.length}} bands in this plan:</p>
+        <p>There are {{cntrl.getPlan().Bands.length}} bands in this plan:</p>
         <ol>
-            <li ng-repeat="band in wrtr.getPlan().Bands">{{band.name}}</li>
+            <li ng-repeat="band in cntrl.getPlan().Bands">{{band.name}}</li>
         </ol>
-
-        <div ng-repeat="band in wrtr.getPlan().Bands">
+        
+        <div ng-repeat="band in cntrl.getPlan().Bands">
 
             <h1>{{band.name}}</h1>
 
@@ -36,16 +46,16 @@
 
                 <p>There are {{flavor.Features.length}} features in <i>{{flavor.name}}</i>:</p>
                 <ol>
-                    <li ng-repeat="feature in flavor.Features">{{wrtr.getMasterName(feature)}}</li>
+                    <li ng-repeat="feature in flavor.Features">{{cntrl.getMasterName(feature)}}</li>
                 </ol>
 
-                <div ng-repeat="feature in flavor.Features">
+                <!--<div ng-repeat="feature in flavor.Features">
 
-                    <h3>{{wrtr.getMasterName(feature)}}</h3>
+                    <h3>{{cntrl.getMasterName(feature)}}</h3>
 
                     <p>{{feature.description}}</p>
 
-                    <p>There are {{wrtr.getTotalAttributes(feature)}} attributes in <i>{{wrtr.getMasterName(feature)}}</i>:</p>
+                    <p>There are {{cntrl.getTotalAttributes(feature)}} attributes in <i>{{cntrl.getMasterName(feature)}}</i>:</p>
                     <ol>
                         <li ng-repeat="(attributeName,attributeValue) in feature">{{attributeName}}</li>
                     </ol>
@@ -56,7 +66,7 @@
 
                     </div>
 
-                </div>
+                </div>-->
 
             </div>
 

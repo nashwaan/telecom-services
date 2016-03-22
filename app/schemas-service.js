@@ -10,13 +10,24 @@
     angular.module('TheApp').factory('schemasService', ['$http', function ($http) {
         var schemas, masterIcons;
 
+        function findSchema(name) {
+            if (schemas) {
+                var i;
+                for (i = 0; i < schemas.length; i += 1) {
+                    if (schemas[i].name === name) {
+                        return schemas[i];
+                    }
+                }
+            }
+        }
+        
         (function loadSchemas(path) {
             $http.get(path).then(function (response) {
                 schemas = response.data;
             }, function (response) {
                 console.warn("Could not load schemas." + response.status);
             });
-        }('data/schemas.json'));
+        }('api/schemas'));
 
         (function loadMasterIcons(path) {
             $http.get(path).then(function (response) {
@@ -31,10 +42,12 @@
                 return masterIcons;
             },
             schema: function (objectName) {
-                return schemas[objectName + 'Schema'];
+                var schema = findSchema(objectName);
+                return schema ? schema.schema : null;
             },
             fresh: function (objectName) {
-                return schemas[objectName + 'Fresh'];
+                var schema = findSchema(objectName);
+                return schema ? schema.fresh : null;
             }
         };
     }]);

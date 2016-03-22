@@ -212,34 +212,40 @@
             return master ? master.name : "";
         };
         self.getFeatureKind = function (feature) {
-            var i,
-                master = mastersService.getMasterFromPath(feature.masterPath),
-                label = "";
-            if (master.kind) {
-                for (i = 0; i < master.kind.length; i += 1) {
-                    if (feature[master.kind[i]] !== undefined) {
-                        label += (label === "" ? " " : ", ") + feature[master.kind[i]];
+            var master = mastersService.getMasterFromPath(feature.masterPath), result = "";
+            if (master && master.kind) {
+                master.kind.forEach(function (kind) {
+                    if (feature[kind] !== undefined) {
+                        result += (result === "" ? "" : ", ") + feature[kind];
                     }
-                }
+                });
             }
-            return label;
+            return result;
         };
         self.getFeatureValue = function (feature) {
-            var master = mastersService.getMasterFromPath(feature.masterPath);
-            if (!master.value || feature[master.value] === undefined) {
-                return "";
+            var master = mastersService.getMasterFromPath(feature.masterPath), result = "";
+            if (master && master.value) {
+                master.value.forEach(function (value) {
+                    try {
+                        switch (master.Attributes.properties[value].type) {
+                        case 'number':
+                            switch (master.Attributes.properties[value].format) {
+                            case 'currency':
+                                result += $filter('currency')(feature[value], "AED ", 2);
+                                break;
+                            default:
+                                result += $filter('number')(feature[value]);
+                            }
+                            break;
+                        default:
+                            result += (result === "" ? "" : " ") + feature[value];
+                        }
+                    } catch (e) {
+                        console.info(value, master.name, master.Attributes.properties);
+                    }
+                });
             }
-            switch (master.Attributes.properties[master.value].type) {
-            case 'number':
-                switch (master.Attributes.properties[master.value].format) {
-                case 'currency':
-                    return $filter('currency')(feature[master.value], "AED ", 2);
-                default:
-                    return $filter('number')(feature[master.value]);
-                }
-            default:
-                return feature[master.value];
-            }
+            return result;
         };
         self.getFeatureIcon = function (feature) {
             return mastersService.getMasterFromPath(feature.masterPath).icon;

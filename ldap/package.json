@@ -1,0 +1,32 @@
+{
+    "name": "ldap-server",
+    "version": "0.1.0",
+    "description": "Simple LDAP Server.",
+    "main": "server.js",
+    "private": true,
+    "keywords": [
+        "LDAP",
+        "Server"
+    ],
+    "author": "Yousuf Almarzooqi",
+    "license": "MIT",
+    "dependencies": {
+        "bluebird": "^3.3.3",
+        "bunyan": "^1.8.0",
+        "chalk": "^1.1.1",
+        "ldapjs": "^1.0.0",
+        "moment": "^2.12.0",
+        "mongodb": "^2.1.7",
+        "morgan": "^1.7.0",
+        "node-notifier": "^4.5.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.9.1"
+    },
+    "scripts": {
+        "prestart": "",
+        "start": "nodemon --debug server.js | bunyan",
+        "watch": "nodemon --debug server.js | bunyan",
+        "debugger": "node-debug server.js"
+    }
+}

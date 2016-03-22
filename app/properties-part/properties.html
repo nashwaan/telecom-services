@@ -260,6 +260,56 @@
             
         </md-tab>
         
+        <md-tab label="VALUE">
+            
+            <p>Auto charge / value configuration:</p>
+            
+            <md-slider-container layout="row">
+                
+                <span>AED</span>
+                
+                <md-slider flex min="0" max="1000" ng-model="price" class="md-primary" aria-label="AED"></md-slider>
+
+                <span>{{price}}</span>
+                <!--<md-input-container><input flex="25" type="number" ng-model="price" aria-label="AED"></md-input-container>-->
+                
+            </md-slider-container>
+            
+            <md-slider-container layout="row">
+                
+                <span>STD</span>
+                
+                <md-slider flex min="0" max="1000" ng-model="std" class="md-primary" aria-label="STD"></md-slider>
+
+                <span>{{std}}</span>
+                <!--<md-input-container><input flex="25" type="number" ng-model="std" aria-label="STD"></md-input-container>-->
+                
+            </md-slider-container>
+            
+            <md-slider-container layout="row">
+                
+                <span>SMS</span>
+                
+                <md-slider flex min="0" max="1000" ng-model="sms" class="md-primary" aria-label="SMS"></md-slider>
+
+                <span>{{sms}}</span>
+                <!--<md-input-container><input flex="25" type="number" ng-model="sms" aria-label="SMS"></md-input-container>-->
+                
+            </md-slider-container>
+            
+            <md-slider-container layout="row">
+                
+                <span>DATA</span>
+                
+                <md-slider flex min="0" max="1000" ng-model="data" class="md-primary" aria-label="DATA"></md-slider>
+
+                <span>{{data}}</span>
+                <!--<md-input-container><input flex="25" type="number" ng-model="data" aria-label="DATA"></md-input-container>-->
+                
+            </md-slider-container>
+            
+        </md-tab>
+        
         <md-tab label="JSON">
             
             <p>JSON for the selected {{selected.type}}:</p>

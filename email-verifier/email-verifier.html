@@ -1,0 +1,72 @@
+<!doctype html>
+<html ng-app="TheApp">
+
+<head>
+    <title>Email Verifier</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1" />
+    <style>
+        .ng-cloak {display: none !important;}
+        .hide {
+            visibility: hidden;
+        }
+        .loading {
+            position: relative;
+            animation: rotation 1s infinite linear;
+        }
+        @keyframes rotation {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(359deg); }
+        }
+    </style>
+    <script src="angular.js"></script>
+    <script>
+        (function (angular) {
+            angular.module('TheApp', []).controller('verifierController', ['$scope', '$http', function ($scope, $http) {
+                $scope.email = "";
+                $scope.processing = false;
+                $scope.validation = {};
+                $scope.validateEmail = function (email) {
+                    console.log("verifying '" + email + "'")
+                    $scope.processing = true;
+                    $http.get('email/verify/' + email).then(function (response) {
+                        console.log("Email verification is completed.");
+                        $scope.validation = response.data;
+                        $scope.processing = false;
+                        console.dir(this.validation);
+                    }, function (response) {
+                        $scope.validation = {};
+                        $scope.processing = false;
+                        console.warn("Could not access email verification interface." + response.status);
+                    });
+                }
+            }]);
+        }(window.angular));
+    </script>
+</head>
+
+<body ng-controller="verifierController" ng-cloak style="background-color:#eee;font-family:'Segoe UI';font-size:150%">
+
+    <form style="margin-left:90px;margin-top:90px">
+        <span>Email to Verify: </span>
+        <input type="email" placeholder="user@example.com" ng-model="email" style="color:#59d;font-size:100%;background-color:#fff" />
+        <button ng-click="validateEmail(email)" style="font-size:100%">Verify</button>
+    </form>
+
+    <div style="margin-left:90px;margin-top:0px" ng-class="{'hide':!processing}">
+        <svg class="loading" width="30px" height="30px">
+            <polygon points="30,15 22,28 7,28 0,15 7,2 22,2" fill="#fa5"></polygon>
+        </svg>
+        <span>Verifying {{email}}...</span>
+    </div>
+
+    <table style="margin-left:90px;margin-top:90px">
+        <tr ng-repeat="(key,value) in validation">
+            <td style="width:200px">{{key | uppercase}}</td>
+            <td style="color:#889">{{value}}</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
