@@ -266,10 +266,14 @@
             
             <md-slider-container layout="row">
                 
+                <md-button class="lock" style="min-width:20px" aria-label="Lock">
+                    <md-icon md-svg-icon="Contract"></md-icon>
+                </md-button>
+                
                 <span>AED</span>
                 
                 <md-slider flex min="0" max="1000" ng-model="price" class="md-primary" aria-label="AED"></md-slider>
-
+                
                 <span>{{price}}</span>
                 <!--<md-input-container><input flex="25" type="number" ng-model="price" aria-label="AED"></md-input-container>-->
                 
@@ -280,7 +284,7 @@
                 <span>STD</span>
                 
                 <md-slider flex min="0" max="1000" ng-model="std" class="md-primary" aria-label="STD"></md-slider>
-
+                
                 <span>{{std}}</span>
                 <!--<md-input-container><input flex="25" type="number" ng-model="std" aria-label="STD"></md-input-container>-->
                 
@@ -291,7 +295,7 @@
                 <span>SMS</span>
                 
                 <md-slider flex min="0" max="1000" ng-model="sms" class="md-primary" aria-label="SMS"></md-slider>
-
+                
                 <span>{{sms}}</span>
                 <!--<md-input-container><input flex="25" type="number" ng-model="sms" aria-label="SMS"></md-input-container>-->
                 
@@ -302,7 +306,7 @@
                 <span>DATA</span>
                 
                 <md-slider flex min="0" max="1000" ng-model="data" class="md-primary" aria-label="DATA"></md-slider>
-
+                
                 <span>{{data}}</span>
                 <!--<md-input-container><input flex="25" type="number" ng-model="data" aria-label="DATA"></md-input-container>-->
                 

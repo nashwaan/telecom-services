@@ -30,6 +30,53 @@
     
     <div flex></div>
     
+    <md-menu ng-if="true||$mdMedia('gt-sm')">
+
+        <md-button style="width:48px;height:48px" class="md-icon-button" ng-click="$mdOpenMenu($event)" aria-label="User Options">
+            <md-icon style="width:30px;height:30px" md-svg-icon="gui:person" md-menu-origin></md-icon>
+            <md-tooltip>{{cntrl.getUserName()}} [{{cntrl.getUserRole()}}]</md-tooltip>
+        </md-button>
+
+        <md-menu-content width="3">
+            
+            <md-menu-item>
+                <md-button ng-click="cntrl.userSettings($event)" aria-label="Settings">
+                    <md-icon md-svg-icon="gui:settings " aria-label="Settings"></md-icon>
+                    <md-tooltip>My settings</md-tooltip>
+                    Settings
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-divider></md-menu-divider>
+
+            <md-menu-item>
+                <md-button ng-click="cntrl.findCreatedPlans($event)" aria-label="Created Plans">
+                    <md-icon md-svg-icon="gui:new" aria-label="Created Plans"></md-icon>
+                    <md-tooltip>Find plans created by me</md-tooltip>
+                    Created Plans
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item>
+                <md-button ng-click="cntrl.findEditedPlans($event)" aria-label="Edited Plans">
+                    <md-icon md-svg-icon="gui:edit" aria-label="Edited Plans"></md-icon>
+                    <md-tooltip>Find Plans edited by me</md-tooltip>
+                    Edited Plans
+                </md-button>
+            </md-menu-item>
+
+            <md-menu-item>
+                <md-button ng-click="cntrl.logout($event)" aria-label="Paste Flavor">
+                    <md-icon md-svg-icon="gui:logout" aria-label="Paste Flavor"></md-icon>
+                    <md-tooltip>Logout from this session</md-tooltip>
+                    Logout
+                </md-button>
+            </md-menu-item>
+            
+        </md-menu-content>
+
+    </md-menu>
+
     <md-button ng-click="cntrl.changeMode()">
         
         <md-icon style="width:48px;height:48px" md-svg-icon="logo"></md-icon>

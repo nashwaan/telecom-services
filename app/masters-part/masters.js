@@ -162,7 +162,7 @@
                 addParentNames(masters);
                 console.log("Masters data was retrieved successfully.");
             }, function (response) {
-                console.warn("Could not load masters data." + response.status);
+                console.warn("Could not load masters data.", response);
             });
         }('data/masters.json'));*/
         (function load(path) {
@@ -170,7 +170,7 @@
                 masters = makeHierarchy(response.data);
                 console.log("Masters data was retrieved successfully.");
             }, function (response) {
-                console.warn("Could not load masters data." + response.status);
+                console.warn("Could not load masters data.", response);
             });
         }('api/masters'));
 

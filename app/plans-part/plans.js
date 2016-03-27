@@ -110,7 +110,7 @@
                 agGridData = toAgGridNested(plans.Level1);
                 console.log("Plans data was retrieved successfully.");
             }, function (response) {
-                console.warn("Could not load plans data." + response.status);
+                console.warn("Could not load plans data.", response);
             });
         }
 

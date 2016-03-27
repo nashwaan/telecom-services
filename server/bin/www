@@ -3,7 +3,7 @@
 'use strict';
 
 var http = require('http');
-var app = require('../server');
+var app = require('../server.js');
 var debug = require('debug')('server:server');
 
 // Get port from environment and store in Express.

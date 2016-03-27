@@ -25,7 +25,7 @@
             $http.get(path).then(function (response) {
                 schemas = response.data;
             }, function (response) {
-                console.warn("Could not load schemas." + response.status);
+                console.warn("Could not load schemas.", response);
             });
         }('api/schemas'));
 
@@ -33,7 +33,7 @@
             $http.get(path).then(function (response) {
                 masterIcons = response.data;
             }, function (response) {
-                console.warn("Could not load masters icons." + response.status);
+                console.warn("Could not load masters icons.", response);
             });
         }('data/master-icons.json'));
 

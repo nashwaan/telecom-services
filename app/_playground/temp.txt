@@ -1,0 +1,18 @@
+        /*$httpProvider.interceptors.push(['$rootScope', '$q', '$log', function ($rootScope, $q, $log) {
+            return function(promise) {
+                return promise.then(function success(response) {
+                    $log.info('Successful response: ' + response);
+                    return response;
+                }, function error(response) {
+                    $log.error('Response status: ' + response.status + '. ' + response);
+                        if (response.status === 401) {
+                            var deferred = $q.defer();
+                            $rootScope.requests401.push({"config": response.config, "deferred": deferred});
+                            $rootScope.$broadcast('event:loginRequired');
+                            return deferred.promise;
+                        }
+                        // otherwise
+                    return $q.reject(response); //similar to throw response;
+                });
+            };
+        }]);*/

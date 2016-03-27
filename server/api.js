@@ -2,12 +2,8 @@
 'use strict';
 
 var router = require('express').Router();
-var DB = require('../mongo-db');
-var logger = require('../logger.js');
-
-// split up route handling
-//router.use('/masters', require('./masters'));
-//router.use('/plans', require('./plans'));
+var DB = require('./mongo.js');
+var logger = require('./logger.js');
 
 // GET api/collection/document
 router.get(/^\/([^\/\?]+)(?:\/([^\/\?]+))?/, function (req, res, next) {

@@ -14,7 +14,7 @@
                 countries = response.data;
                 console.log("Countries data was retrieved successfully.");
             }, function (response) {
-                console.warn("Could not load countries data." + response.status);
+                console.warn("Could not load countries data.", response);
             });
         }
 

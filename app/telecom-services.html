@@ -15,6 +15,8 @@
     <script src="script/ios-drag-drop.js"></script>
     <script src="script/jszip.js"></script>
     <script src="script/jquery.js"></script>
+    <script src="script/socket.io.js"></script>
+    <script src="script/particles.js"></script>
     <script src="script/lodash.min.js"></script>
     <script src="script/jszip-utils.js"></script>
     <script src="script/FileSaver.min.js"></script>
@@ -32,8 +34,10 @@
     
     <script src="app.js"></script>
     <script src="filters.js"></script>
+    <script src="main-body.js"></script>
     <script src="directives.js"></script>
     <script src="schemas-service.js"></script>
+    <script src="login-part/login.js"></script>
     <script src="plans-part/plans.js"></script>
     <script src="writer-part/writer.js"></script>
     <script src="masters-part/masters.js"></script>
@@ -50,6 +54,7 @@
     <link href="script/angular-material-icons.css" rel="stylesheet" />
     
     <link href="telecom-services.css" rel="stylesheet" />
+    <link href="login-part/login.css" rel="stylesheet" />
     <link href="plans-part/plans.css" rel="stylesheet" />
     <link href="writer-part/writer.css" rel="stylesheet" />
     <link href="masters-part/masters.css" rel="stylesheet" />
@@ -61,25 +66,31 @@
     
 </head>
 
-<body class="no-highlight" layout="column" ng-controller="selectController" ng-cloak>
+<body class="no-highlight" layout="column" ng-controller="mainController as main" ng-cloak>
     
-    <nav ng-include="'navigation-part/navigation.html'"></nav>
-    
-    <section layout="row" flex style="overflow:hidden">
+    <div class="access" ng-show="!main.isAuthenticated()" ng-include="'login-part/login.html'"></div>
+
+    <div class="access" ng-show="main.isAuthenticated()">
         
-        <aside layout="column" ng-include="'plans-part/plans.html'" ng-controller="plansController as cntrl"></aside>
+        <nav ng-include="'navigation-part/navigation.html'"></nav>
+
+        <section layout="row" flex style="overflow:hidden">
+
+            <aside layout="column" ng-include="'plans-part/plans.html'" ng-controller="plansController as cntrl"></aside>
+
+            <aside layout="column" ng-include="'masters-part/masters.html'" ng-controller="mastersController as cntrl"></aside>
+
+            <md-content flex>
+
+                <md-content ng-view class="view-animate">Loading...</md-content>
+
+            </md-content>
+
+            <aside layout="column" ng-include="'properties-part/properties.html'" ng-controller="propertiesController as cntrl"></aside>
+
+        </section>
         
-        <aside layout="column" ng-include="'masters-part/masters.html'" ng-controller="mastersController as cntrl"></aside>
-        
-        <md-content flex>
-            
-            <md-content ng-view class="view-animate">Loading...</md-content>
-            
-        </md-content>
-        
-        <aside layout="column" ng-include="'properties-part/properties.html'" ng-controller="propertiesController as cntrl"></aside>
-        
-    </section>
+    </div>
     
 </body>
 

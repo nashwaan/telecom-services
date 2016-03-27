@@ -102,7 +102,7 @@
             xsd = response.data;
             console.log("Word docx schema was retrieved successfully.");
         }, function (response) {
-            console.warn("Could not load plans data." + response.status);
+            console.warn("Could not load plans data.", response);
         });
         JSZipUtils.getBinaryContent('data/easy.docx', function (err, data) {
         //JSZipUtils.getBinaryContent('data/brd-template.docx', function (err, data) {

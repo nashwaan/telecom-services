@@ -4,8 +4,6 @@
 'use strict';
 
 var fs = require('fs');
-var http = require('http');
-var https = require('https');
 var moment = require('moment');
 var morgan = require('morgan');
 var express = require('express');
@@ -18,41 +16,80 @@ var config = require('./config.json')[process.env.NODE_ENV];
 var logger = require('./logger');
 
 var app = express();
-//var httpsOptions = { key: fs.readFileSync('ssl-key.pem'), cert: fs.readFileSync('ssl-cert.pem') };
+app.set('port', process.env.PORT || 3000);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
+//var httpsOptions = { key: fs.readFileSync('ssl-key.pem'), cert: fs.readFileSync('ssl-cert.pem') };
+var sessionOptions = {
+    name: 'telecom-services',
+    secret: 'R_hDZ3G+!r-K*FPjku@XGG@j-peMEq=XVrhU7Edg',
+    saveUninitialized: true,
+    resave: true,
+    store: new FileStore({path: './sessions'}),
+    cookie: {maxAge: 5000}
+};
+
+var sessionMiddleware = session(sessionOptions);
+
+//app.disable('x-powered-by');
 app.use('/', function (req, res, next) {
-    logger.debug('Request made', req.method + ' ' + req.url);
+    //logger.debug('Request made', req.method + ' ' + req.url, req.header('Content-Type'), req.body);
     next();
 });
 app.use(morgan('short'));
 app.use(morgan('combined', {stream: fs.createWriteStream(__dirname + '/requests.log', {flags: 'a'})}));
 app.use(favicon(__dirname + '/../app/favicon.ico'));
 app.use(bodyParser.json({limit: '5mb'}));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/', express.static(__dirname + '/../app'));
-app.use(session({
-    name: 'telecom-services',
-    secret: 'giveMe6hoursToChopDownATree',
-    saveUninitialized: true,
-    resave: true,
-    store: new FileStore({path: './sessions'}),
-    cookie: { maxAge: 3000 }
-}));
-
-app.use('/', function printSession(req, res, next) {
-    logger.debug('req.session', req.session);
-    return next();
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(__dirname + '/../app/'));
+//app.use(session(sessionOptions));
+app.use(sessionMiddleware);
+app.use('/auth', require('./auth.js'));
+io.use(function(socket, next) {
+    socket.request.socketid = socket.id;
+    sessionMiddleware(socket.request, socket.request.res, next); // creates socket.request.session
 });
-app.get('/', function (req, res) {
-    if (!req.session.views) {
-        req.session.views = 0;
+
+var expiringSessions = [];
+app.use('/', function (req, res, next) {
+    //logger.debug('req.session', req.session);
+    var i;
+    if (req.session.authenticated) {
+        for (i = expiringSessions.length - 1; i >= 0; i -= 1) {
+            if (expiringSessions[i].id === req.session.id) {
+                expiringSessions.splice(i, 1);
+            }
+        }
+        expiringSessions.push(req.session);
+        (function(sessionid, userid) {
+            setTimeout(function () {
+                logger.info('Session expired, ', expiringSessions.length);
+                for (i = expiringSessions.length - 1; i >= 0; i -= 1) {
+                    if (expiringSessions[i].id === sessionid && Date.now() > expiringSessions[i].cookie.expires) {
+                        expiringSessions.splice(i, 1);
+                        io.to(userid).emit('logout', {});
+                        logger.info('Manually logged out ', sessionid, userid);
+                    }
+                }
+            }, req.session.cookie.maxAge + 500);
+        }(req.session.id, req.session.userid));
+        return next();
+    } else {
+        return res.status(401).send('Not authorized');
     }
-    req.session.views += 1;
-    res.send('You view this page ' + req.session.views);
 });
 
-// anything beginning with "/api" will apply routing rules defined in /api/index.js
-app.use('/api', require('./api'));
+io.on('connection', function (socket) {
+    socket.request.session.socketid = socket.id;
+    logger.info('Session of socket connection: ', socket.request.session.socketid, socket.request.session.id);
+    socket.on('join', function (userid) {
+        socket.join(userid); // We are using room of socket io
+    });
+});
+
+// get routing rules from the respective files
+app.use('/api', require('./api.js'));
 
 // for any unidentified route, generate 404 and forward it to error handler
 app.use('/', function (req, res, next) {
@@ -80,14 +117,16 @@ if (process.env.NODE_ENV === 'development') { // app.get('env') === 'development
 // production error handler
 app.use(function (err, req, res, next) {
     var page = '<h1 style="font-family:Verdana;font-size:300%;color:#888">Oops! Something broke</h1>';
-    page += '<p>' + err.reason + '</p>';
+    page += '<h4>' + (err.message || 'error message not provided') + '</h4>';
+    page += '<p>' + (err.reason || 'error reason not provided') + '</p>';
     page += err.details || '';
     res.status(err.status || 500).send(page);
 });
 
 logger.info('Server started on port: ' + (process.env.PORT || 3000));
 
+server.listen(app.get('port'));
 //app.listen(process.env.PORT || 3000);
 //http.createServer(app).listen(process.env.PORT || 3000);
 //https.createServer(httpsOptions, app).listen(443);
-module.exports = app; // type this on command prompt: npm start
+//module.exports = app; // type this on command prompt: npm start

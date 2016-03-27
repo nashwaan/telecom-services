@@ -46,14 +46,23 @@
     }]);
 
     // define controller for navigation
-    angular.module('TheApp').controller('navigationController', ['navigationService', '$scope', '$mdSidenav', '$mdBottomSheet', '$q', '$mdMedia', '$location', function (navigationService, $scope, $mdSidenav, $mdBottomSheet, $q, $mdMedia, $location) {
-        var self = this,
-            thisYear = new Date().getFullYear();
-        self.check = function () {
-            window.alert(self.getTitle());
+    angular.module('TheApp').controller('navigationController', ['navigationService', 'loginService', '$scope', '$mdSidenav', '$mdBottomSheet', '$q', '$mdMedia', '$location', function (navigationService, loginService, $scope, $mdSidenav, $mdBottomSheet, $q, $mdMedia, $location) {
+        var self = this;
+        self.getUserName = function () {
+            return loginService.getName();
+        };
+        self.getUserRole = function () {
+            return loginService.getRole();
         };
         self.getTitle = function () {
             return navigationService.getTitle();
+        };
+        self.findCreatedPlans = function (ev) {
+        };
+        self.findEditedPlans = function (ev) {
+        };
+        self.logout = function (ev) {
+            loginService.logout();
         };
         self.toggleSidenav = function (componentId) {
             if ($mdMedia('gt-sm') && componentId === "properties") {

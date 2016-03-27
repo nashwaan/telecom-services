@@ -37,7 +37,7 @@
                     }, function (response) {
                         $scope.validation = {};
                         $scope.processing = false;
-                        console.warn("Could not access email verification interface." + response.status);
+                        console.warn("Could not access email verification interface.", response);
                     });
                 }
             }]);
