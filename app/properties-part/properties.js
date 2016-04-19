@@ -114,7 +114,7 @@
                 });
             },
             "isDirty": function () {
-                if (valuesTracked === undefined) {
+                if (!!valuesTracked) {
                     return false;
                 }
                 var key;
@@ -128,7 +128,7 @@
                 return false;
             },
             "isDisabled": function () {
-                return valuesTracked === undefined;
+                return !!valuesTracked;
             },
             "check": function () {
                 window.alert(JSON.stringify(valuesTracked));
@@ -137,7 +137,7 @@
     });
 
     // define controller for properties
-    angular.module('TheApp').controller('propertiesController', ['navigationService', 'propertiesService', 'mastersService', function (navigationService, propertiesService, mastersService) {
+    angular.module('TheApp').controller('propertiesController', ['navigationService', 'propertiesService', function (navigationService, propertiesService) {
         var self = this;
         self.isDocked = function (componentId) {
             return navigationService.isSidenavLocked(componentId);

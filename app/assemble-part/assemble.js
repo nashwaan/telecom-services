@@ -7,13 +7,17 @@
     'use strict';
 
     // define service for assemble
-    angular.module('TheApp').factory('assembleService', ['$http', '$mdBottomSheet', 'plansService', function ($http, $mdBottomSheet, plansService) {
+    angular.module('TheApp').factory('assembleService', ['$http', '$filter', '$mdBottomSheet', 'mastersService', 'plansService', function ($http, $filter, $mdBottomSheet, mastersService, plansService) {
         var planEdit,
             planEditOriginal,
             toggleEditSelectedPlan = true;
 
         function isSamePlan(planA, planB) {
             return planA && planB && planA.name === planB.name && planA.collectionName === planB.collectionName && planA.groupName === planB.groupName;
+        }
+
+        function getMaster(feature) {
+            return mastersService.getMasterFromPath(feature.masterPath);
         }
 
         return {
@@ -53,12 +57,66 @@
                 plansService.remove(planEdit);
                 planEdit = null;
                 planEditOriginal = null;
+            },
+            "getFeatureName": function (feature) {
+                var master = getMaster(feature);
+                return master ? master.name : "";
+            },
+            "getFeatureKind": function (feature) {
+                var master = getMaster(feature), result = "";
+                if (master && master.kind) {
+                    master.kind.forEach(function (kind) {
+                        if (feature[kind] !== undefined) {
+                            result += (result === "" ? "" : ", ") + feature[kind];
+                        }
+                    });
+                }
+                return result;
+            },
+            "getFeatureValue": function (feature) {
+                var result = "", master = getMaster(feature);
+                if (master && master.value) {
+                    master.value.forEach(function (value) {
+                        try {
+                            switch (master.Attributes.properties[value].type) {
+                            case 'number':
+                                switch (master.Attributes.properties[value].format) {
+                                case 'currency':
+                                    result += $filter('currency')(feature[value], "AED ", 2);
+                                    break;
+                                default:
+                                    result += $filter('number')(feature[value]);
+                                }
+                                break;
+                            default:
+                                result += (result === "" ? "" : " ") + feature[value];
+                            }
+                        } catch (e) {
+                            console.info(value, master.name, master.Attributes.properties);
+                        }
+                    });
+                }
+                return result;
+            },
+            "getFeatureIcon":  function (feature) {
+                var master = getMaster(feature);
+                return master ? master.icon : "";
+            },
+            "getSubfeatureProp":  function (feature, subfeatureProp, subfeatureSchemaProp) {
+                var master = getMaster(feature), subfeature;
+                if (master) {
+                    subfeature = master.Attributes.properties[subfeatureProp];
+                    if (subfeature) {
+                        return subfeature[subfeatureSchemaProp];
+                    }
+                }
+                return "";
             }
         };
     }]);
 
     // define controller for assemble
-    angular.module('TheApp').controller('assembleController', ['$scope', '$mdDialog', '$filter', 'assembleService', 'schemasService', 'propertiesService', 'mastersService', function ($scope, $mdDialog, $filter, assembleService, schemasService, propertiesService, mastersService) {
+    angular.module('TheApp').controller('assembleController', ['$scope', '$mdDialog', 'assembleService', 'schemasService', 'propertiesService', 'mastersService', function ($scope, $mdDialog, assembleService, schemasService, propertiesService, mastersService) {
 
         //
         var self = this,
@@ -208,54 +266,23 @@
             self.editFeature(feature);
         };
         self.getFeatureName = function (feature) {
-            var master = mastersService.getMasterFromPath(feature.masterPath);
-            return master ? master.name : "";
+            return assembleService.getFeatureName(feature);
         };
         self.getFeatureKind = function (feature) {
-            var master = mastersService.getMasterFromPath(feature.masterPath), result = "";
-            if (master && master.kind) {
-                master.kind.forEach(function (kind) {
-                    if (feature[kind] !== undefined) {
-                        result += (result === "" ? "" : ", ") + feature[kind];
-                    }
-                });
-            }
-            return result;
+            return assembleService.getFeatureKind(feature);
         };
         self.getFeatureValue = function (feature) {
-            var master = mastersService.getMasterFromPath(feature.masterPath), result = "";
-            if (master && master.value) {
-                master.value.forEach(function (value) {
-                    try {
-                        switch (master.Attributes.properties[value].type) {
-                        case 'number':
-                            switch (master.Attributes.properties[value].format) {
-                            case 'currency':
-                                result += $filter('currency')(feature[value], "AED ", 2);
-                                break;
-                            default:
-                                result += $filter('number')(feature[value]);
-                            }
-                            break;
-                        default:
-                            result += (result === "" ? "" : " ") + feature[value];
-                        }
-                    } catch (e) {
-                        console.info(value, master.name, master.Attributes.properties);
-                    }
-                });
-            }
-            return result;
+            return assembleService.getFeatureValue(feature);
         };
         self.getFeatureIcon = function (feature) {
-            return mastersService.getMasterFromPath(feature.masterPath).icon;
+            return assembleService.getFeatureIcon(feature);
         };
         self.IsFeatureRedundant = function (feature, index, flavor) {
             var i, j, mast, master = mastersService.getMasterFromPath(feature.masterPath);
             for (i = 0; i < flavor.Features.length; i += 1) {
                 if (i !== index) {
                     mast = mastersService.getMasterFromPath(flavor.Features[i].masterPath);
-                    if (mast.name === master.name) {
+                    if (mast && mast.name === master.name) {
                         for (j = 0; j < mast.kind.length; j += 1) {
                             if (flavor.Features[i][mast.kind[j]] !== feature[master.kind[j]]) {
                                 return false;

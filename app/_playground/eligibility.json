@@ -1,0 +1,45 @@
+{
+    "requestAddon": "30 GB Local Data",
+    "requestOnBasePlan": "Business Ultimate",
+    "sellerRoles": "BusinessCenterRegionA",
+    "requestTime": "2016-03-30 11:45:33 AM",
+    "customerSegment": "SMB",
+    "currentCredit": 220.35,
+    "subscribedPlans": [
+        {
+            "basePlan": {
+                "name": "Business Ultimate",
+                "contractSince": "2015-09-13 11:15:55 AM"
+            },
+            "addOns": [
+                {
+                    "name": "100 Min STD",
+                    "count": 3
+                },
+                {
+                    "name": "1000 SMS",
+                    "count": 1
+                },
+                {
+                    "name": "5 GB Local Data",
+                    "count": 1
+                }
+            ]
+        },
+        {
+            "basePlan": {
+                "name": "eLife Triple Play"
+            },
+            "addOns": [
+                {
+                    "name": "10 GB Email",
+                    "count": 1
+                },
+                {
+                    "name": "Anti Spam Service",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

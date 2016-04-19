@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app="TheApp">
+
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><!--must be first meta-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1" />
+    
+    <title>Product Designer</title>
+    
+    <link href="script/theme-fresh.css" rel="stylesheet" />
+    
+    <script> var iosDragDropShim = { enableEnterLeave: true } </script>
+    <script src="dist/vendors-combined.min.js"></script>
+    
+    <script src="dist/app-combined.min.js"></script>
+    
+    <link rel="stylesheet" href="dist/vendors-combined.min.css">
+    
+    <link rel="stylesheet" href="dist/app-combined.min.css">
+    
+</head>
+
+<body class="no-highlight" layout="column" ng-controller="mainController as main" ng-cloak>
+    
+    <div class="access full-coverage" ng-show="!main.isAuthenticated()" ng-include="'login-part/login.html'"></div>
+
+    <div class="access" layout="column" flex ng-show="main.isAuthenticated()">
+        
+        <nav ng-include="'navigation-part/navigation.html'"></nav>
+
+        <section layout="row" flex style="overflow:hidden">
+
+            <aside layout="column" ng-include="'plans-part/plans.html'" ng-controller="plansController as cntrl"></aside>
+
+            <aside layout="column" ng-include="'masters-part/masters.html'" ng-controller="mastersController as cntrl"></aside>
+
+            <md-content flex>
+
+                <md-content ng-view class="view-animate">Loading...</md-content>
+
+            </md-content>
+
+            <aside layout="column" ng-include="'properties-part/properties.html'" ng-controller="propertiesController as cntrl"></aside>
+
+        </section>
+        
+    </div>
+    
+</body>
+
+</html>

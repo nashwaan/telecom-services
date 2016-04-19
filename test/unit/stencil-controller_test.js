@@ -21,18 +21,15 @@ describe('Unit testing Telecom Services app', function () {
         beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
             
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('data/properties-attributes.json').respond([{
-                name: 'Property 1'
-            }, {
-                name: 'Property 2'
-            }]);
-
+            $httpBackend.expectGET('data/properties-attributes.json').respond([
+                {name: 'Property 1'}, {name: 'Property 2'}
+            ]);
             scope = $rootScope.$new();
             ctrl = $controller('stencilController', {
                 $scope: scope
             });
-            
             $httpBackend.flush();
+            
         }));
 
         it('should create "stencil" model with 2 masters fetched from XHR', function () {

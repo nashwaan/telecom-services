@@ -1,40 +1,42 @@
-<div ng-controller="loginController as cntrl">
+<div ng-controller="loginController as cntrl" style="height:100%">
     
     <div id="particles-js" class="login">
-
+        
         <md-icon class="logo" md-svg-icon="logo"></md-icon>
-
+        
         <div>
-
+            
             <form name="loginForm" ng-submit="cntrl.login(cntrl.username,cntrl.password)" novalidate>
-
+                
                 <div class="title"><span>Telecom</span> <span>Services</span></div>
-
+                
+                <img src="icons/baqati-sm-light.png" />
+                
                 <table border="0" cellpadding="0" cellspacing="0">
-
+                    
                     <tr>
                         <th>Username</th>
                         <td><input type="text" ng-model="cntrl.username" /></td>
                     </tr>
-
+                    
                     <tr>
                         <th>Password</th>
                         <td><input type="password"  ng-model="cntrl.password" /></td>
                     </tr>
-
+                    
                     <tr>
                         <th></th>
                         <td><button type="submit">Login</button></td>
                     </tr>
-
+                    
                 </table>
                 
             </form>
             
             <p class="copyright">Etisalat corp &copy; {{cntrl.getYear()}}</p>
-
+            
         </div>
-
+        
     </div>
     
     <script type="text/javascript">

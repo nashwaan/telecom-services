@@ -6,6 +6,10 @@ md-sidenav.md-sidenav-right.md-closed.md-locked-open-add-active {
     max-width: 400px !important;
 }*/
 
+/*md-tabs  {
+    border: 1px solid transparent;
+}*/
+
 table.properties {
     width: 100%;
     table-layout: fixed;

@@ -5,22 +5,17 @@
 (function (angular) {
     'use strict';
 
-    // initialize 'servicesDesignerApp' module
+    // initialize 'TheApp' module
     angular.module('TheApp', ['ngRoute',
                               'ngMessages',
                               'ngMaterial',
-                              'ngMdIcons',
                               'ui.router',
                               'dndLists',
                               'agGrid']);
     
     angular.module('TheApp').config(['$routeProvider', '$locationProvider', '$mdThemingProvider', '$mdIconProvider', function ($routeProvider, $locationProvider, $mdThemingProvider, $mdIconProvider) {
 
-        //
         $routeProvider
-            /*.when('/login', {
-                templateUrl: 'login-part/login.html'
-            })*/
             .when('/assemble', {
                 templateUrl: 'assemble-part/assemble.html'
             })

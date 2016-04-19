@@ -20,10 +20,14 @@ function json2xml(json, depth) {
             }
         }
     }
-    if (json.content || (json.children && json.children.length) || (json.attributes && json.attributes['xml:space'] === 'preserve')) {
+    if (json.hasOwnProperty('content') || (json.children && json.children.length) || (json.attributes && json.attributes['xml:space'] === 'preserve')) {
         node += '>';
-        if (json.content) {
-            node += json.content;
+        if (json.hasOwnProperty('content')) {
+            switch (typeof json.content) {
+                case 'string':  node += json.content.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"); break;
+                case 'boolean':  node += json.content? 'Applied' : 'Not applied'; break;
+                default:  node += json.content;
+            }
         }
         if (json.children && json.children.length) {
             node += '\n';
@@ -104,10 +108,10 @@ function xml2json(xml, addParent) {
         match(/\??>/); // originally: match(/\??>\s*/);
         node.content = content();
         while ((child = tag()) !== undefined) {
-            node.children.push(child);
             if (addParent) {
-                node.children[node.children.length - 1].parent = node;
+                child.parent = node;
             }
+            node.children.push(child);
         }
         match(/^<\/[\w-:.]+>\s*/); // closing
         return node;

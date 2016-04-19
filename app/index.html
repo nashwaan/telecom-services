@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="TheApp">
+
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><!--must be first meta-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1" />
+    
+    <title>Product Designer</title>
+    
+    <link href="script/theme-fresh.css" rel="stylesheet" />
+    
+    <script> var iosDragDropShim = { enableEnterLeave: true } </script>
+    <!--build:js dist/vendors-combined.min.js -->
+    <script src="script/ios-drag-drop.js"></script>
+    <script src="script/jszip.js"></script>
+    <script src="script/jquery.js"></script>
+    <script src="script/socket.io.js"></script>
+    <script src="script/particles.js"></script>
+    <script src="script/jszip-utils.js"></script>
+    <script src="script/FileSaver.min.js"></script>
+    <script src="script/xml-manipulator.js"></script>
+    <script src="script/angular.js"></script>
+    <script src="script/angular-aria.js"></script>
+    <script src="script/angular-route.js"></script>
+    <script src="script/angular-animate.js"></script>
+    <script src="script/angular-material.js"></script>
+    <script src="script/angular-messages.js"></script>
+    <script src="script/angular-ui-router.js"></script>
+    <script src="script/angular-drag-and-drop-lists.js"></script>
+    <script src="script/ag-grid.js"></script>
+    <!-- endbuild -->
+    
+    <!--build:css dist/vendors-combined.min.css -->
+    <link href="script/ag-grid.css" rel="stylesheet" />
+    <link href="script/angular-material.css" rel="stylesheet" />
+    <!-- endbuild -->
+    
+    <!--build:js dist/app-combined.min.js -->
+    <script src="app.js"></script>
+    <script src="filters.js"></script>
+    <script src="main-body.js"></script>
+    <script src="directives.js"></script>
+    <script src="schemas-service.js"></script>
+    <script src="login-part/login.js"></script>
+    <script src="plans-part/plans.js"></script>
+    <script src="writer-part/writer.js"></script>
+    <script src="masters-part/masters.js"></script>
+    <script src="actions-part/actions.js"></script>
+    <script src="assemble-part/assemble.js"></script>
+    <script src="navigation-part/navigation.js"></script>
+    <script src="properties-part/properties.js"></script>
+    <script src="manufacture-part/manufacture.js"></script>
+    <script src="international-part/international.js"></script>
+    <!-- endbuild -->
+    
+    <!--build:css dist/app-combined.min.css -->
+    <link href="general.css" rel="stylesheet" />
+    <link href="main-body.css" rel="stylesheet" />
+    <link href="login-part/login.css" rel="stylesheet" />
+    <link href="plans-part/plans.css" rel="stylesheet" />
+    <link href="writer-part/writer.css" rel="stylesheet" />
+    <link href="masters-part/masters.css" rel="stylesheet" />
+    <link href="assemble-part/assemble.css" rel="stylesheet" />
+    <link href="navigation-part/navigation.css" rel="stylesheet" />
+    <link href="properties-part/properties.css" rel="stylesheet" />
+    <link href="manufacture-part/manufacture.css" rel="stylesheet" />
+    <link href="international-part/international.css" rel="stylesheet" />
+    <!-- endbuild -->
+    
+</head>
+
+<body class="no-highlight" layout="column" ng-controller="mainController as main" ng-cloak>
+    
+    <div class="access full-coverage" ng-show="!main.isAuthenticated()" ng-include="'login-part/login.html'"></div>
+
+    <div class="access" layout="column" flex ng-show="main.isAuthenticated()">
+        
+        <nav ng-include="'navigation-part/navigation.html'"></nav>
+
+        <section layout="row" flex style="overflow:hidden">
+
+            <aside layout="column" ng-include="'plans-part/plans.html'" ng-controller="plansController as cntrl"></aside>
+
+            <aside layout="column" ng-include="'masters-part/masters.html'" ng-controller="mastersController as cntrl"></aside>
+
+            <md-content flex>
+
+                <md-content ng-view class="view-animate">Loading...</md-content>
+
+            </md-content>
+
+            <aside layout="column" ng-include="'properties-part/properties.html'" ng-controller="propertiesController as cntrl"></aside>
+
+        </section>
+        
+    </div>
+    
+</body>
+
+</html>

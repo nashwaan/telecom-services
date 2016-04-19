@@ -26,13 +26,14 @@
     "socket.io": "^1.4.5"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.0.6",
     "nodemon": "^1.9.1",
     "session-file-store": "^0.2.0"
   },
   "scripts": {
-    "prestart": "",
-    "start": "nodemon --ignore sessions/ --debug ./bin/www | bunyan",
-    "watch": "nodemon --ignore sessions/ --debug server.js | bunyan",
+    "oldstart": "nodemon --ignore sessions/ --debug ./bin/www | bunyan",
+    "start": "nodemon --ignore sessions/ --debug server.js | bunyan",
     "debugger": "node-debug server.js"
   }
 }

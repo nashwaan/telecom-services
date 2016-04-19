@@ -6,10 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1" />
     <style>
-        .ng-cloak {display: none !important;}
-        .hide {
-            visibility: hidden;
-        }
+        .ng-cloak { display: none !important; }
+        .hide { visibility: hidden; }
         .loading {
             position: relative;
             animation: rotation 1s infinite linear;
@@ -20,29 +18,7 @@
         }
     </style>
     <script src="angular.js"></script>
-    <script>
-        (function (angular) {
-            angular.module('TheApp', []).controller('verifierController', ['$scope', '$http', function ($scope, $http) {
-                $scope.email = "";
-                $scope.processing = false;
-                $scope.validation = {};
-                $scope.validateEmail = function (email) {
-                    console.log("verifying '" + email + "'")
-                    $scope.processing = true;
-                    $http.get('email/verify/' + email).then(function (response) {
-                        console.log("Email verification is completed.");
-                        $scope.validation = response.data;
-                        $scope.processing = false;
-                        console.dir(this.validation);
-                    }, function (response) {
-                        $scope.validation = {};
-                        $scope.processing = false;
-                        console.warn("Could not access email verification interface.", response);
-                    });
-                }
-            }]);
-        }(window.angular));
-    </script>
+    <script src="app.js"></script>
 </head>
 
 <body ng-controller="verifierController" ng-cloak style="background-color:#eee;font-family:'Segoe UI';font-size:150%">

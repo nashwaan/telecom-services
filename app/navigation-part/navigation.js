@@ -46,7 +46,7 @@
     }]);
 
     // define controller for navigation
-    angular.module('TheApp').controller('navigationController', ['navigationService', 'loginService', '$scope', '$mdSidenav', '$mdBottomSheet', '$q', '$mdMedia', '$location', function (navigationService, loginService, $scope, $mdSidenav, $mdBottomSheet, $q, $mdMedia, $location) {
+    angular.module('TheApp').controller('navigationController', ['navigationService', 'loginService', '$scope', '$mdSidenav', '$mdBottomSheet', '$q', '$mdMedia', '$location', '$mdDialog', function (navigationService, loginService, $scope, $mdSidenav, $mdBottomSheet, $q, $mdMedia, $location, $mdDialog) {
         var self = this;
         self.getUserName = function () {
             return loginService.getName();
@@ -90,6 +90,32 @@
         };
         self.isBusy = function () {
             return navigationService.isBusy();
+        };
+        $scope.rowsPerPage = 100;
+        self.showSettings = function (ev) {
+            $mdDialog.show({
+                controller: function ($scope, $mdDialog, rowsPerPage) {
+                    $scope.rowsPerPage = rowsPerPage;
+                    $scope.ok = function(settings) {
+                        $mdDialog.hide(settings);
+                    };
+                    $scope.cancel = function() {
+                        $mdDialog.hide();
+                    };
+                },
+                templateUrl: 'user-settings.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                locals: { rowsPerPage: $scope.rowsPerPage },
+                /*preserveScope: true,*/
+                clickOutsideToClose: true,
+                fullscreen: $mdMedia('sm')
+            }).then(function (settings) {
+                $scope.rowsPerPage = settings.rowsPerPage;
+                console.log('Dialog closed with "' + settings + '".');
+            }, function () {
+                console.log('Dialog closed.');
+            });
         };
     }]);
 

@@ -1,0 +1,73 @@
+{
+    "name": "Alphamed",
+    "Bands": [
+        {
+            "name": "Alphamed",
+            "Flavors": [
+                {
+                    "name": "Alphamed",
+                    "type": "Base Standard",
+                    "inherit": "",
+                    "Features": [
+                        {
+                            "basePlanName": "Alphamed",
+                            "masterPath": [
+                                "Mobile",
+                                "Plans",
+                                "Base Plan"
+                            ]
+                        },
+                        {
+                            "chargeAmount": 0,
+                            "masterPath": [
+                                "General",
+                                "Charges",
+                                "One-Time Charge"
+                            ]
+                        },
+                        {
+                            "chargeAmount": 20,
+                            "prorateOnSubscribe": true,
+                            "masterPath": [
+                                "General",
+                                "Charges",
+                                "Periodic Charge"
+                            ]
+                        },
+                        {
+                            "durationType": "Month",
+                            "durationAmount": 12,
+                            "exitPolicy": "Monthly Charge x Remaining Months",
+                            "masterPath": [
+                                "General",
+                                "Constraints",
+                                "Contract"
+                            ]
+                        },
+                        {
+                            "creditAmount": 20,
+                            "unitPulse": "Per Fils",
+                            "prorateOnSubscribe": true,
+                            "masterPath": [
+                                "Mobile",
+                                "Benefits",
+                                "Usages Credit"
+                            ]
+                        },
+                        {
+                            "nature": "CUG",
+                            "freebeesUnit": "Minutes",
+                            "freebeesAmount": 10000,
+                            "prorateOnSubscribe": true,
+                            "masterPath": [
+                                "Mobile",
+                                "Benefits",
+                                "Call Freebees"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

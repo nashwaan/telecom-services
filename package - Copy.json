@@ -1,0 +1,80 @@
+{
+  "name": "telecom-services",
+  "version": "0.1.0",
+  "description": "A web application to help constructing telecom services.",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nashwaan/telecom-services.git"
+  },
+  "keywords": [
+    "Telecom",
+    "Services"
+  ],
+  "author": "Yousuf Almarzooqi",
+  "license": "SEE LICENSE IN license.txt",
+  "bugs": {
+    "url": "https://github.com/nashwaan/telecom-services/issues"
+  },
+  "homepage": "https://github.com/nashwaan/telecom-services#readme",
+  "dependencies": {
+    "ag-grid": "^3.2.2",
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-aria": "^1.4.9",
+    "angular-drag-and-drop-lists": "*",
+    "angular-gridster": "*",
+    "angular-material": "^1.0.4",
+    "angular-material-icons": "*",
+    "angular-messages": "^1.5.0",
+    "angular-mocks": "^1.4.9",
+    "angular-route": "^1.4.9",
+    "angular-ui-router": "^0.2.18",
+    "grunt-contrib-jshint": "^0.12.0",
+    "jquery": "^2.2.0",
+    "jszip": "^2.5.0",
+    "karma": "^0.13.19",
+    "lodash": "*",
+    "particles.js": "^2.0.0",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "*",
+    "browser-sync": "^2.11.2",
+    "fs-extra": "^0.26.7",
+    "grunt": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-svgmin": "*",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-useref": "^3.0.8",
+    "http-server": "latest",
+    "jasmine": "*",
+    "jshint-stylish": "latest",
+    "karma": "*",
+    "karma-chrome-launcher": "*",
+    "karma-firefox-launcher": "*",
+    "karma-ie-launcher": "*",
+    "karma-jasmine": "*",
+    "node-jsxml": "*",
+    "pretty-data": "*",
+    "protractor": "latest",
+    "svgpath": "^2.1.5",
+    "through2": "^2.0.1",
+    "webpack": "^1.12.14"
+  },
+  "scripts": {
+    "prestart": "",
+    "start": "http-server -p 8008",
+    "pretest": "npm install",
+    "test": "karma start test/karma.conf.js",
+    "test-single-run": "karma start test/karma.conf.js  --single-run",
+    "preprotractor": "webdriver-manager update",
+    "protractor": "protractor test/protractor-conf.js"
+  }
+}

@@ -26,7 +26,6 @@
                     return $q.reject(rejection);
                 },
                 "response": function(response) {
-                    //console.log('response: ', response);
                     return response;
                 },
                 "responseError": function(rejection) {
@@ -36,11 +35,13 @@
                         $rootScope.requests401.push({"config": rejection.config, "deferred": deferred});
                         $rootScope.$broadcast('event:loginRequired');
                         return deferred.promise;
+                    } else {
+                        return $q.reject(rejection);
                     }
-                    return $q.reject(rejection);
                 }
             };
         }]);
+        
     }]);
     
     angular.module('TheApp').factory('loginService', ['$rootScope', '$http', function ($rootScope, $http) {

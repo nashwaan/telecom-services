@@ -69,7 +69,7 @@
         function toAgGridNested(obj) {
             var result = [],
                 sourceIsArray = false;
-            if (obj instanceof Array) {
+            if (angular.isArray(obj)) {
                 obj = {
                     "array": obj
                 };
@@ -282,7 +282,7 @@
         self.getTitle = function () {
             return plansService.getTitle();
         };
-
+        
     }]);
 
 }(window.angular));

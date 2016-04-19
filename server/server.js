@@ -27,7 +27,7 @@ var sessionOptions = {
     saveUninitialized: true,
     resave: true,
     store: new FileStore({path: './sessions'}),
-    cookie: {maxAge: 5000}
+    cookie: {maxAge: 50 * 1000}
 };
 
 var sessionMiddleware = session(sessionOptions);
@@ -46,6 +46,8 @@ app.use(express.static(__dirname + '/../app/'));
 //app.use(session(sessionOptions));
 app.use(sessionMiddleware);
 app.use('/auth', require('./auth.js'));
+app.use('/api', require('./api.js'));
+app.use('/eligible', require('./eligible.js'));
 io.use(function(socket, next) {
     socket.request.socketid = socket.id;
     sessionMiddleware(socket.request, socket.request.res, next); // creates socket.request.session
@@ -89,7 +91,7 @@ io.on('connection', function (socket) {
 });
 
 // get routing rules from the respective files
-app.use('/api', require('./api.js'));
+//app.use('/api', require('./api.js'));
 
 // for any unidentified route, generate 404 and forward it to error handler
 app.use('/', function (req, res, next) {
